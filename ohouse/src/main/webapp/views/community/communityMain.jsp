@@ -39,6 +39,21 @@
         margin-right: 4px;
         font-weight: bold;
         height: 30px;
+        
+    }
+
+    .sorting-list{
+        list-style: none;
+        font-weight: bold;
+        padding-left: 0px;
+        position: relative;
+        border: 1px solid black;
+        color: black;
+    }
+
+    .hidden{
+        display: none;
+         
     }
 
     /*게시글 관련*/
@@ -94,10 +109,17 @@
       <div class="content">
         <div id="sort" align="left">
             <div>
-                <button class="sort-button" >
+                <button class="sort-button" onmouseover="sortinglist()">
                     정렬
-                    <span class=""></span>
-                </button>       
+                </button>
+                <div>
+                    <ul class="sorting-list hidden">
+                        <li>최신순</li>
+                        <li>최근 인기순</li>
+                        <li>역대 인기순</li>
+                        <li>과거순</li>
+                    </ul>
+                </div>      
             </div>
             <div>
                 <button class="sort-button">
@@ -153,7 +175,15 @@
                     <span class=""></span>
                 </button>
             </div>
-        </div>      
+        </div>
+        
+        <script>
+            function sortinglist(){
+                const list = document.getElementsByClassName("sorting-list");
+                list.classlist.remove("hidden");
+            }
+        </script>
+
         <div id="content-page">          
             <div class="page">
                 <img class="content-img" src="https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/project/170127228439562148.jpg?w=480&h=321&c=c" alt="" >
