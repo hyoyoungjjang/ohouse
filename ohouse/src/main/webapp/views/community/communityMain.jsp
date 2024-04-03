@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -118,7 +120,9 @@
     </style>
 </head>
 <body>
-    <header></header>
+    <header> 
+        <%@ include file="../common/header.jsp" %>    
+    </header>
     <div align="center">
       <div class="content">
         <div id="sort" align="left">
@@ -363,7 +367,9 @@
         </div>
       </div>
     </div>
-    <footer></footer>
+    <footer>
+        <%@ include file="../common/footer.jsp" %> 
+    </footer>
 
     
     
