@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../../resources/css/main.css">
-<link rel="stylesheet" href="../../resources/css/common/footer.css">
+<link rel="stylesheet" href="./resources/css/main.css">
+<link rel="stylesheet" href="./resources/css/common/footer.css">
 </head>
 <body>
     <div align="center" class="footer">
