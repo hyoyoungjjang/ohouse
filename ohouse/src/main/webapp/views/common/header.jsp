@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../../resources/css/main.css">
-<link rel="stylesheet" href="../../resources/css/common/header.css">
+<link rel="stylesheet" href="./resources/css/main.css">
+<link rel="stylesheet" href="./resources/css/common/header.css">
 </head>
 <body>
     <div align="center">
@@ -21,7 +21,7 @@
             <div class="header-menu">
                 <div class="header-search">
                     <input type="text" placeholder="통합검색">
-                    <a href=""><img src="../../resources/img/common/find.png" alt=""></a>
+                    <a href=""><img src="./resources/img/common/find.png" alt=""></a>
                 </div>
                 <!-- 로그인X -->
                 <div class="header-others">
