@@ -8,9 +8,11 @@
 }
 
 .pm-sale-img {
+    border-radius: 5px;
     width: 260px;
     overflow: hidden;
     cursor: pointer;
+    position: relative;
 }
 
 .pm-sale img {
@@ -81,4 +83,19 @@
 .pm-gray {
     margin-top: 5px;
     color: #828c94;
+}
+
+.pm-sale-img>button {
+    position: absolute;
+    background: none;
+    border: none;
+    right: 0px;
+    bottom: 5px;
+
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.pm-sale-img>button:hover {
+    opacity: 1;
 }

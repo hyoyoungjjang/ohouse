@@ -22,6 +22,9 @@
                 <div class="pm-sale-content">
                     <div class="pm-sale-img">
                         <img src="${pageContext.request.contextPath}/resources/img/product/productMain01.png" width="260px">
+                        <button type="button">
+                            <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
+                        </button>
                     </div>
                     <div class="pm-sale-text">
                         <div class="pm-company">
@@ -45,6 +48,9 @@
                 <div class="pm-sale-content">
                     <div class="pm-sale-img">
                         <img src="${pageContext.request.contextPath}/resources/img/product/productMain02.png" width="260px">
+                        <button type="button">
+                            <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
+                        </button>
                     </div>
                     <div class="pm-sale-text">
                         <div class="pm-company">
@@ -68,6 +74,9 @@
                 <div class="pm-sale-content">
                     <div class="pm-sale-img">
                         <img src="${pageContext.request.contextPath}/resources/img/product/productMain03.png" width="260px">
+                        <button type="button">
+                            <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
+                        </button>
                     </div>
                     <div class="pm-sale-text">
                         <div class="pm-company">
@@ -91,6 +100,9 @@
                 <div class="pm-sale-content">
                     <div class="pm-sale-img">
                         <img src="${pageContext.request.contextPath}/resources/img/product/productMain04.png" width="260px">
+                        <button type="button">
+                            <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
+                        </button>
                     </div>
                     <div class="pm-sale-text">
                         <div class="pm-company">
@@ -120,6 +132,9 @@
                 <div class="pm-sale-content">
                     <div class="pm-sale-img">
                         <img src="${pageContext.request.contextPath}/resources/img/product/productMain01.png" width="260px">
+                        <button type="button">
+                            <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
+                        </button>
                     </div>
                     <div class="pm-sale-text">
                         <div class="pm-company">
@@ -143,6 +158,9 @@
                 <div class="pm-sale-content">
                     <div class="pm-sale-img">
                         <img src="${pageContext.request.contextPath}/resources/img/product/productMain02.png" width="260px">
+                        <button type="button">
+                            <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
+                        </button>
                     </div>
                     <div class="pm-sale-text">
                         <div class="pm-company">
@@ -166,6 +184,9 @@
                 <div class="pm-sale-content">
                     <div class="pm-sale-img">
                         <img src="${pageContext.request.contextPath}/resources/img/product/productMain03.png" width="260px">
+                        <button type="button">
+                            <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
+                        </button>
                     </div>
                     <div class="pm-sale-text">
                         <div class="pm-company">
@@ -189,6 +210,9 @@
                 <div class="pm-sale-content">
                     <div class="pm-sale-img">
                         <img src="${pageContext.request.contextPath}/resources/img/product/productMain04.png" width="260px">
+                        <button type="button">
+                            <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
+                        </button>
                     </div>
                     <div class="pm-sale-text">
                         <div class="pm-company">
