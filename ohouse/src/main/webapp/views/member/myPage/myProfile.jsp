@@ -5,62 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-    #profile-total {
-        width: 1136px;
-        min-height: 600px;
-        padding: 50px;
-        display: flex;
-    }
-
-    #profile-area {
-        border: 2px solid #F7F9FA;
-        width: 25%;
-        height: 400px;
-        padding: 50px
-    }
-
-    #profile-img-area>img {
-        width: 100px;
-    }
-
-    #profile-area>hr {
-        margin:20px
-    }
-
-    #profile-bookmark>img {
-        width: 40px
-    }
-
-    #profile-content {
-        width: 75%;
-        padding: 0px 50px;
-        text-align: left;
-    }
-
-    #profile-content-cnt {
-        color: #35C5F0;
-    }
-
-    #profile-content-area {
-        display: flex;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-    }
-
-    .profile-content-img {
-        width: 30%;
-        border-radius: 5px;
-        cursor: pointer;
-        height: 200px;
-        margin: 10px
-    }
-
-    .profile-content-img>img {
-        border-radius: 5px;
-        width: 100%;
-    }
-</style>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/member/myPage/myProfile.css">
 </head>
 <body>
     <header>
