@@ -522,7 +522,6 @@ pageEncoding="UTF-8"%>
         position: absolute;
         width: 187px;
         height: 100%;
-        border: 1px solid black;
         left: 1194px;
         display: flex;
         justify-content: center;
