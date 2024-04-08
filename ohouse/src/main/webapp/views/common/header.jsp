@@ -37,7 +37,7 @@
                 </div>
             </div>
         </div>
-        <div style="border: 1px solid #f7f9fa;"></div>
+        <div style="border: 1px solid #f7f9fa; min-width: 1136px;"></div>
         <div class="sticky-container" style="height: 51px;">
             <!-- 쇼핑 -->
             <div class="header-category">
@@ -55,7 +55,7 @@
                 <a href="">설정</a>
             </div>
         </div>
-        <div style="border: 1px solid #f7f9fa;"></div>
+        <div style="border: 1px solid #f7f9fa; min-width: 1136px;"></div>
     </div>
 </body>
 </html>

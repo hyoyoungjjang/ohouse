@@ -266,7 +266,6 @@
                 button.nextElementSibling.classList.add("hidden")
             }
         </script>
-
         <div id="content-page">          
             <div class="page">
                 <img class="content-img" src="https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/project/170127228439562148.jpg?w=480&h=321&c=c" alt="" >
@@ -370,8 +369,5 @@
     <footer>
         <%@ include file="../common/footer.jsp" %> 
     </footer>
-
-    
-    
 </body>
 </html>

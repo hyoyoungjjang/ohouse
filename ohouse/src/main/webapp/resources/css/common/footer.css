@@ -14,13 +14,16 @@ body {
 .footer-set {
     display: flex;
     justify-content: center;
+    background-color: #F7F9FA;
     width: 1136px;
+    height: 320px;
 }
 
 .footer-left {
     text-align: left;
     width: 200px;
     padding-top: 30px;
+    padding-left: 10px;
     font-size: 16px;
 }
 
@@ -36,6 +39,7 @@ body {
 .footer-right>div {
     width: 636px;
     height: 20px;
+    padding-right: 10px;
 }
 
 .footer-right>div>span {
