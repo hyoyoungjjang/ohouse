@@ -14,7 +14,7 @@
             <div class="container">
                 <div class="content">
                     <a aria-label="오늘의집" href="/">
-                        <img src="${pageContext.request.contextPath}/img/member/오늘의집 로고.jpg" alt="">
+                        <img src="${pageContext.request.contextPath}/resources/img/member/오늘의집 로고.jpg" alt="">
                     </a>
                     <form action="">
                         <input type="hidden" name="userEmail">
