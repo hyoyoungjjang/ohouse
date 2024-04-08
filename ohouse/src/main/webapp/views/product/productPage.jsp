@@ -4,78 +4,1083 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Document</title>
+<style>  
+    .production-selling{
+        position: relative;
+        display: block;
+        flex-basis: auto;
+        flex-grow: 0;
+        flex-shrink: 0;
+        height: 94392.4px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        min-height: 1px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+        width: 796px;
+        font-family: "Pretendard Variable", "Noto Sans KR", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", sans-serif;
+        font-size: 15px;
+        letter-spacing: -0.3px;
+        line-height: 15px;
+        color: rgb(66, 66, 66);
+    }
+    .production-selling-overview-container{
+        box-sizing: border-box;
+        display: block;
+        height: 571.344px;
+        margin-bottom: 0px;
+        margin-left: 40px;
+        margin-right: 40px;
+        margin-top: 0px;
+        max-width: 100%;
+        min-height: 1px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+        width: 716px;
+        font-family: "Pretendard Variable", "Noto Sans KR", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", sans-serif;
+        font-size: 15px;
+        letter-spacing: -0.3px;
+        line-height: 15px;;
+        color: rgb(66, 66, 66);
+    }
+    .production-selling-overview-container nav{
+        box-sizing: border-box;
+        display: flex;
+        flex-wrap: wrap;
+        height: 533.344px;
+        margin-bottom: 40px;
+        margin-left: -7.5px;
+        margin-right: -7.5px;
+        margin-top: 20px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+        width: 731px;
+        font-family: "Pretendard Variable", "Noto Sans KR", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", sans-serif;
+        font-size: 15px;
+        letter-spacing: -0.3px;
+        line-height: 15px;
+        color: rgb(66, 66, 66);
+    }
+    .production-selling-overview-container nav ol{
+        list-style-position: outside;
+        list-style-type: none;
+    }
+    .production-selling-overview-container nav ol li{
+        display: inline-block;
+        font-size: 13px;
+        letter-spacing: -0.3px;
+        line-height: 15.6px;
+        list-style-position: outside;
+    }
+    .production-selling-overview-container nav ol li a{
+        text-decoration-line: none;
+        color: #757575;
+    }
+    
+    .production-selling-overview__container-row{
+        box-sizing: border-box;
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 15px;
+        letter-spacing: -0.3px;
+        line-height: 15px;
+        margin-bottom: 40px;
+        margin-left: -10px;
+        margin-right: -10px;
+        margin-top: 40px;
+    }
+    .production-selling-cover-image__entry__image{
+        border-image-repeat: stretch;
+        border-image-slice: 100%;
+        border-radius: 4%;
+        border-image-width: 1;
+        letter-spacing: -0.3px;
+        top: 0px;
+        width: auto;
+    }
+    .production-selling-overview__content{
+        box-sizing: border-box;
+        display: block;
+        flex-basis: 100%;
+        letter-spacing: -0.3px;
+        line-height: 13px;
+        max-width: 100%;
+        min-height: 1px;
+        padding-left: 5px;
+        padding-right: 5px;
+        position: relative;
+        width: auto;
+    }
+    .production-selling-header{
+        display: block;
+        font-size: 13px;
+        letter-spacing: -0.3px;
+        line-height: 13px;
+        position: relative;
+    }
+    .production-selling-header__title{
+        font-size: 26px;
+        font-weight: 400;
+        letter-spacing: -0.3px;
+        line-height: 26px;
+
+    }
+    .production-selling-header__title__brand-wrap{
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: -0.3px;
+        line-height: 19px;
+        margin-block-end: 4px;
+        margin-block-start: 19px;
+        margin-top: 19px;
+    }
+    .production-selling-header__title__name-wrap{
+        display: block;
+        font-size: 26px;
+        font-weight: 400;
+        letter-spacing: -0.3px;
+        position: relative;
+    }
+    .production-selling-header__title__name{
+        display: block;
+        font-size: 17px;
+        font-weight: 400;
+        letter-spacing: -0.3px;
+        line-height: 20px;
+        margin-right: 36px;
+        overflow-wrap: normal;
+    }
+    .production-selling-header__action{
+        font-size: 26px;
+        font-weight: 400;
+        letter-spacing: -0.3px;
+        line-height: 30px;
+        margin-left: -6px;
+        margin-right: -6px;
+        position: absolute;
+    }
+    .production-selling-header__action__button{
+        align-items: flex-start;
+        background-attachment: scroll;
+        background-clip: border-box;
+        background-origin: padding-box;
+        box-sizing: border-box;
+        border: none;
+        border-image-width: 1;
+        background: none;
+        color: #757575;
+    }
+    .production-selling-header__action__button span{
+        cursor: pointer;
+        display: block;
+        font-size: 11px;
+        font-stretch: 100%;
+        font-weight: 400;
+        letter-spacing: -0.3px;
+        line-height: 14px;
+        margin-top: 2px;
+        text-align: center;
+        text-rendering: auto;
+    }
+    .production-selling-header__content{
+        display: block;
+        font-size: 15px;
+        letter-spacing: -0.3px;
+        line-height: 15px;
+        min-height: 46px;
+        position: relative;
+    }
+    .production-selling-header__review-wrap{
+        display: block;
+        font-size: 15px;
+        letter-spacing: -0.3px;
+        margin-block-start: 12px;
+        margin-top: 12px;
+    }
+    .production-selling-header__review{
+        
+    }
+    .production-selling-header__review__icon{
+      
+    }
+    .production-selling-header__review__text{
+        color: #35C5F0;
+        font-size: 13px;
+        font-stretch: 100%;
+        font-weight: 700;
+        letter-spacing: -0.3px;
+        line-height: 13px;
+        margin-left: 8px;
+        vertical-align: 2px;
+    }
+    .production-selling-header__price{
+        margin-top: 8px;
+    }
+    .production-selling-header__price__price-wrap{
+        display: inline;
+        font-size: 15px;
+        height: auto;
+        letter-spacing: -0.3px;
+        line-height: 15px;
+        width: auto;
+    }
+    .production-selling-header__price__discount{
+        display: inline-block;
+        font-size: 16px;
+        letter-spacing: -0.3px;
+        line-height: 19px;
+        padding-right: 6px;
+        vertical-align: top;
+    }
+    .production-selling-header__price__original{
+        color: #757575;
+        display: inline;
+        font-size: 16px;
+        line-height: 19px;
+        letter-spacing: -0.3px;
+    }
+    .css-py9upp-e15kwcqf0{
+        border: none;
+        background-color: white;
+        cursor: pointer;
+    }
+    .production-selling-header__price__separator{
+        display: block;
+        letter-spacing: -0.3px;
+        margin-bottom: 4px;
+    }
+    .production-selling-header__price__price-value-wrap{
+        align-items: center;
+        display: flex;
+        font-size: 15px;
+        justify-content: space-between;
+        letter-spacing: -0.3px;
+        line-height: 15px;
+        margin-top: 5px;
+    }
+    .production-selling-header__price__price{
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: -0.3px;
+        line-height: 20px;
+        margin-left: -6px;
+        margin-top: -4px;
+    }
+    #productNum{
+        display: block;
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: -0.3px;
+        line-height: 32px;
+        margin-left: 6px;
+        margin-right: 4px;
+        margin-top: 4px;
+    }
+    #productWon{
+        font-size: 24px;
+        font-weight: 400;
+        letter-spacing: -0.3px;
+        line-height: 24px;
+        margin-top: 4px;
+    }
+    .production-selling-header__price__price-value-wrap svg{
+        display: block;
+        font-size: 20px;
+        font-weight: 700;
+        height: 20px;
+        letter-spacing: -0.3px;
+        line-height: 20px;
+        margin-left: 6px;
+        margin-top: 4px;
+        overflow-clip-margin: content-box;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        width: 30px;
+    }
+    .production-selling-header__info-wrap{
+        border-bottom-color: rgb(237,237,237);
+        border-bottom-style: solid;
+        border-bottom-width: 1.25px;
+        color: black;
+        display: block;
+        font-size: 15px;
+        letter-spacing: -0.3px;
+        padding-bottom: 20px;
+        padding-top: 20px;
+    }
+    .production-selling-header__delivery{
+        color: black;
+        display: flex;
+        font-size: 14px;
+        letter-spacing: -0.3px;
+        line-height: 21px;
+        padding-top: 14px;
+    }
+    .production-selling-header__delivery__title-wrap{
+        color: black;
+        display: block;
+        flex-basis: 42px;
+        font-size: 14px;
+        letter-spacing: -0.3px;
+        line-height: 21px;
+    }
+    .production-selling-header__delivery__title-wrap span{
+        color: #757575;
+        display: inline;
+        font-size: 14px;
+        line-height: 21px;
+        letter-spacing: -0.3px;
+        width: auto;
+    }
+    .production-selling-header__delivery__content-wrap{
+        color: black;
+        display: block;
+        flex-basis: auto;
+        flex-grow: 1;
+        font-size: 14px;
+        letter-spacing: -0.3px;
+        line-height: 21px;
+    }
+    .production-selling-header__delivery__fee{
+        display: block;
+        font-size: 14px;
+        letter-spacing: -0.3px;
+        line-height: 21px;
+        margin-bottom: 4px;
+    }
+    .production-selling-header__delivery__fee span{
+        display: inline;
+        width: auto;
+    }
+    .production-selling-header__delivery__type{
+        display: block;
+        font-size: 14px;
+        letter-spacing: -0.3px;
+        line-height: 21px;
+        margin-bottom: 4px;
+    }
+    .production-selling-header__delivery__type span{
+        display: inline;
+    }
+    .production-selling-header__delivery__disclaimer-wrap{
+        box-sizing: border-box;
+        color: #757575;
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 13px;
+        letter-spacing: -0.3px;
+        line-height: 18px;
+        margin-bottom: 4px;
+    }
+    ._2SUYq-production-selling-header__delivery__expectation-date__dropdown{
+        color: black;
+        display: block;
+        font-size: 14px;
+        height: 40px;
+        letter-spacing: -0.3px;
+        line-height: 21px;
+        position: relative;
+    }
+    .production-selling-header__delivery__expectation-section{
+        color: black;
+        display: block;
+        font-size: 14px;
+        letter-spacing: -0.3px;
+        line-height: 21px;
+        margin-top: 12px;
+    }
+    .production-selling-header__delivery__expectation-wrap{
+        background-color: rgb(247, 248, 250);
+        border-radius: 4px;
+        color: black;
+        display: block;
+        font-size: 14px;
+        height: 40px;
+        letter-spacing: -0.3px;
+        line-height: 21px;
+    }
+    .production-selling-header__delivery__expectation-date__header{
+        align-items: center;
+        color: black;
+        display: flex;
+        font-size: 14px;
+        height: 80px;
+        letter-spacing: -0.3px;
+        line-height: 21px;
+        padding-bottom: 8px;
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-top: 8px;
+    }
+    .production-selling-header__delivery__expectation-date__header span{
+        color: black;
+        display: block;
+        font-size: 14px;
+        height: 20px;
+        line-height: 20px;
+        margin-left: 4px;
+        width: 226px;
+        letter-spacing: -0.3px;
+    }
+    .production-selling-option-form-production-selling-overview__option-form{
+        color: black;
+        display: block;
+        flex-basis: auto;
+        flex-direction: column;
+        flex-grow: 1;
+        flex-shrink: 1;
+        font-size: 15px;
+        height: auto;
+        letter-spacing: -0.3px;
+        margin-top: 10px;
+    }
+    .selling-option-form-content-production-selling-option-form__form{
+        color: black;
+        display: flex;
+        flex-basis: auto;
+        flex-direction: column;
+        flex-grow: 1;
+        flex-shrink: 1;
+        font-size: 15px;
+        height: auto;
+        letter-spacing: -0.3px;
+        line-height: 15px;
+        margin-top: 20px;
+        min-height: 1px;
+    }
+    .selling-option-form-content__form{
+        color: black;
+        display: block;
+        flex-basis: auto;
+        font-size: 15px;
+        letter-spacing: -0.3px;
+        line-height: 15px;
+        margin-top: 100px;
+    }
+    .selling-option-select-input{
+        color: black;
+        display: block;
+        font-size: 15px;
+        letter-spacing: -0.3px;
+        line-height: 15px;
+        margin-bottom: 10px;
+    }
+    .input-group_select-input_selling-option-select-input__option_selling-option-select-input__option-1_focused{
+        color: black;
+        display: block;
+        flex-basis: auto;
+        flex-grow: 1;
+        font-size: 15px;
+        letter-spacing: -0.3px;
+        line-height: 15px;
+        margin-bottom: 10px;
+        position: relative;
+    }
+    .form-control_empty{
+        align-items: center;
+        box-sizing: border-box;
+        display: block;
+        flex-basis: auto;
+        flex-grow: 1;
+        flex-shrink: 0;
+        height: 40px;
+        overflow-x: visible;
+        overflow-y: visible;
+        padding-bottom: 0px;
+        padding-left: 15px;
+        padding-right: 30px;
+        padding-top: 0px;
+        width: 462px;
+        height: 40px;
+        font-size: 15px;
+        font-stretch: 100%;
+        font-weight: 400;
+        letter-spacing: normal;
+        line-height: 40px;
+        text-align: start;
+        color: black;
+        background-color: white;
+        border-color: #35C5F0;
+        border-style: solid;
+        border-width: 1px;
+        border-image-repeat: stretch;
+        border-image-slice: 100%;
+    }
+    .input-group_select-input_selling-option-select-input__option_selling-option-select-input__option-2{
+        color: black;
+        display: block;
+        flex-basis: auto;
+        flex-grow: 1;
+        font-size: 15px;
+        letter-spacing: -0.3px;
+        line-height: 15px;
+        margin-bottom: 10px;
+        position: relative;
+    }
+    .input-group select-input_selling-option-select-input__option_selling-option-select-input__option-extra{
+        color: black;
+        display: block;
+        flex-basis: auto;
+        flex-grow: 1;
+        font-size: 15px;
+        letter-spacing: -0.3px;
+        line-height: 15px;
+        margin-bottom: 10px;
+        position: relative;
+    }
+    .css-49v6aj_ejhg2ki2{
+        align-items: center;
+        display: flex;
+        height: auto;
+        justify-content: space-between;
+        margin-top: 16px;
+        width: auto;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: -0.3px;
+        line-height: 15px;
+        margin-block-start: 16px;
+    }
+    .css-7c0zb9_ejhg2ki1{
+        display: block;
+        height: auto;
+        width: auto;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: -0.3px;
+        line-height: 20px;
+    }
+    .css-q02jxk_ejhg2ki0{
+        display: block;
+        height: auto;
+        width: auto;
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: -0.3px;
+        line-height: 24px;
+    }
+    .css-q02jxk_ejhg2ki0 span{
+        display: inline;
+        height: auto;
+        width: auto;
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: -0.3px;
+        line-height: 24px;
+    }
+    .production-selling-option-form__footer{
+        display: flex;
+        flex-basis: auto;
+        margin-left: -3px;
+        margin-right: -3px;
+        margin-top: 20px;
+        width: auto;
+        height: auto;
+        font-size: 15px;
+        line-height: 15px;
+    }
+    .button_button--color-blue-inverted_button--size-55_button--shape-4{
+        align-items: flex-start;
+        box-sizing: border-box;
+        display: block;
+        height: 55px;
+        width: 277px;
+        margin-left: 3px;
+        margin-right: 3px;
+        padding-bottom: 14px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 13px;
+        font-size: 17px;
+        font-stretch: 100%;
+        font-weight: 700;
+        letter-spacing: normal;
+        line-height: 26px;
+        text-align: center;
+        text-decoration-color: #35C5F0;
+        text-decoration-style: solid;
+        text-decoration-line: none;
+        color: #35C5F0;
+        background-attachment: scroll;
+        background-clip: border-box;
+        background-color: white;
+        border-color: #35C5F0;
+        background-repeat: repeat;
+        background-size: auto;
+        border-width: 1px;
+        border-style: solid;
+        cursor: pointer;
+    }
+    .button_button--color-blue_button--size-55_button--shape-4{
+        align-items: flex-start;
+        box-sizing: border-box;
+        display: block;
+        height: 55px;
+        width: 277px;
+        margin-left: 3px;
+        margin-right: 3px;
+        padding-bottom: 14px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 13px;
+        font-size: 17px;
+        font-stretch: 100%;
+        font-weight: 700;
+        letter-spacing: normal;
+        line-height: 26px;
+        text-align: center;
+        text-decoration-color: #35C5F0;
+        text-decoration-style: solid;
+        text-decoration-line: none;
+        color: #35C5F0;
+        background-attachment: scroll;
+        background-clip: border-box;
+        background-color: white;
+        border-color: #35C5F0;
+        background-repeat: repeat;
+        background-size: auto;
+        border-width: 1px;
+        border-style: solid;
+        cursor: pointer;
+    }
+    .production-selling__card-gallery-wrap_container{
+        box-sizing: border-box;
+        display: none;
+        height: auto;
+        margin-bottom: 0px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 0px;
+        max-width: 100%;
+        min-height: 1px;
+        padding: 0px;
+        width: calc(100%-80px);
+        font-size: 15px;
+        letter-spacing: -0.3px;
+        line-height: 15px;
+        color: black;
+    }
+    .production-selling-section_production-selling-section--placeholder{
+        display: none;
+        height: auto;
+        margin-bottom: 80px;
+        margin:0px;
+        width: auto;
+        font-size: 15px;
+        line-height: 15px;
+        letter-spacing: -0.3px;
+        color: black;
+    }
+    .production-selling-section__header{
+        align-items: center;
+        display: flex;
+        height: auto;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        width: auto;
+        font-size: 15px;
+        letter-spacing: -0.3px;
+        line-height: 15px;
+        color: black;
+    }
+    .production-selling-section__title{
+        display: block;
+        height: auto;
+        margin:0px;
+        width: 200px;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 24px;
+        letter-spacing: -0.3px;
+        color: black;
+        background-color:rgb(237, 237, 237);
+    }
+    .production-selling-section__right{
+        display: block;
+        height: auto;
+        margin:0px;
+        width: 80px;
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 21px;
+        letter-spacing: -0.3px;
+        color: black;
+        background-color:rgb(237, 237, 237);
+    }
+    .production-selling-navigation__border{
+     
+    }
+    .sticky-container_production-selling-navigation__wrap{
+      
+    }
+    .sticky-child_production-selling-navigation{
+      
+    }
+    .production-selling-navigation__content{
+       
+    }
+    .production-selling-navigation__list{
+     
+    }
+    .production-selling-navigation__list li {
+        
+    }
+    .production-selling-navigation__item{
+    
+    }
+    .production-selling-navigation__item{
+        
+    }
+    .sticky-container_production-selling-floating-wrap{
+        position: sticky;
+        bottom: 0px;
+        display: block;
+        height: 58px;
+        margin-bottom: 0px;
+        margin-left:0px;
+        margin-right:0px;
+        margin-top:0px;
+        padding-bottom:0px;
+        padding-left:0px;
+        padding-right:0px;
+        padding-top:0px;
+        width:785px;
+        z-index:500;
+        font-size: 15px;
+        letter-spacing: -0.3px;
+        line-height: 15px;
+        color: rgb(66,66,66);
+    }
+    .sticky-child_production-selling-floating{
+        position:relative;
+        display:block;
+        height:58px;
+        margin-bottom:0px;
+        margin-left :0px;
+        margin-right:0px;
+        margin-top:0px;
+        padding-bottom:0px;
+        padding-left:0px;
+        padding-right:0px;
+        padding-top:0px;
+        width:785px;
+        z-index:500;
+        font-size:15px;
+        letter-spacing:-0.3px;
+        line-height:15px;
+        color:rgb(66, 66, 66);
+        background-color:rgba(255, 255, 255, 255);
+    }
+    .production-selling-floating-content_production-selling-floating__content{
+        display:flex;
+        height:46px;
+        margin-bottom:0px;
+        margin-left:0px;
+        margin-right:0px;
+        margin-top:0px;
+        max-width:1136px;
+        padding-bottom:6px;
+        padding-left:6px;
+        padding-right:6px;
+        padding-top:6px;
+        width:773px;
+        font-size:15px;
+        letter-spacing:-0.3px;
+        line-height:15px;
+        color:rgb(66, 66, 66);
+    }
+    .production-selling-floating-content__scrap{
+        align-items: flex-start;
+        box-sizing: border-box;
+        display: block;
+        flex-basis: auto;
+        flex-grow: 0;
+        flex-shrink: 0;
+        height: 46px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 4px;
+        margin-top: 0px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 5px;
+        width: 64px;
+        z-index: 2;
+        font-family: Arial;
+        font-feature-settings: normal;
+        font-kerning: auto;
+        font-optical-sizing: auto;
+        font-size: 15px;
+        font-stretch: 100%;
+        font-style: normal;
+        font-variant-alternates: normal;
+        font-variant-caps: normal;
+        font-variant-east-asian: normal;
+        font-variant-ligatures: normal;
+        font-variant-numeric: normal;
+        font-variant-position: normal;
+        font-variation-settings: normal;
+        font-weight: 400;
+        letter-spacing: normal;
+        line-height: 0px;
+        text-align: center;
+        text-indent: 0px;
+        text-shadow: none;
+        text-transform: none;
+        vertical-align: top;
+        word-spacing: 0px;
+        color: rgb(0, 0, 0);
+        background-attachment: scroll;
+        background-clip: border-box;
+        background-color: rgba(0, 0, 0, 0);
+        background-image: none;
+        background-origin: padding-box;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-repeat: repeat;
+        background-size: auto;
+        border-bottom-color: rgb(0, 0, 0);
+        border-bottom-style: none;
+        border-bottom-width: 0px;
+        border-image-outset: 0;
+        border-image-repeat: stretch;
+        border-image-slice: 100%;
+        border-image-source: none;
+        border-image-width: 1;
+        border-left-color: rgb(0, 0, 0);
+        border-left-style: none;
+        border-left-width: 0px;
+        border-right-color: rgb(0, 0, 0);
+        border-right-style: none;
+        border-right-width: 0px;
+        border-top-color: rgb(0, 0, 0);
+        border-top-style: none;
+        border-top-width: 0px;
+        cursor: pointer;
+        -webkit-border-image: none;
+    }
+    .icon--stroke{
+        display: inline;
+        height: 24px;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        width: 24px;
+        font-family: Arial;
+        font-feature-settings: normal;
+        font-kerning: auto;
+        font-optical-sizing: auto;
+        font-size: 15px;
+        font-stretch: 100%;
+        font-style: normal;
+        font-variant-alternates: normal;
+        font-variant-caps: normal;
+        font-variant-east-asian: normal;
+        font-variant-ligatures: normal;
+        font-variant-numeric: normal;
+        font-variant-position: normal;
+        font-variation-settings: normal;
+        font-weight: 400;
+        letter-spacing: normal;
+        line-height: 0px;
+        text-align: center;
+        text-indent: 0px;
+        text-shadow: none;
+        text-transform: none;
+        word-spacing: 0px;
+        color: rgb(0, 0, 0);
+        cursor: pointer;
+    }
+    .icon--strokepath{
+        display: inline;
+        height: auto;
+        width: auto;
+        font-family: Arial;
+        font-feature-settings: normal;
+        font-kerning: auto;
+        font-optical-sizing: auto;
+        font-size: 15px;
+        font-stretch: 100%;
+        font-style: normal;
+        font-variant-alternates: normal;
+        font-variant-caps: normal;
+        font-variant-east-asian: normal;
+        font-variant-ligatures: normal;
+        font-variant-numeric: normal;
+        font-variant-position: normal;
+        font-variation-settings: normal;
+        font-weight: 400;
+        letter-spacing: normal;
+        line-height: 0px;
+        text-align: center;
+        text-indent: 0px;
+        text-shadow: none;
+        text-transform: none;
+        word-spacing: 0px;
+        color: rgb(0, 0, 0);
+        cursor: pointer;
+    }
+    .count{
+        display: block;
+        height: 11px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 6px;
+        min-height: 11px;
+        width: 64px;
+        font-family: Arial;
+        font-feature-settings: normal;
+        font-kerning: auto;
+        font-optical-sizing: auto;
+        font-size: 11px;
+        font-stretch: 100%;
+        font-style: normal;
+        font-variant-alternates: normal;
+        font-variant-caps: normal;
+        font-variant-east-asian: normal;
+        font-variant-ligatures: normal;
+        font-variant-numeric: normal;
+        font-variant-position: normal;
+        font-variation-settings: normal;
+        font-weight: 400;
+        letter-spacing: normal;
+        line-height: 11px;
+        text-align: center;
+        text-indent: 0px;
+        text-shadow: none;
+        text-transform: none;
+        word-spacing: 0px;
+        color: rgb(117, 117, 117);
+        cursor: pointer;
+
+    }
+    ._3Z6oR_3AsCW_32u90production-selling-floating-content__button{
+        align-items:flex-start;
+        box-sizing:border-box;
+        display: block;
+        flex-basis: auto;
+        flex-grow: 1;
+        flex-shrink: 0;
+        height: 46px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        padding-bottom: 12px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top :11px;
+        width: 486px;
+        font-family: "Noto Sans KR", "Noto Sans CJK KR", "맑은 고딕", "Malgun Gothic", sans-serif;
+        font-feature-settings: normal;
+        font-kerning: auto;
+        font-optical-sizing: auto;
+        font-size: 17px;
+        font-stretch :100%;
+        font-style :normal;
+        font-variant-alternates: normal;
+        font-variant-caps: normal;
+        font-variant-east-asian: normal;
+        font-variant-ligatures: normal;
+        font-variant-numeric: normal;
+        font-variant-position: normal;
+        font-variation-settings: normal;
+        font-weight: 700;
+        letter-spacing :normal;
+        line-height: 20px;
+        text-align :center;
+        text-decoration-color: rgb(255, 255, 255);
+        text-decoration-line: none;
+        text-decoration-style: solid;
+        text-decoration-thickness: auto;
+        text-indent:0px;
+        text-shadow:none;
+        text-transform :none;
+        word-spacing: 0px;
+        color: rgb(255, 255, 255);
+        background-attachment: scroll;
+        background-clip: border-box;
+        background-color: rgb(53, 197, 240);
+        background-image: none;
+        background-origin: padding-box;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-repeat: repeat;
+        background-size: auto;
+        border-bottom-color: rgb(53, 197, 240);
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-image-outset :0;
+        border-image-repeat: stretch;
+        border-image-slice: 100%;
+        border-image-source: none;
+        border-image-width: 1;
+        border-left-color: rgb(53, 197, 240);
+        border-left-style: solid;
+        border-left-width: 1px;
+        border-right-color: rgb(53, 197, 240);
+        border-right-style :solid;
+        border-right-width: 1px;
+        border-top-color: rgb(53, 197, 240);
+        border-top-style: solid;
+        border-top-width :1px;
+        cursor: pointer;
+        -webkit-border-image: none;
+    }
+</style>
 </head>
 <body>
     <div class="production-selling">
-        <div class="production-selling-overview container">
+        <div class="production-selling-overview-container">
             <nav class="commerce-category-breadcrumb-wrap production-selling-overview__category">
                 <ol class="commerce-category-breadcrumb">
                     <li class="commerce-category-breadcrumb__entry">
-                        <a class="link" href="">가구</a>
+                        <a class="link" href="" >가구</a>
                         <svg class="icon" width="8" height="8" viewBox="0 0 8 8" fill="currentColor"
                             preserveAspectRatio="xMidYMid meet">
                             <path d="M4.95 4L2.12 1.19l.7-.71 3.54 3.54-3.53 3.53-.7-.7z"></path>
                         </svg>
                     </li>
                     <li class="commerce-category-breadcrumb__entry">
-                        <a class="link" href="">침대</a>
+                        <a class="link" href="" >침대</a>
                         <svg class="icon" width="8" height="8" viewBox="0 0 8 8" fill="currentColor"
                             preserveAspectRatio="xMidYMid meet">
                             <path d="M4.95 4L2.12 1.19l.7-.71 3.54 3.54-3.53 3.53-.7-.7z"></path>
                         </svg>
                     </li>
                     <li class="commerce-category-breadcrumb__entry">
-                        <a class="link" href="">침대프레임</a>
+                        <a class="link" href="" >침대프레임</a>
                         <svg class="icon" width="8" height="8" viewBox="0 0 8 8" fill="currentColor"
                             preserveAspectRatio="xMidYMid meet">
                             <path d="M4.95 4L2.12 1.19l.7-.71 3.54 3.54-3.53 3.53-.7-.7z"></path>
                         </svg>
                     </li>
                     <li class="commerce-category-breadcrumb__entry">
-                        <a class="link" href="">일반침대</a>
+                        <a class="link" href="" >일반침대</a>
                     </li>
                 </ol>
             </nav>
-            <div class="production-selling-overview__container row">
-                <div class="production-selling-overview__cover-image-wrap col-12 col-md-6 col-lg-7">
-                    <div class="production-selling-cover-image-container">
-                        <div class="carousel production-selling-cover-image production-selling-overview__cover-image"
-                            role="region" aria-roledescription="carousel">
-                            <div class="carousel__list-wrap production-selling-cover-image__carousel-wrap">
-                                <div class="carousel__list" aria-live="polite"
-                                    style="transform: translateX(0%); transition: transform 0s ease 0s;">
-                                    <div class="carousel__list__entry production-selling-cover-image__entry"
-                                        style="width:100%" role="group" aria-roledescription="slide"
-                                        aria-label="1 of 6">
-                                        <img class="production-selling-cover-image__entry__image"
-                                            src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/170202405808667729.png?gif=1&amp;w=640&amp;h=640&amp;c=c&amp;webp=1"
-                                            srcset="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/170202405808667729.png?gif=1&amp;w=850&amp;h=850&amp;c=c&amp;webp=1 1.5x,https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/170202405808667729.png?gif=1&amp;w=1280&amp;h=1280&amp;c=c&amp;webp=1 2x,https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/170202405808667729.png?gif=1&amp;w=1700&amp;h=1700&amp;c=c&amp;webp=1 3x"
-                                            tabindex="0" alt="상품의 대표 이미지">
-                                        <div class="production-selling-cover-image__timer--pc">
-                                        </div>
-                                        <div class="css-nm1wv3 evlxapa2">
-                                            <div class="css-mcd7ck evlxapa1">
-                                                <picture>
-                                                    <source
-                                                        src="https://image.ohou.se/i/bucketplace-v2-development/uploads/admins/thumbnail_badges/164984839473493224.png?w=256&amp;h=256&amp;c=c&amp;webp=1"
-                                                        srcset="https://image.ohou.se/i/bucketplace-v2-development/uploads/admins/thumbnail_badges/164984839473493224.png?w=360&amp;h=360&amp;c=c&amp;webp=1 1.5x,https://image.ohou.se/i/bucketplace-v2-development/uploads/admins/thumbnail_badges/164984839473493224.png?w=480&amp;h=480&amp;c=c&amp;webp=1 2x,https://image.ohou.se/i/bucketplace-v2-development/uploads/admins/thumbnail_badges/164984839473493224.png?w=720&amp;h=720&amp;c=c&amp;webp=1 3x"
-                                                        type="image/webp">
-                                                    <img class="css-1dapu1e evlxapa0"
-                                                        src="https://image.ohou.se/i/bucketplace-v2-development/uploads/admins/thumbnail_badges/164984839473493224.png?w=256&amp;h=256&amp;c=c"
-                                                        srcset="https://image.ohou.se/i/bucketplace-v2-development/uploads/admins/thumbnail_badges/164984839473493224.png?w=360&amp;h=360&amp;c=c 1.5x,https://image.ohou.se/i/bucketplace-v2-development/uploads/admins/thumbnail_badges/164984839473493224.png?w=480&amp;h=480&amp;c=c 2x,https://image.ohou.se/i/bucketplace-v2-development/uploads/admins/thumbnail_badges/164984839473493224.png?w=720&amp;h=720&amp;c=c 3x">
-                                                </picture>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="production-selling-cover-image__timer--mobile">
-                        </div>
-                    </div>
-                </div>
-                <div class="production-selling-overview__content col-12 col-md-6 col-lg-5">
+            <div class="production-selling-overview__container-row">
+                        <img class="production-selling-cover-image__entry__image"
+                            style="object-fit: scale-down;"
+                            src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/170202405808667729.png?gif=1&amp;w=640&amp;h=640&amp;c=c&amp;webp=1"
+                            srcset="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/170202405808667729.png?gif=1&amp;w=850&amp;h=850&amp;c=c&amp;webp=1 1.5x,https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/170202405808667729.png?gif=1&amp;w=1280&amp;h=1280&amp;c=c&amp;webp=1 2x,https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/170202405808667729.png?gif=1&amp;w=1700&amp;h=1700&amp;c=c&amp;webp=1 3x"
+                            tabindex="0" alt="상품의 대표 이미지">
+                <div class="production-selling-overview__content">
                     <div class="production-selling-header">
                         <h1 class="production-selling-header__title">
                             <p class="production-selling-header__title__brand-wrap">
@@ -88,10 +1093,10 @@
                                     SS/Q/K/LK/EK</span>
                                 <div class="production-selling-header__action">
                                     <button
-                                        class="production-selling-header__action__button production-selling-header__action__button-scrap"
+                                        class="production-selling-header__action__button"
                                         type="button">
                                         <svg class="icon--stroke" aria-label="스크랩" width="24" height="24"
-                                            fill="currentColor" stroke="currentColor" stroke-width="0.5"
+                                            fill="none" stroke="currentColor" stroke-width="0.5"
                                             viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
                                             <path
                                                 d="M11.53 18.54l-8.06 4.31A1 1 0 0 1 2 21.97V3.5A1.5 1.5 0 0 1 3.5 2h17A1.5 1.5 0 0 1 22 3.5v18.47a1 1 0 0 1-1.47.88l-8.06-4.31a1 1 0 0 0-.94 0z">
@@ -99,23 +1104,12 @@
                                         </svg>
                                         <span class="count">28,221</span>
                                     </button>
-                                    <div class="drop-down">
-                                        <button class="production-selling-header__action__button" type="button">
-                                            <svg class="icon" aria-label="공유하기" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="currentColor"
-                                                preserveAspectRatio="xMidYMid meet">
-                                                <path
-                                                    d="M9.64 14.646a4.5 4.5 0 1 1 0-5.292l4.54-2.476a4.5 4.5 0 1 1 .63.795l-4.675 2.55c.235.545.365 1.146.365 1.777s-.13 1.232-.365 1.777l4.675 2.55a4.5 4.5 0 1 1-.63.795l-4.54-2.476zM18 8a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM6 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM18 23a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z">
-                                                </path>
-                                            </svg>
-                                        </button>
-                                    </div>
                                 </div>
                             </div>
                         </h1>
                         <div class="production-selling-header__content">
                             <p class="production-selling-header__review-wrap">
-                                <a class="production-selling-header__review" href="#production-selling-review">
+                                <a class="production-selling-header__review" href="#production-selling-review" style="text-decoration-line: none;">
                                     <span class="production-selling-header__review__icon" aria-label="별점 4.7점">
                                         <svg fill="#35C5F0" width="1em" height="1em"
                                             preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
@@ -200,14 +1194,14 @@
                             <div class="production-selling-header__price">
                                 <span class="production-selling-header__price__price-wrap">
                                     <span class="production-selling-header__price__discount">
-                                        <span class="number">76</span>
+                                        <span class="number" >76</span>
                                         <span class="percent">%</span>
                                     </span>
-                                    <del class="production-selling-header__price__original">
+                                    <del class="production-selling-header__price__original" >
                                         <span class="number">1,500,000</span><span class="won">원</span>
                                     </del>
                                     <span class="css-1amee4m">
-                                        <button class="css-py9upp e15kwcqf0">
+                                        <button class="css-py9upp-e15kwcqf0">
                                             <svg class="information-icon" width="16" height="16" viewBox="0 0 16 16"
                                                 fill="none" preserveAspectRatio="xMidYMid meet">
                                                 <path
@@ -225,8 +1219,8 @@
                                     <span class="production-selling-header__price__separator"></span>
                                     <div class="production-selling-header__price__price-value-wrap">
                                         <div class="production-selling-header__price__price">
-                                            <span class="number">357,000</span>
-                                            <span class="won">원</span>
+                                            <span class="number" id="productNum">357,000</span>
+                                            <span class="won" id="productWon">원</span>
                                             <svg class="icon" aria-label="특가" width="30" height="20"
                                                 viewBox="0 0 30 20" preserveAspectRatio="xMidYMid meet">
                                                 <rect width="30" height="20" fill="#F77" rx="4"></rect>
@@ -237,32 +1231,9 @@
                                         </div>
                                     </div>
                                 </span>
-                            </div>
-                            <div class="css-y2nf6n eo634xw3">
-                                <span class="css-kell50 eo634xw2">332,010
-                                    <span class="css-1djn7ak eo634xw1">원</span>
-                                    <span class="css-1c6t58u eo634xw0">쿠폰적용시</span>
-                                </span>
-                            </div>
+                            </div>   
                         </div>
                         <div class="production-selling-header__info-wrap">
-                            <div class="production-selling-header__promotion">
-                               
-                                <div class="production-selling-header__promotion__content-wrap">
-                                    <p class="production-selling-header__promotion__entry">
-                                        <b>357<!-- -->P</b> 적립 (<!-- -->WELCOME <!-- -->0.1<!-- -->% 적립)
-                                    </p>
-                                    <p class="production-selling-header__promotion__entry">
-                                        <button class="production-selling-header__promotion__entry__button"
-                                            type="button">월 89,250원 (4개월) 무이자할부
-                                            <svg class="icon" width="10" height="10" viewBox="0 0 10 10"
-                                                fill="currentColor" preserveAspectRatio="xMidYMid meet">
-                                                <path d="M2.5 8.2L5.63 5 2.5 1.8l.94-.97L7.5 5 3.44 9.17z"></path>
-                                            </svg>
-                                        </button>
-                                    </p>
-                                </div>
-                            </div>
                             <div class="production-selling-header__delivery">
                                 <div class="production-selling-header__delivery__title-wrap">
                                     <span>배송</span>
@@ -298,7 +1269,7 @@
                                         </span>
                                     </span>
                                     <div
-                                        class="_2SUYq production-selling-header__delivery__expectation-date__dropdown">
+                                        class="_2SUYq-production-selling-header__delivery__expectation-date__dropdown">
                                         <div class="production-selling-header__delivery__expectation-section">
                                             <div class="production-selling-header__delivery__expectation-wrap">
                                                 <div
@@ -335,13 +1306,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="production-selling-option-form production-selling-overview__option-form">
-                        <section class="selling-option-form-content production-selling-option-form__form">
+                    <div class="production-selling-option-form-production-selling-overview__option-form">
+                        <section class="selling-option-form-content-production-selling-option-form__form">
                             <div class="selling-option-form-content__form">
                                 <div class="selling-option-select-input">
                                     <div
-                                        class="input-group select-input selling-option-select-input__option selling-option-select-input__option-1 focused">
-                                        <select class="form-control empty">
+                                        class="input-group_select-input_selling-option-select-input__option_selling-option-select-input__option-1_focused">
+                                        <select class="form-control_empty">
                                             <option selected="" value="" disabled="">침대사이즈</option>
                                             <option value="0">S/SS (싱글 / 슈퍼싱글)(357,000 ~ 749,000원)</option>
                                             <option value="1">D/Q (더블 / 퀸)(476,000 ~ 904,000원)</option>
@@ -349,28 +1320,16 @@
                                             <option value="3">LK (라지킹)(568,000 ~ 1,059,000원)</option>
                                             <option value="4">EK (이스턴킹)(639,000 ~ 1,151,000원)</option>
                                         </select>
-                                        <span class="select-input__icon">
-                                            <svg class="icon" width="10" height="10" style="fill:currentColor"
-                                                preserveAspectRatio="xMidYMid meet">
-                                                <path fill-rule="evenodd" d="M0 3l5 5 5-5z"></path>
-                                            </svg>
-                                        </span>
                                     </div>
                                     <div
-                                        class="input-group select-input selling-option-select-input__option selling-option-select-input__option-2">
-                                        <select class="form-control empty">
+                                        class="input-group_select-input_selling-option-select-input__option_selling-option-select-input__option-2">
+                                        <select class="form-control_empty">
                                             <option selected="" value="" disabled="">파운데이션 높이</option>
                                         </select>
-                                        <span class="select-input__icon">
-                                            <svg class="icon" width="10" height="10" style="fill:currentColor"
-                                                preserveAspectRatio="xMidYMid meet">
-                                                <path fill-rule="evenodd" d="M0 3l5 5 5-5z"></path>
-                                            </svg>
-                                        </span>
                                     </div>
                                     <div
-                                        class="input-group select-input selling-option-select-input__option selling-option-select-input__option-extra">
-                                        <select class="form-control empty">
+                                        class="input-group select-input_selling-option-select-input__option_selling-option-select-input__option-extra">
+                                        <select class="form-control_empty">
                                             <option selected="" value="" disabled="">추가상품 (선택)</option>
                                             <option value="0">헤드 - 높은 헤드형으로 변경 (100,000원)</option>
                                             <option value="1">자재등급 E0 변경 (63,000원)</option>
@@ -426,36 +1385,30 @@
                                             <option value="51">파운데이션 높이추가+ 10cm (35cm선택시) (52,500원)</option>
                                             <option value="52">파운데이션 상판 원단 풀커버 (100,000원)</option>
                                         </select>
-                                        <span class="select-input__icon">
-                                            <svg class="icon" width="10" height="10" style="fill:currentColor"
-                                                preserveAspectRatio="xMidYMid meet">
-                                                <path fill-rule="evenodd" d="M0 3l5 5 5-5z"></path>
-                                            </svg>
-                                        </span>
                                     </div>
                                 </div>
                             </div>
                             <ul class="selling-option-form-content__list"></ul>
                         </section>
-                        <p class="css-49v6aj ejhg2ki2">
-                            <span class="css-7c0zb9 ejhg2ki1">주문금액</span>
-                            <span class="css-q02jxk ejhg2ki0">
+                        <p class="css-49v6aj_ejhg2ki2">
+                            <span class="css-7c0zb9_ejhg2ki1">주문금액</span>
+                            <span class="css-q02jxk_ejhg2ki0">
                                 <span>0</span>원
                             </span>
                         </p>
                        
                         <div class="production-selling-option-form__footer">
-                            <button class="button button--color-blue-inverted button--size-55 button--shape-4"
+                            <button class="button_button--color-blue-inverted_button--size-55_button--shape-4"
                                 type="button">장바구니</button>
-                            <button class="button button--color-blue button--size-55 button--shape-4"
+                            <button class="button_button--color-blue_button--size-55_button--shape-4"
                                 type="button">바로구매</button>
                         </div>
                     </div>   
                 </div>
             </div>
         </div>
-        <div class="production-selling__card-gallery-wrap container">
-            <div class="production-selling-section production-selling-section--placeholder">
+        <div class="production-selling__card-gallery-wrap_container">
+            <div class="production-selling-section_production-selling-section--placeholder">
                 <div class="production-selling-section__header">
                     <div class="production-selling-section__title"></div>
                     <div class="production-selling-section__right"></div>
@@ -463,33 +1416,24 @@
                 <div class="gallery-wrap"></div>
             </div>
         </div>
-        <div class="production-selling-navigation__border"></div>
-        <div class="sticky-container production-selling-navigation__wrap"
-            style="position: sticky; top: 132.5px; transition: top 0.1s ease 0s;">
-            <div class="sticky-child production-selling-navigation" style="position: relative;">
+        <div class="production-selling-navigation__border"></div>  
+        <div class="sticky-container_production-selling-navigation__wrap">
+            <div class="sticky-child_production-selling-navigation" style="position: relative;">
                 <nav class="production-selling-navigation__content">
                     <ol class="production-selling-navigation__list">
                         <li>
-                            <a class="production-selling-navigation__item production-selling-navigation__item--active"
-                                href="#production-selling-information">상품정보</a>
+                            <a class="production-selling-navigation__item_production-selling-navigation__item--active"
+                                href="#production-selling-information" style="text-decoration-line: none;">상품정보</a>
                         </li>
                         <li>
-                            <a class="production-selling-navigation__item" href="#production-selling-review">리뷰
-                                <span class="production-selling-navigation__item__count">388</span>
+                            <a class="production-selling-navigation__item" href="#production-selling-review" style="text-decoration-line: none;">리뷰
+                                <span class="production-selling-navigation__item__count" >388</span>
                             </a>
                         </li>
                         <li>
-                            <a class="production-selling-navigation__item" href="#production-selling-question">문의
+                            <a class="production-selling-navigation__item" href="#production-selling-question"style="text-decoration-line: none;">문의
                                 <span class="production-selling-navigation__item__count">1,030</span>
                             </a>
-                        </li>
-                        <li>
-                            <a class="production-selling-navigation__item"
-                                href="#production-selling-delivery">배송/환불</a>
-                        </li>
-                        <li>
-                            <a class="production-selling-navigation__item"
-                                href="#production-selling-suggestion">추천</a>
                         </li>
                     </ol>
                 </nav>
@@ -3348,18 +4292,24 @@
                     </div>
             </div>
         </div>
-        <div class="sticky-container production-selling-floating-wrap" style="">
-            <div class="sticky-child production-selling-floating" style="">
-                <div class="production-selling-floating-content production-selling-floating__content"><button
-                        class="production-selling-floating-content__scrap" type="button"><svg class="icon--stroke"
+        <div class="sticky-container_production-selling-floating-wrap" style="">
+            <div class="sticky-child_production-selling-floating" style="">
+                <div class="production-selling-floating-content_production-selling-floating__content">
+                    <button
+                        class="production-selling-floating-content__scrap" type="button">
+                        <svg class="icon--stroke" style="fill: none;"
                             aria-label="스크랩" width="24" height="24" fill="currentColor" stroke="currentColor"
                             stroke-width="0.5" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
-                            <path
+                            <path class="icon--strokepath"
                                 d="M11.53 18.54l-8.06 4.31A1 1 0 0 1 2 21.97V3.5A1.5 1.5 0 0 1 3.5 2h17A1.5 1.5 0 0 1 22 3.5v18.47a1 1 0 0 1-1.47.88l-8.06-4.31a1 1 0 0 0-.94 0z">
                             </path>
-                        </svg><span class="count">28,221</span></button><button
-                        class="_3Z6oR _3AsCW _32u90 production-selling-floating-content__button"
-                        type="button">구매하기</button>
+                        </svg>
+                        <span class="count">28,221</span>
+                    </button>
+                    <button
+                        class="_3Z6oR_3AsCW_32u90production-selling-floating-content__button"
+                        type="button">구매하기
+                    </button>
                 </div>
             </div>
         </div>
