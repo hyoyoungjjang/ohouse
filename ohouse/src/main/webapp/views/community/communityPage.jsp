@@ -522,7 +522,7 @@ pageEncoding="UTF-8"%>
         position: absolute;
         width: 187px;
         height: 100%;
-        left: 1194px;
+        right: 200px;
         display: flex;
         justify-content: center;
     }

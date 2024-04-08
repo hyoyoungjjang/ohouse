@@ -8,6 +8,6 @@
 </head>
 <body>
 	
-	<%@ include file="views/community/communityPage.jsp"%> 
+	<%@ include file="views/community/communityInsert.jsp"%> 
 </body>
 </html>
