@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/main.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/memberLogin.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/memberLogin.css">
 </head>
 <body>
     <div class="wrapper">

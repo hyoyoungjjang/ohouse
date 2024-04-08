@@ -6,8 +6,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/main.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/CSS/memberRegister.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/memberRegister.css">
 </head>
 
 <body>
@@ -16,7 +16,8 @@
       <header>
         <div class=logo>
           <a href="/">
-            <img src="${pageContext.request.contextPath}/img/member/오늘의집 로고.jpg" style="width: 88px; height: 33px;" alt="">
+            <img src="${pageContext.request.contextPath}/resources/img/member/오늘의집 로고.jpg" style="width: 88px; height: 33px;" alt="">
+            <!-- ${pageContext.request.contextPath} -->
           </a>
         </div>
       </header>
