@@ -70,6 +70,15 @@
               <div class="warning pwdCon-empty hide" id="pwdCon-empty">확인을 위해 비밀번호를 한 번 더 입력해주세요.</div>
               <div class="warning pwdCon-failure hide" id="pwdCon-failure">비밀번호가 일치하지 않습니다.</div>
             </div>
+            <!-- 핸드폰 번호 받기 위한 div-->
+            <div id="enroll-phone" class="margin30">
+              <label for="phone">전화번호</label>
+              <div class="enroll-notice">'-'을 포함한 전화번호를 입력해주세요 <br> 예) 010-1111-2222</div>
+              <input type="text" name="phone" class="input-style" id="input-phone" placeholder="전화번호 입력">
+              <!-- 전화번호 유효성 검사 실패 시 보여줄 텍스트들-->
+              <div class="warning phone-empty hide" id="phone-empty">전화번호를 입력해주세요.</div>
+              <div class="warning phone-failure hide" id="phone-failure">전화번호 형식이 올바르지 않습니다.</div>
+            </div>
             <!--닉네임 위한 div-->
             <div id="enroll-nickname" class="margin30">
               <label for="nickname">닉네임</label>
@@ -110,6 +119,11 @@
     const warnNameEmpty = document.getElementById('nickname-empty');
     const warnNameMin = document.getElementById('nickname-min');
     const warnNameMax = document.getElementById('nickname-max');
+    // 전화번호 입력 필드
+    const inputPhone = document.getElementById('input-phone');
+    // 전화번호 유효성 검사 실패 시 보여줄 텍스트
+    const warnPhoneEmpty = document.getElementById('phone-empty');
+    const warnPhoneFailure = document.getElementById('phone-failure');
     // 닉네임 입력 필드
     const nicknameInput = document.getElementById('input-nickname')
     // 닉네임 유효성 검사 실패 시 보여줄 텍스트
@@ -129,6 +143,10 @@
     }
     confirmPwd.onblur = function(){
       confirmPassword();
+    }
+
+    inputPhone.onblur = function(){
+      validatePhone();
     }
 
     nicknameInput.onblur = function(){
@@ -179,6 +197,26 @@
       } else {
         warnPConEmpty.classList.add("hide");
         warnPConFailure.classList.add("hide");
+      }
+    }
+
+    function validatePhone(){
+      const phone = inputPhone.value.trim();
+      if(phone === ""){
+        //전화번호 입력창 공백일 시
+        warnPhoneEmpty.classList.remove("hide");
+        warnPhoneFailure.classList.add("hide");
+      } else {
+        // 공백아닐 시
+        warnPhoneEmpty.classList.add("hide");
+        const phoneRegex = /^\d{3}-\d{4}-\d{4}$/;
+        if(!phoneRegex.test(phone)){ // 유효성 검사 실패시
+          warnPhoneFailure.classList.remove("hide");
+          warnPhoneEmpty.classList.add("hide");
+        } else{ // 유효성 검사 성공시
+          warnPhoneFailure.classList.add("hide");
+          warnPhoneEmpty.classList.add("hide");
+        }
       }
     }
 
