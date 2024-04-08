@@ -1,159 +1,271 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<style>
-    *{
-        box-sizing: border-box;
-    }
-
-    div{
-    /* border: 1px solid black; */
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
     
-    /*정렬 관련*/
-    .content{
-        width: 1136px; 
-    }
-    #sort, #content-page{
-        width: 100%;
+        div{
+            /* border: 1px solid black; */
+        }
         
-    }
-    #sort{
-        display: flex;
-        margin-bottom: 20px;
-        height: 40px;
-        grid : 4px;
-    }
+        /*정렬 관련*/
+        .content{
+            width: 1136px; 
+        }
+        #sort, #content-page{
+            width: 100%;
+            
+        }
+        #sort{
+            display: flex;
+            margin-bottom: 20px;
+            height: 40px;
+            grid : 4px;
+        }
+        
+        .sort-button{
+            border: 0px;
+            box-sizing: border-box;
+            border-radius: 4px;
+            /* color: rgb(0, 159, 206); */
+            color: #828c94;
+            background-color: rgb(239, 251, 255);
+            margin-right: 4px;
+            font-weight: bold;
+            height: 30px;
+        }
+        
+        .sorting{
+            position: relative;
+        }
+
+        
+
     
-    .sort-button{
-        border: 0px;
-        box-sizing: border-box;
-        border-radius: 4px;
-        /* color: rgb(0, 159, 206); */
-        color: #828c94;
-        background-color: rgb(239, 251, 255);
-        margin-right: 4px;
-        font-weight: bold;
-        height: 30px;
-    }
+        .sorting-list{
+            list-style: none;
+            font-weight: bold;
+            padding-left: 0px;
+            border: 1px solid white;
+            color: black;
+            position: absolute;
+            width: 110px;
+            background-color: white;
+            box-shadow: 0px 0px 5px 5px #dadfe3a8;
+            top: 15px;
+            left: -30%;
 
-    /*게시글 관련*/
-
-    #content-page{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
-
-    .page{
-        /* border: 1px solid black; */
-        width: 370px;
-        height: 369px;
+        }
         
-    }
-
-    .content-img{
-        width: 378px;
-        height: 243px;
-        border-radius: 7px;
-        
-    }
-
-    .page-text-title{
-        font-size: 16px;
-        margin-top: 10px;
-        color: rgb(47, 52, 56);
-        font-weight: 700; 
-    }
-
-    .page-text-img{
-        border-radius: 100px;
-        width: 18px;
-        margin-right: 3px;
-    }
-
-    .page-text-name{
-        display: flex;
-        justify-content: center;
-        margin-top: 5px;
-    }
-
-    .page-text-scrap-count{
-        margin-top: 5px;
-    }
- 
-</style>
+        .hidden{
+            display: none;
+             
+        }
+    
+        /*게시글 관련*/
+    
+        #content-page{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+    
+        .page{
+            /* border: 1px solid black; */
+            width: 370px;
+            height: 369px;
+            
+        }
+    
+        .content-img{
+            width: 378px;
+            height: 243px;
+            border-radius: 7px;
+            
+        }
+    
+        .page-text-title{
+            font-size: 16px;
+            margin-top: 10px;
+            color: rgb(47, 52, 56);
+            font-weight: 700; 
+        }
+    
+        .page-text-img{
+            border-radius: 100px;
+            width: 18px;
+            margin-right: 3px;
+        }
+    
+        .page-text-name{
+            display: flex;
+            justify-content: center;
+            margin-top: 5px;
+        }
+    
+        .page-text-scrap-count{
+            margin-top: 5px;
+        }
+     
+    </style>
 </head>
 <body>
-    <header></header>
+    <header> 
+        <%@ include file="../common/header.jsp" %>    
+    </header>
     <div align="center">
       <div class="content">
         <div id="sort" align="left">
             <div>
-                <button class="sort-button" >
+                <button class="sort-button" onmouseover="sortinglist(this)" onmouseout="nsortinglist(this)">
                     정렬
-                    <span class=""></span>
-                </button>       
+                </button>
+                <div class="sorting hidden">
+                    <ul class="sorting-list">
+                        <li>최신순</li>
+                        <li>최근 인기순</li>
+                        <li>역대 인기순</li>
+                        <li>과거순</li>
+                    </ul>
+                </div>          
             </div>
             <div>
-                <button class="sort-button">
+                <button class="sort-button" onmouseover="sortinglist(this)" onmouseout="nsortinglist(this)">
                     주거형태
-                    <span class=""></span>
                 </button>
+                <div class="sorting hidden">
+                    <ul class="sorting-list">
+                        <li>원룸&오피스텔</li>
+                        <li>아파트</li>
+                        <li>사무공간</li>
+                        <li>단독주택</li>
+                    </ul>
+                </div>          
             </div>
             <div>
-                <button class="sort-button">
+                <button class="sort-button" onmouseover="sortinglist(this)" onmouseout="nsortinglist(this)">
                     평수
-                    <span class=""></span>
                 </button>
+                <div class="sorting hidden">
+                    <div class="sorting-list" style="width: 300px;" align="center" width="300px">
+                        <h4>모든평수</h4>
+                        <input type="range"min="1" max="70" step="1">
+                        <div style="display: flex; justify-content: space-between;">
+                            <div>1평</div>
+                            <div>70평이상</div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div>
-                <button class="sort-button">
+                <button class="sort-button" onmouseover="sortinglist(this)" onmouseout="nsortinglist(this)">
                     예산
-                    <span class=""></span>
                 </button>
+                <div class="sorting hidden">
+                    <div class="sorting-list" style="width: 300px;"  width="300px">
+                        <h4>모든 예산</h4>
+                    </div>
+                </div>
             </div>
             <div>
-                <button class="sort-button">
+                <button class="sort-button" onmouseover="sortinglist(this)" onmouseout="nsortinglist(this)">
                     가족형태
-                    <span class=""></span>
                 </button>
+                <div class="sorting hidden">
+                    <ul class="sorting-list" style="width: 200px;">
+                        <li>싱글라이프</li>
+                        <li>아기가 있는 집</li>
+                        <li>부모님과 함께 사는 집</li>
+                        <li>기타</li>
+                    </ul>
+                </div>
             </div>
             <div>
-                <button class="sort-button">
+                <button class="sort-button" onmouseover="sortinglist(this)" onmouseout="nsortinglist(this)">
                     스타일
-                    <span class=""></span>
                 </button>
+                <div class="sorting hidden">
+                    <ul class="sorting-list">
+                        <li>모던</li>
+                        <li>미니멀&심플</li>
+                        <li>내추럴</li>
+                        <li>북유럽</li>
+                    </ul>
+                </div>
             </div>
             <div>
-                <button class="sort-button">
+                <button class="sort-button" onmouseover="sortinglist(this)" onmouseout="nsortinglist(this)">
                     컬러
-                    <span class=""></span>
                 </button>
+                <div class="sorting hidden">
+                    <ul class="sorting-list">
+                        <li>??</li>
+                        <li>??</li>
+                        <li>??</li>
+                        <li>??</li>
+                    </ul>
+                </div>
             </div>
             <div>
-                <button class="sort-button">
+                <button class="sort-button" onmouseover="sortinglist(this)" onmouseout="nsortinglist(this)">
                     세부공사
-                    <span class=""></span>
                 </button>
+                <div class="sorting hidden">
+                    <ul class="sorting-list">
+                        <li>??</li>
+                        <li>??</li>
+                        <li>??</li>
+                        <li>??</li>
+                    </ul>
+                </div>
             </div>
             <div>
-                <button class="sort-button">
+                <button class="sort-button" onmouseover="sortinglist(this)" onmouseout="nsortinglist(this)">
                     분야
-                    <span class=""></span>
                 </button>
+                <div class="sorting hidden">
+                    <ul class="sorting-list">
+                        <li>??</li>
+                        <li>??</li>
+                        <li>??</li>
+                        <li>??</li>
+                    </ul>
+                </div>
             </div>
             <div>
-                <button class="sort-button">
+                <button class="sort-button" onmouseover="sortinglist(this)" onmouseout="nsortinglist(this)">
                     작업자
-                    <span class=""></span>
                 </button>
+                <div class="sorting hidden">
+                    <ul class="sorting-list">
+                        <li>??</li>
+                        <li>??</li>
+                        <li>??</li>
+                    </ul>
+                </div>
             </div>
-        </div>      
+        </div>
+        
+        <script>
+            function sortinglist(button){
+                
+                button.nextElementSibling.classList.remove("hidden")
+            }
+            
+            function nsortinglist(button){
+                button.nextElementSibling.classList.add("hidden")
+            }
+        </script>
         <div id="content-page">          
             <div class="page">
                 <img class="content-img" src="https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/project/170127228439562148.jpg?w=480&h=321&c=c" alt="" >
@@ -254,7 +366,8 @@
         </div>
       </div>
     </div>
-    <footer></footer>
-   
+    <footer>
+        <%@ include file="../common/footer.jsp" %> 
+    </footer>
 </body>
 </html>
