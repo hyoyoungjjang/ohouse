@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class CommunityReplyListController
+ * Servlet implementation class CommunityTagController
  */
-@WebServlet("/replyList.co")
-public class CommunityReplyListController extends HttpServlet {
+@WebServlet("/tag.co")
+public class CommunityTagController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CommunityReplyListController() {
+    public CommunityTagController() {
         super();
         // TODO Auto-generated constructor stub
     }

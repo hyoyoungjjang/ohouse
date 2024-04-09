@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class CommunityReplyInsertController
  */
-@WebServlet("/rinsert.co")
+@WebServlet("/replyInsert.co")
 public class CommunityReplyInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
