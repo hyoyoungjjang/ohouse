@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ProductListController
+ * Servlet implementation class ProductQnaController
  */
-@WebServlet("/list.pr")
-public class ProductListController extends HttpServlet {
+@WebServlet("/Qna.pr")
+public class ProductQnaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor. 
      */
-    public ProductListController() {
+    public ProductQnaController() {
         // TODO Auto-generated constructor stub
     }
 

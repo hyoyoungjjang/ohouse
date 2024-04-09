@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ProductListController
+ * Servlet implementation class ProductCategoryListController
  */
-@WebServlet("/list.pr")
-public class ProductListController extends HttpServlet {
+@WebServlet("/categoryList.pr")
+public class ProductCategoryListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor. 
      */
-    public ProductListController() {
+    public ProductCategoryListController() {
         // TODO Auto-generated constructor stub
     }
 
