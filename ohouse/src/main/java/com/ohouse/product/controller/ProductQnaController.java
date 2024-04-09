@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ProductQnaController
  */
-@WebServlet("/Qna.pr")
+@WebServlet("/qna.pr")
 public class ProductQnaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
