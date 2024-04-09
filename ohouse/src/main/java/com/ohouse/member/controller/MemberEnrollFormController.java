@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class MemberScrapController
+ * Servlet implementation class MemberEnrollFormController
  */
-@WebServlet("/scrap.me")
-public class MemberScrapController extends HttpServlet {
+@WebServlet("/enrollForm.me")
+public class MemberEnrollFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor. 
      */
-    public MemberScrapController() {
+    public MemberEnrollFormController() {
         // TODO Auto-generated constructor stub
     }
 

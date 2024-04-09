@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class MyReviewController
  */
-@WebServlet("/M.R")
-public class MyReviewController extends HttpServlet {
+@WebServlet("/review.me")
+public class MemberReviewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor. 
      */
-    public MyReviewController() {
+    public MemberReviewController() {
         // TODO Auto-generated constructor stub
     }
 
