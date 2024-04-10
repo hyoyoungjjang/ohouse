@@ -15,7 +15,7 @@
                 오늘의집
             </div>
             <div class="header-main">
-                <a href=""><span>쇼핑</span></a>
+                <a href=""><span style="color: #35C5F0;">쇼핑</span></a>
                 <a href=""><span>커뮤니티</span></a>
             </div>
             <div class="header-menu">
@@ -31,8 +31,9 @@
                 </div>
                 <!-- 로그인O -->
                 <div class="header-others header-hidden">
-                    <a href="">로그인</a>|
-                    <a href="">회원가입</a>
+                    <img src="${pageContext.request.contextPath}/resources/img/common/pm-bookmark.png" alt="" onclick="">
+                    <img src="${pageContext.request.contextPath}/resources/img/common/shopping-cart.png" alt="" onclick="">
+                    <img src="${pageContext.request.contextPath}/resources/img/common/user.png" alt="" onclick="">
                     <a href="" style="background-color: #35C5F0; color: white; border-radius: 5px;">글쓰기</a>
                 </div>
             </div>
