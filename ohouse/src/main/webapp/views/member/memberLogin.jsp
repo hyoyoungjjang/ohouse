@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/memberLogin.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/member/memberLogin.css">
 </head>
 <body>
     <div class="wrapper">
