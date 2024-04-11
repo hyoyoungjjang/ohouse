@@ -550,23 +550,6 @@ BEGIN
     WHERE PRODUCT_ID = :NEW.PRODUCT_ID;
 END;
 /
--- 주문 시 ORDERS.배송완료일 = SYSDATE + 배송 소요일
-CREATE OR REPLACE TRIGGER TRG_ORDERS
-BEFORE INSERT ON ORDERS
-FOR EACH ROW
-DECLARE
-    DELIVERY_DATE PRODUCT.DELIVERY_DATE%TYPE;
-BEGIN
-    -- 특정 주문에 해당하는 제품의 배송 소요일을 가져옴
-    SELECT DELIVERY_DATE
-    INTO DELIVERY_DATE
-    FROM PRODUCT
-    WHERE PRODUCT_ID = :NEW.PRODUCT_ID;
-    
-    -- ARRIVAL_DATE를 설정
-    :NEW.ARRIVAL_DATE := SYSDATE + DELIVERY_DATE;
-END;
-/
 -- =============================================================================
 -- 더미데이터
 -- MEMBERS 테이블에 더미 데이터 삽입

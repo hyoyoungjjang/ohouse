@@ -1,4 +1,4 @@
-package com.ohouse.member.controller;
+package com.ohouse.members.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class MemberShoppingController
+ * Servlet implementation class MemberInquireController
  */
-@WebServlet("/shopping.me")
-public class MemberShoppingController extends HttpServlet {
+@WebServlet("/inquire.me")
+public class MembersInquireController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor. 
      */
-    public MemberShoppingController() {
+    public MembersInquireController() {
         // TODO Auto-generated constructor stub
     }
 

@@ -1,4 +1,4 @@
-package com.ohouse.member.controller;
+package com.ohouse.members.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class MemberProfileController
  */
 @WebServlet("/profile.me")
-public class MemberProfileController extends HttpServlet {
+public class MembersProfileController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor. 
      */
-    public MemberProfileController() {
+    public MembersProfileController() {
         // TODO Auto-generated constructor stub
     }
 
