@@ -414,7 +414,7 @@
 
         }
 
-        .button_button--color-blue-inverted_button--size-50_button--shape-4_upload-button {
+        .FileButton{
             align-items: center;
             box-sizing: border-box;
             display: flex;
@@ -422,7 +422,7 @@
             justify-content: center;
             margin-top: 10px;
             width: 680px;
-            font-family: "Pretendard Variable", "Noto Sans KR", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", sans-serif;
+            font-family: 'Pretendard Variable', 'Noto Sans KR', 'Apple SD Gothic Neo', '맑은 고딕', 'Malgun Gothic', sans-serif;
             font-size: 15px;
             font-weight: 700;
             line-height: 15px;
@@ -435,7 +435,6 @@
             user-select: none;
             -webkit-font-smoothing: antialiased;
             -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-
         }
 
         .review-modal__section2 {
@@ -616,8 +615,9 @@
             <div class="review-modal__section1">
                 <div class="review-modal__section1__title">사진 첨부 (선택) </div>
                 <div class="review-modal__section1__explain1">사진을 첨부해주세요. (최대 1장)</div>
-                <button class="button_button--color-blue-inverted_button--size-50_button--shape-4_upload-button"
-                    type="button">사진 첨부하기</button>
+                <input type="file" id="selectedFile" style="display: none;" />
+                <input type="button" value="파일추가" onclick="document.getElementById('selectedFile').click();" class="FileButton">
+                
             </div>
             <div class="review-modal__section2">
                 <div class="review-modal__section__title2">리뷰 작성</div>
