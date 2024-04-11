@@ -15,7 +15,7 @@
                 오늘의집
             </div>
             <div class="header-main">
-                <a href=""><span style="color: #35C5F0;">쇼핑</span></a>
+                <a href=""><span>쇼핑</span></a>
                 <a href=""><span>커뮤니티</span></a>
             </div>
             <div class="header-menu">
@@ -40,15 +40,8 @@
         </div>
         <div style="border: 1px solid #f7f9fa; min-width: 1136px;"></div>
         <div class="sticky-container" style="height: 51px;">
-            <!-- 쇼핑 -->
-            <div class="header-category">
-                <a href="">쇼핑홈</a>
-                <a href="">카테고리</a>
-                <a href="">베스트</a>
-                <a href="">오늘의딜</a>
-            </div>
             <!-- 마이페이지 -->
-            <div class="header-mypage header-hidden">
+            <div class="header-mypage">
                 <a href="">프로필</a>
                 <a href="">나의 쇼핑</a>
                 <a href="">나의문의내역</a>

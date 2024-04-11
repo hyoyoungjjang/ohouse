@@ -70,6 +70,11 @@ body {
     opacity: 50%;
 }
 
+.header-others {
+    display: flex;
+    align-items: center;
+}
+
 .header-others>a {
     font-size: 18px;
     text-decoration: none;
@@ -79,6 +84,15 @@ body {
 
 .header-others>a:hover {
     color: #35C5F0;
+}
+
+.header-others>img {
+    width: 30px;
+    margin: 0px 10px;
+}
+
+.header-others>img:nth-child(3) {
+    width: 40px;
 }
 
 .header-hidden {

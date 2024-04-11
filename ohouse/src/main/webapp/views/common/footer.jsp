@@ -13,7 +13,7 @@
         <div class="footer-set">
             <div class="footer-left" align="left">
                 <a href="" class="footer-bold footer-first">고객센터 &gt;</a><br><br>
-                <span class="footer-bold footer-second">1111-1111</span>
+                <span class="footer-bold footer-second">1111-1111</span><br>
                 <span>09:00-18:00</span>
             </div>
             <div class="footer-middle" align="left">
