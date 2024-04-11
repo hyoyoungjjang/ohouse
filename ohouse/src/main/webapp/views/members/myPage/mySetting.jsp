@@ -13,7 +13,7 @@
 </head>
 <body>
     <header>
-        <%@ include file="../../common/header.jsp" %>
+        <%@ include file="../../common/headerMyPage.jsp" %>
     </header>
     <div align="center">
         <div id="mySetting-content" >

@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <%@ include file="../common/header.jsp" %>
+        <%@ include file="../common/headerNone.jsp" %>
     </header>
     <div align="center" style="min-width: 1136px; background: #F5F5F5;">
         <div class="cart-content">

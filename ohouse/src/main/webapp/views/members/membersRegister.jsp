@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/memberRegister.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/member/memberRegister.css">
 </head>
 
 <body>
