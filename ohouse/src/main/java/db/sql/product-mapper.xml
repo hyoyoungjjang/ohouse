@@ -97,27 +97,127 @@
 	</entry>
 	<!-- 정렬 디폴트 인기순(누적 판매량 순) -->
 	<entry key="selectProductList">
-	SELECT ROWNUM AS "RNUM", A.*
-	FROM(
-		SELECT
-			P.PRODUCT_ID,
-			PRODUCT_NAME,
-			PRODUCT_PRICE,
-			FILE_PATH || CHANGE_NAME AS "TITLE_IMG",
-			COMPANY_NAME,
-			(
-                SELECT COUNT(*)
-			 FROM REVIEW R
-			 WHERE R.PRODUCT_ID = P.PRODUCT_ID
-               ) AS "REVIEW_COUNT"
-		FROM PRODUCT P
-		JOIN MEDIA MED ON (P.PRODUCT_ID = MED.PRODUCT_ID)
-		JOIN MEMBERS MEM ON ( P.MEMBERS_NO = MEM.MEMBERS_NO )
-		WHERE PRODUCT_STATUS = 'Y'
-		  AND FILE_LEVEL = 1
-		ORDER BY PRODUCT_SALES DESC
-		  ) A
-	WHERE RNUM BETWEEN ? AND ? 
+	SELECT 
+		   PRODUCT_ID,
+           PRODUCT_NAME,
+           PRODUCT_PRICE,
+           SALE,
+           TITLE_IMG,
+           COMPANY_NAME,
+           REVIEW_COUNT,
+           RATING
+	FROM (
+		    SELECT ROWNUM AS "RNUM", A.*
+		    FROM (
+		        SELECT
+		            P.PRODUCT_ID,
+		            PRODUCT_NAME,
+		            PRODUCT_PRICE,
+		            SALE,
+		            FILE_PATH || CHANGE_NAME AS "TITLE_IMG",
+		            COMPANY_NAME,
+		            (
+		                SELECT COUNT(*)
+		                FROM REVIEW R
+		                WHERE R.PRODUCT_ID = P.PRODUCT_ID
+		            ) AS "REVIEW_COUNT",
+		            (
+		                SELECT AVG(RATING)
+		                FROM REVIEW R
+		                WHERE R.PRODUCT_ID = P.PRODUCT_ID
+		            ) AS "RATING"
+		        FROM PRODUCT P
+		        JOIN MEDIA MED ON (P.PRODUCT_ID = MED.PRODUCT_ID)
+		        JOIN MEMBERS MEM ON (P.MEMBERS_NO = MEM.MEMBERS_NO)
+		        WHERE PRODUCT_STATUS = 'Y'
+		        AND FILE_LEVEL = 1
+		        ORDER BY PRODUCT_SALES DESC
+		    	)
+		    	A
+			)
+	WHERE "RNUM" BETWEEN ? AND ?;
+	</entry>
+	<entry key="selectProductListDesc">
+	SELECT 
+		   PRODUCT_ID,
+           PRODUCT_NAME,
+           PRODUCT_PRICE,
+           SALE,
+           TITLE_IMG,
+           COMPANY_NAME,
+           REVIEW_COUNT,
+           RATING
+	FROM (
+		    SELECT ROWNUM AS "RNUM", A.*
+		    FROM (
+		        SELECT
+		            P.PRODUCT_ID,
+		            PRODUCT_NAME,
+		            PRODUCT_PRICE,
+		            SALE,
+		            FILE_PATH || CHANGE_NAME AS "TITLE_IMG",
+		            COMPANY_NAME,
+		            (
+		                SELECT COUNT(*)
+		                FROM REVIEW R
+		                WHERE R.PRODUCT_ID = P.PRODUCT_ID
+		            ) AS "REVIEW_COUNT",
+		            (
+		                SELECT AVG(RATING)
+		                FROM REVIEW R
+		                WHERE R.PRODUCT_ID = P.PRODUCT_ID
+		            ) AS "RATING"
+		        FROM PRODUCT P
+		        JOIN MEDIA MED ON (P.PRODUCT_ID = MED.PRODUCT_ID)
+		        JOIN MEMBERS MEM ON (P.MEMBERS_NO = MEM.MEMBERS_NO)
+		        WHERE PRODUCT_STATUS = 'Y'
+		        AND FILE_LEVEL = 1
+		        ORDER BY ? DESC
+		    	)
+		    	A
+			)
+	WHERE "RNUM" BETWEEN ? AND ?;
+	</entry>
+	<entry key="selectProductListAsc">
+	SELECT 
+		   PRODUCT_ID,
+           PRODUCT_NAME,
+           PRODUCT_PRICE,
+           SALE,
+           TITLE_IMG,
+           COMPANY_NAME,
+           REVIEW_COUNT,
+           RATING
+	FROM (
+		    SELECT ROWNUM AS "RNUM", A.*
+		    FROM (
+		        SELECT
+		            P.PRODUCT_ID,
+		            PRODUCT_NAME,
+		            PRODUCT_PRICE,
+		            SALE,
+		            FILE_PATH || CHANGE_NAME AS "TITLE_IMG",
+		            COMPANY_NAME,
+		            (
+		                SELECT COUNT(*)
+		                FROM REVIEW R
+		                WHERE R.PRODUCT_ID = P.PRODUCT_ID
+		            ) AS "REVIEW_COUNT",
+		            (
+		                SELECT AVG(RATING)
+		                FROM REVIEW R
+		                WHERE R.PRODUCT_ID = P.PRODUCT_ID
+		            ) AS "RATING"
+		        FROM PRODUCT P
+		        JOIN MEDIA MED ON (P.PRODUCT_ID = MED.PRODUCT_ID)
+		        JOIN MEMBERS MEM ON (P.MEMBERS_NO = MEM.MEMBERS_NO)
+		        WHERE PRODUCT_STATUS = 'Y'
+		        AND FILE_LEVEL = 1
+		        ORDER BY ? ASC
+		    	)
+		    	A
+			)
+	WHERE "RNUM" BETWEEN ? AND ?;
 	</entry>
 	<entry key="updateProduct">
 	UPDATE PRODUCT
