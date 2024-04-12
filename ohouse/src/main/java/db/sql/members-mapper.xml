@@ -1,39 +1,47 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-	<entry key="loginMember">
+	<entry key="loginMembers">
 		SELECT
-			USER_NO,
-			USER_ID,
-			USER_PWD,
-			USER_NAME,
-			PHONE,
-			EMAIL,
-			ADDRESS,
-			INTEREST,
-			ENROLL_DATE,
-			MODIFY_DATE,
-			STATUS
-		FROM MEMBER
-	   WHERE USER_ID = ?
-	     AND USER_PWD = ?
-	     AND STATUS = 'Y'
+		    MEMBERS_NO
+			,MEMBERS_ID
+			,MEMBERS_PWD
+			,MEMBERS_NAME
+			,MEMBERS_BIRTH
+			,MEMBERS_PHONE
+			,MEMBERS_EMAIL
+			,GENDER
+			,MEMBERS_TYPE
+			,COMPANY_NAME
+			,REPRESENTATATIVE
+			,COMPANY_PLACE
+			,COMPANY_PHONE
+			,COMPANY_EMAIL
+			,REG_NUM
+			,MEMBERS_ENROLL_TIME
+			,MEMBERS_MODIFY_TIME
+			MEMBERS_STATUS
+		FROM MEMBERS
+		WHERE MEMBERS_ID = ?
+		AND MEMBERS_PWD = ?
+		AND MEMBERS_STATUS = 'Y'
+	     
 	</entry>
-	<entry key="insertMember">
+	<entry key="insertMembers">
 		INSERT INTO MEMBER
 		(
-			USER_NO,
-			USER_ID,
-			USER_PWD,
-			USER_NAME,
-			PHONE,
-			EMAIL,
-			ADDRESS,
-			INTEREST
+			MEMBERS_NO
+			,MEMBERS_ID
+			,MEMBERS_PWD
+			,MEMBERS_NAME
+			,MEMBERS_BIRTH
+			,MEMBERS_PHONE
+			,MEMBERS_EMAIL
+			,GENDER
 		)
 		VALUES
 		(
-			SEQ_UNO.NEXTVAL,
+			SEQ_MEMID.NEXTVAL,
 			?,
 			?,
 			?,
@@ -43,50 +51,50 @@
 			?
 		)
 	</entry>
-	<entry key="updateMember">
-		UPDATE MEMBER
-		SET USER_NAME = ?
-			, PHONE = ?
-			, EMAIL = ?
-			, ADDRESS = ?
-			, INTEREST = ?
-			, MODIFY_DATE = SYSDATE
-		WHERE USER_ID = ?
-	</entry>
-	<entry key="selectMember">
+		<entry key="selectMembers">
 		SELECT
-			USER_NO,
-			USER_ID,
-			USER_PWD,
-			USER_NAME,
-			PHONE,
-			EMAIL,
-			ADDRESS,
-			INTEREST,
-			ENROLL_DATE,
-			MODIFY_DATE,
-			STATUS
-		FROM MEMBER
-	   WHERE USER_ID = ?
-	     AND STATUS = 'Y'
+			 MEMBERS_NO
+			,MEMBERS_ID
+			,MEMBERS_PWD
+			,MEMBERS_NAME
+			,MEMBERS_BIRTH
+			,MEMBERS_PHONE
+			,MEMBERS_EMAIL
+			,GENDER
+			,MEMBERS_TYPE
+			,COMPANY_NAME
+			,REPRESENTATATIVE
+			,COMPANY_PLACE
+			,COMPANY_PHONE
+			,COMPANY_EMAIL
+			,REG_NUM
+			MEMBERS_STATUS
+		FROM MEMBERS
+	   WHERE MEMBERS_ID = ?
+	     AND MEMBERS_STATUS = 'Y'
 	</entry>
-	<entry key="updatePwdMember">
-		UPDATE MEMBER
-		SET USER_PWD = ?
-			, MODIFY_DATE = SYSDATE
-		WHERE USER_ID = ?
-			AND	USER_PWD = ?
+	<entry key="updateMembers">
+		UPDATE MEMBERS
+		SET MEMBERS_NAME = ?
+			, MEMBERS_PWD = ?
+			, MEMBERS_PHONE = ?
+			, MEMBERS_EMAIL = ?
+			, MEMBERS_BIRTH = ?
+			, MEMBERS_MODIFY_TIME = SYSDATE
+		WHERE MEMBERS_ID = ?
 	</entry>
-	<entry key="deleteMember">
-		UPDATE MEMBER
-		SET STATUS = 'N'
-		   ,MODIFY_DATE = SYSDATE
-		WHERE USER_ID = ?
-		AND USER_PWD = ?
+	<entry key="updatePwdMembers">
+		UPDATE MEMBERS
+		SET MEMBERS_PWD = ?,
+			MEMBERS_MODIFY_TIME = SYSDATE
+		WHERE MEMBERS_ID = ?
+			AND MEMBERS_PWD = ?
 	</entry>
-	<entry key = "idCheck">
-		SELECT COUNT(*) "COUNT"
-		  FROM MEMBER
-		 WHERE USER_ID = ?  
+	<entry key="deleteMembers">
+		UPDATE MEMBERS
+		SET MEMBERS_STATUS = 'N'
+		   ,MEMBERS_MODIFY_TIME = SYSDATE
+		WHERE MEMBERS_ID = ?
+		AND MEMBERS_PWD = ?
 	</entry>
 </properties>
