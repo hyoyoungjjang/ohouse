@@ -86,10 +86,6 @@ p > a{
   left: 0;
 }
 
-#enroll-id{
-  margin-bottom: 0px;
-}
-
 button{
   margin-top: 12px;
 }
@@ -98,12 +94,32 @@ span{
   margin-bottom: 10px;
 }
 
-#enroll-id-input{
+#enroll-id input{
+  height: 40px;
+  width: 170px;
+  height: 40px;
+  display: inline-block;
+  width: 100%;
+  margin: 0;
+  padding: 8px 15px 9px;
+  border: 1px solid #dbdbdb;
+  background-color: #fff;
+  color: #000;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: Noto Sans KR, Noto Sans CJK KR, 맑은 고딕, Malgun Gothic, sans-serif;
+  font-size: 15px;
+  line-height: 21px;
+  transition: border-color .1s, background-color .1s;
+  resize: none;
+}
+
+#enroll-email-input{
   height: 40px;
 }
 
-#enroll-id input,
-#enroll-id select{
+#enroll-email input,
+#enroll-email select{
   width: 170px;
   height: 40px;
   display: inline-block;
@@ -138,7 +154,24 @@ label{
   margin-bottom: 0px;
 }
 
-#enroll-id-input span{
+#email-id-button{
+  height: 50px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+#id-confirm-button{
+  height: 50px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+#enroll-email-input{
+  display: flex;
+  margin-bottom: 0px;
+}
+
+#enroll-email-input span{
   flex: 0 0 20px;
   text-align: center;
   line-height: 40px;
@@ -147,10 +180,14 @@ label{
   height: 40px;
 }
 
-#id-confirm-button{
+#email-confirm-button{
   height: 50px;
   width: 100%;
   margin-top: 10px;
+}
+
+#enroll-fullEmail {
+  display: none !important;
 }
 
 button {

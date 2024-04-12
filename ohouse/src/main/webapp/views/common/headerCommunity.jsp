@@ -1,17 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common/header.css">
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+<link rel="stylesheet" href="${contextPath}/resources/css/main.css">
+<link rel="stylesheet" href="${contextPath}/resources/css/common/header.css">
 </head>
 <body>
     <div align="center">
         <div class="sticky-container" style="height: 80px;">
-            <div class="header-logo">
+            <div class="header-logo" onclick="location.href='${pageContext.request.contextPath}'">
                 오늘의집
             </div>
             <div class="header-main">
@@ -25,9 +27,9 @@
                 </div>
                 <!-- 로그인X -->
                 <div class="header-others">
-                    <a href="">로그인</a>|
-                    <a href="">회원가입</a>
-                    <a href="" style="background-color: #35C5F0; color: white; border-radius: 5px;">글쓰기</a>
+                    <a href="${pageContext.request.contextPath}/loginForm.me">로그인</a>|
+	                <a href="${pageContext.request.contextPath}/enrollForm.me">회원가입</a>
+	                <a href="" style="background-color: #35C5F0; color: white; border-radius: 5px;">글쓰기</a>
                 </div>
                 <!-- 로그인O -->
                 <div class="header-others header-hidden">

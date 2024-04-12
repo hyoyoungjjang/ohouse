@@ -1,21 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common/header.css">
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+<link rel="stylesheet" href="${contextPath}/resources/css/main.css">
+<link rel="stylesheet" href="${contextPath}/resources/css/common/header.css">
 </head>
 <body>
     <div align="center">
         <div class="sticky-container" style="height: 80px;">
-            <div class="header-logo">
+            <div class="header-logo" onclick="location.href='${pageContext.request.contextPath}'">
                 오늘의집
             </div>
             <div class="header-main">
-                <a href=""><span style="color: #35C5F0;">쇼핑</span></a>
+                <a href="${contextPath}"><span style="color: #35C5F0;">쇼핑</span></a>
                 <a href=""><span>커뮤니티</span></a>
             </div>
             <div class="header-menu">
@@ -23,19 +25,25 @@
                     <input type="text" placeholder="통합검색">
                     <a href=""><img src="${pageContext.request.contextPath}/resources/img/common/find.png" alt=""></a>
                 </div>
-                <!-- 로그인X -->
-                <div class="header-others">
-                    <a href="">로그인</a>|
-                    <a href="">회원가입</a>
-                    <a href="" style="background-color: #35C5F0; color: white; border-radius: 5px;">글쓰기</a>
-                </div>
-                <!-- 로그인O -->
-                <div class="header-others header-hidden">
-                    <img src="${pageContext.request.contextPath}/resources/img/common/pm-bookmark.png" alt="" onclick="">
-                    <img src="${pageContext.request.contextPath}/resources/img/common/shopping-cart.png" alt="" onclick="">
-                    <img src="${pageContext.request.contextPath}/resources/img/common/user.png" alt="" onclick="">
-                    <a href="" style="background-color: #35C5F0; color: white; border-radius: 5px;">글쓰기</a>
-                </div>
+                <c:choose>
+                	<c:when test="${empty loginUser}">
+                		<!-- 로그인X -->
+	                	<div class="header-others">
+	                    	<a href="${pageContext.request.contextPath}/loginForm.me">로그인</a>|
+	                    	<a href="${pageContext.request.contextPath}/enrollForm.me">회원가입</a>
+	                    	<a href="" style="background-color: #35C5F0; color: white; border-radius: 5px;">글쓰기</a>
+                		</div>
+                	</c:when>
+                	<c:otherwise>
+                		<!-- 로그인O -->
+		                <div class="header-others">
+		                    <img src="${pageContext.request.contextPath}/resources/img/common/pm-bookmark.png" alt="" onclick="">
+		                    <img src="${pageContext.request.contextPath}/resources/img/common/shopping-cart.png" alt="" onclick="">
+		                    <img src="${pageContext.request.contextPath}/resources/img/common/user.png" alt="" onclick="">
+		                    <a href="" style="background-color: #35C5F0; color: white; border-radius: 5px;">글쓰기</a>
+		                </div>
+                	</c:otherwise>
+                </c:choose>
             </div>
         </div>
         <div style="border: 1px solid #f7f9fa; min-width: 1136px;"></div>
