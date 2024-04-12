@@ -1,11 +1,16 @@
 package com.ohouse.product.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.ohouse.product.model.vo.Product;
+import com.ohouse.product.service.ProductServiceImpl;
 
 /**
  * Servlet implementation class ProductListController
@@ -25,8 +30,10 @@ public class ProductListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		ArrayList<Product> pList =  new ProductServiceImpl().selectListProduct();
+		
+		request.setAttribute("ProductList", pList);
+		request.getRequestDispatcher("views/product/productBestPage.jsp").forward(request, response);
 	}
 
 	/**
