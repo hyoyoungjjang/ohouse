@@ -18,7 +18,7 @@
     <div align="center">
         <form action="">
             <div id="order-and-payment-area">
-            <div id="order-area">
+                <div id="order-area">
                     <h1 align="left" id="order-and-payment-text">주문/결제</h1>
                     <div id="orderer-area">
                         <div class="order-and-payment-information-text-area">
@@ -30,7 +30,7 @@
                             </div>
                             <div class="orderer-information-input-area">
                                 <input type="text" class="orderer-information-input">
-                            </div>
+                            </div> 
                         </div>
                         <div class="orderer-information-input-text">
                             <div id="orderer-info-text-area">
@@ -127,16 +127,110 @@
                         </div>
                         <div class="order-and-payment-information-text-area">
                             주문상품
-                            <span id="order-product-count">1건</span>
+                            <span class="order-product-count1">1건</span>
                         </div>
                         <div id="order-product-information-area">
+                            <div id="order-product-information-header">
+                                <div id="order-product-information-text1">
+                                    <span>주식회사 호림인터내셔널</span>
+                                    <span>배송비 착불 70,000원</span>
+                                </div>
+                                <hr id="hr1">
+                                <div id="order-product-information-text2">
+                                    <span>업체직접배송</span>
+                                </div>
+                            </div>
+                            <div id="order-product-information-footer">
+                                <div id="order-product-img-area">
+                                    <img id="order-product-img" src="${pageContext.request.contextPath}/resources/img/product/productMain01.png" alt="">
+                                </div>
+                                <div id="order-product-information-text3">
+                                    <p id="text1">[쿠폰가 469,000원] LOUNGE 아쿠아텍스 4인소파(쿠션3개증정)</p>
+                                    <p id="text2">LOUNGE 4인 베이직</p>
+                                    <p id="text3">
+                                        499,000원
+                                        <span class="order-product-count2">1개</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-and-payment-information-text-area">
+                            결제수단
+                        </div>
+                        <div id="payment-method-area">
+                            <div id="payment-method-choice-area">
+                                <div class="choice-area" id="payment-method-choice1" onclick="choice(this)">
+                                    <span>카드</span>
+                                    <img class="choice-img" src="${pageContext.request.contextPath}/resources/img/product/productOrderCard.png" alt="">
+                                </div>
+                                <div class="choice-area" id="payment-method-choice2" onclick="choice(this)">
+                                    <span>무통장입금</span>
+                                    <img class="choice-img" src="${pageContext.request.contextPath}/resources/img/product/productOrderNOBankbook.png" alt="">
+                                </div>
+                                <div class="choice-area" id="payment-method-choice3" onclick="choice(this)">
+                                    <span>카카오페이</span>
+                                    <img class="choice-img" src="${pageContext.request.contextPath}/resources/img/product/productOrderkakao.png" alt="">
+                                </div>
+                                <div class="choice-area" id="payment-method-choice4" onclick="choice(this)">
+                                    <span>토스</span>
+                                    <img class="choice-img" src="${pageContext.request.contextPath}/resources/img/product/productOrderToss.png" alt="">
+                                </div>
+                                <div class="choice-area" id="payment-method-choice5" onclick="choice(this)">
+                                    <span>네이버페이</span>
+                                    <img class="choice-img" src="${pageContext.request.contextPath}/resources/img/product/productOrderNaverPay.png" alt="">
+                                </div>
+                                <div class="choice-area" id="payment-method-choice6" onclick="choice(this)">
+                                    <span>페이코</span>
+                                    <img class="choice-img" src="${pageContext.request.contextPath}/resources/img/product/productOrderPayco.png" alt="">
+                                </div>
+                                <div class="choice-area" id="payment-method-choice7" onclick="choice(this)">
+                                    <span>핸드폰</span>
+                                    <img class="choice-img" src="${pageContext.request.contextPath}/resources/img/product/productOrderPhone.png" alt="">
+                                </div>
+                            </div>
+                            <script>
+                                function choice(_this){
 
+                                    const choiceArr = document.getElementsByClassName("choice-area");
+
+                                    for(let i = 0; i < choiceArr.length; i++){
+                                        choiceArr[i].style.background="none";
+                                        choiceArr[i].style.border="1px solid #eaedef";
+                                    }
+
+                                    _this.style.background="#effbff";
+                                    _this.style.border="1px solid #35c5f0";
+                                }
+                            </script>
                         </div>
                     </div>
-            </div>
+                </div>
             <div id="payment-area">
+                <div id="payment-info-area">
+                    <div id="payment-info-text">
+                        <div id="payment-amount-area">
+                            <span>결제금액</span>
+                        </div>
+                        <div class="payment-amount-info-text">
+                            <span>총 상품 금액</span>
+                            <span>499,900원</span>
+                        </div>
+                        <div class="payment-amount-info-text margin-bottom-20px">
+                            <span>배송비</span>
+                            <span>70,000원</span>
+                        </div>
+                        <hr>
+                        <div class="payment-amount-info-text total-payment-amount">
+                            <span>최종 결제 금액</span>
+                            <span>569,900원</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="paying">
+                    <span>569,900원 결제하기</span>
+                </div>
             </div>
-            </div>
+        </div>
         </form>
     </div>
     <footer>
