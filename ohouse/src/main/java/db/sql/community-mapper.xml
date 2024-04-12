@@ -9,7 +9,6 @@
 		BOARD_ID,
 		BOARD_TITLE,
 		BOARD_VIEWS,
-		BOARD_TYPE,
 		BOARD_COVER_SRC,
 		BOARD_CONTENT,
 		FILTER_TYPE,
@@ -60,7 +59,6 @@
 		?
 	)
 	</entry>
-	<!-- MEDIA 테이블 조인해서 MEDIA SRC 컬럼값도 가져옴 -->
 	<entry key="selectBoard">
 	SELECT
 		BOARD_ID,
@@ -68,9 +66,7 @@
 		BOARD_VIEWS,
 		TO_CHAR(BOARD_CREATE_TIME, 'YYYY/MM/DD') AS BOARD_CREATE_TIME,
 		TO_CHAR(BOARD_MODIFY_TIME, 'YYYY/MM/DD') AS BOARD_MODIFY_TIME,
-		BOARD_TYPE,
 		BOARD_COVER_SRC,
-		MEDIA_SRC,
 		BOARD_CONTENT,
 		FILTER_TYPE,
 		FILTER_AREA,
@@ -94,53 +90,73 @@
 	FROM BOARD
 	JOIN MEMBERS USING (MEMBERS_NO)
 	WHERE BOARD_ID = ?
-	AND BOARD_STATUS = 'Y';
+	AND BOARD_STATUS = 'Y'
 	</entry>
 	<entry key="selectBoardList">
 	SELECT *
 	FROM (
+		SELECT ROWNUM AS "RNUM", A.*
+		FROM(
 			SELECT
+				B.BOARD_ID,
+				BOARD_TITLE,
+				BOARD_VIEWS,
+				FILE_PATH || CHANGE_NAME AS "TITLE_IMG",
+				MEMBERS_ID,
+				(
+                 SELECT COUNT(*)
+				 FROM SCRAP S
+				 WHERE S.BOARD_ID = B.BOARD_ID
+                ) AS "SCRAP_COUNT"
+			FROM BOARD B
+			JOIN MEDIA MED ON (B.BOARD_ID = MED.BOARD_ID)
+			JOIN MEMBERS MEM ON (B.MEMBERS_NO = MEM.MEMBERS_NO)
+			WHERE BOARD_STATUS = 'Y'
+			  AND FILE_LEVEL = 1
+            ORDER BY B.BOARD_ID DESC
+            )A
+        )
+	WHERE RNUM BETWEEN ? AND ? 
+	</entry>
+	<!-- 
+	<entry key="selectBoardList">
+	SELECT *
+	FROM (
+			SELECT ROWNUM AS "RNUM", A.*
 			FROM(SELECT
-					BOARD_ID,
+					B.BOARD_ID,
 					BOARD_TITLE,
 					BOARD_VIEWS,
-					TO_CHAR(BOARD_CREATE_TIME, 'YYYY/MM/DD') AS BOARD_CREATE_TIME,
-					TO_CHAR(BOARD_MODIFY_TIME, 'YYYY/MM/DD') AS BOARD_MODIFY_TIME,
-					BOARD_TYPE,
 					BOARD_COVER_SRC,
-					MEDIA_SRC,
-					BOARD_CONTENT,
 					FILTER_TYPE,
 					FILTER_AREA,
-					FILTER_NUM,
-					FILTER_DIRECTION,
-					FILTER_PAST,
-					FILTER_LOCAL,
 					FILTER_FAMILY,
-					FILTER_PET,
-					FILTER_FAMILY_MEM_CNT,
 					FILTER_FIELD,
 					FILTER_WORKER,
 					FILTER_RANGE,
-					FILTER_PERIOD,
-					FILTER_PERIOD_TYPE,
 					FILTER_CONSTRUCTION_PRICE,
 					FILTER_STYLE_PRICE,
 					FILTER_URL,
 					FILTER_COPYRIGHT,
-					MEMBERS_ID
-				FROM BOARD
+					MEMBERS_ID,
+					(SELECT COUNT(*)
+					 FROM SCRAP
+					 WHERE BOARD_ID = B.BOARD_ID) AS "COUNT"
+				FROM BOARD B
 				JOIN MEMBERS USING (MEMBERS_NO)
-				WHERE BOARD_ID = ?
-				AND BOARD_STATUS = 'Y';
-				)
-		 )
+				WHERE B.BOARD_ID = ?
+				AND BOARD_STATUS = 'Y'
+				ORDER BY B.BOARD_ID DESC)
+				A
+		 	)
+		 WHERE RNUM BETWEEN ? AND ? 
 	</entry>
+	 -->
+	
 	<entry key="updateBoard">
 	UPDATE BOARD
 	SET 
 		BOARD_TITLE = ?,
-		BOARD_TYPE = ?,
 		BOARD_COVER_SRC = ?,
 		BOARD_CONTENT = ?,
 		FILTER_TYPE = ?,
@@ -170,6 +186,85 @@
 	WHERE BOARD_ID = ?
 	</entry>
 	<!-- MEDIA 객체 CRUD -->
+	<entry key="insertMedia">
+	INSERT
+	INTO MEDIA
+	(
+		MEDIA_ID,
+		BOARD_ID
+		MEDIA_TYPE,
+		ORIGIN_NAME,
+		CHANGE_NAME,
+		FILE_PATH,
+		FILE_LEVEL
+	)
+	VALUES
+	(
+		SEQ_MEDID.NEXTVAL,
+		SEQ_BODID.CURRVAL
+		?,
+		?,
+		?,
+		?,
+		?
+	)
+	</entry>
+	<entry key="insertNewMedia">
+	INSERT
+	INTO MEDIA
+	(
+		MEDIA_ID,
+		BOARD_ID,
+		MEDIA_TYPE,
+		ORIGIN_NAME,
+		CHANGE_NAME,
+		FILE_PATH
+	)
+	VALUES
+	(
+		SEQ_MEDID.NEXTVAL,
+		?,
+		?,
+		?,
+		?,
+		?
+	)
+	</entry>
+	<entry key="insertThumbnail">
+	INSERT
+	INTO MEDIA
+	(
+		MEDIA_ID,
+		BOARD_ID,
+		MEDIA_TYPE,
+		ORIGIN_NAME,
+		CHANGE_NAME,
+		FILE_PATH,
+		FILE_LEVEL
+	)
+	VALUES
+	(
+		SEQ_MEDID.NEXTVAL,
+		SEQ_BODID.CURRVAL,
+		1,
+		?,
+		?,
+		?,
+		1
+	)
+	</entry>
+	<entry key="selectMedia">
+	SELECT
+		MEDIA_ID,
+		MEDIA_TYPE,
+		ORIGIN_NAME,
+		CHANGE_NAME,
+		FILE_PATH,
+	FROM MEDIA
+	WHERE BOARD_ID = ?
+	  AND MEDIA_STATUS = 'Y'
+	</entry>
+	<!-- MEDIA 수정 시 BOARD_MODIFY_TIME 수정 -->
 	<!-- SCRAP 객체 -->
 	<entry key="selectScrapCount">
 	SELECT COUNT(*)
