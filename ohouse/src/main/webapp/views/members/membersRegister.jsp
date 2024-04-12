@@ -1,21 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+  String alertMsg = (String)session.getAttribute("alertMsg");
+%>
 <!DOCTYPE html>
 <html lang="ko">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/member/memberRegister.css">
+  <title>회원가입</title>
+  <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="${contextPath}/resources/css/main.css">
+  <link rel="stylesheet" href="${contextPath}/resources/css/member/memberRegister.css">
 </head>
 
 <body>
+  <% if(alertMsg != null) { %>
+		<script>
+			alert("<%=alertMsg%>");
+		</script>
+		<% session.removeAttribute("alertMsg"); %>
+	<% } %>
   <div class=wrapper>
     <section>
       <header>
         <div class=logo>
-          <a href="/">
+          <a href="${contextPath}">
             <img src="${pageContext.request.contextPath}/resources/img/member/오늘의집 로고.jpg" style="width: 88px; height: 33px;" alt="">
             <!-- ${pageContext.request.contextPath} -->
           </a>
@@ -24,15 +39,28 @@
       <main>
         <div class="enroll">
           <h1 style="font-size: 20px; margin: 0px;">회원가입</h1>
-          <form action="" style="margin-top: 60px;">
-            <!-- 이메일 id + 주소 위한 div-->
+          <form action="${pageContext.request.contextPath}/insert.me" style="margin-top: 60px;" method="POST">
             <div id="enroll-id">
-              <label for="email">이메일</label>
+              <label for="id">아이디</label>
+              <div class="enroll-notice">영문, 숫자를 포함한 8자 이상의 아이디를 입력해주세요.</div>
               <div id="enroll-id-input">
-                <input type="hidden" name="email" id="enroll-fullEmail">
-                <input type="text" name="email" id="id-input" required placeholder="이메일">
+                <input type="text" name="id" id="id-input" maxlength="20" required placeholder="아이디">
+              </div>
+              <div class="warning id-empty hide" id="id-empty">필수 입력 항목입니다.</div>
+              <div class="warning id-failure hide" id="id-failure">아이디 형식이 올바르지 않습니다.</div>
+            </div>
+            <!--아이디 인증을 위한 버튼-->
+            <div id="id-confirm-button" class="margin30">
+              <button type="submit" onclick="">아이디 중복체크</button>
+            </div>
+            <!-- 이메일 id + 주소 위한 div-->
+            <div id="enroll-email" class="margin30">
+              <label for="email">이메일</label>
+              <div id="enroll-email-input">
+                <input type="text" name="email" id="enroll-fullEmail">
+                <input type="text" name="email-id" id="email-input" required placeholder="이메일">
                 <span id="middle">@</span>
-                <select id="select-Email">선택해주세요
+                <select id="select-Email">
                   <option value="">선택해주세요</option>
                   <option value="naver.com">naver.com</option>
                   <option value="hanmail.com">hanmail.com</option>
@@ -46,12 +74,8 @@
                   <!--참고 https://choiiis.github.io/web/toy-project-sign-up-and-in-page-2/ -->
                 </select>
               </div>
-              <div class="warning id-empty hide" id="id-empty">필수 입력 항목입니다.</div>
-              <div class="warning id-failure hide" id="id-failure">이메일 형식이 올바르지 않습니다.</div>
-            </div>
-            <!--이메일 인증을 위한 버튼-->
-            <div id="id-confirm-button" class="margin30">
-              <button type="submit" onclick="FullfillEmail()">이메일 인증하기</button>
+              <div class="warning email-empty hide" id="email-empty">필수 입력 항목입니다.</div>
+              <div class="warning email-failure hide" id="email-failure">이메일 형식이 올바르지 않습니다.</div>
             </div>
             <!-- 비밀번호 위한 div-->
             <div id="enroll-pwd" class="margin30">
@@ -101,13 +125,18 @@
   </div>
 
   <script>
-    // 이메일 입력 필드
-    const elEmail = document.getElementById('id-input');
-    // 이메일 주소 선택 셀렉트 박스
-    const elAddress = document.getElementById('select-Email');
+    // 아이디 입력 필드
+    const inputId = document.getElementById('id-input');
     // 이메일 유효성 검사 실패 시 보여줄 텍스트
     const warnIdEmpty = document.getElementById('id-empty');
     const warnIdFailure = document.getElementById('id-failure');
+    // 이메일 입력 필드
+    const elEmail = document.getElementById('email-input');
+    // 이메일 주소 선택 셀렉트 박스
+    const elAddress = document.getElementById('select-Email');
+    // 이메일 유효성 검사 실패 시 보여줄 텍스트
+    const warnEmailEmpty = document.getElementById('email-empty');
+    const warnEmailFailure = document.getElementById('email-failure');
     // 비밀번호 입력 필드
     const inputPwd = document.getElementById('input-pwd');
     // 비밀번호 유효성 검사 실패 시 보여줄 텍스트
@@ -132,6 +161,9 @@
 
 
     // 이메일 입력 필드 또는 주소 선택 셀렉트 박스 값 변경 시 이메일 유효성 검사 함수 호출
+    inputId.onblur = function () {
+      validateId();
+    }
     elEmail.onblur = function () {
       validateEmail();
     }
@@ -144,13 +176,25 @@
     confirmPwd.onblur = function(){
       confirmPassword();
     }
-
     inputPhone.onblur = function(){
       validatePhone();
     }
-
     nicknameInput.onblur = function(){
       validateNickname();
+    }
+
+    function validateId() {
+      const idRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+      if(inputId.value.trim() === ""){
+        warnIdEmpty.classList.remove("hide");
+        warnIdFailure.classList.add("hide");
+      } else if(!(idRegex.test(inputId.value))) {
+        warnIdEmpty.classList.add("hide");
+        warnIdFailure.classList.remove("hide");
+      } else {
+        warnIdEmpty.classList.add("hide");
+        warnIdFailure.classList.add("hide");
+      }
     }
 
     // 하나의 완성된 이메일로 합치기 위한 함수
@@ -160,17 +204,21 @@
       const address = elAddress.options[elAddress.selectedIndex].value;
       const email = emailId + middle + address;
       if(emailId.trim() === ""){
-        warnIdEmpty.classList.remove("hide");
-        
+        warnEmailEmpty.classList.remove("hide");
       } else {
-        warnIdEmpty.classList.add("hide");
+        warnEmailEmpty.classList.add("hide");
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         if(address.trim() === ""){
-          warnIdFailure.classList.remove("hide");
+          warnEmailFailure.classList.remove("hide");
         } else if(emailRegex.test(email)){
-          warnIdFailure.classList.add("hide");
+          warnEmailFailure.classList.add("hide");
+        } else {
+          document.getElementById("enroll-fullEmail").value = email;
         }
       }
+      $(function() {
+        $("#enroll-fullEmail").val(email);
+      })
     }
 
     function validatePwd(){
