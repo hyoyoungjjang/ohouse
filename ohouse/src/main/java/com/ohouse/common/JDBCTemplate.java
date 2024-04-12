@@ -25,7 +25,7 @@ public class JDBCTemplate {
 	
 		try {
 			
-			prop.loadFromXML(new FileInputStream(filePath));
+			prop.load(new FileInputStream(filePath));
 			// JDBC driver 등록
 			Class.forName(prop.getProperty("driver"));
 			// 연동할 DB의 url, 계정명, 비밀번호 제시해서 Connection 객체 생성
