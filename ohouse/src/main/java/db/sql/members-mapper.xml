@@ -28,7 +28,7 @@
 	     
 	</entry>
 	<entry key="insertMembers">
-		INSERT INTO MEMBER
+		INSERT INTO MEMBERS
 		(
 			MEMBERS_NO
 			,MEMBERS_ID
@@ -96,5 +96,48 @@
 		   ,MEMBERS_MODIFY_TIME = SYSDATE
 		WHERE MEMBERS_ID = ?
 		AND MEMBERS_PWD = ?
+	</entry>
+	<entry key="insertProfile">
+		INSERT
+		INTO MEDIA
+		(
+			MEDIA_ID,
+			MEMBERS_NO,
+			MEDIA_TYPE,
+			ORIGIN_NAME,
+			CHANGE_NAME,
+			FILE_PATH,
+			FILE_LEVEL
+		)
+		VALUES
+		(
+			SEQ_MEDID.NEXTVAL,
+			SEQ_MEMID.NEXTVAL,
+			1,
+			?,
+			?,
+			?,
+			3
+		)
+	</entry>
+	<entry key="selectProfile">
+		SELECT
+			MEDIA_ID,
+			FILE_PATH
+		FROM MEDIA
+		WHERE MEMBERS_NO = ?
+		  AND MEDIA_STATUS = 'Y'
+	</entry>
+	<entry key="updateProfile">
+		UPDATE MEDIA
+		SET ORIGIN_NAME = ?,
+			CHANGE_NAME = ?,
+			FILE_PATH = ?
+		WHERE MEDIA_ID = ?
+	</entry>
+	<entry key="deleteProfile">
+		UPDATE MEDIA
+		SET MEDIA_STATUS = 'N'
+		WHERE MEDIA_ID = ?
 	</entry>
 </properties>
