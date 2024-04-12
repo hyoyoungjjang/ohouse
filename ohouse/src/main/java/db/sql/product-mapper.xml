@@ -1,1 +1,77 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="insertProduct">
+	INSERT
+	INTO PRODUCT
+	(
+		PRODUCT_ID,
+		PRODUCT_NAME,
+		PRODUCT_PRICE,
+		STOCK,
+		DELIVERY_DATE,
+		SALE,
+		PRODUCT_THUMBNAIL,
+		PRODUCT_IMG,
+		PRODUCT_CONTENT,
+		MEMBERS_NO,
+		PRODUCT_DELIVERY_PRICE,
+		PRODUCT_CATEGORY
+	)
+	VALUES(
+		SEQ_PDID.NEXTVAL,
+		?,
+		?,
+		?,
+		?,
+		?,
+		?,
+		?,
+		?,
+		?,
+		?,
+		?
+	)
+	</entry>
+	<entry key="selectProduct">
+	SELECT
+		PRODUCT_ID,
+		PRODUCT_NAME,
+		PRODUCT_PRICE,
+		PRODUCT_SALES,
+		STOCK,
+		DELIVERY_DATE,
+		SALE,
+		PRODUCT_THUMBNAIL,
+		PRODUCT_IMG,
+		PRODUCT_CONTENT,
+		PRODUCT_CREATE_TIME,
+		PRODUCT_MODIFY_TIME,
+		MEMBERS_NO,
+		PRODUCT_DELIVERY_PRICE,
+		PRODUCT_CATEGORY
+	FROM PRODUCT
+	WHERE PRODUCT_ID = ?
+		AND PRODUCT_STATUS = 'Y'
+	</entry>
+	<entry key="updateProduct">
+	UPDATE PRODUCT
+	SET	PRODUCT_NAME = ?,
+		PRODUCT_PRICE = ?,
+		DELIVERY_DATE = ?
+		SALE = ?,
+		PRODUCT_THUMBNAIL = ?,
+		PRODUCT_IMG = ?,
+		PRODUCT_CONTENT = ?,
+		PRODUCT_MODIFY_TIME = SYSDATE,
+		MEMBERS_NO = ?,
+		PRODUCT_DELIVERY_PRICE =?,
+		PRODUCT_CATEGORY = ?
+	WHERE PRODUCT_ID = ?
+	</entry>
+	<entry key="deleteProduct">
+	UPDATE PRODUCT
+	SET	PRODUCT_STATUS = 'N'
+	WHERE PRODUCT_ID = ?
+	</entry>
+</properties>
