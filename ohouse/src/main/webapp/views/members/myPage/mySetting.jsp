@@ -26,7 +26,7 @@
                 <div align="left" id="mySetting-content-area">
                     <div>
                         <h3>닉네임</h3>
-                        <input type="text" name="name" class="mySetting-input">
+                        <input type="text" name="name" class="mySetting-input" value="${loginUser.membersName}">
                         <div class="mySetting-msg">
                             <p class="mySetting-hidden">이미 존재하는 닉네임입니다.</p>
                             <p class="mySetting-hidden">닉네임은 4글자 이상입니다.</p>
@@ -34,7 +34,7 @@
                     </div>
                     <div>
                         <h3>이메일</h3>
-                        <input type="email" name="email" class="mySetting-input">
+                        <input type="email" name="email" class="mySetting-input" value="${loginUser.membersEmail}">
                         <div class="mySetting-msg"></div>
                     </div>
                     <div>
@@ -44,12 +44,12 @@
                     </div>
                     <div>
                         <h3>휴대폰 번호</h3>
-                        <input type="text" name="phone" class="mySetting-input">
+                        <input type="text" name="phone" class="mySetting-input" value="${loginUser.membersPhone}">
                         <div class="mySetting-msg"></div>
                     </div>
                     <div>
                         <h3>생년월일</h3>
-                        <input type="date" name="birth" class="mySetting-input">
+                        <input type="date" name="birth" class="mySetting-input" value="${loginUser.membersBirth}">
                         <div class="mySetting-msg"></div>
                     </div>
                     <div>
