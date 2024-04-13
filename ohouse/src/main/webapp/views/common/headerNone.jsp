@@ -35,6 +35,8 @@
                 <div class="header-others header-hidden">
                     <img src="${pageContext.request.contextPath}/resources/img/common/pm-bookmark.png" alt="" onclick="">
                     <img src="${pageContext.request.contextPath}/resources/img/common/shopping-cart.png" alt="" onclick="">
+                    <img src="${contextPath}/resources/img/common/logout.png" alt=""
+                        onclick="location.href='${contextPath}/logout.me'; alert('${alertMsg}');">
                     <img src="${pageContext.request.contextPath}/resources/img/common/user.png" alt="" onclick="">
                     <a href="" style="background-color: #35C5F0; color: white; border-radius: 5px;">글쓰기</a>
                 </div>

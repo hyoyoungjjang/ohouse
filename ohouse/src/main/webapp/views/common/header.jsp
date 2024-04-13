@@ -13,7 +13,7 @@
 <body>
     <div align="center">
         <div class="sticky-container" style="height: 80px;">
-            <div class="header-logo" onclick="location.href='${pageContext.request.contextPath}'">
+            <div class="header-logo" onclick="location.href='${contextPath}'">
                 오늘의집
             </div>
             <div class="header-main">
@@ -23,23 +23,25 @@
             <div class="header-menu">
                 <div class="header-search">
                     <input type="text" placeholder="통합검색">
-                    <a href=""><img src="${pageContext.request.contextPath}/resources/img/common/find.png" alt=""></a>
+                    <a href=""><img src="${contextPath}/resources/img/common/find.png" alt=""></a>
                 </div>
                 <c:choose>
                 	<c:when test="${empty loginUser}">
                 		<!-- 로그인X -->
 	                	<div class="header-others">
-	                    	<a href="${pageContext.request.contextPath}/loginForm.me">로그인</a>|
-	                    	<a href="${pageContext.request.contextPath}/enrollForm.me">회원가입</a>
+	                    	<a href="${contextPath}/loginForm.me">로그인</a>|
+	                    	<a href="${contextPath}/enrollForm.me">회원가입</a>
 	                    	<a href="" style="background-color: #35C5F0; color: white; border-radius: 5px;">글쓰기</a>
                 		</div>
                 	</c:when>
                 	<c:otherwise>
                 		<!-- 로그인O -->
 		                <div class="header-others">
-		                    <img src="${pageContext.request.contextPath}/resources/img/common/pm-bookmark.png" alt="" onclick="">
-		                    <img src="${pageContext.request.contextPath}/resources/img/common/shopping-cart.png" alt="" onclick="">
-		                    <img src="${pageContext.request.contextPath}/resources/img/common/user.png" alt="" onclick="">
+		                    <img src="${contextPath}/resources/img/common/pm-bookmark.png" alt="" onclick="">
+		                    <img src="${contextPath}/resources/img/common/shopping-cart.png" alt="" onclick="">
+                            <img src="${contextPath}/resources/img/common/logout.png" alt="" 
+                                onclick="location.href='${contextPath}/logout.me'; alert('${alertMsg}');">
+		                    <img src="${contextPath}/resources/img/common/user.png" alt="" onclick="">
 		                    <a href="" style="background-color: #35C5F0; color: white; border-radius: 5px;">글쓰기</a>
 		                </div>
                 	</c:otherwise>
