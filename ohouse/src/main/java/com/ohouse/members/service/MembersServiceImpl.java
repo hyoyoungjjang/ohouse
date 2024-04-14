@@ -36,4 +36,28 @@ public class MembersServiceImpl implements MembersService {
 		close(conn);
 		return loginUser;
 	}
+
+	@Override
+	public int deleteMembers(Members m) {
+		Connection conn = getConnection();
+		int result = membersDao.deleteMembers(conn, m);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		return result;
+	}
+
+	@Override
+	public int idCheck(String checkId) {
+		Connection conn = getConnection();
+		int result = membersDao.idCheck(conn, checkId);
+		
+		close(conn);
+		return result;
+	}
 }

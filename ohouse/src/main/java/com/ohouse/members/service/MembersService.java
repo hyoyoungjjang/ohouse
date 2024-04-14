@@ -6,4 +6,8 @@ public interface MembersService {
 	public int insertMembers(Members m);
 	
 	public Members loginMembers(Members m);
+	
+	public int deleteMembers(Members m);
+	
+	public int idCheck(String checkId);
 }
