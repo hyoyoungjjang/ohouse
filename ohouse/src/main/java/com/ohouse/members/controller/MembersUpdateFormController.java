@@ -25,7 +25,7 @@ public class MembersUpdateFormController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/members/myPage/mySetting.me").forward(request, response);
+		request.getRequestDispatcher("views/members/myPage/mySetting.jsp").forward(request, response);
 	}
 
 	/**
