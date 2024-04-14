@@ -12,13 +12,19 @@
 </head>
 <body>
     <div align="center">
+        <c:if test="${not empty alertMsg}">
+            <script>
+                alert("${alertMsg}");
+            </script>
+            <c:remove var="alertMsg" />
+        </c:if>
         <div class="sticky-container" style="height: 80px;">
             <div class="header-logo" onclick="location.href='${contextPath}'">
                 오늘의집
             </div>
             <div class="header-main">
                 <a href="${contextPath}"><span style="color: #35C5F0;">쇼핑</span></a>
-                <a href=""><span>커뮤니티</span></a>
+                <a href="${contextPath}/list.co"><span>커뮤니티</span></a>
             </div>
             <div class="header-menu">
                 <div class="header-search">
@@ -41,7 +47,8 @@
 		                    <img src="${contextPath}/resources/img/common/shopping-cart.png" alt="" onclick="">
                             <img src="${contextPath}/resources/img/common/logout.png" alt="" 
                                 onclick="location.href='${contextPath}/logout.me'; alert('${alertMsg}');">
-		                    <img src="${contextPath}/resources/img/common/user.png" alt="" onclick="">
+		                    <img src="${contextPath}/resources/img/common/user.png" alt="" 
+                                onclick="location.href='${contextPath}/profile.me';">
 		                    <a href="" style="background-color: #35C5F0; color: white; border-radius: 5px;">글쓰기</a>
 		                </div>
                 	</c:otherwise>
