@@ -37,7 +37,7 @@
 		                <div class="header-others">
 		                    <a href="${pageContext.request.contextPath}/loginForm.me">로그인</a>|
 			                <a href="${pageContext.request.contextPath}/enrollForm.me">회원가입</a>
-			                <a href="" style="background-color: #35C5F0; color: white; border-radius: 5px;">글쓰기</a>
+			                <a href="${contextPath}/loginForm.me" style="background-color: #35C5F0; color: white; border-radius: 5px;">글쓰기</a>
 		                </div>
                 	</c:when>
                 	<c:otherwise>
@@ -49,7 +49,7 @@
 		                        onclick="location.href='${contextPath}/logout.me'; alert('${alertMsg}');">
 		                    <img src="${pageContext.request.contextPath}/resources/img/common/user.png" alt="" 
                                 onclick="location.href='${contextPath}/profile.me';">
-		                    <a href="" style="background-color: #35C5F0; color: white; border-radius: 5px;">글쓰기</a>
+		                    <a href="${contextPath}/enrollForm.co" style="background-color: #35C5F0; color: white; border-radius: 5px;">글쓰기</a>
 		                </div>
                 	</c:otherwise>
                 </c:choose>
