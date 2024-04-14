@@ -41,8 +41,8 @@ public class MembersLoginController extends HttpServlet {
 		Members loginUser = new MembersServiceImpl().loginMembers(m);
 		
 		if(loginUser == null) {
-			request.getSession().setAttribute("AlertMsg", "로그인에 실패하였습니다.");
-			response.sendRedirect(request.getContextPath());
+			request.getSession().setAttribute("alertMsg", "로그인에 실패하였습니다.");
+			response.sendRedirect(request.getContextPath() + "/loginForm.me");
 		} else {
 			request.getSession().setAttribute("loginUser", loginUser);
 			response.sendRedirect(request.getContextPath());

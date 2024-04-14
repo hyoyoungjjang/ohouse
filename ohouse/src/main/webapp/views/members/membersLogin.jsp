@@ -12,6 +12,12 @@
 </head>
 <body>
     <div class="wrapper">
+    	<c:if test="${not empty alertMsg}">
+            <script>
+                alert("${alertMsg}");
+            </script>
+            <c:remove var="alertMsg" />
+        </c:if>
         <main>
             <div class="container">
                 <div class="content">
