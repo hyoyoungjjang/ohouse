@@ -17,9 +17,9 @@
     </header>
     <div align="center">
         <div id="mySetting-content" >
-            <form action="">
+            <form action="${contextPath}/update.me" method="POST">
                 <div id="mySetting-img-area">
-                    <img src="${pageContext.request.contextPath}/resources/img/member/myPage/user.png" alt="" onclick="profileChange()" id="profile-img-setting"><br>
+                    <img src="${contextPath}/resources/img/member/myPage/user.png" alt="" onclick="profileChange()" id="profile-img-setting"><br>
                     <h3>이미지 삭제</h3>
                     <input type="file" name="profile" id="profile-hidden" onchange="loadImg(this)" class="mySetting-hidden">
                 </div>
@@ -49,7 +49,7 @@
                     </div>
                     <div>
                         <h3>생년월일</h3>
-                        <input type="date" name="birth" class="mySetting-input" value="${loginUser.membersBirth}">
+                        <input type="date" name="birth" class="mySetting-input">
                         <div class="mySetting-msg"></div>
                     </div>
                     <div>
@@ -62,6 +62,19 @@
                             <input type="radio" name="gender" id="none" value="선택하지 않음">
                             <label for="none">선택하지 않음</label>
                         </div>
+                        <script>
+                            $(function() {
+                                const gender = $("input[name=gender]");
+                                const userGender = "${loginUser.gender}";
+                                if(userGender === "M") {
+                                    $("#male").prop("checked", true);
+                                } else if(userGender === "F") {
+                                    $("#female").prop("checked", true);
+                                } else {
+                                    $("#none").prop("checked", true);
+                                }
+                            });
+                        </script>
                     </div>
                     <hr>
                     <h3 style="cursor: pointer;" data-toggle="modal" data-target="#delete-modal">탈퇴하기</h3>
@@ -139,12 +152,12 @@
     
                 <!-- Modal body -->
                 <div class="modal-body" align="center">
-                    <form action="${pageContext.request.contextPath}/delete.me" method="POST">
+                    <form action="${contextPath}/delete.me" method="POST">
                         <b>탈퇴 후 복구가 불가능합니다.<br>
                             정말로 탈퇴하시겠습니까?</b>
                         <br><br>
-                        <input type="hidden" name="userId" value="">
-                        비밀번호 : <input type="password" name="userPwd" required>
+                        <input type="hidden" name="checkId" value="${loginUser.membersId}">
+                        비밀번호 : <input type="password" name="checkPwd" required>
                         <br><br>
                         <button type="submit" class="btn btn-sm btn-danger">탈퇴하기</button>
                     </form>
