@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-<properties>
-	<!-- BOARD 객체 CRUD -->
+  <mapper namespace="communityMapper">
+  <!-- 
+  <properties>
 	<entry key="insertBoard">
 	INSERT
 	INTO BOARD
@@ -153,9 +153,7 @@
 				A
 		 	)
 		 WHERE RNUM BETWEEN ? AND ? 
-	</entry>
-	 -->
-	
+	</entry>	
 	<entry key="updateBoard">
 	UPDATE BOARD
 	SET 
@@ -194,7 +192,7 @@
 	WHERE BOARD_ID = ?
 	  AND BOARD_STATUS = 'Y'
 	</entry>
-	<!-- MEDIA 객체 CRUD -->
+	<!-- MEDIA 객체 CRUD
 	<entry key="insertCommunityMedia">
 	INSERT
 	INTO MEDIA
@@ -218,7 +216,7 @@
 		?
 	)
 	</entry>
-	<!--updateBoard 시 사용하는 mapper-->
+	<!--updateBoard 시 사용하는 mapper-
 	<entry key="insertCommunityNewMedia">
 	INSERT
 	INTO MEDIA
@@ -274,7 +272,7 @@
 	WHERE BOARD_ID = ?
 	  AND MEDIA_STATUS = 'Y'
 	</entry>
-	<!-- MEDIA 수정 시 BOARD_MODIFY_TIME 수정되도록 할 것 -->
+	<!-- MEDIA 수정 시 BOARD_MODIFY_TIME 수정되도록 할 것
 	<entry key="updateCommunityMedia">
 	UPDATE MEDIA
 	SET ORIGIN_NAME = ?,
@@ -283,7 +281,7 @@
 	WHERE MEDIA_ID = ?
 	  AND BOARD_ID = ?
 	</entry>
-	<!-- SCRAP 객체 -->
+	<!-- SCRAP 객체
 	<entry key="insertBoardScrap">
 	INSERT
 	INTO SCRAP
@@ -330,12 +328,12 @@
 	WHERE MEDIA_ID = ?
 	AND SCRAP_STATUS = 'Y'
 	</entry>
-	<!-- ========================================= 태그 매퍼 ============================================= -->
+	<!-- ========================================= 태그 매퍼 ============================================= 
 	
 	
 	
-	<!-- ========================================= 댓글 매퍼 ============================================= -->
-	<entry key="selectReplyList">
+	<!-- ========================================= 댓글 매퍼 ============================================= 
+	<entry key="selectReplyList"
 		SELECT
 			REPLY_ID,
 			REPLY_TEXT,
@@ -352,3 +350,6 @@
 	<entry key="deleteReply">
 	</entry>
 </properties>
+   -->
+  </mapper>
+  

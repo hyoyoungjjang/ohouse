@@ -39,10 +39,7 @@
   		<result column="SCRAP_CREATE_TIME" property="scrapCreateTime"/>
   		<result column="SCRAP_STATUS" property="scrapStatus"/>
   	</resultMap>
-  </mapper>
-
-  
-  <insert id="insertProduct" >
+  	  <insert id="insertProduct">
   INSERT
   INTO PRODUCT
   (
@@ -177,7 +174,7 @@
 	)
 	</insert>
 	
-	<select id="selectProductThumbnail" resultMap="mediaResultSet">
+	<select id="selectProductThumbnail" resultMap="mediaResultSet" parameterType="_int">
 	SELECT
 		MEDIA_ID,
 		FILE_PATH
@@ -186,7 +183,7 @@
 	 AND FILE_LEVEL = 1
 	 AND MEDIA_STATUS = 'Y'
 	</select>
-	<select id="selectProductMedia" resultMap="mediaResultSet">
+	<select id="selectProductMedia" resultMap="mediaResultSet" parameterType="_int">
 	SELECT
 		MEDIA_ID,
 		FILE_PATH
@@ -202,7 +199,7 @@
 		FILE_PATH = #{filePath}
 	WHERE MEDIA_ID = #{mediaProductId}
 	</update>
-	<update id="deleteProductMedia" parameterType="Media">
+	<update id="deleteProductMedia" parameterType="Media" parameterType="_int">
 	UPDATE MEDIA
 	SET MEDIA_STATUS = 'N'
 	WHERE MEDIA_ID = #{mediaId}
@@ -234,4 +231,6 @@
 	<!--  ========================== QNA 매퍼 ================================= -->
 	
 	<!-- =================================== 리뷰 매퍼 ========================== -->
-</properties>
+  </mapper>
+
+  
