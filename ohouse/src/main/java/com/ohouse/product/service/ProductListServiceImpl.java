@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import org.apache.ibatis.session.SqlSession;
 
 import com.ohouse.common.template.PageInfo;
-import com.ohouse.product.model.dao.ProductDao;
+import com.ohouse.product.model.dao.ProductListDao;
 import com.ohouse.product.model.vo.Product;
 
-public class ProductServiceImpl implements ProductService{
+public class ProductListServiceImpl implements ProductListService{
 	
-	private ProductDao pDao = new ProductDao();
+	private ProductListDao pDao = new ProductListDao();
 	
 	@Override
 	public int selectListCount() {

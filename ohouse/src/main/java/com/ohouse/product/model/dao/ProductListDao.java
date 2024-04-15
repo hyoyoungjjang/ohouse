@@ -8,7 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.ohouse.common.template.PageInfo;
 import com.ohouse.product.model.vo.Product;
 
-public class ProductDao {
+public class ProductListDao {
 	
 	public int selectListCount(SqlSession sqlSession) {
 			
