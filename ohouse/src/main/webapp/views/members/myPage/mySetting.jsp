@@ -17,16 +17,16 @@
     </header>
     <div align="center">
         <div id="mySetting-content" >
-            <form action="">
+            <form action="${contextPath}/update.me" method="POST">
                 <div id="mySetting-img-area">
-                    <img src="${pageContext.request.contextPath}/resources/img/member/myPage/user.png" alt="" onclick="profileChange()" id="profile-img-setting"><br>
+                    <img src="${contextPath}/resources/img/member/myPage/user.png" alt="" onclick="profileChange()" id="profile-img-setting"><br>
                     <h3>이미지 삭제</h3>
                     <input type="file" name="profile" id="profile-hidden" onchange="loadImg(this)" class="mySetting-hidden">
                 </div>
                 <div align="left" id="mySetting-content-area">
                     <div>
                         <h3>닉네임</h3>
-                        <input type="text" name="name" class="mySetting-input">
+                        <input type="text" name="name" class="mySetting-input" value="${loginUser.membersName}">
                         <div class="mySetting-msg">
                             <p class="mySetting-hidden">이미 존재하는 닉네임입니다.</p>
                             <p class="mySetting-hidden">닉네임은 4글자 이상입니다.</p>
@@ -34,7 +34,7 @@
                     </div>
                     <div>
                         <h3>이메일</h3>
-                        <input type="email" name="email" class="mySetting-input">
+                        <input type="email" name="email" class="mySetting-input" value="${loginUser.membersEmail}">
                         <div class="mySetting-msg"></div>
                     </div>
                     <div>
@@ -44,7 +44,7 @@
                     </div>
                     <div>
                         <h3>휴대폰 번호</h3>
-                        <input type="text" name="phone" class="mySetting-input">
+                        <input type="text" name="phone" class="mySetting-input" value="${loginUser.membersPhone}">
                         <div class="mySetting-msg"></div>
                     </div>
                     <div>
@@ -62,6 +62,19 @@
                             <input type="radio" name="gender" id="none" value="선택하지 않음">
                             <label for="none">선택하지 않음</label>
                         </div>
+                        <script>
+                            $(function() {
+                                const gender = $("input[name=gender]");
+                                const userGender = "${loginUser.gender}";
+                                if(userGender === "M") {
+                                    $("#male").prop("checked", true);
+                                } else if(userGender === "F") {
+                                    $("#female").prop("checked", true);
+                                } else {
+                                    $("#none").prop("checked", true);
+                                }
+                            });
+                        </script>
                     </div>
                     <hr>
                     <h3 style="cursor: pointer;" data-toggle="modal" data-target="#delete-modal">탈퇴하기</h3>
@@ -139,12 +152,12 @@
     
                 <!-- Modal body -->
                 <div class="modal-body" align="center">
-                    <form action="${pageContext.request.contextPath}/delete.me" method="POST">
+                    <form action="${contextPath}/delete.me" method="POST">
                         <b>탈퇴 후 복구가 불가능합니다.<br>
                             정말로 탈퇴하시겠습니까?</b>
                         <br><br>
-                        <input type="hidden" name="userId" value="">
-                        비밀번호 : <input type="password" name="userPwd" required>
+                        <input type="hidden" name="checkId" value="${loginUser.membersId}">
+                        비밀번호 : <input type="password" name="checkPwd" required>
                         <br><br>
                         <button type="submit" class="btn btn-sm btn-danger">탈퇴하기</button>
                     </form>
