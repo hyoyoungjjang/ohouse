@@ -14,10 +14,10 @@
     <div align="center">
         <div id="pc-content">
             <div class="pc-sale pc-header" id="pc-deal-header">
-                <span class="pc-category" align="center">베스트</span>
+                <span class="pc-category" align="center">오늘의딜</span>
             </div>
             <div class="pc-sale pc-header" id="pc-deal-header">
-                <h4 class="pc-gray">전체 <span class="pc-gray">${pList.size()}</span>개</h4>
+                <h4 class="pc-gray">전체 <span class="pc-gray">100</span>개</h4>
             </div>
             <div class="pc-sale pc-content" id="pc-deal-contents">
                 <div class="pc-sale-content">
