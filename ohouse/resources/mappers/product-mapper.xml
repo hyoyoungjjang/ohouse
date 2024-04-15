@@ -67,7 +67,7 @@
 		#{productCategory},
 	)
   </insert>
-  <Select id="selectProduct" resultMap="productResultSet">
+  <select id="selectProduct" resultMap="productResultSet">
   SELECT
 		PRODUCT_ID,
 		PRODUCT_NAME,
@@ -85,7 +85,7 @@
 	FROM PRODUCT
 	WHERE PRODUCT_ID = #{productId}
 		AND PRODUCT_STATUS = 'Y'
-  </Select>
+  </select>
   <select id="selectProductList" resultMap="productResultSet">
    SELECT
        P.PRODUCT_ID,
@@ -199,7 +199,7 @@
 		FILE_PATH = #{filePath}
 	WHERE MEDIA_ID = #{mediaProductId}
 	</update>
-	<update id="deleteProductMedia" parameterType="Media" parameterType="_int">
+	<update id="deleteProductMedia" parameterType="_int">
 	UPDATE MEDIA
 	SET MEDIA_STATUS = 'N'
 	WHERE MEDIA_ID = #{mediaId}
