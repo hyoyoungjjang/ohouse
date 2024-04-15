@@ -34,8 +34,8 @@ public class ProductListController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int currentPage = Integer.parseInt((request.getParameter("cpage"))) ;
 		int listCount = new ProductListServiceImpl().selectListCount();
-		
-		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 9);
+		System.out.println("안녕하세요");
+		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 12);
 		ArrayList<Product> pList =  new ProductListServiceImpl().selectListProduct(pi);
 		
 		request.setAttribute("pList", pList);

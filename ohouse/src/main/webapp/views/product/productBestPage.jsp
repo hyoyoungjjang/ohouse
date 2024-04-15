@@ -20,32 +20,36 @@
                 <h4 class="pc-gray">전체 <span class="pc-gray">${pList.size()}</span>개</h4>
             </div>
             <div class="pc-sale pc-content" id="pc-deal-contents">
-                <div class="pc-sale-content">
-                    <div class="pc-sale-img">
-                        <img src="${contextPath}/resources/img/product/productMain01.png">
-                        <button type="button">
-                            <img src="${contextPath}/resources/img/product/pm-bookmark.png" width="40px">
-                        </button>
+            	
+                <c:forEach var="p" items="${pList}">
+                    <div class="pc-sale-content">
+                        <div class="pc-sale-img">
+                            <img src="${contextPath}/${p.productThumnail}">
+                            <button type="button">
+                                <img src="${contextPath}/resources/img/product/pm-bookmark.png" width="40px">
+                            </button>
+                        </div>
+                        <div class="pc-sale-text">
+                            <div class="pc-company">
+                                ${p.companyName}
+                            </div>
+                            <div class="pc-title">
+                                ${p.productName}
+                            </div>
+                            <div class="pc-price">
+                                <span class="pc-color">${p.sale}</span>
+                                <span>${p.productPrice}</span>
+                            </div>
+                            <div class="pc-review">
+                                <img src="${pageContext.request.contextPath}/resources/img/product/star.png" width="15px">
+                                <span class="pc-score">${p.ratingAvg}</span>
+                                <span class="pc-gray">리뷰</span>
+                                <span class="pc-gray">${p.reviewCount}</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="pc-sale-text">
-                        <div class="pc-company">
-                            LG전자
-                        </div>
-                        <div class="pc-title">
-                            [최종가 146만/한정 100대] LG 디오스 노크온 오브제컬렉션 T873MEE312
-                        </div>
-                        <div class="pc-price">
-                            <span class="pc-color">36%</span>
-                            <span>1,769,000</span>
-                        </div>
-                        <div class="pc-review">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/star.png" width="15px">
-                            <span class="pc-score">4.9</span>
-                            <span class="pc-gray">리뷰</span>
-                            <span class="pc-gray">1,091</span>
-                        </div>
-                    </div>
-                </div>
+                </c:forEach>
+                
                 <div class="pc-sale-content">
                     <div class="pc-sale-img">
                         <img src="${pageContext.request.contextPath}/resources/img/product/productMain02.png">
