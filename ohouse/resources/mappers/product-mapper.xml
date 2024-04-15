@@ -67,7 +67,7 @@
 		#{productCategory},
 	)
   </insert>
-  <select id="selectProduct" resultMap="productResultSet">
+  <select id="selectDetailProduct" resultMap="productResultSet">
   SELECT
 		PRODUCT_ID,
 		PRODUCT_NAME,
