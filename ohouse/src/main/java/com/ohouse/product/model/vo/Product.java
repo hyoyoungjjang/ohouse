@@ -1,48 +1,65 @@
 package com.ohouse.product.model.vo;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 public class Product {
 	private int productId;
 	private String productName;
-	private String productPrice;
-	private String productSales;
-	private String stock;
-	private String deliveryDate;
+	private int productPrice;
+	private int productSales;
+	private int stock;
+	private int deliveryDate;
 	private int sale;
-	private String productThumnail; 
 	private String productContent;
 	private Date productCreateTime;
 	private Date productModifyTime;
-	private String companyName;
-	private int productDeliveryPrice;
+	private String membersId;
+	private int productDeleveryPrice;
 	private int productCategory;
 	private String productStatus;
+	private String companyName;
+	private int reviewCount;
+	private int ratingAvg;
+	private String productThumbnail;
 	
 	public Product() {
 		super();
 	}
+	
+	
 
-	public Product(int productId, String productName, String productPrice, String productSales, String amount,
-			String arrivalDate, int sale, String productThumnail, String productImg, String productContent,
-			Date productCreateTime, Date productModifyTime, int memberNo, int productDeliveryPrice,
-			int productCategory) {
+	public Product(int productId, String productName, int productPrice, int productSales, int stock, int deliveryDate,
+			int sale, String productContent, Date productCreateTime, Date productModifyTime, String membersId,
+			int productDeleveryPrice, int productCategory, String productStatus, String companyName, int reviewCount,
+			int ratingAvg, String productThumbnail) {
 		super();
 		this.productId = productId;
 		this.productName = productName;
 		this.productPrice = productPrice;
 		this.productSales = productSales;
-		this.amount = amount;
-		this.arrivalDate = arrivalDate;
+		this.stock = stock;
+		this.deliveryDate = deliveryDate;
 		this.sale = sale;
-		this.productThumnail = productThumnail;
-		this.productImg = productImg;
 		this.productContent = productContent;
 		this.productCreateTime = productCreateTime;
 		this.productModifyTime = productModifyTime;
-		this.memberNo = memberNo;
-		this.productDeliveryPrice = productDeliveryPrice;
+		this.membersId = membersId;
+		this.productDeleveryPrice = productDeleveryPrice;
 		this.productCategory = productCategory;
+		this.productStatus = productStatus;
+		this.companyName = companyName;
+		this.reviewCount = reviewCount;
+		this.ratingAvg = ratingAvg;
+		this.productThumbnail = productThumbnail;
+	}
+
+	public String getProductThumbnail() {
+		return productThumbnail;
+	}
+
+	public void setProductThumbnail(String productThumbnail) {
+		this.productThumbnail = productThumbnail;
 	}
 
 	public int getProductId() {
@@ -61,36 +78,36 @@ public class Product {
 		this.productName = productName;
 	}
 
-	public String getProductPrice() {
+	public int getProductPrice() {
 		return productPrice;
 	}
 
-	public void setProductPrice(String productPrice) {
+	public void setProductPrice(int productPrice) {
 		this.productPrice = productPrice;
 	}
 
-	public String getProductSales() {
+	public int getProductSales() {
 		return productSales;
 	}
 
-	public void setProductSales(String productSales) {
+	public void setProductSales(int productSales) {
 		this.productSales = productSales;
 	}
 
-	public String getAmount() {
-		return amount;
+	public int getStock() {
+		return stock;
 	}
 
-	public void setAmount(String amount) {
-		this.amount = amount;
+	public void setStock(int stock) {
+		this.stock = stock;
 	}
 
-	public String getArrivalDate() {
-		return arrivalDate;
+	public int getDeliveryDate() {
+		return deliveryDate;
 	}
 
-	public void setArrivalDate(String arrivalDate) {
-		this.arrivalDate = arrivalDate;
+	public void setDeliveryDate(int deliveryDate) {
+		this.deliveryDate = deliveryDate;
 	}
 
 	public int getSale() {
@@ -99,22 +116,6 @@ public class Product {
 
 	public void setSale(int sale) {
 		this.sale = sale;
-	}
-
-	public String getProductThumnail() {
-		return productThumnail;
-	}
-
-	public void setProductThumnail(String productThumnail) {
-		this.productThumnail = productThumnail;
-	}
-
-	public String getProductImg() {
-		return productImg;
-	}
-
-	public void setProductImg(String productImg) {
-		this.productImg = productImg;
 	}
 
 	public String getProductContent() {
@@ -141,20 +142,20 @@ public class Product {
 		this.productModifyTime = productModifyTime;
 	}
 
-	public int getMemberNo() {
-		return memberNo;
+	public String getMembersId() {
+		return membersId;
 	}
 
-	public void setMemberNo(int memberNo) {
-		this.memberNo = memberNo;
+	public void setMembersId(String membersId) {
+		this.membersId = membersId;
 	}
 
-	public int getProductDeliveryPrice() {
-		return productDeliveryPrice;
+	public int getProductDeleveryPrice() {
+		return productDeleveryPrice;
 	}
 
-	public void setProductDeliveryPrice(int productDeliveryPrice) {
-		this.productDeliveryPrice = productDeliveryPrice;
+	public void setProductDeleveryPrice(int productDeleveryPrice) {
+		this.productDeleveryPrice = productDeleveryPrice;
 	}
 
 	public int getProductCategory() {
@@ -165,18 +166,49 @@ public class Product {
 		this.productCategory = productCategory;
 	}
 
+	public String getProductStatus() {
+		return productStatus;
+	}
+
+	public void setProductStatus(String productStatus) {
+		this.productStatus = productStatus;
+	}
+
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+
+	public int getReviewCount() {
+		return reviewCount;
+	}
+
+	public void setReviewCount(int reviewCount) {
+		this.reviewCount = reviewCount;
+	}
+
+	public int getRatingAvg() {
+		return ratingAvg;
+	}
+
+	public void setRatingAvg(int ratingAvg) {
+		this.ratingAvg = ratingAvg;
+	}
+
 	@Override
 	public String toString() {
 		return "Product [productId=" + productId + ", productName=" + productName + ", productPrice=" + productPrice
-				+ ", productSales=" + productSales + ", amount=" + amount + ", arrivalDate=" + arrivalDate + ", sale="
-				+ sale + ", productThumnail=" + productThumnail + ", productImg=" + productImg + ", productContent="
-				+ productContent + ", productCreateTime=" + productCreateTime + ", productModifyTime="
-				+ productModifyTime + ", memberNo=" + memberNo + ", productDeliveryPrice=" + productDeliveryPrice
-				+ ", productCategory=" + productCategory + "]";
+				+ ", productSales=" + productSales + ", stock=" + stock + ", deliveryDate=" + deliveryDate + ", sale="
+				+ sale + ", productContent=" + productContent + ", productCreateTime=" + productCreateTime
+				+ ", productModifyTime=" + productModifyTime + ", membersId=" + membersId + ", productDeleveryPrice="
+				+ productDeleveryPrice + ", productCategory=" + productCategory + ", productStatus=" + productStatus
+				+ ", companyName=" + companyName + ", reviewCount=" + reviewCount + ", ratingAvg=" + ratingAvg + "]";
 	}
-	
-	
 }
+
 
 
 

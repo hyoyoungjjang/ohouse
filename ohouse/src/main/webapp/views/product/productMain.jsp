@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+    String contextPath = request.getContextPath();
+	
+%>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -126,7 +130,7 @@
             </div>
             <div class="pm-sale pm-header" id="pm-best-header">
                 <span class="pm-category">인기 상품</span>
-                <span class="pm-add">더보기</span>
+                <span class="pm-add" onclick="location.href='${contextPath}/list.pr?cpage=1'">더보기</span>
             </div>
             <div class="pm-sale pm-content" id="pm-deal-contents">
                 <div class="pm-sale-content">
