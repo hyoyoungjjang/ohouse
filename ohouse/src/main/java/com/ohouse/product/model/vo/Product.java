@@ -7,17 +7,17 @@ public class Product {
 	private String productName;
 	private String productPrice;
 	private String productSales;
-	private String amount;
-	private String arrivalDate;
+	private String stock;
+	private String deliveryDate;
 	private int sale;
 	private String productThumnail; 
-	private String productImg;
 	private String productContent;
 	private Date productCreateTime;
 	private Date productModifyTime;
-	private int memberNo;
+	private String companyName;
 	private int productDeliveryPrice;
 	private int productCategory;
+	private String productStatus;
 	
 	public Product() {
 		super();
