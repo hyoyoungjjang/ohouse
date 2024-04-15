@@ -122,7 +122,6 @@
   <update id="updateMembers" parameterType="Members">
  	UPDATE MEMBERS
 	SET MEMBERS_NAME = #{membersName}
-		, MEMBERS_PWD = #{membersPwd}
 		, MEMBERS_PHONE = #{membersPhone}
 		, MEMBERS_EMAIL = #{membersEmail}
 		, MEMBERS_BIRTH = #{membersBirth}
@@ -131,7 +130,7 @@
   </update>
   <update id="updatePwdMembers" parameterType="Members">
   	UPDATE MEMBERS
-  	SET MEMBERS_PWD = #{memberPwd},
+  	SET MEMBERS_PWD = #{membersNewPwd},
 		MEMBERS_MODIFY_TIME = SYSDATE
 	WHERE MEMBERS_ID = #{membersId}
 	 AND MEMBERS_PWD = #{membersPwd}
