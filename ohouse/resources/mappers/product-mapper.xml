@@ -92,7 +92,7 @@
        PRODUCT_NAME,
        PRODUCT_PRICE,
        SALE,
-       FILE_PATH || CHANGE_NAME AS "TITLE_IMG",
+       FILE_PATH || CHANGE_NAME AS "PRODUCT_THUMBNAIL",
        COMPANY_NAME,
        (
            SELECT COUNT(*)
@@ -123,7 +123,7 @@
    	<when test="condition == 'saleDesc'">
    		SALE DESC
    	</when>
-   	<otherwise >
+   	<otherwise>
    		PRODUCT_SALES DESC
    	</otherwise>
    </choose>
