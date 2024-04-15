@@ -11,10 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>회원가입</title>
   <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <link rel="stylesheet" href="${contextPath}/resources/css/main.css">
   <link rel="stylesheet" href="${contextPath}/resources/css/member/memberRegister.css">
 </head>
@@ -51,7 +48,7 @@
             </div>
             <!--아이디 인증을 위한 버튼-->
             <div id="id-confirm-button" class="margin30">
-              <button type="submit" onclick="">아이디 중복체크</button>
+              <button type="submit" onclick="idCheck();" disabled>아이디 중복체크</button>
             </div>
             <!-- 이메일 id + 주소 위한 div-->
             <div id="enroll-email" class="margin30">
@@ -115,10 +112,10 @@
             </div>
             <!-- 이메일, 비밀번호, 닉네임을 보내기 위한 버튼을 담은 div-->
             <div id="enroll-submit-button">
-              <button type="submit" id="enroll-submit">회원가입하기</button>
+              <button type="submit" id="enroll-submit" disabled>회원가입하기</button>
             </div>
           </form>
-          <p>이미 아이디가 있으신가요? <a href="/">로그인</a></p>
+          <p>이미 아이디가 있으신가요? <a href="${contextPath}/loginForm.me">로그인</a></p>
         </div>
       </main>
     </section>
@@ -185,6 +182,7 @@
 
     function validateId() {
       const idRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+      const idCheckBtn = document.querySelector("#id-confirm-button>button");
       if(inputId.value.trim() === ""){
         warnIdEmpty.classList.remove("hide");
         warnIdFailure.classList.add("hide");
@@ -194,6 +192,7 @@
       } else {
         warnIdEmpty.classList.add("hide");
         warnIdFailure.classList.add("hide");
+        idCheckBtn.removeAttribute("disabled");
       }
     }
 
@@ -292,6 +291,32 @@
           warnNameMax.classList.add("hide");
         }
       }
+    }
+
+    function idCheck() {
+      $.ajax({
+        type: "GET",
+        url: "idCheck.me",
+        data: {
+          checkId: inputId.value
+        },
+        success: function (result) {
+          if (result === "Y") {
+            if (confirm("사용가능한 아이디입니다. 사용하시겠습니까?")) {
+              inputId.setAttribute("readonly", true);
+              document.querySelector("#enroll-submit").removeAttribute("disabled");
+            } else {
+              inputId.focus();
+            }
+          } else {
+            alert("사용불가능한 아이디입니다.");
+            inputId.focus();
+          }
+        },
+        error: function (err) {
+          console.log("실패 : ", err)
+        }
+      });
     }
   </script>
 </body>

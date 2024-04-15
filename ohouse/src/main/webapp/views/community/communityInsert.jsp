@@ -246,7 +246,7 @@
                     </div>
                 </div>
             </div>
-            <div id="cover-img-area" onclick="coverImgChange();">
+            <div class="img-area" id="cover-img" onclick="imgChange('cover-img-hidden');">
                 <!--사진이 없는 초기 화면-->
                 <h5>커버사진 추가하기 버튼으로</h5>
                 <h5>커버사진을 업로드해주세요.</h5>
@@ -255,40 +255,86 @@
                 </button>
             </div>
             <input type="file" value="커버사진 추가하기" onchange="coverImg(this);" id="cover-img-hidden" class="hidden">
-            <script>
-                function coverImgChange() {
-                    const imgInput = document.getElementById("cover-img-hidden");
-                    imgInput.click();
-                }
-
-                function coverImg(inputFile) {
-                    if (inputFile.files.length == 1) {
-                        const reader = new FileReader();
-                        reader.readAsDataURL(inputFile.files[0]);
-                        reader.onload = function (ev) {
-                            $("#cover-img-area").html(`<img src=` + ev.target.result + `>`);
-                            $("#cover-img-area > img").css("width", "100%")
-                        }
-                    } else {
-                        $("#cover-img-area").html(
-                            '<h5>커버사진 추가하기 버튼으로</h5>' + 
-                            '<h5> 커버사진을 업로드해주세요.</h5>' +
-                            '<button type="button" class="btn btn-secondary btn-lg">커버사진 추가하기</button>'
-                        );
-                    }
-                }
-            </script>
+            
             <div id="content-title">
                 <input id="content-title-input" type="text" placeholder="제목을 입력하세요.">
             </div>
-            <div id="">
-                <!--게시글 작성 영역-->
+            <div id="content-area">
+                <!--대표 사진-->
+                <div class="img-area" id="first-img" onclick="imgChange('first-img-hidden');">
+                    <!--사진이 없는 초기 화면-->
+                    <h5>대표사진 추가하기 버튼으로</h5>
+                    <h5>대표사진을 업로드해주세요.</h5>
+                    <button type="button" class="btn btn-secondary btn-lg">
+                        대표사진 추가하기
+                    </button>
+                </div>
+                <input type="file" value="대표사진 추가하기" onchange="firstImg(this);" id="first-img-hidden" class="hidden">
+                <!--대표 글-->
+                <textarea name="intro" id="textarea" align="left" placeholder="내용을 입력하세요."></textarea>
+                <!--3초 컷! 집들이 미리보기-->
+                <!--사진1-->
+                <!--사진2-->
+                <!--본문 내용-->
             </div>
         </div>
     </form>
+    <script>
+        function imgChange(id) {
+            const imgInput = document.getElementById(id);
+            imgInput.click();
+        }
+
+        function coverImg(inputFile) {
+            if (inputFile.files.length == 1) {
+                const reader = new FileReader();
+                reader.readAsDataURL(inputFile.files[0]);
+                reader.onload = function (ev) {
+                    $("#cover-img").html(`<img src=` + ev.target.result + `>`);
+                    $("#cover-img>img").css("width", "100%")
+                }
+            } else {
+                $("#cover-img").html(
+                    '<h5>커버사진 추가하기 버튼으로</h5>' +
+                    '<h5>커버사진을 업로드해주세요.</h5>' +
+                    '<button type="button" class="btn btn-secondary btn-lg">커버사진 추가하기</button>'
+                );
+            }
+        }
+
+        function firstImg(inputFile) {
+            if (inputFile.files.length == 1) {
+                const reader = new FileReader();
+                reader.readAsDataURL(inputFile.files[0]);
+                reader.onload = function (ev) {
+                    $("#first-img").html(`<img src=` + ev.target.result + `>`);
+                    $("#fisrt-img>img").css("width", "100%")
+                }
+            } else {
+                $("#first-img").html(
+                    '<h5>대표사진 추가하기 버튼으로</h5>' +
+                    '<h5>대표사진을 업로드해주세요.</h5>' +
+                    '<button type="button" class="btn btn-secondary btn-lg">대표사진 추가하기</button>'
+                );
+            }
+        }
+        
+        function tagImg(inputFile) {
+            
+        }
+        
+        const DEFAULT_HEIGHT = 30; // textarea 기본 height
+        const $textarea = document.querySelector('#textarea');
+
+        $textarea.oninput = (event) => {
+            const $target = event.target;
+
+            $target.style.height = 0;
+            $target.style.height = DEFAULT_HEIGHT + $target.scrollHeight + 'px';
+        };
+        </script>
     <footer>
         <%@ include file="../common/footer.jsp" %> 
     </footer>
-
 </body>
 </html>

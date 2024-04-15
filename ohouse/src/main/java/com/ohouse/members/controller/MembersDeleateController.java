@@ -7,21 +7,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.ohouse.members.model.vo.Members;
 import com.ohouse.members.service.MembersServiceImpl;
 
 /**
- * Servlet implementation class MemberLoginController
+ * Servlet implementation class MembersDeleateController
  */
-@WebServlet("/login.me")
-public class MembersLoginController extends HttpServlet {
+@WebServlet("/delete.me")
+public class MembersDeleateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
     /**
-     * Default constructor. 
+     * @see HttpServlet#HttpServlet()
      */
-    public MembersLoginController() {
+    public MembersDeleateController() {
+        super();
         // TODO Auto-generated constructor stub
     }
 
@@ -29,23 +31,23 @@ public class MembersLoginController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		
-		String membersId = request.getParameter("id");
-		String membersPwd = request.getParameter("password");
+		String membersId = request.getParameter("checkId");
+		String membersPwd = request.getParameter("checkPwd");
 		
 		Members m = new Members();
 		m.setMembersId(membersId);
 		m.setMembersPwd(membersPwd);
 		
-		Members loginUser = new MembersServiceImpl().loginMembers(m);
+		int result = new MembersServiceImpl().deleteMembers(m);
 		
-		if(loginUser == null) {
-			request.getSession().setAttribute("alertMsg", "로그인에 실패하였습니다.");
-			response.sendRedirect(request.getContextPath() + "/loginForm.me");
-		} else {
-			request.getSession().setAttribute("loginUser", loginUser);
+		HttpSession session = request.getSession();
+		if(result > 0) {
+			session.removeAttribute("loginUser");
+			session.setAttribute("alertMsg", "회원탈퇴 완료하였습니다. 이용해주셔서 감사합니다.");
 			response.sendRedirect(request.getContextPath());
+		} else {
+			session.setAttribute("alertMsg", "비밀번호가 틀립니다.");
+			response.sendRedirect(request.getContextPath() + "/updateForm.me");
 		}
 	}
 
