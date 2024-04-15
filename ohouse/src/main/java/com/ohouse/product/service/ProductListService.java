@@ -6,7 +6,7 @@ import com.ohouse.common.template.PageInfo;
 import com.ohouse.product.model.vo.Product;
 
 
-public interface ProductService {
+public interface ProductListService {
 	//productBestPage 리스트
 	public ArrayList<Product> selectListProduct(PageInfo pi);
 	//productBestPage 리스트갯수
