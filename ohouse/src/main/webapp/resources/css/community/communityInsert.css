@@ -150,7 +150,7 @@ input[type="radio"]:checked {
     margin: 0px;
     display: flex;
     align-items: center;
-    margin-right: 50px;
+    margin-right: 30px;
 }
 
 .one-story-input-area {
@@ -819,4 +819,12 @@ textarea::placeholder {
 
 textarea:focus {
     outline: none;
+}
+
+#community-house-content-3cut {
+    font-size: 26px;
+    color: rgb(53, 197, 240);
+    font-weight: bold;
+    text-align: left;
+    width: 720px;
 }
