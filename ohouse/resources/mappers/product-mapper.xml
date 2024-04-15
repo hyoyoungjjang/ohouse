@@ -31,7 +31,7 @@
   		<result column="UPLOAD_DATE" property="uploadDate"/>
   		<result column="MEDIA_STATUS" property="mediaStatus"/>
   	</resultMap>
-  	<resultMap id=scrapResultSet" type="Scrap">
+  	<resultMap id="scrapResultSet" type="Scrap">
   		<result column="SCRAP_ID" property="scrapId"/>
   		<result column="SCRAP_TYPE" property="scrapType"/>
   		<result column="PRODUCT_ID" property="scrapProductId"/>
@@ -150,7 +150,7 @@
 	WHERE PRODUCT_ID = #{productId}
   </update>
 	<!-- ========================== 상품 이미지 관련 매퍼 ========================= -->
-	<insert id="insertProductMedia">
+	<insert id="insertProductMedia" parameterType="Media">
 	INSERT
 	INTO MEDIA
 	(
@@ -190,20 +190,20 @@
 	  AND FILE_LEVEL = 2
 	  AND MEDIA_STATUS = 'Y'
 	</select>
-	<update id="updateProductMedia">
+	<update id="updateProductMedia" parameterType="Media">
 	UPDATE MEDIA
 	SET ORIGIN_NAME = #{originName},
 		CHANGE_NAME = #{changeName},
 		FILE_PATH = #{filePath}
 	WHERE MEDIA_ID = #{mediaProductId}
 	</update>
-	<update id="deleteProductMedia">
+	<update id="deleteProductMedia" parameterType="Media">
 	UPDATE MEDIA
 	SET MEDIA_STATUS = 'N'
 	WHERE MEDIA_ID = #{mediaId}
 	</update>
 	<!-- =================== 상품 스크랩 매퍼 =========================== -->
-	<insert id="insertProductScrap">
+	<insert id="insertProductScrap" parameterType="Scrap">
 	INSERT
 	INTO SCRAP
 	(
