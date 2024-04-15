@@ -10,6 +10,11 @@ import com.ohouse.product.model.vo.Product;
 
 public class ProductDao {
 	
+	public int selectListCount(SqlSession sqlSession) {
+			
+			return sqlSession.selectOne("productMapper.selectProductListCount");
+	}
+	
 	public ArrayList<Product> selectListProduct(SqlSession sqlSession, PageInfo pi){
 		
 		int offset = (pi.getCurrentPage()-1)* pi.getBoardLimit();
@@ -17,12 +22,7 @@ public class ProductDao {
 		
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		
-		return (ArrayList)sqlSession.selectList("product-mapper.selectList", null, rowBounds);
-	}
-	
-	public int selectListCount(SqlSession sqlSession) {
-		
-		return sqlSession.selectOne("product-mapper.selectListCount");
+		return (ArrayList)sqlSession.selectList("productMapper.selectList", null, rowBounds);
 	}
 
 }
