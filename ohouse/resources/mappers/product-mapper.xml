@@ -131,6 +131,11 @@
    	</otherwise>
    </choose>
   </select>
+  <select id="selectProductListCount" resultType="_int">
+  	SELECT COUNT(*)
+	 FROM PRODUCT
+	 WHERE PRODUCT_STATUS = 'Y'
+  </select>
   <update id="updateProduct">
   	UPDATE PRODUCT
 	SET	PRODUCT_NAME = #{productName},
