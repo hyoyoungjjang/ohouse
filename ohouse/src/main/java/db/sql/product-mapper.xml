@@ -33,28 +33,6 @@
 		?
 	)
 	</entry>
-	<entry key="insertProductMedia">
-	INSERT
-		INTO MEDIA
-		(
-			MEDIA_ID,
-			PRODUCT_ID,
-			MEDIA_TYPE,
-			ORIGIN_NAME,
-			CHANGE_NAME,
-			FILE_PATH,
-			FILE_LEVEL
-		)
-		VALUES
-		(
-			SEQ_MEDID.NEXTVAL,
-			SEQ_MEMID.NEXTVAL,
-			1,
-			?,
-			?,
-			?,
-		)
-	</entry>
 	
 	<entry key="selectProduct">
 	SELECT
@@ -76,24 +54,6 @@
 	FROM PRODUCT
 	WHERE PRODUCT_ID = ?
 		AND PRODUCT_STATUS = 'Y'
-	</entry>
-	<entry key="selectProductThumbnail">
-		SELECT
-			MEDIA_ID,
-			FILE_PATH
-		FROM MEDIA
-		WHERE PRODUCT_ID = ?
-		  AND FILE_LEVEL = 1
-		  AND MEDIA_STATUS = 'Y'
-	</entry>
-	<entry key="selectProductMedia">
-		SELECT
-			MEDIA_ID,
-			FILE_PATH
-		FROM MEDIA
-		WHERE PRODUCT_ID = ?
-		  AND FILE_LEVEL = 2
-		  AND MEDIA_STATUS = 'Y'
 	</entry>
 	<!-- 정렬 디폴트 인기순(누적 판매량 순) -->
 	<entry key="selectProductList">
@@ -234,6 +194,52 @@
 		PRODUCT_CATEGORY = ?
 	WHERE PRODUCT_ID = ?
 	</entry>
+	<entry key="deleteProduct">
+	UPDATE PRODUCT
+	SET	PRODUCT_STATUS = 'N'
+	WHERE PRODUCT_ID = ?
+	</entry>
+	<!-- ========================== 상품 이미지 관련 매퍼 ========================= -->
+	<entry key="insertProductMedia">
+	INSERT
+		INTO MEDIA
+		(
+			MEDIA_ID,
+			PRODUCT_ID,
+			MEDIA_TYPE,
+			ORIGIN_NAME,
+			CHANGE_NAME,
+			FILE_PATH,
+			FILE_LEVEL
+		)
+		VALUES
+		(
+			SEQ_MEDID.NEXTVAL,
+			SEQ_MEMID.NEXTVAL,
+			1,
+			?,
+			?,
+			?,
+		)
+	</entry>
+	<entry key="selectProductThumbnail">
+		SELECT
+			MEDIA_ID,
+			FILE_PATH
+		FROM MEDIA
+		WHERE PRODUCT_ID = ?
+		  AND FILE_LEVEL = 1
+		  AND MEDIA_STATUS = 'Y'
+	</entry>
+	<entry key="selectProductMedia">
+		SELECT
+			MEDIA_ID,
+			FILE_PATH
+		FROM MEDIA
+		WHERE PRODUCT_ID = ?
+		  AND FILE_LEVEL = 2
+		  AND MEDIA_STATUS = 'Y'
+	</entry>
 	<entry key="updateProductMedia">
 	UPDATE MEDIA
 	SET ORIGIN_NAME = ?,
@@ -241,14 +247,36 @@
 		FILE_PATH = ?
 	WHERE MEDIA_ID = ?
 	</entry>
-	<entry key="deleteProduct">
-	UPDATE PRODUCT
-	SET	PRODUCT_STATUS = 'N'
-	WHERE PRODUCT_ID = ?
-	</entry>
 	<entry key="deleteProductMedia">
 	UPDATE MEDIA
 	SET MEDIA_STATUS = 'N'
 	WHERE MEDIA_ID = ?
 	</entry>
+	<!-- =================== 상품 스크랩 매퍼 =========================== -->
+	<entry key="insertProductScrap">
+	INSERT
+	INTO SCRAP
+	(
+		SCRAP_ID,
+		SCRAP_TYPE,
+		MEMBERS_NO,
+		PRODUCT_ID,
+	)
+	VALUES
+	(
+		SEQ_SCRID.NEXTVAL,
+		1,
+		?,
+		?
+	)
+	</entry>
+	<!-- =========================== 상품 옵션 매퍼 ================================ -->
+	
+	<!-- ========================== 주문 매퍼 ============================ -->
+	
+	<!--  ============================ 장바구니 매퍼 ============================== -->
+	
+	<!--  ========================== QNA 매퍼 ================================= -->
+	
+	<!-- =================================== 리뷰 매퍼 ========================== -->
 </properties>
