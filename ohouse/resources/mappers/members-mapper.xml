@@ -1,5 +1,32 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="membersMapper">
+  	<resultMap id="membersResultSet" type="Members">
+  		<result column="MEMBERS_NO" property="membersNo" />
+  		<result column="MEMBERS_ID" property="membersId" />
+  		<result column="MEMBERS_PWD" property="membersPwd" />
+  		<result column="MEMBERS_NAME" property="membersName" />
+  		<result column="MEMBERS_BIRTH" property="membersBirth" />
+  		<result column="MEMBERS_PHONE" property="membersPhone" />
+  		<result column="MEMBERS_EMAIL" property="membersEmail" />
+  		<result column="GENDER" property="gender" />
+  		<result column="MEMBERS_TYPE" property="membersType" />
+  		<result column="COMPANY_NAME" property="companyName" />
+  		<result column="REPRESENTATATIVE" property="representative" />
+  		<result column="COMPANY_PLACE" property="companyPlace" />
+  		<result column="COMPANY_PHONE" property="companyPhone" />
+  		<result column="COMPANY_EMAIL" property="companyEmail" />
+  		<result column="REG_NUM" property="regNum" />
+  		<result column="MEMBERS_ENROLL_TIME" property="membersEnrollTime" />
+  		<result column="MEMBERS_MODIFY_TIME" property="membersModifyTime" />
+  		<result column="MEMBERS_STATUS" property="membersStatus" />
+  	</resultMap>
+  </mapper>
+  
+  
 <properties>
 	<entry key="loginMembers">
 		SELECT
