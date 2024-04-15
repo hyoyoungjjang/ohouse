@@ -7,7 +7,9 @@ import com.ohouse.product.model.vo.Product;
 
 
 public interface ProductService {
+	//productBestPage 리스트
 	public ArrayList<Product> selectListProduct(PageInfo pi);
+	//productBestPage 리스트갯수
 	public int selectListCount();
 	
 }
