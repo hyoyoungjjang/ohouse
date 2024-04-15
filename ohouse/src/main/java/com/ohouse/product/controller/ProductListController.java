@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.ohouse.common.template.PageInfo;
 import com.ohouse.common.template.Pagination;
 import com.ohouse.product.model.vo.Product;
-import com.ohouse.product.service.ProductServiceImpl;
+import com.ohouse.product.service.ProductListServiceImpl;
 
 /**
  * Servlet implementation class ProductListController
@@ -33,10 +33,10 @@ public class ProductListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int currentPage = Integer.parseInt((request.getParameter("cpage"))) ;
-		int listCount = new ProductServiceImpl().selectListCount();
+		int listCount = new ProductListServiceImpl().selectListCount();
 		
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 9);
-		ArrayList<Product> pList =  new ProductServiceImpl().selectListProduct(pi);
+		ArrayList<Product> pList =  new ProductListServiceImpl().selectListProduct(pi);
 		
 		request.setAttribute("pList", pList);
 		request.getRequestDispatcher("views/product/productBestPage.jsp").forward(request, response);
