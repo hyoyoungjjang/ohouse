@@ -24,12 +24,19 @@
   		<result column="MEMBERS_MODIFY_TIME" property="membersModifyTime" />
   		<result column="MEMBERS_STATUS" property="membersStatus" />
   	</resultMap>
-  </mapper>
-  
-  
-<properties>
-	<entry key="loginMembers">
-		SELECT
+  	<resultMap id="mediaResultSet" type="Media">
+  		<result column="MEDIA_ID" property="mediaId"/>
+  		<result column="MEMBERS_NO" property="mediaMembersNo"/>
+  		<result column="MEDIA_TYPE" property="mediaType"/>
+  		<result column="ORIGIN_NAME" property="originName"/>
+  		<result column="CHANGE_NAME" property="changeName"/>
+  		<result column="FILE_PATH" property="filePath"/>
+  		<result column="FILE_LEVEL" property="fileLevel"/>
+  		<result column="UPLOAD_DATE" property="uploadDate"/>
+  		<result column="MEDIA_STATUS" property="mediaStatus"/>
+  	</resultMap>
+  	 <select id="loginMembers" resultMap="membersResultSet" parameterType="Members">
+  	SELECT
 		    MEMBERS_NO
 			,MEMBERS_ID
 			,MEMBERS_PWD
@@ -49,13 +56,36 @@
 			,MEMBERS_MODIFY_TIME
 			,MEMBERS_STATUS
 		FROM MEMBERS
-		WHERE MEMBERS_ID = ?
-		AND MEMBERS_PWD = ?
+		WHERE MEMBERS_ID = #{membersId}
+		AND MEMBERS_PWD = #{membersPwd}
 		AND MEMBERS_STATUS = 'Y'
-	     
-	</entry>
-	<entry key="insertMembers">
-		INSERT INTO MEMBERS
+  </select>
+  
+  <select id="selectMembers" resultMap="membersResultSet" >
+	  SELECT
+		 MEMBERS_NO
+		,MEMBERS_ID
+		,MEMBERS_PWD
+		,MEMBERS_NAME
+		,MEMBERS_BIRTH
+		,MEMBERS_PHONE
+		,MEMBERS_EMAIL
+		,GENDER
+		,MEMBERS_TYPE
+		,COMPANY_NAME
+		,REPRESENTATATIVE
+		,COMPANY_PLACE
+		,COMPANY_PHONE
+		,COMPANY_EMAIL
+		,REG_NUM
+		,MEMBERS_STATUS
+	FROM MEMBERS
+	WHERE MEMBERS_ID = #{membersId}
+	    AND MEMBERS_STATUS = 'Y'
+  </select>
+  
+  <insert id="insertMembers" parameterType="Members">
+  INSERT INTO MEMBERS
 		(
 			MEMBERS_NO
 			,MEMBERS_ID
@@ -69,93 +99,80 @@
 		VALUES
 		(
 			SEQ_MEMID.NEXTVAL,
-			?,
-			?,
-			?,
-			?,
-			?,
-			?,
-			?
+			#{membersId},
+			#{membersPwd},
+			#{membersName},
+			#{membersBirth},
+			#{membersPhone},
+			#{membersEmail},
+			#{gender}
 		)
-	</entry>
-		<entry key="selectMembers">
-		SELECT
-			 MEMBERS_NO
-			,MEMBERS_ID
-			,MEMBERS_PWD
-			,MEMBERS_NAME
-			,MEMBERS_BIRTH
-			,MEMBERS_PHONE
-			,MEMBERS_EMAIL
-			,GENDER
-			,MEMBERS_TYPE
-			,COMPANY_NAME
-			,REPRESENTATATIVE
-			,COMPANY_PLACE
-			,COMPANY_PHONE
-			,COMPANY_EMAIL
-			,REG_NUM
-			,MEMBERS_STATUS
-		FROM MEMBERS
-	   WHERE MEMBERS_ID = ?
-	     AND MEMBERS_STATUS = 'Y'
-	</entry>
-	<entry key="updateMembers">
-		UPDATE MEMBERS
-		SET MEMBERS_NAME = ?
-			, MEMBERS_PWD = ?
-			, MEMBERS_PHONE = ?
-			, MEMBERS_EMAIL = ?
-			, MEMBERS_BIRTH = ?
-			, MEMBERS_MODIFY_TIME = SYSDATE
-		WHERE MEMBERS_ID = ?
-	</entry>
-	<entry key="updatePwdMembers">
-		UPDATE MEMBERS
-		SET MEMBERS_PWD = ?,
-			MEMBERS_MODIFY_TIME = SYSDATE
-		WHERE MEMBERS_ID = ?
-			AND MEMBERS_PWD = ?
-	</entry>
-	<entry key="deleteMembers">
-		UPDATE MEMBERS
-		SET MEMBERS_STATUS = 'N'
-		   ,MEMBERS_MODIFY_TIME = SYSDATE
-		WHERE MEMBERS_ID = ?
-		AND MEMBERS_PWD = ?
-	</entry>
-	<entry key="insertProfile">
-		INSERT
-		INTO MEDIA
-		(
-			MEDIA_ID,
-			MEMBERS_NO,
-			MEDIA_TYPE,
-			ORIGIN_NAME,
-			CHANGE_NAME,
-			FILE_PATH,
-			FILE_LEVEL
-		)
-		VALUES
-		(
-			SEQ_MEDID.NEXTVAL,
-			SEQ_MEMID.NEXTVAL,
-			1,
-			?,
-			?,
-			?,
-			3
-		)
-	</entry>
-	<entry key="selectProfile">
-		SELECT
-			MEDIA_ID,
-			FILE_PATH
-		FROM MEDIA
-		WHERE MEMBERS_NO = ?
-		  AND MEDIA_STATUS = 'Y'
-	</entry>
-	<entry key="updateProfile">
+  </insert>
+  
+  <update id="updateMembers" parameterType="Members">
+ 	UPDATE MEMBERS
+	SET MEMBERS_NAME = #{membersName}
+		, MEMBERS_PWD = #{membersPwd}
+		, MEMBERS_PHONE = #{membersPhone}
+		, MEMBERS_EMAIL = #{membersEmail}
+		, MEMBERS_BIRTH = #{membersBirth}
+		, MEMBERS_MODIFY_TIME = SYSDATE
+	WHERE MEMBERS_ID = #{membersId}
+  </update>
+  <update id="updatePwdMembers" parameterType="Members">
+  	UPDATE MEMBERS
+  	SET MEMBERS_PWD = #{memberPwd},
+		MEMBERS_MODIFY_TIME = SYSDATE
+	WHERE MEMBERS_ID = #{membersId}
+	 AND MEMBERS_PWD = #{membersPwd}
+  </update>
+  <update id="deleteMembers" parameterType="Media">
+  	UPDATE MEMBERS
+	SET MEMBERS_STATUS = 'N'
+		,MEMBERS_MODIFY_TIME = SYSDATE
+	WHERE MEMBERS_ID = #{membersId}
+	  AND MEMBERS_PWD = #{membersPwd}
+  </update>
+  <insert id="insertProfile" parameterType="Media">
+ 	INSERT
+	INTO MEDIA
+	(
+		MEDIA_ID,
+		MEMBERS_NO,
+		MEDIA_TYPE,
+		ORIGIN_NAME,
+		CHANGE_NAME,
+		FILE_PATH,
+		FILE_LEVEL
+	)
+	VALUES
+	(
+		SEQ_MEDID.NEXTVAL,
+		SEQ_MEMID.CURRVAL,
+		1,
+		#{origin_name},
+		#{change_name},
+		#{filePath},
+		3
+	)
+  </insert>
+  <select id="selectProfile" resultMap="mediaResultSet">
+  SELECT
+	  MEDIA_ID,
+	  FILE_PATH
+  FROM MEDIA
+  WHERE MEMBERS_NO = #{mediaMembersNo}
+   AND MEDIA_STATUS = 'Y'
+  </select>
+  <update id="updateProfile" parameterType="Media">
+  UPDATE MEDIA
+	SET ORIGIN_NAME = #{originName},
+		CHANGE_NAME = #{changeName},
+		FILE_PATH = #{filePath}
+	WHERE MEDIA_ID = #{mediaId}
+  </update>
+  <!-- 
+  <entry key="updateProfile">
 		UPDATE MEDIA
 		SET ORIGIN_NAME = ?,
 			CHANGE_NAME = ?,
@@ -194,3 +211,5 @@
 	WHERE SCRAP_ID = ?
 	</entry>
 </properties>
+   -->
+  </mapper>
