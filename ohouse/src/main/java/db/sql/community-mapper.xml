@@ -185,8 +185,14 @@
 	SET BOARD_STATUS = 'N'
 	WHERE BOARD_ID = ?
 	</entry>
+	<entry key="increaseViews">
+	UPDATE BOARD
+	SET BOARD_VIEWS = BOARD_VIEWS + 1
+	WHERE BOARD_ID = ?
+	  AND BOARD_STATUS = 'Y'
+	</entry>
 	<!-- MEDIA 객체 CRUD -->
-	<entry key="insertMedia">
+	<entry key="insertCommunityMedia">
 	INSERT
 	INTO MEDIA
 	(
@@ -209,7 +215,8 @@
 		?
 	)
 	</entry>
-	<entry key="insertNewMedia">
+	<!--updateBoard 시 사용하는 mapper-->
+	<entry key="insertCommunityNewMedia">
 	INSERT
 	INTO MEDIA
 	(
@@ -230,7 +237,7 @@
 		?
 	)
 	</entry>
-	<entry key="insertThumbnail">
+	<entry key="insertCommunityThumbnail">
 	INSERT
 	INTO MEDIA
 	(
@@ -253,7 +260,7 @@
 		1
 	)
 	</entry>
-	<entry key="selectMedia">
+	<entry key="selectCommunityMedia">
 	SELECT
 		MEDIA_ID,
 		MEDIA_TYPE,
@@ -264,11 +271,81 @@
 	WHERE BOARD_ID = ?
 	  AND MEDIA_STATUS = 'Y'
 	</entry>
-	<!-- MEDIA 수정 시 BOARD_MODIFY_TIME 수정 -->
+	<!-- MEDIA 수정 시 BOARD_MODIFY_TIME 수정되도록 할 것 -->
+	<entry key="updateCommunityMedia">
+	UPDATE MEDIA
+	SET ORIGIN_NAME = ?,
+		CHANGE_NAME = ?,
+		FILE_PATH = ?
+	WHERE MEDIA_ID = ?
+	  AND BOARD_ID = ?
+	</entry>
 	<!-- SCRAP 객체 -->
-	<entry key="selectScrapCount">
+	<entry key="insertBoardScrap">
+	INSERT
+	INTO SCRAP
+	(
+		SCRAP_ID,
+		SCRAP_TYPE,
+		MEMBERS_NO,
+		BOARD_ID,
+	)
+	VALUES
+	(
+		SEQ_SCRID.NEXTVAL,
+		3,
+		?,
+		?
+	)
+	</entry>
+	<entry key="insertMediaScrap">
+	INSERT
+	INTO SCRAP
+	(
+		SCRAP_ID,
+		SCRAP_TYPE,
+		MEMBERS_NO,
+		MEDIA_ID,
+	)
+	VALUES
+	(
+		SEQ_SCRID.NEXTVAL,
+		2,
+		?,
+		?
+	)
+	</entry>
+	<entry key="selectBoardScrapCount">
 	SELECT COUNT(*)
 	FROM SCRAP
 	WHERE BOARD_ID = ?
+	AND SCRAP_STATUS = 'Y'
+	</entry>
+	<entry key="selectMediaScrapCount">
+	SELECT COUNT(*)
+	FROM SCRAP
+	WHERE MEDIA_ID = ?
+	AND SCRAP_STATUS = 'Y'
+	</entry>
+	<!-- ========================================= 태그 매퍼 ============================================= -->
+	
+	
+	
+	<!-- ========================================= 댓글 매퍼 ============================================= -->
+	<entry key="selectReplyList">
+		SELECT
+			REPLY_ID,
+			REPLY_TEXT,
+			REPLY_CREATE_DATE,
+			BOARD_ID,
+			MEMBERS_ID
+		FROM REPLY R
+		JOIN MEMBERS M ON (R.MEMBERS_NO = M.MEMBERS_NO)
+		WHERE REPLY_STATUS = 'Y'
+	</entry>
+	<entry key="updateReply">
+	
+	</entry>
+	<entry key="deleteReply">
 	</entry>
 </properties>

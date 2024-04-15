@@ -140,4 +140,30 @@
 		SET MEDIA_STATUS = 'N'
 		WHERE MEDIA_ID = ?
 	</entry>
+	<entry key="selectMyProductScrapCount">
+	SELECT COUNT(*)
+	FROM SCRAP
+	WHERE MEMBERS_NO = ?
+	AND SCRAP_TYPE = 1
+	AND SCRAP_STATUS = 'Y'
+	</entry>
+	<entry key="selectMyMediaScrapCount">
+	SELECT COUNT(*)
+	FROM SCRAP
+	WHERE MEMBERS_NO = ?
+	AND SCRAP_TYPE = 2
+	AND SCRAP_STATUS = 'Y'
+	</entry>
+	<entry key="selectMyBoardScrapCount">
+	SELECT COUNT(*)
+	FROM SCRAP
+	WHERE MEMBERS_NO = ?
+	AND SCRAP_TYPE = 3
+	AND SCRAP_STATUS = 'Y'
+	</entry>
+	<entry key="deleteScrap">
+	UPDATE SCRAP
+	SET SCRAP_STATUS = 'N"
+	WHERE SCRAP_ID = ?
+	</entry>
 </properties>
