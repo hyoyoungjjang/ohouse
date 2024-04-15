@@ -273,9 +273,32 @@
                 <!--대표 글-->
                 <textarea name="intro" id="textarea" align="left" placeholder="내용을 입력하세요."></textarea>
                 <!--3초 컷! 집들이 미리보기-->
+                <p id="community-house-content-3cut">
+                    ⚡ 3초 컷! 집들이 미리보기
+                </p>
+                <button>사진추가</button>
                 <!--사진1-->
+                <div class="img-area" onclick="imgChangeNormal();">
+                    <!--사진이 없는 초기 화면-->
+                    <h5>사진 추가하기 버튼으로</h5>
+                    <h5>사진을 업로드해주세요.</h5>
+                    <button type="button" class="btn btn-secondary btn-lg">
+                        사진 추가하기
+                    </button>
+                    <input type="file" value="대표사진 추가하기" onchange="tagImg(this);" class="hidden">
+                </div>
                 <!--사진2-->
+                <div class="img-area" onclick="imgChangeNormal(this);">
+                    <!--사진이 없는 초기 화면-->
+                    <h5>사진 추가하기 버튼으로</h5>
+                    <h5>사진을 업로드해주세요.</h5>
+                    <button type="button" class="btn btn-secondary btn-lg">
+                        사진 추가하기
+                    </button>
+                    <input type="file" value="대표사진 추가하기" onchange="tagImg(this);" class="hidden">
+                </div>
                 <!--본문 내용-->
+                <textarea name="intro" id="textarea" align="left" placeholder="내용을 입력하세요."></textarea>
             </div>
         </div>
     </form>
@@ -283,6 +306,11 @@
         function imgChange(id) {
             const imgInput = document.getElementById(id);
             imgInput.click();
+        }
+
+        function imgChangeNormal(_this) {
+            console.log($(this).children("input"));
+            $(this).children("input").click();
         }
 
         function coverImg(inputFile) {
@@ -320,7 +348,20 @@
         }
         
         function tagImg(inputFile) {
-            
+            if (inputFile.files.length == 1) {
+                const reader = new FileReader();
+                reader.readAsDataURL(inputFile.files[0]);
+                reader.onload = function (ev) {
+                    $("#first-img").html(`<img src=` + ev.target.result + `>`);
+                    $("#fisrt-img>img").css("width", "100%")
+                }
+            } else {
+                $("#first-img").html(
+                    '<h5>사진 추가하기 버튼으로</h5>' +
+                    '<h5>사진을 업로드해주세요.</h5>' +
+                    '<button type="button" class="btn btn-secondary btn-lg">사진 추가하기</button>'
+                );
+            }
         }
         
         const DEFAULT_HEIGHT = 30; // textarea 기본 height
