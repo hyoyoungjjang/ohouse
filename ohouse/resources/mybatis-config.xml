@@ -13,6 +13,8 @@
  		<typeAlias type="com.ohouse.members.model.vo.Members" alias="Members" />
  		<typeAlias type="com.ohouse.community.model.vo.Board" alias="Board" />
  		<typeAlias type="com.ohouse.product.model.vo.Product" alias="Product"/>
+ 		<typeAlias type="com.ohouse.common.model.vo.Media" alias="Media"/>
+ 		<typeAlias type="com.ohouse.common.model.vo.Scrap" alias="Scrap"/>
  	</typeAliases>
  	
  	<!-- environments : mybatis에서 연동할 DB정보들을 등록하는 영역-->
