@@ -1,11 +1,8 @@
 package com.ohouse.members.service;
 
-import static com.ohouse.common.JDBCTemplate.close;
-import static com.ohouse.common.JDBCTemplate.commit;
-import static com.ohouse.common.JDBCTemplate.getConnection;
-import static com.ohouse.common.JDBCTemplate.rollback;
+import static com.ohouse.common.template.Template.getSqlSession;
 
-import java.sql.Connection;
+import org.apache.ibatis.session.SqlSession;
 
 import com.ohouse.members.model.dao.MembersDao;
 import com.ohouse.members.model.vo.Members;
@@ -15,49 +12,49 @@ public class MembersServiceImpl implements MembersService {
 	
 	@Override
 	public int insertMembers(Members m) {
-		Connection conn = getConnection();
-		int result = membersDao.insertMembers(conn, m);
+		SqlSession sqlSession = getSqlSession();
+		int result = membersDao.insertMembers(sqlSession, m);
 		
 		if(result > 0) {
-			commit(conn);
+			sqlSession.commit();
 		} else {
-			rollback(conn);
+			sqlSession.rollback();
 		}
 		
-		close(conn);
+		sqlSession.close();
 		return result;
 	}
 
 	@Override
 	public Members loginMembers(Members m) {
-		Connection conn = getConnection();
-		Members loginUser = membersDao.loginMembers(conn, m);
+		SqlSession sqlSession = getSqlSession();
+		Members loginUser = membersDao.loginMembers(sqlSession, m);
 		
-		close(conn);
+		sqlSession.close();
 		return loginUser;
 	}
 
 	@Override
 	public int deleteMembers(Members m) {
-		Connection conn = getConnection();
-		int result = membersDao.deleteMembers(conn, m);
+		SqlSession sqlSession = getSqlSession();
+		int result = membersDao.deleteMembers(sqlSession, m);
 		
 		if(result > 0) {
-			commit(conn);
+			sqlSession.commit();
 		} else {
-			rollback(conn);
+			sqlSession.rollback();
 		}
 		
-		close(conn);
+		sqlSession.close();
 		return result;
 	}
 
 	@Override
 	public int idCheck(String checkId) {
-		Connection conn = getConnection();
-		int result = membersDao.idCheck(conn, checkId);
+		SqlSession sqlSession = getSqlSession();
+		int result = membersDao.idCheck(sqlSession, checkId);
 		
-		close(conn);
+		sqlSession.close();
 		return result;
 	}
 }
