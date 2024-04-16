@@ -563,13 +563,13 @@ VALUES (SEQ_MEDID.NEXTVAL, 1, 2, 'thumbnail-main-02.png', '수정명2', 'resourc
 
 -- 상품 썸네일
 INSERT INTO MEDIA (MEDIA_ID, PRODUCT_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
-VALUES (SEQ_MEDID.NEXTVAL, 1, 1, 'productMain01.png', '수정명1', 'resources/img/product', 1);
+VALUES (SEQ_MEDID.NEXTVAL, 1, 1, 'productMain01.png', 'productMain01.png', 'resources/img/product/', 1);
 INSERT INTO MEDIA (MEDIA_ID, PRODUCT_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
-VALUES (SEQ_MEDID.NEXTVAL, 2, 1, 'productMain02.png', '수정명2', 'resources/img/product', 1);
+VALUES (SEQ_MEDID.NEXTVAL, 2, 1, 'productMain02.png', 'productMain02.png', 'resources/img/product/', 1);
 INSERT INTO MEDIA (MEDIA_ID, PRODUCT_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
-VALUES (SEQ_MEDID.NEXTVAL, 3, 1, 'productMain03.png', '수정명3', 'resources/img/product', 1);
+VALUES (SEQ_MEDID.NEXTVAL, 3, 1, 'productMain03.png', 'productMain03.png', 'resources/img/product/', 1);
 INSERT INTO MEDIA (MEDIA_ID, PRODUCT_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
-VALUES (SEQ_MEDID.NEXTVAL, 4, 1, 'productMain04.png', '수정명4', 'resources/img/product', 1);
+VALUES (SEQ_MEDID.NEXTVAL, 4, 1, 'productMain04.png', 'productMain04.png', 'resources/img/product/', 1);
 
 -- REPLY 테이블에 더미 데이터 삽입
 INSERT INTO REPLY (REPLY_ID, REPLY_TEXT, REPLY_CREATE_DATE, BOARD_ID, MEMBERS_NO)
