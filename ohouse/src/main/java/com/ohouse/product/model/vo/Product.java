@@ -25,7 +25,7 @@ public class Product{
 	public Product() {}
 	
 	public Product(int productId, String productName, String productPrice, String productSales, String stock,
-			String deliveryDate, int sale, String productThumnail, String productContent, Date productCreateTime,
+			String deliveryDate, int sale, String productThumbnail, String productContent, Date productCreateTime,
 			Date productModifyTime, String companyName, int membersNo, int productDeliveryPrice, int productCategory,
 			String productStatus, int ratingAvg, int reviewCount) {
 		super();
@@ -36,7 +36,7 @@ public class Product{
 		this.stock = stock;
 		this.deliveryDate = deliveryDate;
 		this.sale = sale;
-		this.productThumbnail = productThumnail;
+		this.productThumbnail = productThumbnail;
 		this.productContent = productContent;
 		this.productCreateTime = productCreateTime;
 		this.productModifyTime = productModifyTime;
@@ -200,7 +200,7 @@ public class Product{
 	public String toString() {
 		return "Product [productId=" + productId + ", productName=" + productName + ", productPrice=" + productPrice
 				+ ", productSales=" + productSales + ", stock=" + stock + ", deliveryDate=" + deliveryDate + ", sale="
-				+ sale + ", productThumnail=" + productThumbnail + ", productContent=" + productContent
+				+ sale + ", productThumbnail=" + productThumbnail + ", productContent=" + productContent
 				+ ", productCreateTime=" + productCreateTime + ", productModifyTime=" + productModifyTime
 				+ ", companyName=" + companyName + ", membersNo=" + membersNo + ", productDeliveryPrice="
 				+ productDeliveryPrice + ", productCategory=" + productCategory + ", productStatus=" + productStatus
