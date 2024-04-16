@@ -19,6 +19,8 @@
   		<result column="PRODUCT_DELIVERY_PRICE" property="productDeliveryPrice" />
   		<result column="PRODUCT_CATEGORY" property="productCategory" />
   		<result column="PRODUCT_STATUS" property="productStatus" />
+  		<result column="REVIEW_COUNT" property="reviewCount" />
+  		<result column="RATING_AVG" property="ratingAvg" />
   	</resultMap>
   	<resultMap id="mediaResultSet" type="Media">
   		<result column="MEDIA_ID" property="mediaId"/>
@@ -103,7 +105,7 @@
            SELECT AVG(RATING)
            FROM REVIEW R
            WHERE R.PRODUCT_ID = P.PRODUCT_ID
-       ) AS "RATING"
+       ) AS "RATING_AVG"
    FROM PRODUCT P
    JOIN MEDIA MED ON (P.PRODUCT_ID = MED.PRODUCT_ID)
    JOIN MEMBERS MEM ON (P.MEMBERS_NO = MEM.MEMBERS_NO)
@@ -132,6 +134,9 @@
   	SELECT COUNT(*)
 	 FROM PRODUCT
 	 WHERE PRODUCT_STATUS = 'Y'
+	 <choose>
+	 	<when test="condition"></when>
+	 </choose>
   </select>
   <update id="updateProduct">
   	UPDATE PRODUCT
