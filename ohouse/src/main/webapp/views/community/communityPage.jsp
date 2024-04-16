@@ -16,7 +16,7 @@ pageEncoding="UTF-8"%>
 <header> 
     <%@ include file="../common/headerCommunity.jsp" %>    
 </header>
-<img src="${pageContext.request.contextPath}/resources/img/community/communityInsert/thumbnail.png" alt="" class="thumbnail">
+<img src="${pageContext.request.contextPath}/resources/img/community/communityPage/thumbnail.png" alt="" class="thumbnail">
 <div class="content-area" align="center">
     <div id="side-bar-area">
         <div class="side-bar">
@@ -40,7 +40,7 @@ pageEncoding="UTF-8"%>
             <p>작은 공간을 효율적으로 활용하는 최적의 가구 배치 찾기</p>
         </div>
         <div align="left">
-            <img id="user-profile-img" src="${pageContext.request.contextPath}/resources/img/community/communityInsert/userProfile.png" alt="">
+            <img id="user-profile-img" src="${pageContext.request.contextPath}/resources/img/community/communityPage/userProfile.png" alt="">
             <span id="user-name">마지mazi_zip</span>
         </div>
         <div id="house-information">
@@ -100,7 +100,7 @@ pageEncoding="UTF-8"%>
         <div class="community-house-content">
             <!--집들이 게시글 내용에 들어갈 사진?-->                  
              <div class="community-img-area">
-                <img class="community-house-content-img" src="${pageContext.request.contextPath}/resources/img/community/communityInsert/contentImg1.png" alt="">
+                <img class="community-house-content-img" src="${pageContext.request.contextPath}/resources/img/community/communityPage/contentImg1.png" alt="">
                 <button class="cummunity-scrap-button">
                     <img class="cummunity-scrap-img" src="${pageContext.request.contextPath}/resources/img/community/communitybookmark.png" alt="">    
                 </button>
@@ -133,7 +133,7 @@ pageEncoding="UTF-8"%>
         </div>
         <div class="community-house-content">
             <div class="community-img-area">
-                <img class="community-house-content-img" src="${pageContext.request.contextPath}/resources/img/community/communityInsert/contentImg1.png" alt="">
+                <img class="community-house-content-img" src="${pageContext.request.contextPath}/resources/img/community/communityPage/contentImg1.png" alt="">
                 <button class="cummunity-scrap-button">
                     <img class="cummunity-scrap-img" src="${pageContext.request.contextPath}/resources/img/community/communitybookmark.png" alt="">
                 </button>
@@ -153,42 +153,42 @@ pageEncoding="UTF-8"%>
                 <div class="community-tag-info">
                     <div class="community-tag-info-list">
                         <div class="community-tag-info-product">
-                            <img class="community-tag-info-product-img" src="${pageContext.request.contextPath}/resources/img/community/communityInsert/tag1.png" alt="">
+                            <img class="community-tag-info-product-img" src="${pageContext.request.contextPath}/resources/img/community/communityPage/tag1.png" alt="">
                         </div>
                     </div>
                     <div class="community-tag-info-list">
                         <div class="community-tag-info-product">
-                            <img class="community-tag-info-product-img" src="${pageContext.request.contextPath}/resources/img/community/communityInsert/tag1.png" alt="">
+                            <img class="community-tag-info-product-img" src="${pageContext.request.contextPath}/resources/img/community/communityPage/tag1.png" alt="">
                         </div>
                     </div>
                     <div class="community-tag-info-list">
                         <div class="community-tag-info-product">
-                            <img class="community-tag-info-product-img" src="${pageContext.request.contextPath}/resources/img/community/communityInsert/tag1.png" alt="">
+                            <img class="community-tag-info-product-img" src="${pageContext.request.contextPath}/resources/img/community/communityPage/tag1.png" alt="">
                         </div>
                     </div>
                     <div class="community-tag-info-list">
                         <div class="community-tag-info-product">
-                            <img class="community-tag-info-product-img" src="${pageContext.request.contextPath}/resources/img/community/communityInsert/tag1.png" alt="">
+                            <img class="community-tag-info-product-img" src="${pageContext.request.contextPath}/resources/img/community/communityPage/tag1.png" alt="">
                         </div>
                     </div>
                     <div class="community-tag-info-list">
                         <div class="community-tag-info-product">
-                            <img class="community-tag-info-product-img" src="${pageContext.request.contextPath}/resources/img/community/communityInsert/tag1.png" alt="">
+                            <img class="community-tag-info-product-img" src="${pageContext.request.contextPath}/resources/img/community/communityPage/tag1.png" alt="">
                         </div>
                     </div>
                     <div class="community-tag-info-list">
                         <div class="community-tag-info-product">
-                            <img class="community-tag-info-product-img" src="${pageContext.request.contextPath}/resources/img/community/communityInsert/tag1.png" alt="">
+                            <img class="community-tag-info-product-img" src="${pageContext.request.contextPath}/resources/img/community/communityPage/tag1.png" alt="">
                         </div>
                     </div>
                     <div class="community-tag-info-list">
                         <div class="community-tag-info-product">
-                            <img class="community-tag-info-product-img" src="${pageContext.request.contextPath}/resources/img/community/communityInsert/tag1.png" alt="">
+                            <img class="community-tag-info-product-img" src="${pageContext.request.contextPath}/resources/img/community/communityPage/tag1.png" alt="">
                         </div>
                     </div>
                     <div class="community-tag-info-list">
                         <div class="community-tag-info-product">
-                            <img class="community-tag-info-product-img" src="${pageContext.request.contextPath}/resources/img/community/communityInsert/tag1.png" alt="">
+                            <img class="community-tag-info-product-img" src="${pageContext.request.contextPath}/resources/img/community/communityPage/tag1.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -225,7 +225,7 @@ pageEncoding="UTF-8"%>
             </p>
         </div>
         <div class="community-img-area">
-            <img class="community-house-content-img" src="${pageContext.request.contextPath}/resources/img/community/communityInsert/copyright.png" alt="">
+            <img class="community-house-content-img" src="${pageContext.request.contextPath}/resources/img/community/communityPage/copyright.png" alt="">
             <button class="cummunity-scrap-button">
                 <img class="cummunity-scrap-img" src="${pageContext.request.contextPath}/resources/img/community/communitybookmark.png" alt="">
             </button>
@@ -242,7 +242,7 @@ pageEncoding="UTF-8"%>
 
         <div align="left" id="last-user-profile">
             <div>
-                <img id="user-profile-img" src="${pageContext.request.contextPath}/resources/img/community/communityInsert/userProfile.png" alt="">
+                <img id="user-profile-img" src="${pageContext.request.contextPath}/resources/img/community/communityPage/userProfile.png" alt="">
                 <span id="user-name">마지mazi_zip</span>
             </div>
         </div>
@@ -270,7 +270,7 @@ pageEncoding="UTF-8"%>
             <div class="comment-and-answer">
                 <div class="comment-area">
                     <div class="comment-user" align="left">
-                        <img class="comment-user-profile"  src="${pageContext.request.contextPath}/resources/img/community/communityInsert/userProfile2.png" alt="">
+                        <img class="comment-user-profile"  src="${pageContext.request.contextPath}/resources/img/community/communityPage/userProfile2.png" alt="">
                     </div>
                     <div class="comment-content">
                         <div class="comment-user-name">흑마늘닭강정</div>
@@ -283,7 +283,7 @@ pageEncoding="UTF-8"%>
                 </div>
                 <div class="answer-area">
                     <div class="answer-user" align="left">
-                        <img class="answer-user-profile" src="${pageContext.request.contextPath}/resources/img/community/communityInsert/userProfile.png" alt="">
+                        <img class="answer-user-profile" src="${pageContext.request.contextPath}/resources/img/community/communityPage/userProfile.png" alt="">
                     </div>
                     <div class="answer-content">
                         <div class="answer-user-name">마지mazi_zip</div>
@@ -302,7 +302,7 @@ pageEncoding="UTF-8"%>
                 <div class="comment-area">
                     <div class="comment-user" align="left">
                         <img class="comment-user-profile"
-                            src="${pageContext.request.contextPath}/resources/img/community/communityInsert/userProfile2.png"
+                            src="${pageContext.request.contextPath}/resources/img/community/communityPage/userProfile2.png"
                             alt="">
                     </div>
                     <div class="comment-content">
@@ -317,7 +317,7 @@ pageEncoding="UTF-8"%>
                 <div class="answer-area">
                     <div class="answer-user" align="left">
                         <img class="answer-user-profile"
-                            src="${pageContext.request.contextPath}/resources/img/community/communityInsert/userProfile.png" alt="">
+                            src="${pageContext.request.contextPath}/resources/img/community/communityPage/userProfile.png" alt="">
                     </div>
                     <div class="answer-content">
                         <div class="answer-user-name">마지mazi_zip</div>
@@ -336,7 +336,7 @@ pageEncoding="UTF-8"%>
                 <div class="comment-area">
                     <div class="comment-user" align="left">
                         <img class="comment-user-profile"
-                            src="${pageContext.request.contextPath}/resources/img/community/communityInsert/userProfile2.png"
+                            src="${pageContext.request.contextPath}/resources/img/community/communityPage/userProfile2.png"
                             alt="">
                     </div>
                     <div class="comment-content">
@@ -351,7 +351,7 @@ pageEncoding="UTF-8"%>
                 <div class="answer-area">
                     <div class="answer-user" align="left">
                         <img class="answer-user-profile"
-                            src="${pageContext.request.contextPath}/resources/img/community/communityInsert/userProfile.png" alt="">
+                            src="${pageContext.request.contextPath}/resources/img/community/communityPage/userProfile.png" alt="">
                     </div>
                     <div class="answer-content">
                         <div class="answer-user-name">마지mazi_zip</div>
@@ -370,7 +370,7 @@ pageEncoding="UTF-8"%>
                 <div class="comment-area">
                     <div class="comment-user" align="left">
                         <img class="comment-user-profile"
-                            src="${pageContext.request.contextPath}/resources/img/community/communityInsert/userProfile2.png"
+                            src="${pageContext.request.contextPath}/resources/img/community/communityPage/userProfile2.png"
                             alt="">
                     </div>
                     <div class="comment-content">
@@ -385,7 +385,7 @@ pageEncoding="UTF-8"%>
                 <div class="answer-area">
                     <div class="answer-user" align="left">
                         <img class="answer-user-profile"
-                            src="${pageContext.request.contextPath}/resources/img/community/communityInsert/userProfile.png" alt="">
+                            src="${pageContext.request.contextPath}/resources/img/community/communityPage/userProfile.png" alt="">
                     </div>
                     <div class="answer-content">
                         <div class="answer-user-name">마지mazi_zip</div>
@@ -404,7 +404,7 @@ pageEncoding="UTF-8"%>
                 <div class="comment-area">
                     <div class="comment-user" align="left">
                         <img class="comment-user-profile"
-                            src="${pageContext.request.contextPath}/resources/img/community/communityInsert/userProfile2.png"
+                            src="${pageContext.request.contextPath}/resources/img/community/communityPage/userProfile2.png"
                             alt="">
                     </div>
                     <div class="comment-content">
@@ -419,7 +419,7 @@ pageEncoding="UTF-8"%>
                 <div class="answer-area">
                     <div class="answer-user" align="left">
                         <img class="answer-user-profile"
-                            src="${pageContext.request.contextPath}/resources/img/community/communityInsert/userProfile.png" alt="">
+                            src="${pageContext.request.contextPath}/resources/img/community/communityPage/userProfile.png" alt="">
                     </div>
                     <div class="answer-content">
                         <div class="answer-user-name">마지mazi_zip</div>
