@@ -1,24 +1,69 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/community/communityInsert.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/main.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/common/header.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
     <header> 
-        <%@ include file="../common/headerCommunity.jsp" %>    
+        <div align="center">
+            <c:if test="${not empty alertMsg}">
+                <script>
+                    alert("${alertMsg}");
+                </script>
+                <c:remove var="alertMsg" />
+            </c:if>
+            <div class="sticky-container" style="height: 80px;">
+                <div class="header-logo" onclick="location.href='${pageContext.request.contextPath}'">
+                    오늘의집
+                </div>
+                <div class="header-main">
+                    <a href="${contextPath}"><span>쇼핑</span></a>
+                    <a href="${contextPath}/list.co"><span>커뮤니티</span></a>
+                </div>
+                <div class="header-menu">
+                    <c:choose>
+                        <c:when test="${empty loginUser}">
+                            <!-- 로그인X -->
+                            <div class="header-others">
+                                <a href="${pageContext.request.contextPath}/loginForm.me">로그인</a>|
+                                <a href="${pageContext.request.contextPath}/enrollForm.me">회원가입</a>
+                                <a href="${contextPath}/loginForm.me" style="background-color: #35C5F0; color: white; border-radius: 5px;">글쓰기</a>
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <!-- 로그인O -->
+                            <div class="header-others">
+                                <img src="${pageContext.request.contextPath}/resources/img/common/pm-bookmark.png" alt="" onclick="">
+                                <img src="${pageContext.request.contextPath}/resources/img/common/shopping-cart.png" alt="" onclick="">
+                                <img src="${contextPath}/resources/img/common/logout.png" alt=""
+                                    onclick="location.href='${contextPath}/logout.me';">
+                                <img src="${pageContext.request.contextPath}/resources/img/common/user.png" alt="" 
+                                    onclick="location.href='${contextPath}/profile.me';">
+                                <a onclick="document.getElementById('submit-btn').click();" style="background-color: #35C5F0; color: white; border-radius: 5px;">글쓰기</a>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
+                </div>
+            </div>
+            <div style="border: 1px solid #f7f9fa; min-width: 1136px;"></div>
+        </div>   
     </header>
-    <form action="">
+    <form action="${contextPath}/incert.co" method="POST">
         <div align="center">
             <div class="cummunity-insert-area">
                 <div class="required-information-area-content">
@@ -283,6 +328,7 @@
                 <textarea name="intro" id="textarea" align="left" placeholder="내용을 입력하세요."></textarea>
             </div>
         </div>
+        <button type="submit" class="hidden" id="submit-btn">제출</button>
     </form>
     <script>
         function imgChange(id) {
@@ -300,7 +346,7 @@
                 reader.readAsDataURL(inputFile.files[0]);
                 reader.onload = function (ev) {
                     $("#cover-img").html(`<img src=` + ev.target.result + `>`);
-                    $("#cover-img>img").css("width", "100%")
+                    $("#cover-img>img").css("height", "100%")
                 }
             } else {
                 $("#cover-img").html(
@@ -317,7 +363,7 @@
                 reader.readAsDataURL(inputFile.files[0]);
                 reader.onload = function (ev) {
                     $("#first-img").html(`<img src=` + ev.target.result + `>`);
-                    $("#fisrt-img>img").css("width", "100%")
+                    $("#fisrt-img>img").css("height", "100%")
                 }
             } else {
                 $("#first-img").html(
@@ -333,9 +379,22 @@
                 const reader = new FileReader();
                 reader.readAsDataURL(inputFile.files[0]);
                 reader.onload = function (ev) {
-                    $(inputFile).parent().html(`<img src=` + ev.target.result + ` style="width: 100%;">`);
+                    $(inputFile).parent().html(`<img src=` + ev.target.result 
+                    + ` style="height: 100%;"`
+                    + ` onclick="addTag(event);">`);
                 }
             }
+        }
+
+        function addTag(ev) {
+            const x = ev.clientX;
+            const y = ev.clientY;
+            if(x * y <= 0) return;
+            
+            console.log(x, y);
+            ev.target.parentElement.innerHTML += "<span"
+                                                + " style='position: absolute; top: calc(" + y + "px);"
+                                                + " left: calc(" + x + "px);'>b</span>"
         }
         
         const DEFAULT_HEIGHT = 30; // textarea 기본 height
@@ -352,7 +411,7 @@
             const wrapper = document.getElementById("img-wrapper");
             if(wrapper.children.length < 4) {
                 wrapper.innerHTML += `
-                    <div class="img-area" onclick="imgChangeNormal(this);">
+                    <div class="img-area" onclick="imgChangeNormal(this);" style="position: relative;">
                         <!--사진이 없는 초기 화면-->
                         <h5>사진 추가하기 버튼으로</h5>
                         <h5>사진을 업로드해주세요.</h5>
