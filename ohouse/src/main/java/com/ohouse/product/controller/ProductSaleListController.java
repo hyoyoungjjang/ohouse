@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ohouse.common.template.PageInfo;
+import com.ohouse.common.template.Pagination;
+import com.ohouse.product.service.ProductListServiceImpl;
+
 /**
  * Servlet implementation class ProductSaleListController
  */
@@ -25,8 +29,12 @@ public class ProductSaleListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		int currentPage = Integer.parseInt((request.getParameter("cpage"))) ;
+		System.out.println("안녕");
+		int listCount = new ProductListServiceImpl().selectListCount();
+		
+		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 12);
+		
 	}
 
 	/**
