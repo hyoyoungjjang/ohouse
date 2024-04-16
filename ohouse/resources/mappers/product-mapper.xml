@@ -21,6 +21,7 @@
   		<result column="PRODUCT_STATUS" property="productStatus" />
   		<result column="REVIEW_COUNT" property="reviewCount" />
   		<result column="RATING_AVG" property="ratingAvg" />
+  		<result column="PRODUCT_THUMBNAIL" property="productThumbnail" />
   	</resultMap>
   	<resultMap id="mediaResultSet" type="Media">
   		<result column="MEDIA_ID" property="mediaId"/>
