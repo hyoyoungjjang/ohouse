@@ -43,7 +43,8 @@
   		<result column="SCRAP_CREATE_TIME" property="scrapCreateTime"/>
   		<result column="SCRAP_STATUS" property="scrapStatus"/>
   	</resultMap>
-  	  <insert id="insertProduct">
+  	
+  <insert id="insertProduct" >
   INSERT
   INTO PRODUCT
   (
