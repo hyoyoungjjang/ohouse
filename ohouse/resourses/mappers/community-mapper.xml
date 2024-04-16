@@ -3,17 +3,65 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="communityMapper">
-  <!-- 
-  <properties>
-	<entry key="insertBoard">
-	INSERT
+  	<resultMap type="Board" id="boardResultSet">
+  		<result column="BOARD_ID" property="boardId"/>
+  		<result column="BOARD_TITLE" property="boardTitle"/>
+  		<result column="BOARD_VIEWS" property="boardViews"/>
+  		<result column="BOARD_CREATE_TIME" property="boardCreateTime"/>
+  		<result column="BOARD_MODIFY_TIME" property="boardModifyTime"/>
+  		<result column="BOARD_INTRODUCTION" property="introduction"/>
+  		<result column="BOARD_DESCRIPTION" property="description"/>
+  		<result column="FILTER_TYPE" property="filType"/>
+  		<result column="FILTER_AREA" property="filArea"/>
+  		<result column="FILTER_NUM" property="filNum"/>
+  		<result column="FILTER_DIRECTION" property="filDirection"/>
+  		<result column="FILTER_PAST" property="filPast"/>
+  		<result column="FILTER_LOCAL" property="filLocal"/>
+  		<result column="FILTER_FAMILY" property="filFamily"/>
+  		<result column="FILTER_PET" property="filPet"/>
+  		<result column="FILTER_FAMILY_MEM_CNT" property="filFamMemCnt"/>
+  		<result column="FILTER_FIELD" property="filField"/>
+  		<result column="FILTER_WORKER" property="filWorker"/>
+  		<result column="FILTER_RANGE" property="filRange"/>
+  		<result column="FILTER_PERIOD" property="filPeriod"/>
+  		<result column="FILTER_PERIOD_TYPE" property="filPeriodType"/>
+  		<result column="FILTER_CONSTRUCTION_PRICE" property="filConPrice"/>
+  		<result column="FILTER_STYLE_PRICE" property="filStPrice"/>
+  		<result column="FILTER_URL" property="filUrl"/>
+  		<result column="FILTER_COPYRIGHT" property="filCopy"/>
+  		<result column="BOARD_STATUS" property="boardStatus"/>
+  		<result column="MEMBERS_NO" property="membersNo"/>
+  		<result column="BOARD_WRITER" property="boardWriter"/>
+  	</resultMap>
+  	<resultMap id="mediaResultSet" type="Media">
+  		<result column="MEDIA_ID" property="mediaId"/>
+  		<result column="BOARD_ID" property="mediaBoardId"/>
+  		<result column="MEDIA_TYPE" property="mediaType"/>
+  		<result column="ORIGIN_NAME" property="originName"/>
+  		<result column="CHANGE_NAME" property="changeName"/>
+  		<result column="FILE_PATH" property="filePath"/>
+  		<result column="FILE_LEVEL" property="fileLevel"/>
+  		<result column="UPLOAD_DATE" property="uploadDate"/>
+  		<result column="MEDIA_STATUS" property="mediaStatus"/>
+  	</resultMap>
+  	<resultMap id="scrapResultSet" type="Scrap">
+  		<result column="SCRAP_ID" property="scrapId"/>
+  		<result column="SCRAP_TYPE" property="scrapType"/>
+  		<result column="BOARD_ID" property="scrapBoardId"/>
+  		<result column="MEMBERS_NO" property="scrapMembersNo"/>
+  		<result column="SCRAP_CREATE_TIME" property="scrapCreateTime"/>
+  		<result column="SCRAP_STATUS" property="scrapStatus"/>
+  	</resultMap>
+  	
+  	<insert id="insertBoard" parameterType="Board">
+  	INSERT
 	INTO BOARD
 	(
 		BOARD_ID,
 		BOARD_TITLE,
 		BOARD_VIEWS,
-		BOARD_COVER_SRC,
-		BOARD_CONTENT,
+		BOARD_INTRODUCTION,
+		BOARD_DESCRIPTION,
 		FILTER_TYPE,
 		FILTER_AREA,
 		FILTER_NUM,
@@ -34,34 +82,73 @@
 		FILTER_COPYRIGHT,
 		MEMBERS_NO
 	)
-	VALUES(
+	VALUES
+	(
 		SEQ_PDID.NEXTVAL,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?
+		#{boardTitle},
+		#{boardViews},
+		#{introduction},
+		#{description},
+		#{filType},
+		#{filArea},
+		#{filNum},
+		#{filDirection},
+		#{filPast},
+		#{filLocal},
+		#{filFamily},
+		#{filPet},
+		#{filFamMemCnt},
+		#{filField},
+		#{filWorker},
+		#{filRange},
+		#{filPeriod},
+		#{filPeriodType},
+		#{filConPrice},
+		#{filStPrice},
+		#{filUrl},
+		#{filCopy},
+		#{membersNo},
+		#{boardStatus}
 	)
-	</entry>
+  	</insert>
+  	
+  	<select id="selectBoard" parameterType="_int" resultMap="boardResultSet">
+  	SELECT
+		BOARD_ID,
+		BOARD_TITLE,
+		BOARD_VIEWS,
+		TO_CHAR(BOARD_CREATE_TIME, 'YYYY/MM/DD') AS "BOARD_CREATE_TIME",
+		TO_CHAR(BOARD_MODIFY_TIME, 'YYYY/MM/DD') AS "BOARD_MODIFY_TIME",
+		BOARD_INTRODUCTION,
+		BOARD_DESCRIPTION,
+		FILTER_TYPE,
+		FILTER_AREA,
+		FILTER_NUM,
+		FILTER_DIRECTION,
+		FILTER_PAST,
+		FILTER_LOCAL,
+		FILTER_FAMILY,
+		FILTER_PET,
+		FILTER_FAMILY_MEM_CNT,
+		FILTER_FIELD,
+		FILTER_WORKER,
+		FILTER_RANGE,
+		FILTER_PERIOD,
+		FILTER_PERIOD_TYPE,
+		FILTER_CONSTRUCTION_PRICE,
+		FILTER_STYLE_PRICE,
+		FILTER_URL,
+		FILTER_COPYRIGHT,
+		MEMBERS_ID AS "BOARD_WRITER"
+	FROM BOARD
+	JOIN MEMBERS USING (MEMBERS_NO)
+	WHERE BOARD_ID = #{boardId}
+	AND BOARD_STATUS = 'Y'
+  	</select>
+  	
+  	
+  <!-- 
+  <properties>
 	<entry key="selectBoard">
 	SELECT
 		BOARD_ID,
