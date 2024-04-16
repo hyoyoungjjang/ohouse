@@ -46,7 +46,7 @@
 		                    <img src="${pageContext.request.contextPath}/resources/img/common/pm-bookmark.png" alt="" onclick="">
 		                    <img src="${pageContext.request.contextPath}/resources/img/common/shopping-cart.png" alt="" onclick="">
 		                    <img src="${contextPath}/resources/img/common/logout.png" alt=""
-		                        onclick="location.href='${contextPath}/logout.me'; alert('${alertMsg}');">
+		                        onclick="location.href='${contextPath}/logout.me';">
 		                    <img src="${pageContext.request.contextPath}/resources/img/common/user.png" alt="" 
                                 onclick="location.href='${contextPath}/profile.me';">
 		                    <a href="${contextPath}/enrollForm.co" style="background-color: #35C5F0; color: white; border-radius: 5px;">글쓰기</a>
