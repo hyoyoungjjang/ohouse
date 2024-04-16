@@ -15,6 +15,7 @@ public class Product{
 	private Date productCreateTime;
 	private Date productModifyTime;
 	private String companyName;
+	private int membersNo;
 	private int productDeliveryPrice;
 	private int productCategory;
 	private String productStatus;
@@ -22,10 +23,10 @@ public class Product{
 	private int reviewCount;
 	
 	public Product() {}
-
+	
 	public Product(int productId, String productName, String productPrice, String productSales, String stock,
 			String deliveryDate, int sale, String productThumnail, String productContent, Date productCreateTime,
-			Date productModifyTime, String companyName, int productDeliveryPrice, int productCategory,
+			Date productModifyTime, String companyName, int membersNo, int productDeliveryPrice, int productCategory,
 			String productStatus, int ratingAvg, int reviewCount) {
 		super();
 		this.productId = productId;
@@ -40,12 +41,14 @@ public class Product{
 		this.productCreateTime = productCreateTime;
 		this.productModifyTime = productModifyTime;
 		this.companyName = companyName;
+		this.membersNo = membersNo;
 		this.productDeliveryPrice = productDeliveryPrice;
 		this.productCategory = productCategory;
 		this.productStatus = productStatus;
 		this.ratingAvg = ratingAvg;
 		this.reviewCount = reviewCount;
 	}
+
 
 	public int getProductId() {
 		return productId;
@@ -183,16 +186,28 @@ public class Product{
 		this.reviewCount = reviewCount;
 	}
 
+	public int getMembersNo() {
+		return membersNo;
+	}
+
+
+	public void setMembersNo(int membersNo) {
+		this.membersNo = membersNo;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Product [productId=" + productId + ", productName=" + productName + ", productPrice=" + productPrice
 				+ ", productSales=" + productSales + ", stock=" + stock + ", deliveryDate=" + deliveryDate + ", sale="
 				+ sale + ", productThumnail=" + productThumnail + ", productContent=" + productContent
 				+ ", productCreateTime=" + productCreateTime + ", productModifyTime=" + productModifyTime
-				+ ", companyName=" + companyName + ", productDeliveryPrice=" + productDeliveryPrice
-				+ ", productCategory=" + productCategory + ", productStatus=" + productStatus + ", ratingAvg="
-				+ ratingAvg + ", reviewCount=" + reviewCount + "]";
+				+ ", companyName=" + companyName + ", membersNo=" + membersNo + ", productDeliveryPrice="
+				+ productDeliveryPrice + ", productCategory=" + productCategory + ", productStatus=" + productStatus
+				+ ", ratingAvg=" + ratingAvg + ", reviewCount=" + reviewCount + "]";
 	}
+
+	
 	
 	
 	
