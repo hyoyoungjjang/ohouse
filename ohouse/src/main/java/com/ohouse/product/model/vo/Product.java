@@ -10,7 +10,7 @@ public class Product{
 	private String stock;
 	private String deliveryDate;
 	private int sale;
-	private String productThumnail; 
+	private String productThumbnail;
 	private String productContent;
 	private Date productCreateTime;
 	private Date productModifyTime;
@@ -36,7 +36,7 @@ public class Product{
 		this.stock = stock;
 		this.deliveryDate = deliveryDate;
 		this.sale = sale;
-		this.productThumnail = productThumnail;
+		this.productThumbnail = productThumnail;
 		this.productContent = productContent;
 		this.productCreateTime = productCreateTime;
 		this.productModifyTime = productModifyTime;
@@ -107,11 +107,11 @@ public class Product{
 	}
 
 	public String getProductThumnail() {
-		return productThumnail;
+		return productThumbnail;
 	}
 
 	public void setProductThumnail(String productThumnail) {
-		this.productThumnail = productThumnail;
+		this.productThumbnail = productThumnail;
 	}
 
 	public String getProductContent() {
@@ -200,7 +200,7 @@ public class Product{
 	public String toString() {
 		return "Product [productId=" + productId + ", productName=" + productName + ", productPrice=" + productPrice
 				+ ", productSales=" + productSales + ", stock=" + stock + ", deliveryDate=" + deliveryDate + ", sale="
-				+ sale + ", productThumnail=" + productThumnail + ", productContent=" + productContent
+				+ sale + ", productThumnail=" + productThumbnail + ", productContent=" + productContent
 				+ ", productCreateTime=" + productCreateTime + ", productModifyTime=" + productModifyTime
 				+ ", companyName=" + companyName + ", membersNo=" + membersNo + ", productDeliveryPrice="
 				+ productDeliveryPrice + ", productCategory=" + productCategory + ", productStatus=" + productStatus
