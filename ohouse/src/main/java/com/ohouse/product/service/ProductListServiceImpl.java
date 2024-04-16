@@ -27,8 +27,17 @@ public class ProductListServiceImpl implements ProductListService{
 	@Override
 	public ArrayList<Product> selectListProduct(PageInfo pi) {
 		SqlSession sqlSession = getSqlSession();
-
+		
 		ArrayList<Product> pList = pDao.selectListProduct(sqlSession, pi);
+		
+		for(Product p : pList) {
+			if(p.getSale() > 0) {
+				int price = Integer.parseInt(p.getProductPrice());
+				price = price - ((price/100) * p.getSale());
+				p.setProductPrice(price + "");
+			}
+		}
+		
 		
 		sqlSession.close();
 		return pList;
