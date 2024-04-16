@@ -22,6 +22,7 @@
   		<result column="REVIEW_COUNT" property="reviewCount" />
   		<result column="RATING_AVG" property="ratingAvg" />
   		<result column="PRODUCT_THUMBNAIL" property="productThumbnail" />
+  		<result column="MEMBERS_NO" property="membersNo" />
   	</resultMap>
   	<resultMap id="mediaResultSet" type="Media">
   		<result column="MEDIA_ID" property="mediaId"/>
@@ -42,7 +43,8 @@
   		<result column="SCRAP_CREATE_TIME" property="scrapCreateTime"/>
   		<result column="SCRAP_STATUS" property="scrapStatus"/>
   	</resultMap>
-  	  <insert id="insertProduct">
+  	
+  <insert id="insertProduct" >
   INSERT
   INTO PRODUCT
   (

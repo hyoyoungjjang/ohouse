@@ -557,9 +557,9 @@ VALUES (SEQ_QNAID.NEXTVAL, SYSDATE, '문의 내용 1', 'Q', 'N', 1, 1);
 -- MEDIA 테이블에 더미 데이터 삽입
 -- 집들이 게시글 썸네일
 INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
-VALUES (SEQ_MEDID.NEXTVAL, 1, 1, 'thumbnail-main-01.png', '수정명1', 'resources/img/community/communityMain/', 1);
+VALUES (SEQ_MEDID.NEXTVAL, 1, 1, 'thumbnail-main-01.png', 'thumbnail-main-01.png', 'resources/img/community/communityMain/', 1);
 INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
-VALUES (SEQ_MEDID.NEXTVAL, 1, 2, 'thumbnail-main-02.png', '수정명2', 'resources/img/community/communityMain/', 1);
+VALUES (SEQ_MEDID.NEXTVAL, 1, 2, 'thumbnail-main-02.png', 'thumbnail-main-02.png', 'resources/img/community/communityMain/', 1);
 
 -- 상품 썸네일
 INSERT INTO MEDIA (MEDIA_ID, PRODUCT_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
