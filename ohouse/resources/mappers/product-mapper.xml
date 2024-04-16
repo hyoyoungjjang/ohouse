@@ -136,7 +136,9 @@
 	 FROM PRODUCT
 	 WHERE PRODUCT_STATUS = 'Y'
 	 <choose>
-	 	<when test="condition"></when>
+	 	<when test="condition == sale">
+	 		AND SALE != 0
+	 	</when>
 	 </choose>
   </select>
   <update id="updateProduct">
