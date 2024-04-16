@@ -128,7 +128,7 @@
 		, MEMBERS_MODIFY_TIME = SYSDATE
 	WHERE MEMBERS_ID = #{membersId}
   </update>
-  <update id="updatePwdMembers" parameterType="Members">
+  <update id="updatePwdMembers">
   	UPDATE MEMBERS
   	SET MEMBERS_PWD = #{membersNewPwd},
 		MEMBERS_MODIFY_TIME = SYSDATE
