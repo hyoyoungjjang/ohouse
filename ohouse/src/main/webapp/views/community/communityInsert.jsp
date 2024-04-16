@@ -275,28 +275,10 @@
                 <!--3초 컷! 집들이 미리보기-->
                 <p id="community-house-content-3cut">
                     ⚡ 3초 컷! 집들이 미리보기
+                    <button type="button" class="btn btn-light btn-lg" onclick="addImgArea();">사진추가</button>
+                    <button type="button" class="btn btn-danger btn-lg" onclick="deleteImgArea();">사진삭제</button>
                 </p>
-                <button>사진추가</button>
-                <!--사진1-->
-                <div class="img-area" onclick="imgChangeNormal();">
-                    <!--사진이 없는 초기 화면-->
-                    <h5>사진 추가하기 버튼으로</h5>
-                    <h5>사진을 업로드해주세요.</h5>
-                    <button type="button" class="btn btn-secondary btn-lg">
-                        사진 추가하기
-                    </button>
-                    <input type="file" value="대표사진 추가하기" onchange="tagImg(this);" class="hidden">
-                </div>
-                <!--사진2-->
-                <div class="img-area" onclick="imgChangeNormal(this);">
-                    <!--사진이 없는 초기 화면-->
-                    <h5>사진 추가하기 버튼으로</h5>
-                    <h5>사진을 업로드해주세요.</h5>
-                    <button type="button" class="btn btn-secondary btn-lg">
-                        사진 추가하기
-                    </button>
-                    <input type="file" value="대표사진 추가하기" onchange="tagImg(this);" class="hidden">
-                </div>
+                <div id="img-wrapper"></div>
                 <!--본문 내용-->
                 <textarea name="intro" id="textarea" align="left" placeholder="내용을 입력하세요."></textarea>
             </div>
@@ -309,8 +291,7 @@
         }
 
         function imgChangeNormal(_this) {
-            console.log($(this).children("input"));
-            $(this).children("input").click();
+            _this.lastElementChild.click();
         }
 
         function coverImg(inputFile) {
@@ -352,15 +333,8 @@
                 const reader = new FileReader();
                 reader.readAsDataURL(inputFile.files[0]);
                 reader.onload = function (ev) {
-                    $("#first-img").html(`<img src=` + ev.target.result + `>`);
-                    $("#fisrt-img>img").css("width", "100%")
+                    $(inputFile).parent().html(`<img src=` + ev.target.result + ` style="width: 100%;">`);
                 }
-            } else {
-                $("#first-img").html(
-                    '<h5>사진 추가하기 버튼으로</h5>' +
-                    '<h5>사진을 업로드해주세요.</h5>' +
-                    '<button type="button" class="btn btn-secondary btn-lg">사진 추가하기</button>'
-                );
             }
         }
         
@@ -373,6 +347,30 @@
             $target.style.height = 0;
             $target.style.height = DEFAULT_HEIGHT + $target.scrollHeight + 'px';
         };
+
+        function addImgArea() {
+            const wrapper = document.getElementById("img-wrapper");
+            if(wrapper.children.length < 4) {
+                wrapper.innerHTML += `
+                    <div class="img-area" onclick="imgChangeNormal(this);">
+                        <!--사진이 없는 초기 화면-->
+                        <h5>사진 추가하기 버튼으로</h5>
+                        <h5>사진을 업로드해주세요.</h5>
+                        <button type="button" class="btn btn-secondary btn-lg">
+                            사진 추가하기
+                        </button>
+                        <input type="file" value="대표사진 추가하기" onchange="tagImg(this);" class="hidden">
+                    </div>
+                `;
+            }
+        }
+
+        function deleteImgArea() {
+            const wrapper = document.getElementById("img-wrapper");
+                if (wrapper.children.length > 0) {
+                    wrapper.removeChild(wrapper.lastElementChild); 
+                }
+            }
         </script>
     <footer>
         <%@ include file="../common/footer.jsp" %> 
