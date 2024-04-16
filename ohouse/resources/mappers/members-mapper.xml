@@ -35,6 +35,16 @@
   		<result column="UPLOAD_DATE" property="uploadDate"/>
   		<result column="MEDIA_STATUS" property="mediaStatus"/>
   	</resultMap>
+  	<resultMap id="scrapResultSet" type="Scrap">
+  		<result column="SCRAP_ID" property="scrapId"/>
+  		<result column="SCRAP_TYPE" property="scrapType"/>
+  		<result column="MEMBERS_NO" property="scrapMembersNo"/>
+  		<result column="BOARD_ID" property="scrapBoardId"/>
+  		<result column="MEDIA_ID" property="scrapMediaId"/>
+  		<result column="PRODUCT_ID" property="scrapProductId"/>
+  		<result column="SCRAP_CREATE_TIME" property="scrapCreateTime"/>
+  		<result column="SCRAP_STATUS" property="scrapStatus"/>
+  	</resultMap>
   	 <select id="loginMembers" resultMap="membersResultSet" parameterType="Members">
   	SELECT
 		    MEMBERS_NO
@@ -112,7 +122,6 @@
   <update id="updateMembers" parameterType="Members">
  	UPDATE MEMBERS
 	SET MEMBERS_NAME = #{membersName}
-		, MEMBERS_PWD = #{membersPwd}
 		, MEMBERS_PHONE = #{membersPhone}
 		, MEMBERS_EMAIL = #{membersEmail}
 		, MEMBERS_BIRTH = #{membersBirth}
@@ -121,7 +130,7 @@
   </update>
   <update id="updatePwdMembers" parameterType="Members">
   	UPDATE MEMBERS
-  	SET MEMBERS_PWD = #{memberPwd},
+  	SET MEMBERS_PWD = #{membersNewPwd},
 		MEMBERS_MODIFY_TIME = SYSDATE
 	WHERE MEMBERS_ID = #{membersId}
 	 AND MEMBERS_PWD = #{membersPwd}
@@ -156,7 +165,7 @@
 		3
 	)
   </insert>
-  <select id="selectProfile" resultMap="mediaResultSet">
+  <select id="selectProfile" resultMap="mediaResultSet" parameterType="_int">
   SELECT
 	  MEDIA_ID,
 	  FILE_PATH
@@ -171,45 +180,32 @@
 		FILE_PATH = #{filePath}
 	WHERE MEDIA_ID = #{mediaId}
   </update>
-  <!-- 
-  <entry key="updateProfile">
-		UPDATE MEDIA
-		SET ORIGIN_NAME = ?,
-			CHANGE_NAME = ?,
-			FILE_PATH = ?
-		WHERE MEDIA_ID = ?
-	</entry>
-	<entry key="deleteProfile">
-		UPDATE MEDIA
-		SET MEDIA_STATUS = 'N'
-		WHERE MEDIA_ID = ?
-	</entry>
-	<entry key="selectMyProductScrapCount">
-	SELECT COUNT(*)
+  <update id="deleteProfile" parameterType="_int">
+ 	UPDATE MEDIA
+	SET MEDIA_STATUS = 'N'
+	WHERE MEDIA_ID = #{mediaId}
+  </update>
+  <select id="selectScrapCount" resultType="_int" parameterType="_int">
+  SELECT COUNT(*)
 	FROM SCRAP
-	WHERE MEMBERS_NO = ?
-	AND SCRAP_TYPE = 1
+	WHERE MEMBERS_NO = #{scrapMembersNo}
+	AND
+	<choose>
+		<when test="condition == 'product'">
+		SCRAP_TYPE = 1
+		</when>
+		<when test="condition == 'media'">
+		SCRAP_TYPE = 2
+		</when>
+		<when test="condition == 'board'">
+		SCRAP_TYPE = 3
+		</when>
+	</choose>
 	AND SCRAP_STATUS = 'Y'
-	</entry>
-	<entry key="selectMyMediaScrapCount">
-	SELECT COUNT(*)
-	FROM SCRAP
-	WHERE MEMBERS_NO = ?
-	AND SCRAP_TYPE = 2
-	AND SCRAP_STATUS = 'Y'
-	</entry>
-	<entry key="selectMyBoardScrapCount">
-	SELECT COUNT(*)
-	FROM SCRAP
-	WHERE MEMBERS_NO = ?
-	AND SCRAP_TYPE = 3
-	AND SCRAP_STATUS = 'Y'
-	</entry>
-	<entry key="deleteScrap">
-	UPDATE SCRAP
+  </select>
+  <update id="deleteScrap" parameterType="_int">
+  UPDATE SCRAP
 	SET SCRAP_STATUS = 'N"
-	WHERE SCRAP_ID = ?
-	</entry>
-</properties>
-   -->
-  </mapper>
+	WHERE SCRAP_ID = #{scrapId}
+  </update>
+</mapper>

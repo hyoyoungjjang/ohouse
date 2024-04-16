@@ -19,6 +19,10 @@
   		<result column="PRODUCT_DELIVERY_PRICE" property="productDeliveryPrice" />
   		<result column="PRODUCT_CATEGORY" property="productCategory" />
   		<result column="PRODUCT_STATUS" property="productStatus" />
+  		<result column="REVIEW_COUNT" property="reviewCount" />
+  		<result column="RATING_AVG" property="ratingAvg" />
+  		<result column="PRODUCT_THUMBNAIL" property="productThumbnail" />
+  		<result column="MEMBERS_NO" property="membersNo" />
   	</resultMap>
   	<resultMap id="mediaResultSet" type="Media">
   		<result column="MEDIA_ID" property="mediaId"/>
@@ -39,7 +43,8 @@
   		<result column="SCRAP_CREATE_TIME" property="scrapCreateTime"/>
   		<result column="SCRAP_STATUS" property="scrapStatus"/>
   	</resultMap>
-  	  <insert id="insertProduct">
+  	
+  <insert id="insertProduct" >
   INSERT
   INTO PRODUCT
   (
@@ -92,7 +97,7 @@
        PRODUCT_NAME,
        PRODUCT_PRICE,
        SALE,
-       FILE_PATH || CHANGE_NAME AS "TITLE_IMG",
+       FILE_PATH || CHANGE_NAME AS "PRODUCT_THUMBNAIL",
        COMPANY_NAME,
        (
            SELECT COUNT(*)
@@ -103,7 +108,7 @@
            SELECT AVG(RATING)
            FROM REVIEW R
            WHERE R.PRODUCT_ID = P.PRODUCT_ID
-       ) AS "RATING"
+       ) AS "RATING_AVG"
    FROM PRODUCT P
    JOIN MEDIA MED ON (P.PRODUCT_ID = MED.PRODUCT_ID)
    JOIN MEMBERS MEM ON (P.MEMBERS_NO = MEM.MEMBERS_NO)
@@ -123,7 +128,7 @@
    	<when test="condition == 'saleDesc'">
    		SALE DESC
    	</when>
-   	<otherwise >
+   	<otherwise>
    		PRODUCT_SALES DESC
    	</otherwise>
    </choose>
@@ -132,6 +137,11 @@
   	SELECT COUNT(*)
 	 FROM PRODUCT
 	 WHERE PRODUCT_STATUS = 'Y'
+	 <choose>
+	 	<when test="condition == sale">
+	 		AND SALE != 0
+	 	</when>
+	 </choose>
   </select>
   <update id="updateProduct">
   	UPDATE PRODUCT
