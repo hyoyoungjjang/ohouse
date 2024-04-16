@@ -29,8 +29,9 @@
   		<result column="FILTER_STYLE_PRICE" property="filStPrice"/>
   		<result column="FILTER_URL" property="filUrl"/>
   		<result column="FILTER_COPYRIGHT" property="filCopy"/>
-  		<result column="MEMBERS_ID" property="membersId"/>
   		<result column="BOARD_STATUS" property="boardStatus"/>
+  		<result column="MEMBERS_NO" property="membersNo"/>
+  		<result column="BOARD_WRITER" property="boardWriter"/>
   	</resultMap>
   	<resultMap id="mediaResultSet" type="Media">
   		<result column="MEDIA_ID" property="mediaId"/>
@@ -110,26 +111,16 @@
 		#{boardStatus}
 	)
   	</insert>
-  		<result column="FILTER_PERIOD" property="filPeriod"/>
-  		<result column="FILTER_PERIOD_TYPE" property="filPeriodType"/>
-  		<result column="FILTER_CONSTRUCTION_PRICE" property="filConPrice"/>
-  		<result column="FILTER_STYLE_PRICE" property="filStPrice"/>
-  		<result column="FILTER_URL" property="filUrl"/>
-  		<result column="FILTER_COPYRIGHT" property="filCopy"/>
-  		<result column="MEMBERS_ID" property="membersId"/>
-  		<result column="BOARD_STATUS" property="boardStatus"/>
   	
-  <!-- 
-  <properties>
-	<entry key="insertBoard">
-	INSERT
-	INTO BOARD
-	(
+  	<select id="selectBoard" parameterType="_int" resultMap="boardResultSet">
+  	SELECT
 		BOARD_ID,
 		BOARD_TITLE,
 		BOARD_VIEWS,
-		BOARD_COVER_SRC,
-		BOARD_CONTENT,
+		TO_CHAR(BOARD_CREATE_TIME, 'YYYY/MM/DD') AS "BOARD_CREATE_TIME",
+		TO_CHAR(BOARD_MODIFY_TIME, 'YYYY/MM/DD') AS "BOARD_MODIFY_TIME",
+		BOARD_INTRODUCTION,
+		BOARD_DESCRIPTION,
 		FILTER_TYPE,
 		FILTER_AREA,
 		FILTER_NUM,
@@ -148,36 +139,14 @@
 		FILTER_STYLE_PRICE,
 		FILTER_URL,
 		FILTER_COPYRIGHT,
-		MEMBERS_NO
-	)
-	VALUES(
-		SEQ_PDID.NEXTVAL,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?
-	)
-	</entry>
+		MEMBERS_ID AS "BOARD_WRITER"
+	FROM BOARD
+	JOIN MEMBERS USING (MEMBERS_NO)
+	WHERE BOARD_ID = #{}
+	AND BOARD_STATUS = 'Y'
+  	</select>
+  <!-- 
+  <properties>
 	<entry key="selectBoard">
 	SELECT
 		BOARD_ID,
