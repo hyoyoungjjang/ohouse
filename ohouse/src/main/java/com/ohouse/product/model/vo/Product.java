@@ -106,12 +106,12 @@ public class Product{
 		this.sale = sale;
 	}
 
-	public String getProductThumnail() {
+	public String getProductThumbnail() {
 		return productThumbnail;
 	}
 
-	public void setProductThumnail(String productThumnail) {
-		this.productThumbnail = productThumnail;
+	public void setProductThumbnail(String productThumbnail) {
+		this.productThumbnail = productThumbnail;
 	}
 
 	public String getProductContent() {
