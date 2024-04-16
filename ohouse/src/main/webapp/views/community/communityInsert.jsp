@@ -323,7 +323,32 @@
                     <button type="button" class="btn btn-light btn-lg" onclick="addImgArea();">사진추가</button>
                     <button type="button" class="btn btn-danger btn-lg" onclick="deleteImgArea();">사진삭제</button>
                 </p>
-                <div id="img-wrapper"></div>
+                <div id="img-wrapper">
+                    <div class="img-area" onclick="tagArea(this);" style="position: relative;">
+                        <!--사진이 없는 초기 화면-->
+                        <h5>사진 추가하기 버튼으로</h5>
+                        <h5>사진을 업로드해주세요.</h5>
+                        <button type="button" class="btn btn-secondary btn-lg">
+                            사진 추가하기
+                        </button>
+                        <input type="file" value="대표사진 추가하기" onchange="tagImg(this);" class="hidden">
+                    </div>
+                    <div class="tag-flex">
+                        <input type="hidden" value="1">
+                        <div class="tag-product" onclick="productSearch(this);"></div>
+                        <div class="tag-search hidden">
+                            <input type="text" onchange="chooseProduct(this);">
+                            <c:forEach var="p" items="${pList}">
+                        
+                            </c:forEach>
+                        </div>
+                        <div class="tag-product" onclick="productSearch(this);"></div>
+                        <div class="tag-product" onclick="productSearch(this);"></div>
+                        <div class="tag-product" onclick="productSearch(this);"></div>
+                        <div class="tag-product" onclick="productSearch(this);"></div>
+                        <div class="tag-product" onclick="productSearch(this);"></div>
+                    </div>
+                </div>
                 <!--본문 내용-->
                 <textarea name="intro" id="textarea" align="left" placeholder="내용을 입력하세요."></textarea>
             </div>
@@ -336,8 +361,12 @@
             imgInput.click();
         }
 
-        function imgChangeNormal(_this) {
-            _this.lastElementChild.click();
+        function tagArea(_this) {
+            if(_this.className.includes("isFull")) {
+                addTag(event);
+            } else {
+                _this.lastElementChild.click();
+            }
         }
 
         function coverImg(inputFile) {
@@ -379,9 +408,10 @@
                 const reader = new FileReader();
                 reader.readAsDataURL(inputFile.files[0]);
                 reader.onload = function (ev) {
-                    $(inputFile).parent().html(`<img src=` + ev.target.result 
-                    + ` style="height: 100%;"`
-                    + ` onclick="addTag(event);">`);
+                    const parent = $(inputFile).parent();
+                    parent.html(`<img src=` + ev.target.result 
+                    + ` style="height: 100%;">`);
+                    parent.addClass("isFull"); 
                 }
             }
         }
@@ -392,9 +422,13 @@
             if(x * y <= 0) return;
             
             console.log(x, y);
-            ev.target.parentElement.innerHTML += "<span"
-                                                + " style='position: absolute; top: calc(" + y + "px);"
-                                                + " left: calc(" + x + "px);'>b</span>"
+            ev.target.parentElement.innerHTML += "<span class='tag'"
+                                                + " style='position: absolute; top: calc(" + y + "px - 190px);"
+                                                + " left: calc(" + x + "px - 190px);'>+</span>";
+        }
+
+        function productSearch(_this) {
+            $(_this).next().toggleClass("hidden");
         }
         
         const DEFAULT_HEIGHT = 30; // textarea 기본 height
@@ -411,7 +445,7 @@
             const wrapper = document.getElementById("img-wrapper");
             if(wrapper.children.length < 4) {
                 wrapper.innerHTML += `
-                    <div class="img-area" onclick="imgChangeNormal(this);" style="position: relative;">
+                    <div class="img-area" onclick="tagArea(this);" style="position: relative;">
                         <!--사진이 없는 초기 화면-->
                         <h5>사진 추가하기 버튼으로</h5>
                         <h5>사진을 업로드해주세요.</h5>
@@ -427,7 +461,8 @@
         function deleteImgArea() {
             const wrapper = document.getElementById("img-wrapper");
                 if (wrapper.children.length > 0) {
-                    wrapper.removeChild(wrapper.lastElementChild); 
+                    wrapper.removeChild(wrapper.lastElementChild);
+                    wrapper.removeChild(wrapper.lastElementChild);
                 }
             }
         </script>
