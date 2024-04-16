@@ -142,9 +142,11 @@
 		MEMBERS_ID AS "BOARD_WRITER"
 	FROM BOARD
 	JOIN MEMBERS USING (MEMBERS_NO)
-	WHERE BOARD_ID = #{}
+	WHERE BOARD_ID = #{boardId}
 	AND BOARD_STATUS = 'Y'
   	</select>
+  	
+  	
   <!-- 
   <properties>
 	<entry key="selectBoard">
