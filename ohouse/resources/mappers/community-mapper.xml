@@ -52,7 +52,7 @@
   		<result column="MEMBERS_NO" property="scrapMembersNo"/>
   		<result column="SCRAP_CREATE_TIME" property="scrapCreateTime"/>
   		<result column="SCRAP_STATUS" property="scrapStatus"/>
-  	</resultMap>
+  	</resultMap>  	
   	<resultMap type="Reply" id="replyResultSet">
   		 <result column="REPLY_ID" property="replyId" />
   		 <result column="REPLY_CONTENT" property="replyContent" />

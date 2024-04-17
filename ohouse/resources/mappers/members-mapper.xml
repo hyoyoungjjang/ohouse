@@ -23,6 +23,7 @@
   		<result column="MEMBERS_ENROLL_TIME" property="membersEnrollTime" />
   		<result column="MEMBERS_MODIFY_TIME" property="membersModifyTime" />
   		<result column="MEMBERS_STATUS" property="membersStatus" />
+  		<result column="PROFILE" property="profile" />
   	</resultMap>
   	<resultMap id="mediaResultSet" type="Media">
   		<result column="MEDIA_ID" property="mediaId"/>
@@ -168,7 +169,7 @@
   <select id="selectProfile" resultMap="mediaResultSet" parameterType="_int">
   SELECT
 	  MEDIA_ID,
-	  FILE_PATH
+	  FILE_PATH || CHANGE_NAME AS "PROFILE",
   FROM MEDIA
   WHERE MEMBERS_NO = #{mediaMembersNo}
    AND MEDIA_STATUS = 'Y'
