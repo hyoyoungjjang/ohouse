@@ -366,7 +366,7 @@
   			#{replyMembersNo}
   		)
   	</insert>
-  	<select id="selectReplyList" resultType="replyResultSet">
+  	<select id="selectReplyList" resultMap="replyResultSet">
   		SELECT
 			REPLY_ID,
 			REPLY_CONTENT,
