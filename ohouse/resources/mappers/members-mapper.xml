@@ -119,7 +119,6 @@
 			#{gender}
 		)
   </insert>
-  
   <update id="updateMembers" parameterType="Members">
  	UPDATE MEMBERS
 	SET MEMBERS_NAME = #{membersName}
@@ -143,6 +142,7 @@
 	WHERE MEMBERS_ID = #{membersId}
 	  AND MEMBERS_PWD = #{membersPwd}
   </update>
+  <!-- 프로필 사진 관련 매퍼 -->
   <insert id="insertProfile" parameterType="Media">
  	INSERT
 	INTO MEDIA
@@ -171,7 +171,7 @@
 	  MEDIA_ID,
 	  FILE_PATH || CHANGE_NAME AS "PROFILE",
   FROM MEDIA
-  WHERE MEMBERS_NO = #{mediaMembersNo}
+  WHERE MEMBERS_NO = #{membersNo}
    AND MEDIA_STATUS = 'Y'
   </select>
   <update id="updateProfile" parameterType="Media">
@@ -186,10 +186,11 @@
 	SET MEDIA_STATUS = 'N'
 	WHERE MEDIA_ID = #{mediaId}
   </update>
+  <!-- 스크랩 관련 매퍼 -->
   <select id="selectScrapCount" resultType="_int" parameterType="_int">
   SELECT COUNT(*)
 	FROM SCRAP
-	WHERE MEMBERS_NO = #{scrapMembersNo}
+	WHERE MEMBERS_NO = #{membersNo}
 	AND
 	<choose>
 		<when test="condition == 'product'">
@@ -209,4 +210,6 @@
 	SET SCRAP_STATUS = 'N"
 	WHERE SCRAP_ID = #{scrapId}
   </update>
+  <!-- 장바구니 관련 매퍼 -->
+  
 </mapper>
