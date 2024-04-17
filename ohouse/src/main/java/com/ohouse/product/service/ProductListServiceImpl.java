@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.ohouse.common.model.vo.Scrap;
 import com.ohouse.common.template.PageInfo;
 import com.ohouse.product.model.dao.ProductListDao;
 import com.ohouse.product.model.vo.Product;
@@ -37,10 +38,45 @@ public class ProductListServiceImpl implements ProductListService{
 				p.setProductPrice(price + "");
 			}
 		}
-		
-		
 		sqlSession.close();
 		return pList;
+	}
+
+	@Override
+	public int selectProductListCount(String condition) {
+		SqlSession sqlSession = getSqlSession();
+		
+		int saleListCount = pDao.selectProductListCount(sqlSession, condition);
+		
+		sqlSession.close();
+		return saleListCount;
+	}
+
+	@Override
+	public ArrayList<Product> selectProductSaleList(PageInfo pi, String condition) {
+		SqlSession sqlSession = getSqlSession();
+		
+		ArrayList<Product> psList = pDao.selectProductSaleList(sqlSession, pi, condition);
+		
+		for(Product ps : psList) {
+			if(ps.getSale() > 0) {
+				int price = Integer.parseInt(ps.getProductPrice());
+				price = price - ((price/100) * ps.getSale());
+				ps.setProductPrice(price + "");
+			}
+		}
+		sqlSession.close();
+		return psList;
+	}
+
+	@Override
+	public int productScrapInsert(Scrap scrap) {
+		SqlSession sqlSession = getSqlSession();
+		
+		int reuslt = pDao.productScrapInsert(sqlSession, scrap);
+		
+		sqlSession.close();
+		return reuslt;
 	}
 
 

@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
+    pageEncoding="UTF-8"%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,9 +30,6 @@
                         </div>
 
                         <script>
-	                     // product-bookmark-img 클릭 시 이미지 변경
-	                     // pm-bookmark.png -> pm-bookmark-checked.png 또는
-	                     // pm-bookmark-checked.png -> pm-bookmark.png
 	                     function changeBookmark(_this){
 	                         const contextPath = "${pageContext.request.contextPath}";
 	                         const src = _this.src;
