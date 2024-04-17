@@ -7,6 +7,7 @@
   		<result column="BOARD_ID" property="boardId"/>
   		<result column="BOARD_TITLE" property="boardTitle"/>
   		<result column="BOARD_VIEWS" property="boardViews"/>
+  		<result column="BOARD_THUMBNAIL" property="boardThumbnail"/>
   		<result column="BOARD_CREATE_TIME" property="boardCreateTime"/>
   		<result column="BOARD_MODIFY_TIME" property="boardModifyTime"/>
   		<result column="BOARD_INTRODUCTION" property="introduction"/>
@@ -52,7 +53,16 @@
   		<result column="SCRAP_CREATE_TIME" property="scrapCreateTime"/>
   		<result column="SCRAP_STATUS" property="scrapStatus"/>
   	</resultMap>
-  	
+  	<resultMap type="Reply" id="replyResultSet">
+  		 <result column="REPLY_ID" property="replyId" />
+  		 <result column="REPLY_CONTENT" property="replyContent" />
+  		 <result column="REPLY_CREATE_DATE" property="replyCreateDate" />
+  		 <result column="REPLY_MODIFT_DATE" property="replyModifyDate" />
+  		 <result column="BOARD_ID" property="replyBoardId" />
+  		 <result column="MEMBERS_NO" property="replyMembersNo" />
+  		 <result column="REPLY_STATUS" property="replyStatus" />
+  		 <result column="MEMBERS_ID" property="replyWriter"/>
+  	</resultMap>
   	<insert id="insertBoard" parameterType="Board">
   	INSERT
 	INTO BOARD
@@ -152,7 +162,7 @@
 		BOARD_TITLE,
 		BOARD_VIEWS,
 		FILE_PATH || CHANGE_NAME AS "BOARD_THUMBNAIL",
-		B.MEMBERS_NO AS "BOARD_WRITER",
+		MEMBERS_ID AS "BOARD_WRITER",
 		(
          SELECT COUNT(*)
 		 FROM SCRAP S
@@ -170,7 +180,7 @@
 	SET 
 		BOARD_TITLE = #{boardTitle},
 		BOARD_INTRODUCTION = #{boardIntroduction},
-		BOARD_DESCRIPTION = #{board},
+		BOARD_DESCRIPTION = #{boardDescription},
 		FILTER_TYPE = #{filType},
 		FILTER_AREA = #{filArea},
 		FILTER_NUM = #{filNum},
@@ -338,18 +348,72 @@
 	AND SCRAP_STATUS = 'Y'
   	</select>
   	<!-- REPLY -->
-  	<!-- 
-  	 	<select id="selectReplyList" resultType="replyResultSet">
-  	SELECT
+  	<insert id="insertReply">
+  		INSERT
+  		INTO REPLY
+  		(
+  			REPLY_ID,
+			REPLY_CONTENT,
+			BOARD_ID,
+			MEMBERS_NO
+  		)
+  		VALUES
+  		(
+  			SEQ_REPID.NEXTVAL,
+  			#{replyContent},
+  			#{replyBoardId},
+  			#{replyMembersNo}
+  		)
+  	</insert>
+  	<select id="selectReplyList" resultType="replyResultSet">
+  		SELECT
 			REPLY_ID,
-			REPLY_TEXT,
+			REPLY_CONTENT,
 			REPLY_CREATE_DATE,
 			BOARD_ID,
+			R.MEMBERS_NO,
 			MEMBERS_ID
 		FROM REPLY R
 		JOIN MEMBERS M ON (R.MEMBERS_NO = M.MEMBERS_NO)
 		WHERE REPLY_STATUS = 'Y'
+		AND BOARD_ID = #{boardId}
+		ORDER BY REPLY_CREATE_DATE DESC
   	</select>
-  	 -->
+  	<update id="updateReply">
+  		UPDATE REPLY
+  		SET
+  			REPLY_CONTENT = #{replyContent},
+  			REPLY_MODIFY_DATE = SYSDATE,
+  		WHERE REPLY_ID = #{replyId}
+  	</update>
+  	<update id="deleteReply">
+  		UPDATE REPLY
+  		SET
+  			REPLY_STATUS = 'N'
+  		WHERE REPLY_ID = #{replyId}
+  	</update>
  </mapper>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   

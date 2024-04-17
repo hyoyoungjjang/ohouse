@@ -138,7 +138,7 @@
 	 FROM PRODUCT
 	 WHERE PRODUCT_STATUS = 'Y'
 	 <choose>
-	 	<when test="condition == sale">
+	 	<when test="condition == 'saleDesc'">
 	 		AND SALE != 0
 	 	</when>
 	 </choose>
