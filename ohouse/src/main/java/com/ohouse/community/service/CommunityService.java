@@ -1,5 +1,11 @@
 package com.ohouse.community.service;
 
-public class CommunityService {
+import java.util.ArrayList;
 
+import com.ohouse.common.model.vo.Media;
+import com.ohouse.community.model.vo.Board;
+
+public interface CommunityService {
+	ArrayList<Board> selectBoardList();
+	Media selectProfile(int membersNo);
 }
