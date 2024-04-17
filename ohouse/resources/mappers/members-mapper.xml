@@ -130,10 +130,10 @@
   </update>
   <update id="updatePwdMembers">
   	UPDATE MEMBERS
-  	SET MEMBERS_PWD = #{membersNewPwd},
+  	SET MEMBERS_PWD = #{updatePwd},
 		MEMBERS_MODIFY_TIME = SYSDATE
-	WHERE MEMBERS_ID = #{membersId}
-	 AND MEMBERS_PWD = #{membersPwd}
+	WHERE MEMBERS_ID = #{userId}
+	 AND MEMBERS_PWD = #{updatePwd}
   </update>
   <update id="deleteMembers" parameterType="Media">
   	UPDATE MEMBERS

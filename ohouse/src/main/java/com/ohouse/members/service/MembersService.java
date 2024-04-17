@@ -1,5 +1,7 @@
 package com.ohouse.members.service;
 
+import java.util.HashMap;
+
 import com.ohouse.members.model.vo.Members;
 
 public interface MembersService {
@@ -10,4 +12,7 @@ public interface MembersService {
 	public int deleteMembers(Members m);
 	
 	public int idCheck(String checkId);
+	
+	public Members updatePwdMembers(HashMap map);
+	
 }
