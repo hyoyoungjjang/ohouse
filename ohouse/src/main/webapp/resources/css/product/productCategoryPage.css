@@ -8,7 +8,9 @@
 }
 
 .pc-sale {
+    width: 1136px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 
@@ -45,6 +47,7 @@
     width: 190px;
     text-align: left;
     margin-bottom: 50px;
+    margin-left: 5px;
 }
 
 .pc-category {
@@ -112,4 +115,9 @@
 .pc-grid {
     display: grid;
     column-gap: 50px;
+}
+
+.pc-sale-content{
+    display: flex;
+    flex-direction: column;
 }

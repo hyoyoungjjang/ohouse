@@ -22,7 +22,7 @@ public class ProductListDao {
 		
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		
-		return (ArrayList)sqlSession.selectList("productMapper.selectList", null, rowBounds);
+		return (ArrayList)sqlSession.selectList("productMapper.selectProductList", null, rowBounds);
 	}
 
 }

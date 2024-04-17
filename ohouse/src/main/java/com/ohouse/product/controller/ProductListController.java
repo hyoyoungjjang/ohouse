@@ -35,8 +35,9 @@ public class ProductListController extends HttpServlet {
 		int currentPage = Integer.parseInt((request.getParameter("cpage"))) ;
 		int listCount = new ProductListServiceImpl().selectListCount();
 		
-		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 9);
+		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 12);
 		ArrayList<Product> pList =  new ProductListServiceImpl().selectListProduct(pi);
+		
 		
 		request.setAttribute("pList", pList);
 		request.getRequestDispatcher("views/product/productBestPage.jsp").forward(request, response);

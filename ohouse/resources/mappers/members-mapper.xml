@@ -23,6 +23,7 @@
   		<result column="MEMBERS_ENROLL_TIME" property="membersEnrollTime" />
   		<result column="MEMBERS_MODIFY_TIME" property="membersModifyTime" />
   		<result column="MEMBERS_STATUS" property="membersStatus" />
+  		<result column="PROFILE" property="profile" />
   	</resultMap>
   	<resultMap id="mediaResultSet" type="Media">
   		<result column="MEDIA_ID" property="mediaId"/>
@@ -118,7 +119,6 @@
 			#{gender}
 		)
   </insert>
-  
   <update id="updateMembers" parameterType="Members">
  	UPDATE MEMBERS
 	SET MEMBERS_NAME = #{membersName}
@@ -128,7 +128,7 @@
 		, MEMBERS_MODIFY_TIME = SYSDATE
 	WHERE MEMBERS_ID = #{membersId}
   </update>
-  <update id="updatePwdMembers" parameterType="Members">
+  <update id="updatePwdMembers">
   	UPDATE MEMBERS
   	SET MEMBERS_PWD = #{updatePwd},
 		MEMBERS_MODIFY_TIME = SYSDATE
@@ -142,6 +142,7 @@
 	WHERE MEMBERS_ID = #{membersId}
 	  AND MEMBERS_PWD = #{membersPwd}
   </update>
+  <!-- 프로필 사진 관련 매퍼 -->
   <insert id="insertProfile" parameterType="Media">
  	INSERT
 	INTO MEDIA
@@ -168,9 +169,9 @@
   <select id="selectProfile" resultMap="mediaResultSet" parameterType="_int">
   SELECT
 	  MEDIA_ID,
-	  FILE_PATH
+	  FILE_PATH || CHANGE_NAME AS "PROFILE",
   FROM MEDIA
-  WHERE MEMBERS_NO = #{mediaMembersNo}
+  WHERE MEMBERS_NO = #{membersNo}
    AND MEDIA_STATUS = 'Y'
   </select>
   <update id="updateProfile" parameterType="Media">
@@ -185,10 +186,11 @@
 	SET MEDIA_STATUS = 'N'
 	WHERE MEDIA_ID = #{mediaId}
   </update>
+  <!-- 스크랩 관련 매퍼 -->
   <select id="selectScrapCount" resultType="_int" parameterType="_int">
   SELECT COUNT(*)
 	FROM SCRAP
-	WHERE MEMBERS_NO = #{scrapMembersNo}
+	WHERE MEMBERS_NO = #{membersNo}
 	AND
 	<choose>
 		<when test="condition == 'product'">
@@ -208,4 +210,6 @@
 	SET SCRAP_STATUS = 'N"
 	WHERE SCRAP_ID = #{scrapId}
   </update>
+  <!-- 장바구니 관련 매퍼 -->
+  
 </mapper>
