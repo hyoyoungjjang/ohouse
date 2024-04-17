@@ -20,7 +20,7 @@
         <div id="pm-content">
             <div class="pm-sale pm-header" id="pm-deal-header">
                 <span class="pm-category">오늘의 딜</span>
-                <span class="pm-add">더보기</span>
+                <span class="pm-add" onclick="location.href='${contextPath}/saleList.pr?cpage=1&condition=saleDesc'">더보기</span>
             </div>
             <div class="pm-sale pm-content" id="pm-deal-contents">
                 <div class="pm-sale-content">

@@ -17,6 +17,7 @@ public class ProductListServiceImpl implements ProductListService{
 	@Override
 	public int selectListCount() {
 		SqlSession sqlSession = getSqlSession();
+		
 		int listCount = pDao.selectListCount(sqlSession);
 		
 		sqlSession.close();
@@ -29,8 +30,16 @@ public class ProductListServiceImpl implements ProductListService{
 		
 		ArrayList<Product> pList = pDao.selectListProduct(sqlSession, pi);
 		
-		sqlSession.close();
+		for(Product p : pList) {
+			if(p.getSale() > 0) {
+				int price = Integer.parseInt(p.getProductPrice());
+				price = price - ((price/100) * p.getSale());
+				p.setProductPrice(price + "");
+			}
+		}
 		
+		
+		sqlSession.close();
 		return pList;
 	}
 
