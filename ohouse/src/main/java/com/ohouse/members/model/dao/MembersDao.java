@@ -26,13 +26,13 @@ public class MembersDao {
 		return sqlSession.delete("membersMapper.idCheck");
 	}
 	
-	public int updatePwdMembers(SqlSession sqlSession, HashMap map) {
+	public int updatePwdMembers(SqlSession sqlSession, HashMap<String, String> map) {
 		return sqlSession.selectOne("membersMapper.updatePwdMembers", map);
 		
 	}
 	
-	public Members selectMembers(SqlSession sqlSession, HashMap map) {
-		return sqlSession.selectOne("membersMapper.selectMembers", map);
+	public Members selectMembers(SqlSession sqlSession, String membersId) {
+		return sqlSession.selectOne("membersMapper.selectMembers", membersId);
 	}
 	
 }
