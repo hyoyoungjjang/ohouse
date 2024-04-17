@@ -53,11 +53,11 @@
   		<result column="SCRAP_CREATE_TIME" property="scrapCreateTime"/>
   		<result column="SCRAP_STATUS" property="scrapStatus"/>
   	</resultMap>  	
-  	<resultMap type="Reply" id="replyResultSet">
+  	 <resultMap id="replyResultSet" type="Reply">
   		 <result column="REPLY_ID" property="replyId" />
   		 <result column="REPLY_CONTENT" property="replyContent" />
   		 <result column="REPLY_CREATE_DATE" property="replyCreateDate" />
-  		 <result column="REPLY_MODIFT_DATE" property="replyModifyDate" />
+  		 <result column="REPLY_MODIFY_DATE" property="replyModifyDate" />
   		 <result column="BOARD_ID" property="replyBoardId" />
   		 <result column="MEMBERS_NO" property="replyMembersNo" />
   		 <result column="REPLY_STATUS" property="replyStatus" />
@@ -158,7 +158,8 @@
   	<!-- 기본 정렬은 최신순. 이후 정렬은 동적 쿼리 사용 -->
   	<select id="selectBoardList" resultMap="boardResultSet">
 	SELECT
-		B.BOARD_ID,
+		B.BOARD_ID AS "BOARD_ID",
+		B.MEMBERS_NO AS "MEMBERS_NO",
 		BOARD_TITLE,
 		BOARD_VIEWS,
 		FILE_PATH || CHANGE_NAME AS "BOARD_THUMBNAIL",
