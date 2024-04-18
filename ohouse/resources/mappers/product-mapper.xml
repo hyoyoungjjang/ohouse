@@ -248,16 +248,29 @@
 		SCRAP_ID,
 		SCRAP_TYPE,
 		MEMBERS_NO,
-		PRODUCT_ID,
+		PRODUCT_ID
 	)
 	VALUES
 	(
 		SEQ_SCRID.NEXTVAL,
 		1,
-		#{scrapMembersNo},
-		#{scrapProductId}
+		${scrapMembersNo},
+		${scrapProductId}
 	)
 	</insert>
+	<select id="productScrapstatusCheck" resultType="_int">
+		SELECT COUNT(*)
+		FROM SCRAP
+		WHERE MEMBERS_NO = ${scrapMembersNo}
+		AND PRODUCT_ID = ${scrapProductId}
+	</select>
+	<update id="productScrapUpdate">
+		UPDATE SCRAP
+		SET SCRAP_STATUS = #{scrapStatus}
+		WHERE MEMBERS_NO = ${scrapMembersNo}
+		AND PRODUCT_ID = ${scrapProductId}
+	</update>
+	
 	<!-- =========================== 상품 옵션 매퍼 ================================ -->
 	
 	<!-- ========================== 주문 매퍼 ============================ -->

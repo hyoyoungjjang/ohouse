@@ -20,6 +20,14 @@ public interface ProductListService {
 	//productSalePage 리스트
 	public ArrayList<Product> selectProductSaleList(PageInfo pi, String condition);
 	
-	//productScrap
+	//productScrapStatusCheck
+	public int productScrapstatusCheck(Scrap scrap);
+	
+	//productScrapInsert
 	public int productScrapInsert(Scrap scrap);
+	
+	//jproductScrpaUpdate
+	public int productScrapUpdate(Scrap scrap);
+	
+	
 }

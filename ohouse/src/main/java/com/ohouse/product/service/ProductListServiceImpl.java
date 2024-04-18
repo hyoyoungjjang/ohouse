@@ -73,10 +73,43 @@ public class ProductListServiceImpl implements ProductListService{
 	public int productScrapInsert(Scrap scrap) {
 		SqlSession sqlSession = getSqlSession();
 		
-		int reuslt = pDao.productScrapInsert(sqlSession, scrap);
+		int result = pDao.productScrapInsert(sqlSession, scrap);
+		
+		if(result > 0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}		
 		
 		sqlSession.close();
-		return reuslt;
+		return result;
+	}
+
+	@Override
+	public int productScrapstatusCheck(Scrap scrap) {
+		SqlSession sqlSession = getSqlSession();
+		
+		int result = pDao.productScrapstatusCheck(sqlSession, scrap);
+		
+		sqlSession.close();
+		
+		return result;
+	}
+
+	@Override
+	public int productScrapUpdate(Scrap scrap) {
+		SqlSession sqlSession = getSqlSession();
+		
+		int result = pDao.productScrapUpdate(sqlSession, scrap);
+		
+		if(result > 0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}		
+		
+		sqlSession.close();
+		return result;
 	}
 
 

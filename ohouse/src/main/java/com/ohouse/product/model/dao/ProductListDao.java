@@ -46,9 +46,19 @@ public class ProductListDao {
 	
 	public int productScrapInsert(SqlSession sqlSession, Scrap scrap){
 		
-		return sqlSession.selectOne("productMapper.insertProductScrap", scrap);
-				
-				
+		return sqlSession.insert("productMapper.insertProductScrap", scrap);
+					
+	}
+	
+	public int productScrapstatusCheck(SqlSession sqlSession, Scrap scrap) {
+		
+		
+		return sqlSession.selectOne("productMapper.productScrapstatusCheck", scrap);
+	}
+	
+	public int productScrapUpdate(SqlSession sqlSession, Scrap scrap ) {
+		
+		return sqlSession.update("productMapper.productScrapUpdate", scrap);
 	}
 
 }
