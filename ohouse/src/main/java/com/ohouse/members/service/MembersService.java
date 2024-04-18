@@ -13,6 +13,6 @@ public interface MembersService {
 	
 	public int idCheck(String checkId);
 	
-	public Members updatePwdMembers(HashMap map);
+	public Members updatePwdMembers(HashMap<String, String> map);
 	
 }
