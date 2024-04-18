@@ -7,6 +7,8 @@
   		<result column="BOARD_ID" property="boardId"/>
   		<result column="BOARD_TITLE" property="boardTitle"/>
   		<result column="BOARD_VIEWS" property="boardViews"/>
+  		<result column="MEMBERS_NO" property="membersNo"/>
+  		<result column="BOARD_WRITER" property="boardWriter"/>
   		<result column="BOARD_THUMBNAIL" property="boardThumbnail"/>
   		<result column="BOARD_CREATE_TIME" property="boardCreateTime"/>
   		<result column="BOARD_MODIFY_TIME" property="boardModifyTime"/>
@@ -31,7 +33,6 @@
   		<result column="FILTER_URL" property="filUrl"/>
   		<result column="FILTER_COPYRIGHT" property="filCopy"/>
   		<result column="BOARD_STATUS" property="boardStatus"/>
-  		<result column="MEMBERS_NO" property="boardWriter"/>
   		<result column="SCRAP_COUNT" property="scrapCount"/>
   	</resultMap>
   	<resultMap id="mediaResultSet" type="Media">

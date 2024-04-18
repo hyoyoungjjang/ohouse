@@ -62,21 +62,23 @@ public class MembersServiceImpl implements MembersService {
 	}
 	
 	@Override
-	public Members updatePwdMembers(HashMap map) {
+	public Members updatePwdMembers(HashMap<String, String> map) {
 		SqlSession sqlSession = getSqlSession();
 		int result = membersDao.updatePwdMembers(sqlSession, map);
 	
-//		Members m = null;
-//		if (result > 0) {
-//			Members membersId = membersDao.selectMembers(sqlSession, map);
-//			sqlSession.commit();
-//		} else {
-//			sqlSession.rollback();
-//		}
-//		
+		Members m = null;
+		if (result > 0) {
+			String membersId  = map.get("userId");
+			m = membersDao.selectMembers(sqlSession, membersId);
+			
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		
 		sqlSession.close();
 		
-		return null;
+		return m;
 		
 	}
 }
