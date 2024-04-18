@@ -6,6 +6,7 @@ public class Board {
 	private String boardId;
 	private String boardTitle;
 	private String boardViews;
+	private String membersNo;
 	private String boardWriter;
 	private String boardThumbnail;
 	private Date boardCreateTime;
@@ -35,16 +36,17 @@ public class Board {
 	
 	public Board() {}
 
-	public Board(String boardId, String boardTitle, String boardViews, String boardWriter, String boardThumbnail, Date boardCreateTime,
-			Date boardModifyTime, String introduction, String description, String filType, String filArea,
-			String filNum, String filDirection, String filPast, String filLocal, String filFamily, String filPet,
-			String filFamMemCnt, String filField, String filWorker, String filRange, String filPeriod,
-			String filPeriodType, String filConPrice, String filStPrice, String filUrl, String filCopy,
-			String boardStatus, String scrapCount) {
+	public Board(String boardId, String boardTitle, String boardViews, String membersNo, String boardWriter,
+			String boardThumbnail, Date boardCreateTime, Date boardModifyTime, String introduction, String description,
+			String filType, String filArea, String filNum, String filDirection, String filPast, String filLocal,
+			String filFamily, String filPet, String filFamMemCnt, String filField, String filWorker, String filRange,
+			String filPeriod, String filPeriodType, String filConPrice, String filStPrice, String filUrl,
+			String filCopy, String boardStatus, String scrapCount) {
 		super();
 		this.boardId = boardId;
 		this.boardTitle = boardTitle;
 		this.boardViews = boardViews;
+		this.membersNo = membersNo;
 		this.boardWriter = boardWriter;
 		this.boardThumbnail = boardThumbnail;
 		this.boardCreateTime = boardCreateTime;
@@ -306,19 +308,25 @@ public class Board {
 		this.boardThumbnail = boardThumbnail;
 	}
 
-	@Override
-	public String toString() {
-		return "Board [boardId=" + boardId + ", boardTitle=" + boardTitle + ", boardViews=" + boardViews
-				+ ", boardWriter=" + boardWriter + ", boardThumbnail=" + boardThumbnail + ", boardCreateTime="
-				+ boardCreateTime + ", boardModifyTime=" + boardModifyTime + ", introduction=" + introduction
-				+ ", description=" + description + ", filType=" + filType + ", filArea=" + filArea + ", filNum="
-				+ filNum + ", filDirection=" + filDirection + ", filPast=" + filPast + ", filLocal=" + filLocal
-				+ ", filFamily=" + filFamily + ", filPet=" + filPet + ", filFamMemCnt=" + filFamMemCnt + ", filField="
-				+ filField + ", filWorker=" + filWorker + ", filRange=" + filRange + ", filPeriod=" + filPeriod
-				+ ", filPeriodType=" + filPeriodType + ", filConPrice=" + filConPrice + ", filStPrice=" + filStPrice
-				+ ", filUrl=" + filUrl + ", filCopy=" + filCopy + ", boardStatus=" + boardStatus + ", scrapCount="
-				+ scrapCount + "]";
+	public String getMembersNo() {
+		return membersNo;
 	}
 
-	
+	public void setMemberNo(String membersNo) {
+		this.membersNo = membersNo;
+	}
+
+	@Override
+	public String toString() {
+		return "Board [boardId=" + boardId + ", boardTitle=" + boardTitle + ", boardViews=" + boardViews + ", membersNo="
+				+ membersNo + ", boardWriter=" + boardWriter + ", boardThumbnail=" + boardThumbnail
+				+ ", boardCreateTime=" + boardCreateTime + ", boardModifyTime=" + boardModifyTime + ", introduction="
+				+ introduction + ", description=" + description + ", filType=" + filType + ", filArea=" + filArea
+				+ ", filNum=" + filNum + ", filDirection=" + filDirection + ", filPast=" + filPast + ", filLocal="
+				+ filLocal + ", filFamily=" + filFamily + ", filPet=" + filPet + ", filFamMemCnt=" + filFamMemCnt
+				+ ", filField=" + filField + ", filWorker=" + filWorker + ", filRange=" + filRange + ", filPeriod="
+				+ filPeriod + ", filPeriodType=" + filPeriodType + ", filConPrice=" + filConPrice + ", filStPrice="
+				+ filStPrice + ", filUrl=" + filUrl + ", filCopy=" + filCopy + ", boardStatus=" + boardStatus
+				+ ", scrapCount=" + scrapCount + "]";
+	}
 }
