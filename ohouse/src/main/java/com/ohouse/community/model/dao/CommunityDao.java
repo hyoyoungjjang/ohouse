@@ -13,6 +13,6 @@ public class CommunityDao {
 	}
 	
 	public Media selectProfile(SqlSession sqlSession, int membersNo) {
-		return sqlSession.selectOne("membersMapper.selectProfile", membersNo);
+		return sqlSession.selectOne("communityMapper.selectProfile", membersNo);
 	}
 }

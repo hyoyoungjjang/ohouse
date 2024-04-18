@@ -266,27 +266,25 @@
             }
         </script> -->
         <div id="content-page"> 
-
-                <c:forEach var="b" items="${bList}" varStatus="st">
-                    <%-- <c:set var="m" value="${mList.get(st.index)}"/> --%>
-                    <div class="page">
-                        <img class="content-img" src="${contextPath}/${b.boardThumbnail}" alt="" >
-                        <div>
-                            <div class="page-text">
-                                <div class="page-text-title">${b.boardTitle}</div>
-                                <div class="page-text-name">
-                                    <!-- <img class="page-text-img" src="${contextPath} + ${m.profile}" alt=""> -->
-                                    <span>${b.boardWriter}</span>
-                                </div>
-                                <div class="page-text-scrap-count">
-                                    <span>스크랩 ${b.scrapCount}</span>
-                                    <span>&#183; 조회 ${b.boardViews}</span>
-                                </div>
-                            </div>  
-                        </div>
+            <c:forEach var="b" items="${bList}" varStatus="st">
+                <c:set var="m" value="${mList.get(st.index)}"/>
+                <div class="page">
+                    <img class="content-img" src="${contextPath}/${b.boardThumbnail}" alt="" >
+                    <div>
+                        <div class="page-text">
+                            <div class="page-text-title">${b.boardTitle}</div>
+                            <div class="page-text-name">
+                                <img class="page-text-img" src="${contextPath}/${m.filePath}" alt="">
+                                <span>${b.boardWriter}</span>
+                            </div>
+                            <div class="page-text-scrap-count">
+                                <span>스크랩 ${b.scrapCount}</span>
+                                <span>&#183; 조회 ${b.boardViews}</span>
+                            </div>
+                        </div>  
                     </div>
-                </c:forEach>
-     
+                </div>
+            </c:forEach>
             <div class="page">
                 <img class="content-img" src="${pageContext.request.contextPath}/resources/img/community/communityMain/thumbnail-main-01.png" alt="" >
                 <div>

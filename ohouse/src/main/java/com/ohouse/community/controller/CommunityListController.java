@@ -37,10 +37,9 @@ public class CommunityListController extends HttpServlet {
 		ArrayList<Board> bList = service.selectBoardList();
 		ArrayList<Media> mList = new ArrayList<>();
 		
-//		for(Board b : bList) {
-//			System.out.println(Integer.parseInt(b.getMembersNo()));
-//			mList.add(service.selectProfile(Integer.parseInt(b.getMembersNo())));
-//		}
+		for(Board b : bList) {
+			mList.add(service.selectProfile(Integer.parseInt(b.getMembersNo())));
+		}
 		
 		request.setAttribute("bList", bList);
 		request.setAttribute("mList", mList);
