@@ -21,15 +21,18 @@ public class Members {
 	private Date membersEnrollTime;
 	private Date membersModifyTime;
 	private String membersStatus;
+	private String profile;
 	
 	public Members() {
 		super();
 	}
 
+	
+
 	public Members(int membersNo, String membersId, String membersPwd, String membersName, Date membersBirth,
 			String membersPhone, String membersEmail, String gender, String membersType, String companyName,
 			String representative, String companyPlace, String companyPhone, String companyEmail, String regNum,
-			Date membersEnrollTime, Date membersModifyTime, String membersStatus) {
+			Date membersEnrollTime, Date membersModifyTime, String membersStatus, String profile) {
 		super();
 		this.membersNo = membersNo;
 		this.membersId = membersId;
@@ -49,7 +52,22 @@ public class Members {
 		this.membersEnrollTime = membersEnrollTime;
 		this.membersModifyTime = membersModifyTime;
 		this.membersStatus = membersStatus;
+		this.profile = profile;
 	}
+
+
+
+	public String getProfile() {
+		return profile;
+	}
+
+
+
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
+
+
 
 	public int getMembersNo() {
 		return membersNo;
@@ -203,6 +221,6 @@ public class Members {
 				+ ", companyName=" + companyName + ", representative=" + representative + ", companyPlace="
 				+ companyPlace + ", companyPhone=" + companyPhone + ", companyEmail=" + companyEmail + ", regNum="
 				+ regNum + ", membersEnrollTime=" + membersEnrollTime + ", membersModifyTime=" + membersModifyTime
-				+ ", membersStatus=" + membersStatus + "]";
+				+ ", membersStatus=" + membersStatus + ", profile=" + profile + "]";
 	}
 }

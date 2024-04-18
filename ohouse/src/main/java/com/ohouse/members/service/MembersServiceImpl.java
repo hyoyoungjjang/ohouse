@@ -2,6 +2,9 @@ package com.ohouse.members.service;
 
 import static com.ohouse.common.template.Template.getSqlSession;
 
+import java.sql.Connection;
+import java.util.HashMap;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.ohouse.members.model.dao.MembersDao;
@@ -56,5 +59,26 @@ public class MembersServiceImpl implements MembersService {
 		
 		sqlSession.close();
 		return result;
+	}
+	
+	@Override
+	public Members updatePwdMembers(HashMap<String, String> map) {
+		SqlSession sqlSession = getSqlSession();
+		int result = membersDao.updatePwdMembers(sqlSession, map);
+	
+		Members m = null;
+		if (result > 0) {
+			String membersId  = map.get("userId");
+			m = membersDao.selectMembers(sqlSession, membersId);
+			
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		
+		sqlSession.close();
+		
+		return m;
+		
 	}
 }

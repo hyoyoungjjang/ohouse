@@ -3,47 +3,52 @@ package com.ohouse.community.model.vo;
 import java.sql.Date;
 
 public class Board {
-	private int boardId;
+	private String boardId;
 	private String boardTitle;
-	private int boardViews;
-	private int boardWriter;
+	private String boardViews;
+	private String membersNo;
+	private String boardWriter;
+	private String boardThumbnail;
 	private Date boardCreateTime;
 	private Date boardModifyTime;
 	private String introduction;
 	private String description;
 	private String filType;
-	private int filArea;
-	private int filNum;
+	private String filArea;
+	private String filNum;
 	private String filDirection;
 	private String filPast;
 	private String filLocal;
 	private String filFamily;
 	private String filPet;
-	private int filFamMemCnt;
+	private String filFamMemCnt;
 	private String filField;
 	private String filWorker;
 	private String filRange;
-	private int filPeriod;
+	private String filPeriod;
 	private String filPeriodType;
-	private int filConPrice;
-	private int filStPrice;
+	private String filConPrice;
+	private String filStPrice;
 	private String filUrl;
 	private String filCopy;
 	private String boardStatus;
-	private int scrapCount;
+	private String scrapCount;
 	
 	public Board() {}
 
-	public Board(int boardId, String boardTitle, int boardViews, int boardWriter, Date boardCreateTime,
-			Date boardModifyTime, String introduction, String description, String filType, int filArea, int filNum,
-			String filDirection, String filPast, String filLocal, String filFamily, String filPet, int filFamMemCnt,
-			String filField, String filWorker, String filRange, int filPeriod, String filPeriodType, int filConPrice,
-			int filStPrice, String filUrl, String filCopy, String boardStatus, int scrapCount) {
+	public Board(String boardId, String boardTitle, String boardViews, String membersNo, String boardWriter,
+			String boardThumbnail, Date boardCreateTime, Date boardModifyTime, String introduction, String description,
+			String filType, String filArea, String filNum, String filDirection, String filPast, String filLocal,
+			String filFamily, String filPet, String filFamMemCnt, String filField, String filWorker, String filRange,
+			String filPeriod, String filPeriodType, String filConPrice, String filStPrice, String filUrl,
+			String filCopy, String boardStatus, String scrapCount) {
 		super();
 		this.boardId = boardId;
 		this.boardTitle = boardTitle;
 		this.boardViews = boardViews;
+		this.membersNo = membersNo;
 		this.boardWriter = boardWriter;
+		this.boardThumbnail = boardThumbnail;
 		this.boardCreateTime = boardCreateTime;
 		this.boardModifyTime = boardModifyTime;
 		this.introduction = introduction;
@@ -70,11 +75,11 @@ public class Board {
 		this.scrapCount = scrapCount;
 	}
 
-	public int getBoardId() {
+	public String getBoardId() {
 		return boardId;
 	}
 
-	public void setBoardId(int boardId) {
+	public void setBoardId(String boardId) {
 		this.boardId = boardId;
 	}
 
@@ -86,19 +91,19 @@ public class Board {
 		this.boardTitle = boardTitle;
 	}
 
-	public int getBoardViews() {
+	public String getBoardViews() {
 		return boardViews;
 	}
 
-	public void setBoardViews(int boardViews) {
+	public void setBoardViews(String boardViews) {
 		this.boardViews = boardViews;
 	}
 
-	public int getBoardWriter() {
+	public String getBoardWriter() {
 		return boardWriter;
 	}
 
-	public void setBoardWriter(int boardWriter) {
+	public void setBoardWriter(String boardWriter) {
 		this.boardWriter = boardWriter;
 	}
 
@@ -142,19 +147,19 @@ public class Board {
 		this.filType = filType;
 	}
 
-	public int getFilArea() {
+	public String getFilArea() {
 		return filArea;
 	}
 
-	public void setFilArea(int filArea) {
+	public void setFilArea(String filArea) {
 		this.filArea = filArea;
 	}
 
-	public int getFilNum() {
+	public String getFilNum() {
 		return filNum;
 	}
 
-	public void setFilNum(int filNum) {
+	public void setFilNum(String filNum) {
 		this.filNum = filNum;
 	}
 
@@ -198,11 +203,11 @@ public class Board {
 		this.filPet = filPet;
 	}
 
-	public int getFilFamMemCnt() {
+	public String getFilFamMemCnt() {
 		return filFamMemCnt;
 	}
 
-	public void setFilFamMemCnt(int filFamMemCnt) {
+	public void setFilFamMemCnt(String filFamMemCnt) {
 		this.filFamMemCnt = filFamMemCnt;
 	}
 
@@ -230,11 +235,11 @@ public class Board {
 		this.filRange = filRange;
 	}
 
-	public int getFilPeriod() {
+	public String getFilPeriod() {
 		return filPeriod;
 	}
 
-	public void setFilPeriod(int filPeriod) {
+	public void setFilPeriod(String filPeriod) {
 		this.filPeriod = filPeriod;
 	}
 
@@ -246,19 +251,19 @@ public class Board {
 		this.filPeriodType = filPeriodType;
 	}
 
-	public int getFilConPrice() {
+	public String getFilConPrice() {
 		return filConPrice;
 	}
 
-	public void setFilConPrice(int filConPrice) {
+	public void setFilConPrice(String filConPrice) {
 		this.filConPrice = filConPrice;
 	}
 
-	public int getFilStPrice() {
+	public String getFilStPrice() {
 		return filStPrice;
 	}
 
-	public void setFilStPrice(int filStPrice) {
+	public void setFilStPrice(String filStPrice) {
 		this.filStPrice = filStPrice;
 	}
 
@@ -286,25 +291,42 @@ public class Board {
 		this.boardStatus = boardStatus;
 	}
 
-	public int getScrapCount() {
+	public String getScrapCount() {
 		return scrapCount;
 	}
 
-	public void setScrapCount(int scrapCount) {
+	public void setScrapCount(String scrapCount) {
 		this.scrapCount = scrapCount;
+	}
+
+	
+	public String getBoardThumbnail() {
+		return boardThumbnail;
+	}
+
+	public void setBoardThumbnail(String boardThumbnail) {
+		this.boardThumbnail = boardThumbnail;
+	}
+
+	public String getMembersNo() {
+		return membersNo;
+	}
+
+	public void setMemberNo(String membersNo) {
+		this.membersNo = membersNo;
 	}
 
 	@Override
 	public String toString() {
-		return "Board [boardId=" + boardId + ", boardTitle=" + boardTitle + ", boardViews=" + boardViews
-				+ ", boardWriter=" + boardWriter + ", boardCreateTime=" + boardCreateTime + ", boardModifyTime="
-				+ boardModifyTime + ", introduction=" + introduction + ", description=" + description + ", filType="
-				+ filType + ", filArea=" + filArea + ", filNum=" + filNum + ", filDirection=" + filDirection
-				+ ", filPast=" + filPast + ", filLocal=" + filLocal + ", filFamily=" + filFamily + ", filPet=" + filPet
-				+ ", filFamMemCnt=" + filFamMemCnt + ", filField=" + filField + ", filWorker=" + filWorker
-				+ ", filRange=" + filRange + ", filPeriod=" + filPeriod + ", filPeriodType=" + filPeriodType
-				+ ", filConPrice=" + filConPrice + ", filStPrice=" + filStPrice + ", filUrl=" + filUrl + ", filCopy="
-				+ filCopy + ", boardStatus=" + boardStatus + ", scrapCount=" + scrapCount + "]";
+		return "Board [boardId=" + boardId + ", boardTitle=" + boardTitle + ", boardViews=" + boardViews + ", membersNo="
+				+ membersNo + ", boardWriter=" + boardWriter + ", boardThumbnail=" + boardThumbnail
+				+ ", boardCreateTime=" + boardCreateTime + ", boardModifyTime=" + boardModifyTime + ", introduction="
+				+ introduction + ", description=" + description + ", filType=" + filType + ", filArea=" + filArea
+				+ ", filNum=" + filNum + ", filDirection=" + filDirection + ", filPast=" + filPast + ", filLocal="
+				+ filLocal + ", filFamily=" + filFamily + ", filPet=" + filPet + ", filFamMemCnt=" + filFamMemCnt
+				+ ", filField=" + filField + ", filWorker=" + filWorker + ", filRange=" + filRange + ", filPeriod="
+				+ filPeriod + ", filPeriodType=" + filPeriodType + ", filConPrice=" + filConPrice + ", filStPrice="
+				+ filStPrice + ", filUrl=" + filUrl + ", filCopy=" + filCopy + ", boardStatus=" + boardStatus
+				+ ", scrapCount=" + scrapCount + "]";
 	}
-	
 }
