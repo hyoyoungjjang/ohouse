@@ -268,7 +268,7 @@
         <div id="content-page"> 
             <c:forEach var="b" items="${bList}" varStatus="st">
                 <c:set var="m" value="${mList.get(st.index)}"/>
-                <div class="page">
+                <div class="page" onclick="location.href='${contextPath}/detail.co?bid=${b.boardId}'">
                     <img class="content-img" src="${contextPath}/${b.boardThumbnail}" alt="" >
                     <div>
                         <div class="page-text">
@@ -285,102 +285,104 @@
                     </div>
                 </div>
             </c:forEach>
-            <div class="page">
-                <img class="content-img" src="${pageContext.request.contextPath}/resources/img/community/communityMain/thumbnail-main-01.png" alt="" >
-                <div>
-                    <div class="page-text">
-                        <div class="page-text-title">유럽 영화 한 장면 같아! 한강이 보이는 원룸 오피스텔</div>
-                        <div class="page-text-name">
-                            <img class="page-text-img" src="${pageContext.request.contextPath}/resources/img/community/communityMain/profile-main-01.png" alt="">
-                            <span>dyno.kr</span>
-                        </div>
-                        <div class="page-text-scrap-count">
-                            <span>스크랩 28</span>
-                            <span>&#183; 조회 1591</span>
-                        </div>
-                    </div>  
+            <!-- 
+                <div class="page">
+                    <img class="content-img" src="${pageContext.request.contextPath}/resources/img/community/communityMain/thumbnail-main-01.png" alt="" >
+                    <div>
+                        <div class="page-text">
+                            <div class="page-text-title">유럽 영화 한 장면 같아! 한강이 보이는 원룸 오피스텔</div>
+                            <div class="page-text-name">
+                                <img class="page-text-img" src="${pageContext.request.contextPath}/resources/img/community/communityMain/profile-main-01.png" alt="">
+                                <span>dyno.kr</span>
+                            </div>
+                            <div class="page-text-scrap-count">
+                                <span>스크랩 28</span>
+                                <span>&#183; 조회 1591</span>
+                            </div>
+                        </div>  
+                    </div>
                 </div>
-            </div>
-            <div class="page">
-                <img class="content-img" src="${pageContext.request.contextPath}/resources/img/community/communityMain/thumbnail-main-02.png" alt="" >
-                <div>
-                    <div class="page-text">
-                        <div class="page-text-title">유행 타지 않을 아늑한 무드, 현실감 있는 수납까지!</div>
-                        <div class="page-text-name">
-                            <img class="page-text-img" src="${pageContext.request.contextPath}/resources/img/community/communityMain/profile-main-02.png" alt="">
-                            <span>카키다옹</span>
-                        </div>
-                        <div class="page-text-scrap-count">
-                            <span>스크랩 19</span>
-                            <span>&#183; 조회 1591</span>
-                        </div>
-                    </div>  
+                <div class="page">
+                    <img class="content-img" src="${pageContext.request.contextPath}/resources/img/community/communityMain/thumbnail-main-02.png" alt="" >
+                    <div>
+                        <div class="page-text">
+                            <div class="page-text-title">유행 타지 않을 아늑한 무드, 현실감 있는 수납까지!</div>
+                            <div class="page-text-name">
+                                <img class="page-text-img" src="${pageContext.request.contextPath}/resources/img/community/communityMain/profile-main-02.png" alt="">
+                                <span>카키다옹</span>
+                            </div>
+                            <div class="page-text-scrap-count">
+                                <span>스크랩 19</span>
+                                <span>&#183; 조회 1591</span>
+                            </div>
+                        </div>  
+                    </div>
                 </div>
-            </div>
-            <div class="page">
-                <img class="content-img" src="${pageContext.request.contextPath}/resources/img/community/communityMain/thumbnail-main-03.png" alt="" >
-                <div>
-                    <div class="page-text">
-                        <div class="page-text-title">🌿반려동물 네 마리와 함께, 우리만의 작은 숲</div>
-                        <div class="page-text-name">
-                            <img class="page-text-img" src="${pageContext.request.contextPath}/resources/img/community/communityMain/profile-main-03.png" alt="">
-                            <span>둥누나</span>
-                        </div>
-                        <div class="page-text-scrap-count">
-                            <span>스크랩 13</span>
-                            <span>&#183; 조회 1137</span>
-                        </div>
-                    </div>  
+                <div class="page">
+                    <img class="content-img" src="${pageContext.request.contextPath}/resources/img/community/communityMain/thumbnail-main-03.png" alt="" >
+                    <div>
+                        <div class="page-text">
+                            <div class="page-text-title">🌿반려동물 네 마리와 함께, 우리만의 작은 숲</div>
+                            <div class="page-text-name">
+                                <img class="page-text-img" src="${pageContext.request.contextPath}/resources/img/community/communityMain/profile-main-03.png" alt="">
+                                <span>둥누나</span>
+                            </div>
+                            <div class="page-text-scrap-count">
+                                <span>스크랩 13</span>
+                                <span>&#183; 조회 1137</span>
+                            </div>
+                        </div>  
+                    </div>
                 </div>
-            </div>
-            <div class="page">
-                <img class="content-img" src="${pageContext.request.contextPath}/resources/img/community/communityMain/thumbnail-main-04.png" alt="" >
-                <div>
-                    <div class="page-text">
-                        <div class="page-text-title">내추럴톤 집, 주방만큼은 블랙으로 시크하게 꾸몄어요!</div>
-                        <div class="page-text-name">
-                            <img class="page-text-img" src="${pageContext.request.contextPath}/resources/img/community/communityMain/profile-main-04.png" alt="">
-                            <span>jinii_home</span>
-                        </div>
-                        <div class="page-text-scrap-count">
-                            <span>스크랩 27</span>
-                            <span>&#183; 조회 1226</span>
-                        </div>
-                    </div>  
+                <div class="page">
+                    <img class="content-img" src="${pageContext.request.contextPath}/resources/img/community/communityMain/thumbnail-main-04.png" alt="" >
+                    <div>
+                        <div class="page-text">
+                            <div class="page-text-title">내추럴톤 집, 주방만큼은 블랙으로 시크하게 꾸몄어요!</div>
+                            <div class="page-text-name">
+                                <img class="page-text-img" src="${pageContext.request.contextPath}/resources/img/community/communityMain/profile-main-04.png" alt="">
+                                <span>jinii_home</span>
+                            </div>
+                            <div class="page-text-scrap-count">
+                                <span>스크랩 27</span>
+                                <span>&#183; 조회 1226</span>
+                            </div>
+                        </div>  
+                    </div>
                 </div>
-            </div>
-            <div class="page">
-                <img class="content-img" src="${pageContext.request.contextPath}/resources/img/community/communityMain/thumbnail-main-05.png" alt="" >
-                <div>
-                    <div class="page-text">
-                        <div class="page-text-title">11평 투룸, 편안한데 실용까지 더한 홈스타일링</div>
-                        <div class="page-text-name">
-                            <img class="page-text-img" src="${pageContext.request.contextPath}/resources/img/community/communityMain/profile-main-05.png" alt="">
-                            <span>binhi_bini</span>
-                        </div>
-                        <div class="page-text-scrap-count">
-                            <span>스크랩 34</span>
-                            <span>&#183; 조회 955</span>
-                        </div>
-                    </div>  
+                <div class="page">
+                    <img class="content-img" src="${pageContext.request.contextPath}/resources/img/community/communityMain/thumbnail-main-05.png" alt="" >
+                    <div>
+                        <div class="page-text">
+                            <div class="page-text-title">11평 투룸, 편안한데 실용까지 더한 홈스타일링</div>
+                            <div class="page-text-name">
+                                <img class="page-text-img" src="${pageContext.request.contextPath}/resources/img/community/communityMain/profile-main-05.png" alt="">
+                                <span>binhi_bini</span>
+                            </div>
+                            <div class="page-text-scrap-count">
+                                <span>스크랩 34</span>
+                                <span>&#183; 조회 955</span>
+                            </div>
+                        </div>  
+                    </div>
                 </div>
-            </div>
-            <div class="page">
-                <img class="content-img" src="${pageContext.request.contextPath}/resources/img/community/communityMain/thumbnail-main-06.png" alt="" >
-                <div>
-                    <div class="page-text">
-                        <div class="page-text-title">완벽하지 않아도 돼! 살아가면서 알아가고 채워가는 신혼집</div>
-                        <div class="page-text-name">
-                            <img class="page-text-img" src="${pageContext.request.contextPath}/resources/img/community/communityMain/profile-main-06.png" alt="">
-                            <span>sora._zip</span>
-                        </div>
-                        <div class="page-text-scrap-count">
-                            <span>스크랩 27</span>
-                            <span>&#183; 조회 1187</span>
-                        </div>
-                    </div>  
+                <div class="page">
+                    <img class="content-img" src="${pageContext.request.contextPath}/resources/img/community/communityMain/thumbnail-main-06.png" alt="" >
+                    <div>
+                        <div class="page-text">
+                            <div class="page-text-title">완벽하지 않아도 돼! 살아가면서 알아가고 채워가는 신혼집</div>
+                            <div class="page-text-name">
+                                <img class="page-text-img" src="${pageContext.request.contextPath}/resources/img/community/communityMain/profile-main-06.png" alt="">
+                                <span>sora._zip</span>
+                            </div>
+                            <div class="page-text-scrap-count">
+                                <span>스크랩 27</span>
+                                <span>&#183; 조회 1187</span>
+                            </div>
+                        </div>  
+                    </div>
                 </div>
-            </div>
+             -->
         </div>
       </div>
     </div>
