@@ -616,3 +616,33 @@ INSERT INTO SCRAP (SCRAP_ID, SCRAP_TYPE, MEMBERS_NO, BOARD_ID)
 VALUES (SEQ_SCRID.NEXTVAL, 3, 3, 1);
 
 COMMIT;
+
+
+  SELECT *
+        FROM (
+            SELECT
+                P.PRODUCT_ID,
+                PRODUCT_NAME,
+                PRODUCT_PRICE,
+                SALE,
+                FILE_PATH || CHANGE_NAME AS PRODUCT_THUMBNAIL,
+                COMPANY_NAME,
+                (
+                    SELECT COUNT(*)
+                    FROM REVIEW R
+                    WHERE R.PRODUCT_ID = P.PRODUCT_ID
+                ) AS REVIEW_COUNT,
+                (
+                    SELECT AVG(RATING)
+                    FROM REVIEW R
+                    WHERE R.PRODUCT_ID = P.PRODUCT_ID
+                ) AS RATING_AVG
+            FROM PRODUCT P
+            JOIN MEDIA MED ON (P.PRODUCT_ID = MED.PRODUCT_ID)
+            JOIN MEMBERS MEM ON (P.MEMBERS_NO = MEM.MEMBERS_NO)
+            WHERE PRODUCT_STATUS = 'Y'
+                      AND FILE_LEVEL = 1
+                      AND PRODUCT_NAME LIKE CONCAT('%', '냉', '%')
+            ORDER BY PRODUCT_SALES DESC
+        )
+        WHERE ROWNUM <= 4

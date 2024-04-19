@@ -30,13 +30,12 @@
             </div>
             <div class="header-menu">
                 <div class="header-search">
-                    <form action="search.se">
-                        <input type="text" id="hearder-search-input" placeholder="통합검색" name="searchKeyword" value="${searchKeyword}">
+                    <form action="${contextPath}/search.se" method="get">
+                        <input type="text" id="hearder-search-input" placeholder="통합검색" name="searchKeyword" value="${searchKeyword }">
                         <button type="submit" id="hearder-search-button">
                           <img id="header-search-img" src="${contextPath}/resources/img/common/find.png" alt="">  
                         </button>
                     </form>
-                    
                 </div>
                 <c:choose>
                 	<c:when test="${empty loginUser}">

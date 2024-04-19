@@ -23,7 +23,7 @@ article{
     padding: 0 0 50px;
     margin: 40px 0 0;
     position: relative;
-    height: 500px;
+    height: 563px;
 }
 
 .search-content-header{
@@ -58,6 +58,10 @@ article{
     top: 0;
     right: 0;
     cursor: pointer;
+    text-decoration: none;
+}
+
+.search-add:hover{
     text-decoration: none;
 }
 
@@ -237,3 +241,21 @@ article{
     text-align: center;
 }
 
+.search-content-empty{
+    text-align: center;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-content-empty p{
+    font-size: 23px;
+    color: #424242;
+    margin: auto;
+}
+
+.search-content-empty img{
+    height: 280px;
+    width: 320px;
+}
