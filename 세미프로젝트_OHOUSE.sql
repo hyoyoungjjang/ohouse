@@ -536,6 +536,8 @@ VALUES (SEQ_PDID.NEXTVAL, '송월타올', 20000, 300, 500, 3, 8, '호텔 수건�
 INSERT INTO PRODUCT (PRODUCT_ID, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_SALES, STOCK, DELIVERY_DATE, PRODUCT_CONTENT, PRODUCT_CREATE_TIME, MEMBERS_NO, PRODUCT_CATEGORY)
 VALUES (SEQ_PDID.NEXTVAL, '옷걸이', 8000, 250, 500, 3, '옷걸이가 8천원!', SYSDATE, 1, 6);
 
+INSERT INTO PRODUCT (PRODUCT_ID, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_SALES, STOCK, DELIVERY_DATE, PRODUCT_CONTENT, PRODUCT_CREATE_TIME, MEMBERS_NO, PRODUCT_CATEGORY)
+VALUES (SEQ_PDID.NEXTVAL, '[10%쿠폰] CLOUD 아쿠아텍스 패브릭 호텔식 침대프레임 SS/Q/K/LK/CK',199000, 100, 100, 1, '튼튼한 프레임 짱' , SYSDATE, 1, 1);
 
 ----------------------------------------- PRODUCT_OPTIONS ------------------------------------------
 INSERT INTO PRODUCT_OPTIONS (PRODUCT_OPTIONS_ID, PRODUCT_OPTIONS_CONTENT, PRODUCT_OPTIONS_PRICE, PRODUCT_OPTIONS_STOCK, PRODUCT_ID)
@@ -572,7 +574,7 @@ VALUES (SEQ_QNAID.NEXTVAL, '원', 'A', 'N', 2, 1);
 INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
 VALUES (SEQ_MEDID.NEXTVAL, 1, 1, 'thumbnail-main-01.png', 'thumbnail-main-01.png', 'resources/img/community/communityMain/', 1);
 INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
-VALUES (SEQ_MEDID.NEXTVAL, 1, 2, 'thumbnail-main-02.png', 'thumbnail-main-02.png', 'resources/img/community/communityMain/', 1);
+VALUES (SEQ_MEDID.NEXTVAL, 2, 2, 'thumbnail-main-02.png', 'thumbnail-main-02.png', 'resources/img/community/communityMain/', 1);
 -- 상품 썸네일
 INSERT INTO MEDIA (MEDIA_ID, PRODUCT_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
 VALUES (SEQ_MEDID.NEXTVAL, 1, 1, 'productMain01.png', 'productMain01.png', 'resources/img/product/', 1);
@@ -616,33 +618,3 @@ INSERT INTO SCRAP (SCRAP_ID, SCRAP_TYPE, MEMBERS_NO, BOARD_ID)
 VALUES (SEQ_SCRID.NEXTVAL, 3, 3, 1);
 
 COMMIT;
-
-
-  SELECT *
-        FROM (
-            SELECT
-                P.PRODUCT_ID,
-                PRODUCT_NAME,
-                PRODUCT_PRICE,
-                SALE,
-                FILE_PATH || CHANGE_NAME AS PRODUCT_THUMBNAIL,
-                COMPANY_NAME,
-                (
-                    SELECT COUNT(*)
-                    FROM REVIEW R
-                    WHERE R.PRODUCT_ID = P.PRODUCT_ID
-                ) AS REVIEW_COUNT,
-                (
-                    SELECT AVG(RATING)
-                    FROM REVIEW R
-                    WHERE R.PRODUCT_ID = P.PRODUCT_ID
-                ) AS RATING_AVG
-            FROM PRODUCT P
-            JOIN MEDIA MED ON (P.PRODUCT_ID = MED.PRODUCT_ID)
-            JOIN MEMBERS MEM ON (P.MEMBERS_NO = MEM.MEMBERS_NO)
-            WHERE PRODUCT_STATUS = 'Y'
-                      AND FILE_LEVEL = 1
-                      AND PRODUCT_NAME LIKE CONCAT('%', '냉', '%')
-            ORDER BY PRODUCT_SALES DESC
-        )
-        WHERE ROWNUM <= 4
