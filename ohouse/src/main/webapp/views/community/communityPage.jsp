@@ -16,20 +16,22 @@ pageEncoding="UTF-8"%>
 <header> 
     <%@ include file="../common/headerCommunity.jsp" %>    
 </header>
-<img src="${pageContext.request.contextPath}/resources/img/community/communityPage/thumbnail.png" alt="" class="thumbnail">
+<img src="${contextPath}/${thumbnail.filePath}" alt="" class="thumbnail">
 <div class="content-area" align="center">
     <div id="side-bar-area">
         <div class="side-bar">
             <div class="side-bar-scrap">
-                <button class="side-bar-scrap-button">
-                    <img class="side-bar-scrap-img" src="${pageContext.request.contextPath}/resources/img/community/bookmark.png" alt="">
+                <button class="side-bar-scrap-button" onclick="bookmarkToggle(this, 0);">
+                    <input type="hidden" value="1">
+                    <img class="side-bar-scrap-img" src="${contextPath}/resources/img/community/bookmark.png" alt="" >
+                    <img class="side-bar-scrap-img hidden" src="${contextPath}/resources/img/community/bookmark-checked.png" alt="" >
                 </button>        
                 <span class="side-bar-scrap-count">21</span>     
             </div>
             <hr class="hr3">
-            <div class="side-bar-comment">
+            <div class="side-bar-comment" onclick="$('#comment-detail-input-area').focus();">
                 <button class="side-bar-comment-button">
-                    <img class="side-bar-comment-img" src="${pageContext.request.contextPath}/resources/img/community/speech-bubble.png" alt="">
+                    <img class="side-bar-comment-img" src="${contextPath}/resources/img/community/speech-bubble.png" alt="">
                 </button>        
                 <span class="side-bar-comment-count">558</span>     
             </div>
@@ -47,85 +49,158 @@ pageEncoding="UTF-8"%>
             <div id="house-information-head">
                 <div class="cummunityPage-info">
                     <img class="cummuniyPage-info-img" src="${pageContext.request.contextPath}/resources/img/community/community-info-img1.png" alt="">
-                    원룸&오피스텔
+                    <c:choose>
+                        <c:when test="${not empty b.filType}">
+                            ${b.filType}
+                        </c:when>
+                        <c:otherwise>
+                            -
+                        </c:otherwise>
+                    </c:choose>
                 </div>
                 <div class="hr1"></div>
                 <div class="cummunityPage-info">
                     <img class="cummuniyPage-info-img" src="${pageContext.request.contextPath}/resources/img/community/community-info-img1.png" alt="">
-                    24평
+                    <c:choose>
+                        <c:when test="${not empty b.filArea}">
+                            ${b.filArea}평
+                        </c:when>
+                        <c:otherwise>
+                            -
+                        </c:otherwise>
+                    </c:choose>
                 </div>
                 <div class="hr1"></div>
                 <div class="cummunityPage-info">
                     <img class="cummuniyPage-info-img" src="${pageContext.request.contextPath}/resources/img/community/community-info-img1.png" alt="">
-                    홈스타일링
+                    <c:choose>
+                        <c:when test="${not empty b.filField}">
+                            ${b.filField}
+                        </c:when>
+                        <c:otherwise>
+                            -
+                        </c:otherwise>
+                    </c:choose>
                 </div>
                 <div class="hr1"></div>
                 <div class="cummunityPage-info">
                     <img class="cummuniyPage-info-img" src="${pageContext.request.contextPath}/resources/img/community/community-info-img1.png" alt="">
-                    취학 자녀와 함께
+                    <c:choose>
+                        <c:when test="${not empty b.filWorker}">
+                            ${b.filWorker}
+                        </c:when>
+                        <c:otherwise>
+                            -
+                        </c:otherwise>
+                    </c:choose>
                 </div> 
             </div>
             <div class="hr2"></div>
             <div id="house-information-foot">
-                <div class="house-information-foot-info">
-                    <div class="house-information-foot-info-title">공간</div>
-                    <div>원룸&오피스텔</div>
-                </div>
-                <div class="house-information-foot-info">
-                    <div class="house-information-foot-info-title">평수</div>
-                    <div>24평</div>
-                </div>
-                <div class="house-information-foot-info">
-                    <div class="house-information-foot-info-title">작업</div>
-                    <div>셀프&#183;DIY</div>
-                </div>
-                <div class="house-information-foot-info">
-                    <div class="house-information-foot-info-title">분야</div>
-                    <div>홈스타일링</div>
-                </div>
-                <div class="house-information-foot-info">
-                    <div class="house-information-foot-info-title">가족형태</div>
-                    <div>취학 자녀가 있는 집</div>
-                </div>
-                <div class="house-information-foot-info">
-                    <div class="house-information-foot-info-title">지역</div>
-                    <div>경기도 안양시</div>
-                </div>
-                <div class="house-information-foot-info">
-                    <div class="house-information-foot-info-title">스타일</div>
-                    <div>내추럴</div>
-                </div>
+                <c:if test="${not empty b.filType}">
+                    <div class="house-information-foot-info">
+                        <div class="house-information-foot-info-title">공간</div>
+                        <div>
+                            ${b.filType}
+                        </div>
+                    </div>
+                </c:if>
+                <c:if test="${not empty b.filArea}">
+                    <div class="house-information-foot-info">
+                        <div class="house-information-foot-info-title">평수</div>
+                        <div>
+                            ${b.filArea}
+                        </div>
+                    </div>
+                </c:if>
+                <c:if test="${not empty b.filNum}">
+                    <div class="house-information-foot-info">
+                        <div class="house-information-foot-info-title">방개수</div>
+                        <div>
+                            ${b.filNum}
+                        </div>
+                    </div>
+                </c:if>
+                <c:if test="${not empty b.filDirection}">
+                    <div class="house-information-foot-info">
+                        <div class="house-information-foot-info-title">방향</div>
+                        <div>
+                            ${b.filDirection}
+                        </div>
+                    </div>
+                </c:if>
+                <c:if test="${not empty b.filPast}">
+                    <div class="house-information-foot-info">
+                        <div class="house-information-foot-info-title">준공연차</div>
+                        <div>
+                            ${b.filPast}
+                        </div>
+                    </div>
+                </c:if>
+                <c:if test="${not empty b.filLocal}">
+                    <div class="house-information-foot-info">
+                        <div class="house-information-foot-info-title">지역</div>
+                        <div>
+                            ${b.filLocal}
+                        </div>
+                    </div>
+                </c:if>
+                <c:if test="${not empty b.filFamily}">
+                    <div class="house-information-foot-info">
+                        <div class="house-information-foot-info-title">가족형태</div>
+                        <div>
+                            ${b.filFamily}
+                        </div>
+                    </div>
+                </c:if>
+                <c:if test="${not empty b.filPet}">
+                    <div class="house-information-foot-info">
+                        <div class="house-information-foot-info-title">반려동물</div>
+                        <div>
+                            ${b.filPet}
+                        </div>
+                    </div>
+                </c:if>
+                <c:if test="${not empty b.filFamMemCnt}">
+                    <div class="house-information-foot-info">
+                        <div class="house-information-foot-info-title">구성원수</div>
+                        <div>
+                            ${b.filFamMemCnt}
+                        </div>
+                    </div>
+                </c:if>
+                <c:if test="${not empty b.filField}">
+                    <div class="house-information-foot-info">
+                        <div class="house-information-foot-info-title">작업분야</div>
+                        <div>
+                            ${b.filField}
+                        </div>
+                    </div>
+                </c:if>
+                <c:if test="${not empty b.filWorker}">
+                    <div class="house-information-foot-info">
+                        <div class="house-information-foot-info-title">작업자</div>
+                        <div>
+                            ${b.filWorker}
+                        </div>
+                    </div>
+                </c:if>
             </div>
         </div>
         <div class="community-house-content">
-            <!--집들이 게시글 내용에 들어갈 사진?-->                  
+            <!--집들이 게시글 내용에 들어갈 사진-->                  
              <div class="community-img-area">
                 <img class="community-house-content-img" src="${pageContext.request.contextPath}/resources/img/community/communityPage/contentImg1.png" alt="">
-                <button class="cummunity-scrap-button">
-                    <img class="cummunity-scrap-img" src="${pageContext.request.contextPath}/resources/img/community/communitybookmark.png" alt="">    
+                <button class="cummunity-scrap-button" onclick="bookmarkToggle(this, 1)">
+                    <input type="hidden" value="3">
+                    <img class="cummunity-scrap-img" src="${contextPath}/resources/img/community/communitybookmark.png" alt="">
+                    <img class="cummunity-scrap-img hidden" src="${contextPath}/resources/img/community/communityPage/pm-bookmark-checked.png" alt="">
                 </button>
             </div>
-             
         </div>
         <div class="community-house-content">
             <p class="community-house-content-write" align="left">
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-            </p>
-        </div>
-        <div class="community-house-content">
-            <p class="community-house-content-write" align="left">
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
+                ${b.introduction}
             </p>
         </div>
         <div align="left">
@@ -143,8 +218,6 @@ pageEncoding="UTF-8"%>
                     </button>
                 </div>
             </div>
-
-            <!--문제의 부분-->
 
             <div class="list-wrap" >
                 <div id="back-button" class="wrap-button-container">
@@ -176,52 +249,12 @@ pageEncoding="UTF-8"%>
                             <img class="community-tag-info-product-img" src="${pageContext.request.contextPath}/resources/img/community/communityPage/tag1.png" alt="">
                         </div>
                     </div>
-                    <div class="community-tag-info-list">
-                        <div class="community-tag-info-product">
-                            <img class="community-tag-info-product-img" src="${pageContext.request.contextPath}/resources/img/community/communityPage/tag1.png" alt="">
-                        </div>
-                    </div>
-                    <div class="community-tag-info-list">
-                        <div class="community-tag-info-product">
-                            <img class="community-tag-info-product-img" src="${pageContext.request.contextPath}/resources/img/community/communityPage/tag1.png" alt="">
-                        </div>
-                    </div>
-                    <div class="community-tag-info-list">
-                        <div class="community-tag-info-product">
-                            <img class="community-tag-info-product-img" src="${pageContext.request.contextPath}/resources/img/community/communityPage/tag1.png" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div id="next-button" class="wrap-button-container">
-                    <img class="wrap-button" src="${pageContext.request.contextPath}/resources/img/community/nextbutton.png" >
                 </div>
             </div>
-            <script>
-                function buttonplus(){
-                    const hyoyoung = document.getElementsByClassName("list-wrap");
-                    const btn = document.getElementsByClassName("wrap-button-container");
-                    
-                    btn[0].classList.toggle("hidden")
-                    btn[1].classList.toggle("hidden")
-                }
-            </script>
-
-            <!--문제의 부분 여기까지.-->
-
         </div>
         <div class="community-house-content">
             <p class="community-house-content-write" align="left">
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
+                ${b.description}
             </p>
         </div>
         <div class="community-img-area">
@@ -281,160 +314,9 @@ pageEncoding="UTF-8"%>
                         </div>
                     </div>
                 </div>
-                <div class="answer-area">
-                    <div class="answer-user" align="left">
-                        <img class="answer-user-profile" src="${pageContext.request.contextPath}/resources/img/community/communityPage/userProfile.png" alt="">
-                    </div>
-                    <div class="answer-content">
-                        <div class="answer-user-name">마지mazi_zip</div>
-                        <div class="answers">
-                            <span class="comment-user-name">@흑마늘닭강정</span>
-                            정말 감각적으로 잘꾸미셧어요!! 전 집꾸미는게 너무 어렵던데 ... 대단하십니다!!!
-                        </div>
-                        <div class="comment-date">
-                             <span>19시간&nbsp;</span> 
-                             <span>&#183;답글달기</span>  
-                        </div>
-                    </div>
+                
                 </div>
             </div>
-            <div class="comment-and-answer">
-                <div class="comment-area">
-                    <div class="comment-user" align="left">
-                        <img class="comment-user-profile"
-                            src="${pageContext.request.contextPath}/resources/img/community/communityPage/userProfile2.png"
-                            alt="">
-                    </div>
-                    <div class="comment-content">
-                        <div class="comment-user-name">흑마늘닭강정</div>
-                        <div class="Comments">정말 감각적으로 잘꾸미셧어요!! 전 집꾸미는게 너무 어렵던데 ... 대단하십니다!!!</div>
-                        <div class="comment-date">
-                            <span>20시간&nbsp;</span>
-                            <span>&#183;답글달기</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="answer-area">
-                    <div class="answer-user" align="left">
-                        <img class="answer-user-profile"
-                            src="${pageContext.request.contextPath}/resources/img/community/communityPage/userProfile.png" alt="">
-                    </div>
-                    <div class="answer-content">
-                        <div class="answer-user-name">마지mazi_zip</div>
-                        <div class="answers">
-                            <span class="comment-user-name">@흑마늘닭강정</span>
-                            정말 감각적으로 잘꾸미셧어요!! 전 집꾸미는게 너무 어렵던데 ... 대단하십니다!!!
-                        </div>
-                        <div class="comment-date">
-                            <span>19시간&nbsp;</span>
-                            <span>&#183;답글달기</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="comment-and-answer">
-                <div class="comment-area">
-                    <div class="comment-user" align="left">
-                        <img class="comment-user-profile"
-                            src="${pageContext.request.contextPath}/resources/img/community/communityPage/userProfile2.png"
-                            alt="">
-                    </div>
-                    <div class="comment-content">
-                        <div class="comment-user-name">흑마늘닭강정</div>
-                        <div class="Comments">정말 감각적으로 잘꾸미셧어요!! 전 집꾸미는게 너무 어렵던데 ... 대단하십니다!!!</div>
-                        <div class="comment-date">
-                            <span>20시간&nbsp;</span>
-                            <span>&#183;답글달기</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="answer-area">
-                    <div class="answer-user" align="left">
-                        <img class="answer-user-profile"
-                            src="${pageContext.request.contextPath}/resources/img/community/communityPage/userProfile.png" alt="">
-                    </div>
-                    <div class="answer-content">
-                        <div class="answer-user-name">마지mazi_zip</div>
-                        <div class="answers">
-                            <span class="comment-user-name">@흑마늘닭강정</span>
-                            정말 감각적으로 잘꾸미셧어요!! 전 집꾸미는게 너무 어렵던데 ... 대단하십니다!!!
-                        </div>
-                        <div class="comment-date">
-                            <span>19시간&nbsp;</span>
-                            <span>&#183;답글달기</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="comment-and-answer">
-                <div class="comment-area">
-                    <div class="comment-user" align="left">
-                        <img class="comment-user-profile"
-                            src="${pageContext.request.contextPath}/resources/img/community/communityPage/userProfile2.png"
-                            alt="">
-                    </div>
-                    <div class="comment-content">
-                        <div class="comment-user-name">흑마늘닭강정</div>
-                        <div class="Comments">정말 감각적으로 잘꾸미셧어요!! 전 집꾸미는게 너무 어렵던데 ... 대단하십니다!!!</div>
-                        <div class="comment-date">
-                            <span>20시간&nbsp;</span>
-                            <span>&#183;답글달기</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="answer-area">
-                    <div class="answer-user" align="left">
-                        <img class="answer-user-profile"
-                            src="${pageContext.request.contextPath}/resources/img/community/communityPage/userProfile.png" alt="">
-                    </div>
-                    <div class="answer-content">
-                        <div class="answer-user-name">마지mazi_zip</div>
-                        <div class="answers">
-                            <span class="comment-user-name">@흑마늘닭강정</span>
-                            정말 감각적으로 잘꾸미셧어요!! 전 집꾸미는게 너무 어렵던데 ... 대단하십니다!!!
-                        </div>
-                        <div class="comment-date">
-                            <span>19시간&nbsp;</span>
-                            <span>&#183;답글달기</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="comment-and-answer">
-                <div class="comment-area">
-                    <div class="comment-user" align="left">
-                        <img class="comment-user-profile"
-                            src="${pageContext.request.contextPath}/resources/img/community/communityPage/userProfile2.png"
-                            alt="">
-                    </div>
-                    <div class="comment-content">
-                        <div class="comment-user-name">흑마늘닭강정</div>
-                        <div class="Comments">정말 감각적으로 잘꾸미셧어요!! 전 집꾸미는게 너무 어렵던데 ... 대단하십니다!!!</div>
-                        <div class="comment-date">
-                            <span>20시간&nbsp;</span>
-                            <span>&#183;답글달기</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="answer-area">
-                    <div class="answer-user" align="left">
-                        <img class="answer-user-profile"
-                            src="${pageContext.request.contextPath}/resources/img/community/communityPage/userProfile.png" alt="">
-                    </div>
-                    <div class="answer-content">
-                        <div class="answer-user-name">마지mazi_zip</div>
-                        <div class="answers">
-                            <span class="comment-user-name">@흑마늘닭강정</span>
-                            정말 감각적으로 잘꾸미셧어요!! 전 집꾸미는게 너무 어렵던데 ... 대단하십니다!!!
-                        </div>
-                        <div class="comment-date">
-                            <span>19시간&nbsp;</span>
-                            <span>&#183;답글달기</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="comment-page">
                 <button id="back-page-button">
                     <img id="back-page-img" src="${pageContext.request.contextPath}/resources/img/community/backbutton.png" alt="">
@@ -447,6 +329,50 @@ pageEncoding="UTF-8"%>
             </div>
         </div>
     </div>
+    <script>
+        $(function() {
+
+        })
+
+        function bookmarkToggle(_this, type) {
+            const bookmark = _this.children;
+            const id = bookmark[0].value;
+            bookmark[1].classList.toggle("hidden");
+            bookmark[2].classList.toggle("hidden");
+
+            if(type === 0) {
+                $.ajax({
+                    type: "POST",
+                    url: "${contextPath}/scrap.co",
+                    data: {
+                        membersNo: "${loginUser.membersNo}",
+                        boardId: id,
+                    },
+                    success: function(result) {
+                        console.log(id);
+                    },
+                    error: function() {
+                        console.log("실패");
+                    }
+                });
+            } else {
+                $.ajax({
+                    type: "POST",
+                    url: "${contextPath}/scrap.co",
+                    data: {
+                        membersNo: "${loginUser.membersNo}",
+                        mediaId: id,
+                    },
+                    success: function(result) {
+                        console.log(id);
+                    },
+                    error: function() {
+                        console.log("실패");
+                    }
+                });
+            }
+        }
+    </script>
 </div>
 
 <br><br><br><br><br><br><br><br><br>
