@@ -49,7 +49,11 @@ body {
     position: relative;
 }
 
-.header-search>input {
+.header-search > form{
+    height: 100%;
+}
+
+#hearder-search-input {
     width: 350px;
     height: 40px;
     outline-color: #35C5F0;
@@ -60,13 +64,18 @@ body {
     padding-left: 40px;
 }
 
-.header-search>a {
+#hearder-search-button {
     position: absolute;
     top: 0px;
     left: 0px;
+    height: 40px;
+    width: 40px;
+    padding: 0;
+    border: none;
+    background: none;
 }
 
-.header-search>a>img {
+#header-search-img {
     height: 40px;
     opacity: 50%;
 }
