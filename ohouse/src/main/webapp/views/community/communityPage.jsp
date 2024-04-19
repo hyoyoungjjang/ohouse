@@ -49,58 +49,146 @@ pageEncoding="UTF-8"%>
             <div id="house-information-head">
                 <div class="cummunityPage-info">
                     <img class="cummuniyPage-info-img" src="${pageContext.request.contextPath}/resources/img/community/community-info-img1.png" alt="">
-                    원룸&오피스텔
+                    <c:choose>
+                        <c:when test="${not empty b.filType}">
+                            ${b.filType}
+                        </c:when>
+                        <c:otherwise>
+                            -
+                        </c:otherwise>
+                    </c:choose>
                 </div>
                 <div class="hr1"></div>
                 <div class="cummunityPage-info">
                     <img class="cummuniyPage-info-img" src="${pageContext.request.contextPath}/resources/img/community/community-info-img1.png" alt="">
-                    24평
+                    <c:choose>
+                        <c:when test="${not empty b.filArea}">
+                            ${b.filArea}평
+                        </c:when>
+                        <c:otherwise>
+                            -
+                        </c:otherwise>
+                    </c:choose>
                 </div>
                 <div class="hr1"></div>
                 <div class="cummunityPage-info">
                     <img class="cummuniyPage-info-img" src="${pageContext.request.contextPath}/resources/img/community/community-info-img1.png" alt="">
-                    홈스타일링
+                    <c:choose>
+                        <c:when test="${not empty b.filField}">
+                            ${b.filField}
+                        </c:when>
+                        <c:otherwise>
+                            -
+                        </c:otherwise>
+                    </c:choose>
                 </div>
                 <div class="hr1"></div>
                 <div class="cummunityPage-info">
                     <img class="cummuniyPage-info-img" src="${pageContext.request.contextPath}/resources/img/community/community-info-img1.png" alt="">
-                    취학 자녀와 함께
+                    <c:choose>
+                        <c:when test="${not empty b.filWorker}">
+                            ${b.filWorker}
+                        </c:when>
+                        <c:otherwise>
+                            -
+                        </c:otherwise>
+                    </c:choose>
                 </div> 
             </div>
             <div class="hr2"></div>
             <div id="house-information-foot">
-                <div class="house-information-foot-info">
-                    <div class="house-information-foot-info-title">공간</div>
-                    <div>원룸&오피스텔</div>
-                </div>
-                <div class="house-information-foot-info">
-                    <div class="house-information-foot-info-title">평수</div>
-                    <div>24평</div>
-                </div>
-                <div class="house-information-foot-info">
-                    <div class="house-information-foot-info-title">작업</div>
-                    <div>셀프&#183;DIY</div>
-                </div>
-                <div class="house-information-foot-info">
-                    <div class="house-information-foot-info-title">분야</div>
-                    <div>홈스타일링</div>
-                </div>
-                <div class="house-information-foot-info">
-                    <div class="house-information-foot-info-title">가족형태</div>
-                    <div>취학 자녀가 있는 집</div>
-                </div>
-                <div class="house-information-foot-info">
-                    <div class="house-information-foot-info-title">지역</div>
-                    <div>경기도 안양시</div>
-                </div>
-                <div class="house-information-foot-info">
-                    <div class="house-information-foot-info-title">스타일</div>
-                    <div>내추럴</div>
-                </div>
+                <c:if test="${not empty b.filType}">
+                    <div class="house-information-foot-info">
+                        <div class="house-information-foot-info-title">공간</div>
+                        <div>
+                            ${b.filType}
+                        </div>
+                    </div>
+                </c:if>
+                <c:if test="${not empty b.filArea}">
+                    <div class="house-information-foot-info">
+                        <div class="house-information-foot-info-title">평수</div>
+                        <div>
+                            ${b.filArea}
+                        </div>
+                    </div>
+                </c:if>
+                <c:if test="${not empty b.filNum}">
+                    <div class="house-information-foot-info">
+                        <div class="house-information-foot-info-title">방개수</div>
+                        <div>
+                            ${b.filNum}
+                        </div>
+                    </div>
+                </c:if>
+                <c:if test="${not empty b.filDirection}">
+                    <div class="house-information-foot-info">
+                        <div class="house-information-foot-info-title">방향</div>
+                        <div>
+                            ${b.filDirection}
+                        </div>
+                    </div>
+                </c:if>
+                <c:if test="${not empty b.filPast}">
+                    <div class="house-information-foot-info">
+                        <div class="house-information-foot-info-title">준공연차</div>
+                        <div>
+                            ${b.filPast}
+                        </div>
+                    </div>
+                </c:if>
+                <c:if test="${not empty b.filLocal}">
+                    <div class="house-information-foot-info">
+                        <div class="house-information-foot-info-title">지역</div>
+                        <div>
+                            ${b.filLocal}
+                        </div>
+                    </div>
+                </c:if>
+                <c:if test="${not empty b.filFamily}">
+                    <div class="house-information-foot-info">
+                        <div class="house-information-foot-info-title">가족형태</div>
+                        <div>
+                            ${b.filFamily}
+                        </div>
+                    </div>
+                </c:if>
+                <c:if test="${not empty b.filPet}">
+                    <div class="house-information-foot-info">
+                        <div class="house-information-foot-info-title">반려동물</div>
+                        <div>
+                            ${b.filPet}
+                        </div>
+                    </div>
+                </c:if>
+                <c:if test="${not empty b.filFamMemCnt}">
+                    <div class="house-information-foot-info">
+                        <div class="house-information-foot-info-title">구성원수</div>
+                        <div>
+                            ${b.filFamMemCnt}
+                        </div>
+                    </div>
+                </c:if>
+                <c:if test="${not empty b.filField}">
+                    <div class="house-information-foot-info">
+                        <div class="house-information-foot-info-title">작업분야</div>
+                        <div>
+                            ${b.filField}
+                        </div>
+                    </div>
+                </c:if>
+                <c:if test="${not empty b.filWorker}">
+                    <div class="house-information-foot-info">
+                        <div class="house-information-foot-info-title">작업자</div>
+                        <div>
+                            ${b.filWorker}
+                        </div>
+                    </div>
+                </c:if>
             </div>
         </div>
         <div class="community-house-content">
-            <!--집들이 게시글 내용에 들어갈 사진?-->                  
+            <!--집들이 게시글 내용에 들어갈 사진-->                  
              <div class="community-img-area">
                 <img class="community-house-content-img" src="${pageContext.request.contextPath}/resources/img/community/communityPage/contentImg1.png" alt="">
                 <button class="cummunity-scrap-button" onclick="bookmarkToggle(this, 1)">
@@ -109,27 +197,10 @@ pageEncoding="UTF-8"%>
                     <img class="cummunity-scrap-img hidden" src="${contextPath}/resources/img/community/communityPage/pm-bookmark-checked.png" alt="">
                 </button>
             </div>
-             
         </div>
         <div class="community-house-content">
             <p class="community-house-content-write" align="left">
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-            </p>
-        </div>
-        <div class="community-house-content">
-            <p class="community-house-content-write" align="left">
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
+                ${b.introduction}
             </p>
         </div>
         <div align="left">
@@ -183,17 +254,7 @@ pageEncoding="UTF-8"%>
         </div>
         <div class="community-house-content">
             <p class="community-house-content-write" align="left">
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
-                안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.안녕하세요.
+                ${b.description}
             </p>
         </div>
         <div class="community-img-area">
@@ -269,13 +330,9 @@ pageEncoding="UTF-8"%>
         </div>
     </div>
     <script>
-        // function buttonplus(){
-        //     const hyoyoung = document.getElementsByClassName("list-wrap");
-        //     const btn = document.getElementsByClassName("wrap-button-container");
+        $(function() {
 
-        //     btn[0].classList.toggle("hidden")
-        //     btn[1].classList.toggle("hidden")
-        // }
+        })
 
         function bookmarkToggle(_this, type) {
             const bookmark = _this.children;
