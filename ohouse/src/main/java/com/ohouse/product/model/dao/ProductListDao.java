@@ -60,5 +60,13 @@ public class ProductListDao {
 		
 		return sqlSession.update("productMapper.productScrapUpdate", scrap);
 	}
+	
+	public ArrayList<Product> selectProductSaleList(SqlSession sqlSession){
+		return (ArrayList)sqlSession.selectList("productMapper.selectProductSaleList");
+	}
+	
+	public ArrayList<Product> selectListProduct(SqlSession sqlSession){
+		return (ArrayList)sqlSession.selectList("productMapper.selectProductList");
+	}
 
 }

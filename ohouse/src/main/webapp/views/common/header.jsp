@@ -65,10 +65,10 @@
         <div class="sticky-container" style="height: 51px;">
             <!-- 쇼핑 -->
             <div class="header-category">
-                <a href="">쇼핑홈</a>
-                <a href="">카테고리</a>
-                <a href="">베스트</a>
-                <a href="">오늘의딜</a>
+                <a href="${contextPath}">쇼핑홈</a>
+                <a href="${contextPath}/categoryList.pr">카테고리</a>
+                <a href="${contextPath}/list.pr?cpage=1">베스트</a>
+                <a href="${contextPath}/list.pr?cpage=1&condition=saleDesc">오늘의딜</a>
             </div>
             <!-- 마이페이지 -->
             <div class="header-mypage header-hidden">

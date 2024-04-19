@@ -10,7 +10,8 @@ import com.ohouse.product.model.vo.Product;
 public interface ProductListService {
 	//productBestPage 리스트
 	public ArrayList<Product> selectListProduct(PageInfo pi);
-	
+	//productMainPage 리스트
+	public ArrayList<Product> selectListProduct();
 	//productBestPage 리스트갯수
 	public int selectListCount();
 	
@@ -19,7 +20,8 @@ public interface ProductListService {
 	
 	//productSalePage 리스트
 	public ArrayList<Product> selectProductSaleList(PageInfo pi, String condition);
-	
+	//productMainSalePage 리스트 
+	public ArrayList<Product> selectProductSaleList();
 	//productScrapStatusCheck
 	public int productScrapstatusCheck(Scrap scrap);
 	
