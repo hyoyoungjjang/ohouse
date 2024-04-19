@@ -6,10 +6,9 @@
         <meta charset="UTF-8">
         <title>Document</title>
         <link rel="stylesheet" href="resources\header.css">
-        <link rel="stylesheet" href="resources\productPage.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/product/productPage.css">
         <link rel="stylesheet" href="resources\footer.css">
     </head>
-
     <body>
         <header>
             <%@ include file="../common/header.jsp" %>
@@ -250,7 +249,7 @@
                     <div class="product-proInfo-text">
                         <span>상품정보</span>
                     </div>
-                    <div class="product-proInfo-Image">
+                    <div class="product-proInfo-Contents">
                         <br><br><br><br>
                         <img src="https://sleeper2020.cafe24.com/product/fabricline/bed/tira/sp_tira_fabric_bed_3.jpg"
                             alt="상품의 상세 설명 이미지" width="690px">
@@ -473,6 +472,443 @@
                                     </button>
                                 </div>
                             </div>
+                            <div class="review-feed">
+                                <div class="review-feed-content1">
+                                    <div class="review-writer-info">
+                                        <a href="/users/4211905">
+                                            <img style="border-radius: 60%; width: 30px;"
+                                                src="https://image.ohou.se/image/central_crop/bucketplace-v2-development/uploads-users-profile_images1558023449_LbsVZ.jpeg/80/80"
+                                                class="review-item__writer__img" alt="">
+                                        </a>
+                                        <div class="review-writer-info-detail">
+                                            <p class="review-writer-name">romi0125</p>
+                                            <div class="review-writer-star-rating" aria-label="">
+                                                <svg fill="#35C5F0" width="1em" height="1em" viewBox="0 0 24 24">
+                                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                                    <path
+                                                        d="M11.99 18.44l-5.4 3.29a.998.998 0 0 1-1.47-1.05l1-5.93L.22 8.27a1 1 0 0 1 .55-1.7l6.23-.9L11.05.7a.999.999 0 0 1 1.89 0l2.77 5.94 6.23.9a1 1 0 0 1 .55 1.7l-4.92 4.54 1 5.93a1 1 0 0 1-1.46 1.05l-5.4-3.29z">
+                                                    </path>
+                                                </svg>
+                                                <svg fill="#35C5F0" width="1em" height="1em" viewBox="0 0 24 24">
+                                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                                    <path
+                                                        d="M11.99 18.44l-5.4 3.29a.998.998 0 0 1-1.47-1.05l1-5.93L.22 8.27a1 1 0 0 1 .55-1.7l6.23-.9L11.05.7a.999.999 0 0 1 1.89 0l2.77 5.94 6.23.9a1 1 0 0 1 .55 1.7l-4.92 4.54 1 5.93a1 1 0 0 1-1.46 1.05l-5.4-3.29z">
+                                                    </path>
+                                                </svg>
+                                                <svg fill="#35C5F0" width="1em" height="1em" viewBox="0 0 24 24">
+                                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                                    <path
+                                                        d="M11.99 18.44l-5.4 3.29a.998.998 0 0 1-1.47-1.05l1-5.93L.22 8.27a1 1 0 0 1 .55-1.7l6.23-.9L11.05.7a.999.999 0 0 1 1.89 0l2.77 5.94 6.23.9a1 1 0 0 1 .55 1.7l-4.92 4.54 1 5.93a1 1 0 0 1-1.46 1.05l-5.4-3.29z">
+                                                    </path>
+                                                </svg>
+                                                <svg fill="#35C5F0" width="1em" height="1em" viewBox="0 0 24 24">
+                                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                                    <path
+                                                        d="M11.99 18.44l-5.4 3.29a.998.998 0 0 1-1.47-1.05l1-5.93L.22 8.27a1 1 0 0 1 .55-1.7l6.23-.9L11.05.7a.999.999 0 0 1 1.89 0l2.77 5.94 6.23.9a1 1 0 0 1 .55 1.7l-4.92 4.54 1 5.93a1 1 0 0 1-1.46 1.05l-5.4-3.29z">
+                                                    </path>
+                                                </svg>
+                                                <svg fill="#35C5F0" width="1em" height="1em" viewBox="0 0 24 24">
+                                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                                    <path
+                                                        d="M11.99 18.44l-5.4 3.29a.998.998 0 0 1-1.47-1.05l1-5.93L.22 8.27a1 1 0 0 1 .55-1.7l6.23-.9L11.05.7a.999.999 0 0 1 1.89 0l2.77 5.94 6.23.9a1 1 0 0 1 .55 1.7l-4.92 4.54 1 5.93a1 1 0 0 1-1.46 1.05l-5.4-3.29z">
+                                                    </path>
+                                                </svg>
+                                                <span class="review-writer-date">2024.02.14 ∙ 오늘의집
+                                                    구매
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="review-item-name">
+                                        <p class="production-review-item-name-explain">침대사이즈: LK
+                                            (라지킹) / 파운데이션 높이: 25cm</p>
+                                    </div>
+                                    <button type="button" class="review-item-img-btn">
+                                        <img class="production-review-item-img" style="border-radius: 5px;"
+                                            src="https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/170790621915583364.jpeg?gif=1&amp;w=144&amp;h=144&amp;c=c&amp;webp=1"
+                                            srcset="https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/170790621915583364.jpeg?gif=1&amp;w=240&amp;h=240&amp;c=c&amp;webp=1 1.5x,https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/170790621915583364.jpeg?gif=1&amp;w=320&amp;h=320&amp;c=c&amp;webp=1 2x,https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/170790621915583364.jpeg?gif=1&amp;w=480&amp;h=480&amp;c=c&amp;webp=1 3x">
+                                    </button>
+                                    <p class="review-item-description">
+                                        높은 침대를 원했는데 원하는 높이와 디자인은 사진보다 실물이 훨씬 예쁘고
+                                        마음에 드네요^^ 배송도 딱 원하는 날짜에 맞춰서 해주셔서 이사하는데 수월했습니다^^
+                                    </p>
+                                    <div class="review-item-help">
+                                        <button type="button" class="review-item-help-btn"> 도움이 돼요
+                                        </button>
+                                        <div class="review-item-help-text">
+                                            <span class="review-item-help-text-number">3
+                                            </span>명에게 도움이 되었습니다.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="review-feed-content2">
+                                    <div class="review-writer-info">
+                                        <a href="/users/4211905">
+                                            <img style="border-radius: 60%; width: 30px;"
+                                                src="https://image.ohou.se/image/central_crop/bucketplace-v2-development/uploads-users-profile_images1558023449_LbsVZ.jpeg/80/80"
+                                                class="review-item__writer__img" alt="">
+                                        </a>
+                                        <div class="review-writer-info-detail">
+                                            <p class="review-writer-name">romi0125</p>
+                                            <div class="review-writer-star-rating" aria-label="">
+                                                <svg fill="#35C5F0" width="1em" height="1em" viewBox="0 0 24 24">
+                                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                                    <path
+                                                        d="M11.99 18.44l-5.4 3.29a.998.998 0 0 1-1.47-1.05l1-5.93L.22 8.27a1 1 0 0 1 .55-1.7l6.23-.9L11.05.7a.999.999 0 0 1 1.89 0l2.77 5.94 6.23.9a1 1 0 0 1 .55 1.7l-4.92 4.54 1 5.93a1 1 0 0 1-1.46 1.05l-5.4-3.29z">
+                                                    </path>
+                                                </svg>
+                                                <svg fill="#35C5F0" width="1em" height="1em" viewBox="0 0 24 24">
+                                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                                    <path
+                                                        d="M11.99 18.44l-5.4 3.29a.998.998 0 0 1-1.47-1.05l1-5.93L.22 8.27a1 1 0 0 1 .55-1.7l6.23-.9L11.05.7a.999.999 0 0 1 1.89 0l2.77 5.94 6.23.9a1 1 0 0 1 .55 1.7l-4.92 4.54 1 5.93a1 1 0 0 1-1.46 1.05l-5.4-3.29z">
+                                                    </path>
+                                                </svg>
+                                                <svg fill="#35C5F0" width="1em" height="1em" viewBox="0 0 24 24">
+                                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                                    <path
+                                                        d="M11.99 18.44l-5.4 3.29a.998.998 0 0 1-1.47-1.05l1-5.93L.22 8.27a1 1 0 0 1 .55-1.7l6.23-.9L11.05.7a.999.999 0 0 1 1.89 0l2.77 5.94 6.23.9a1 1 0 0 1 .55 1.7l-4.92 4.54 1 5.93a1 1 0 0 1-1.46 1.05l-5.4-3.29z">
+                                                    </path>
+                                                </svg>
+                                                <svg fill="#35C5F0" width="1em" height="1em" viewBox="0 0 24 24">
+                                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                                    <path
+                                                        d="M11.99 18.44l-5.4 3.29a.998.998 0 0 1-1.47-1.05l1-5.93L.22 8.27a1 1 0 0 1 .55-1.7l6.23-.9L11.05.7a.999.999 0 0 1 1.89 0l2.77 5.94 6.23.9a1 1 0 0 1 .55 1.7l-4.92 4.54 1 5.93a1 1 0 0 1-1.46 1.05l-5.4-3.29z">
+                                                    </path>
+                                                </svg>
+                                                <svg fill="#35C5F0" width="1em" height="1em" viewBox="0 0 24 24">
+                                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                                    <path
+                                                        d="M11.99 18.44l-5.4 3.29a.998.998 0 0 1-1.47-1.05l1-5.93L.22 8.27a1 1 0 0 1 .55-1.7l6.23-.9L11.05.7a.999.999 0 0 1 1.89 0l2.77 5.94 6.23.9a1 1 0 0 1 .55 1.7l-4.92 4.54 1 5.93a1 1 0 0 1-1.46 1.05l-5.4-3.29z">
+                                                    </path>
+                                                </svg>
+                                                <span class="review-writer-date">2024.02.14 ∙ 오늘의집
+                                                    구매
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="review-item-name">
+                                        <p class="production-review-item-name-explain">침대사이즈: LK
+                                            (라지킹) / 파운데이션 높이: 25cm</p>
+                                    </div>
+                                    <button type="button" class="review-item-img-btn">
+                                        <img class="production-review-item-img" style="border-radius: 5px;"
+                                            src="https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/170790621915583364.jpeg?gif=1&amp;w=144&amp;h=144&amp;c=c&amp;webp=1"
+                                            srcset="https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/170790621915583364.jpeg?gif=1&amp;w=240&amp;h=240&amp;c=c&amp;webp=1 1.5x,https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/170790621915583364.jpeg?gif=1&amp;w=320&amp;h=320&amp;c=c&amp;webp=1 2x,https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/170790621915583364.jpeg?gif=1&amp;w=480&amp;h=480&amp;c=c&amp;webp=1 3x">
+                                    </button>
+                                    <p class="review-item-description">
+                                        높은 침대를 원했는데 원하는 높이와 디자인은 사진보다 실물이 훨씬 예쁘고
+                                        마음에 드네요^^ 배송도 딱 원하는 날짜에 맞춰서 해주셔서 이사하는데 수월했습니다^^
+                                    </p>
+                                    <div class="review-item-help">
+                                        <button type="button" class="review-item-help-btn"> 도움이 돼요
+                                        </button>
+                                        <div class="review-item-help-text">
+                                            <span class="review-item-help-text-number">3
+                                            </span>명에게 도움이 되었습니다.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="review-feed-content3">
+                                    <div class="review-writer-info">
+                                        <a href="/users/4211905">
+                                            <img style="border-radius: 60%; width: 30px;"
+                                                src="https://image.ohou.se/image/central_crop/bucketplace-v2-development/uploads-users-profile_images1558023449_LbsVZ.jpeg/80/80"
+                                                class="review-item__writer__img" alt="">
+                                        </a>
+                                        <div class="review-writer-info-detail">
+                                            <p class="review-writer-name">romi0125</p>
+                                            <div class="review-writer-star-rating" aria-label="">
+                                                <svg fill="#35C5F0" width="1em" height="1em" viewBox="0 0 24 24">
+                                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                                    <path
+                                                        d="M11.99 18.44l-5.4 3.29a.998.998 0 0 1-1.47-1.05l1-5.93L.22 8.27a1 1 0 0 1 .55-1.7l6.23-.9L11.05.7a.999.999 0 0 1 1.89 0l2.77 5.94 6.23.9a1 1 0 0 1 .55 1.7l-4.92 4.54 1 5.93a1 1 0 0 1-1.46 1.05l-5.4-3.29z">
+                                                    </path>
+                                                </svg>
+                                                <svg fill="#35C5F0" width="1em" height="1em" viewBox="0 0 24 24">
+                                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                                    <path
+                                                        d="M11.99 18.44l-5.4 3.29a.998.998 0 0 1-1.47-1.05l1-5.93L.22 8.27a1 1 0 0 1 .55-1.7l6.23-.9L11.05.7a.999.999 0 0 1 1.89 0l2.77 5.94 6.23.9a1 1 0 0 1 .55 1.7l-4.92 4.54 1 5.93a1 1 0 0 1-1.46 1.05l-5.4-3.29z">
+                                                    </path>
+                                                </svg>
+                                                <svg fill="#35C5F0" width="1em" height="1em" viewBox="0 0 24 24">
+                                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                                    <path
+                                                        d="M11.99 18.44l-5.4 3.29a.998.998 0 0 1-1.47-1.05l1-5.93L.22 8.27a1 1 0 0 1 .55-1.7l6.23-.9L11.05.7a.999.999 0 0 1 1.89 0l2.77 5.94 6.23.9a1 1 0 0 1 .55 1.7l-4.92 4.54 1 5.93a1 1 0 0 1-1.46 1.05l-5.4-3.29z">
+                                                    </path>
+                                                </svg>
+                                                <svg fill="#35C5F0" width="1em" height="1em" viewBox="0 0 24 24">
+                                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                                    <path
+                                                        d="M11.99 18.44l-5.4 3.29a.998.998 0 0 1-1.47-1.05l1-5.93L.22 8.27a1 1 0 0 1 .55-1.7l6.23-.9L11.05.7a.999.999 0 0 1 1.89 0l2.77 5.94 6.23.9a1 1 0 0 1 .55 1.7l-4.92 4.54 1 5.93a1 1 0 0 1-1.46 1.05l-5.4-3.29z">
+                                                    </path>
+                                                </svg>
+                                                <svg fill="#35C5F0" width="1em" height="1em" viewBox="0 0 24 24">
+                                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                                    <path
+                                                        d="M11.99 18.44l-5.4 3.29a.998.998 0 0 1-1.47-1.05l1-5.93L.22 8.27a1 1 0 0 1 .55-1.7l6.23-.9L11.05.7a.999.999 0 0 1 1.89 0l2.77 5.94 6.23.9a1 1 0 0 1 .55 1.7l-4.92 4.54 1 5.93a1 1 0 0 1-1.46 1.05l-5.4-3.29z">
+                                                    </path>
+                                                </svg>
+                                                <span class="review-writer-date">2024.02.14 ∙ 오늘의집
+                                                    구매
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="review-item-name">
+                                        <p class="production-review-item-name-explain">침대사이즈: LK
+                                            (라지킹) / 파운데이션 높이: 25cm</p>
+                                    </div>
+                                    <button type="button" class="review-item-img-btn">
+                                        <img class="production-review-item-img" style="border-radius: 5px;"
+                                            src="https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/170790621915583364.jpeg?gif=1&amp;w=144&amp;h=144&amp;c=c&amp;webp=1"
+                                            srcset="https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/170790621915583364.jpeg?gif=1&amp;w=240&amp;h=240&amp;c=c&amp;webp=1 1.5x,https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/170790621915583364.jpeg?gif=1&amp;w=320&amp;h=320&amp;c=c&amp;webp=1 2x,https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/170790621915583364.jpeg?gif=1&amp;w=480&amp;h=480&amp;c=c&amp;webp=1 3x">
+                                    </button>
+                                    <p class="review-item-description">
+                                        높은 침대를 원했는데 원하는 높이와 디자인은 사진보다 실물이 훨씬 예쁘고
+                                        마음에 드네요^^ 배송도 딱 원하는 날짜에 맞춰서 해주셔서 이사하는데 수월했습니다^^
+                                    </p>
+                                    <div class="review-item-help">
+                                        <button type="button" class="review-item-help-btn"> 도움이 돼요
+                                        </button>
+                                        <div class="review-item-help-text">
+                                            <span class="review-item-help-text-number">3
+                                            </span>명에게 도움이 되었습니다.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="review-feed-content4">
+                                    <div class="review-writer-info">
+                                        <a href="/users/4211905">
+                                            <img style="border-radius: 60%; width: 30px;"
+                                                src="https://image.ohou.se/image/central_crop/bucketplace-v2-development/uploads-users-profile_images1558023449_LbsVZ.jpeg/80/80"
+                                                class="review-item__writer__img" alt="">
+                                        </a>
+                                        <div class="review-writer-info-detail">
+                                            <p class="review-writer-name">romi0125</p>
+                                            <div class="review-writer-star-rating" aria-label="">
+                                                <svg fill="#35C5F0" width="1em" height="1em" viewBox="0 0 24 24">
+                                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                                    <path
+                                                        d="M11.99 18.44l-5.4 3.29a.998.998 0 0 1-1.47-1.05l1-5.93L.22 8.27a1 1 0 0 1 .55-1.7l6.23-.9L11.05.7a.999.999 0 0 1 1.89 0l2.77 5.94 6.23.9a1 1 0 0 1 .55 1.7l-4.92 4.54 1 5.93a1 1 0 0 1-1.46 1.05l-5.4-3.29z">
+                                                    </path>
+                                                </svg>
+                                                <svg fill="#35C5F0" width="1em" height="1em" viewBox="0 0 24 24">
+                                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                                    <path
+                                                        d="M11.99 18.44l-5.4 3.29a.998.998 0 0 1-1.47-1.05l1-5.93L.22 8.27a1 1 0 0 1 .55-1.7l6.23-.9L11.05.7a.999.999 0 0 1 1.89 0l2.77 5.94 6.23.9a1 1 0 0 1 .55 1.7l-4.92 4.54 1 5.93a1 1 0 0 1-1.46 1.05l-5.4-3.29z">
+                                                    </path>
+                                                </svg>
+                                                <svg fill="#35C5F0" width="1em" height="1em" viewBox="0 0 24 24">
+                                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                                    <path
+                                                        d="M11.99 18.44l-5.4 3.29a.998.998 0 0 1-1.47-1.05l1-5.93L.22 8.27a1 1 0 0 1 .55-1.7l6.23-.9L11.05.7a.999.999 0 0 1 1.89 0l2.77 5.94 6.23.9a1 1 0 0 1 .55 1.7l-4.92 4.54 1 5.93a1 1 0 0 1-1.46 1.05l-5.4-3.29z">
+                                                    </path>
+                                                </svg>
+                                                <svg fill="#35C5F0" width="1em" height="1em" viewBox="0 0 24 24">
+                                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                                    <path
+                                                        d="M11.99 18.44l-5.4 3.29a.998.998 0 0 1-1.47-1.05l1-5.93L.22 8.27a1 1 0 0 1 .55-1.7l6.23-.9L11.05.7a.999.999 0 0 1 1.89 0l2.77 5.94 6.23.9a1 1 0 0 1 .55 1.7l-4.92 4.54 1 5.93a1 1 0 0 1-1.46 1.05l-5.4-3.29z">
+                                                    </path>
+                                                </svg>
+                                                <svg fill="#35C5F0" width="1em" height="1em" viewBox="0 0 24 24">
+                                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                                    <path
+                                                        d="M11.99 18.44l-5.4 3.29a.998.998 0 0 1-1.47-1.05l1-5.93L.22 8.27a1 1 0 0 1 .55-1.7l6.23-.9L11.05.7a.999.999 0 0 1 1.89 0l2.77 5.94 6.23.9a1 1 0 0 1 .55 1.7l-4.92 4.54 1 5.93a1 1 0 0 1-1.46 1.05l-5.4-3.29z">
+                                                    </path>
+                                                </svg>
+                                                <span class="review-writer-date">2024.02.14 ∙ 오늘의집
+                                                    구매
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="review-item-name">
+                                        <p class="production-review-item-name-explain">침대사이즈: LK
+                                            (라지킹) / 파운데이션 높이: 25cm</p>
+                                    </div>
+                                    <button type="button" class="review-item-img-btn">
+                                        <img class="production-review-item-img" style="border-radius: 5px;"
+                                            src="https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/170790621915583364.jpeg?gif=1&amp;w=144&amp;h=144&amp;c=c&amp;webp=1"
+                                            srcset="https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/170790621915583364.jpeg?gif=1&amp;w=240&amp;h=240&amp;c=c&amp;webp=1 1.5x,https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/170790621915583364.jpeg?gif=1&amp;w=320&amp;h=320&amp;c=c&amp;webp=1 2x,https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/170790621915583364.jpeg?gif=1&amp;w=480&amp;h=480&amp;c=c&amp;webp=1 3x">
+                                    </button>
+                                    <p class="review-item-description">
+                                        높은 침대를 원했는데 원하는 높이와 디자인은 사진보다 실물이 훨씬 예쁘고
+                                        마음에 드네요^^ 배송도 딱 원하는 날짜에 맞춰서 해주셔서 이사하는데 수월했습니다^^
+                                    </p>
+                                    <div class="review-item-help">
+                                        <button type="button" class="review-item-help-btn"> 도움이 돼요
+                                        </button>
+                                        <div class="review-item-help-text">
+                                            <span class="review-item-help-text-number">3
+                                            </span>명에게 도움이 되었습니다.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="review-feed-content5">
+                                    <div class="review-writer-info">
+                                        <a href="/users/4211905">
+                                            <img style="border-radius: 60%; width: 30px;"
+                                                src="https://image.ohou.se/image/central_crop/bucketplace-v2-development/uploads-users-profile_images1558023449_LbsVZ.jpeg/80/80"
+                                                class="review-item__writer__img" alt="">
+                                        </a>
+                                        <div class="review-writer-info-detail">
+                                            <p class="review-writer-name">romi0125</p>
+                                            <div class="review-writer-star-rating" aria-label="">
+                                                <svg fill="#35C5F0" width="1em" height="1em" viewBox="0 0 24 24">
+                                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                                    <path
+                                                        d="M11.99 18.44l-5.4 3.29a.998.998 0 0 1-1.47-1.05l1-5.93L.22 8.27a1 1 0 0 1 .55-1.7l6.23-.9L11.05.7a.999.999 0 0 1 1.89 0l2.77 5.94 6.23.9a1 1 0 0 1 .55 1.7l-4.92 4.54 1 5.93a1 1 0 0 1-1.46 1.05l-5.4-3.29z">
+                                                    </path>
+                                                </svg>
+                                                <svg fill="#35C5F0" width="1em" height="1em" viewBox="0 0 24 24">
+                                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                                    <path
+                                                        d="M11.99 18.44l-5.4 3.29a.998.998 0 0 1-1.47-1.05l1-5.93L.22 8.27a1 1 0 0 1 .55-1.7l6.23-.9L11.05.7a.999.999 0 0 1 1.89 0l2.77 5.94 6.23.9a1 1 0 0 1 .55 1.7l-4.92 4.54 1 5.93a1 1 0 0 1-1.46 1.05l-5.4-3.29z">
+                                                    </path>
+                                                </svg>
+                                                <svg fill="#35C5F0" width="1em" height="1em" viewBox="0 0 24 24">
+                                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                                    <path
+                                                        d="M11.99 18.44l-5.4 3.29a.998.998 0 0 1-1.47-1.05l1-5.93L.22 8.27a1 1 0 0 1 .55-1.7l6.23-.9L11.05.7a.999.999 0 0 1 1.89 0l2.77 5.94 6.23.9a1 1 0 0 1 .55 1.7l-4.92 4.54 1 5.93a1 1 0 0 1-1.46 1.05l-5.4-3.29z">
+                                                    </path>
+                                                </svg>
+                                                <svg fill="#35C5F0" width="1em" height="1em" viewBox="0 0 24 24">
+                                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                                    <path
+                                                        d="M11.99 18.44l-5.4 3.29a.998.998 0 0 1-1.47-1.05l1-5.93L.22 8.27a1 1 0 0 1 .55-1.7l6.23-.9L11.05.7a.999.999 0 0 1 1.89 0l2.77 5.94 6.23.9a1 1 0 0 1 .55 1.7l-4.92 4.54 1 5.93a1 1 0 0 1-1.46 1.05l-5.4-3.29z">
+                                                    </path>
+                                                </svg>
+                                                <svg fill="#35C5F0" width="1em" height="1em" viewBox="0 0 24 24">
+                                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                                    <path
+                                                        d="M11.99 18.44l-5.4 3.29a.998.998 0 0 1-1.47-1.05l1-5.93L.22 8.27a1 1 0 0 1 .55-1.7l6.23-.9L11.05.7a.999.999 0 0 1 1.89 0l2.77 5.94 6.23.9a1 1 0 0 1 .55 1.7l-4.92 4.54 1 5.93a1 1 0 0 1-1.46 1.05l-5.4-3.29z">
+                                                    </path>
+                                                </svg>
+                                                <span class="review-writer-date">2024.02.14 ∙ 오늘의집
+                                                    구매
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="review-item-name">
+                                        <p class="production-review-item-name-explain">침대사이즈: LK
+                                            (라지킹) / 파운데이션 높이: 25cm</p>
+                                    </div>
+                                    <button type="button" class="review-item-img-btn">
+                                        <img class="production-review-item-img" style="border-radius: 5px;"
+                                            src="https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/170790621915583364.jpeg?gif=1&amp;w=144&amp;h=144&amp;c=c&amp;webp=1"
+                                            srcset="https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/170790621915583364.jpeg?gif=1&amp;w=240&amp;h=240&amp;c=c&amp;webp=1 1.5x,https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/170790621915583364.jpeg?gif=1&amp;w=320&amp;h=320&amp;c=c&amp;webp=1 2x,https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/170790621915583364.jpeg?gif=1&amp;w=480&amp;h=480&amp;c=c&amp;webp=1 3x">
+                                    </button>
+                                    <p class="review-item-description">
+                                        높은 침대를 원했는데 원하는 높이와 디자인은 사진보다 실물이 훨씬 예쁘고
+                                        마음에 드네요^^ 배송도 딱 원하는 날짜에 맞춰서 해주셔서 이사하는데 수월했습니다^^
+                                    </p>
+                                    <div class="review-item-help">
+                                        <button type="button" class="review-item-help-btn"> 도움이 돼요
+                                        </button>
+                                        <div class="review-item-help-text">
+                                            <span class="review-item-help-text-number">3
+                                            </span>명에게 도움이 되었습니다.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review-pagelist">
+                                <ul class="review_page_ul">
+                                    <li class="page-li" style="list-style-type: none;"><button class="_3b4ci"
+                                            type="button">1</button></li>
+                                    <li class="page-li" style="list-style-type: none;"><button class="_3b4ci"
+                                            type="button">2</button></li>
+                                    <li class="page-li" style="list-style-type: none;"><button class="_3b4ci"
+                                            type="button">3</button></li>
+                                    <li class="page-li" style="list-style-type: none;"><button class="_3b4ci"
+                                            type="button">4</button></li>
+                                    <li class="page-li" style="list-style-type: none;"><button class="_3b4ci"
+                                            type="button">5</button></li>
+                                    <li class="page-li" style="list-style-type: none;"><button class="_3b4ci"
+                                            type="button">6</button></li>
+                                    <li class="page-li" style="list-style-type: none;"><button class="_3b4ci"
+                                            type="button">7</button></li>
+                                    <li class="page-li" style="list-style-type: none;"><button class="_3b4ci"
+                                            type="button">8</button></li>
+                                    <li class="page-li" style="list-style-type: none;"><button class="_3b4ci"
+                                            type="button">9</button></li>
+                                    <li class="page-li" style="list-style-type: none;">
+                                        <button class="nextpage" type="button" width="24px" height="24px">
+                                            <svg width="1em" height="1em" viewBox="0 0 24 24">
+                                                <path fill="currentColor"
+                                                    d="M6 19.692L8.25 22 18 12 8.25 2 6 4.308 13.5 12z">
+                                                </path>
+                                            </svg>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="product-delivery-detail">
+                            <span class="product-delivery-detail-text">배송</span>
+                            <br><br>
+                            <table class="product-delivery-detail-table">
+                                <tbody>
+                                    <tr>
+                                        <th>배송</th>
+                                        <td>업체직접배송</td>
+                                    </tr>
+                                    <tr>
+                                        <th>배송비</th>
+                                        <td>60,000원 </td>
+                                    </tr>
+                                    <tr>
+                                        <th>도서산간 추가 배송비</th>
+                                        <td>20,000원 </td>
+                                    </tr>
+                                    <tr>
+                                        <th>배송불가 지역</th>
+                                        <td>제주도</td>
+                                    </tr>
+                                    <tr>
+                                        <th>비례 배송비</th>
+                                        <td>주문 상품 개수에 비례하여 배송비 부과</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="product-seller-info">
+                            <span class="product-seller-info-text">판매자 정보</span>
+                            <br><br>
+                            <table class="product-seller-info-table">
+                                <tbody>
+                                    <tr>
+                                        <th>상호</th>
+                                        <td>주식회사 오가렌</td>
+                                    </tr>
+                                    <tr>
+                                        <th>대표자</th>
+                                        <td>정호영</td>
+                                    </tr>
+                                    <tr>
+                                        <th>사업장소재지</th>
+                                        <td>서울 강남구 테헤란로84길 15 3층</td>
+                                    </tr>
+                                    <tr>
+                                        <th>고객센터 전화번호</th>
+                                        <td>1644-4766-</td>
+                                    </tr>
+                                    <tr>
+                                        <th>E-mail</th>
+                                        <td>contact@ogaren.com</td>
+                                    </tr>
+                                    <tr>
+                                        <th>사업자 등록번호</th>
+                                        <td>161-81-01716</td>
+                                    </tr>
+                                    <tr>
+                                        <th>통신판매업 신고번호</th>
+                                        <td>2020-서울강남-00640</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -486,11 +922,104 @@
                         </div>
                     </div>
                 </div>
+                <div class="product-sidebar">
+                    <div class="product-sidebar-option">
+                            <select class="product-sidebar-option1">
+                                <option>침대사이즈</option>
+                                <option value="0">S/SS (싱글 / 슈퍼싱글)(357,000 ~ 749,000원)</option>
+                                <option value="1">D/Q (더블 / 퀸)(476,000 ~ 904,000원)</option>
+                                <option value="2">K (킹)(487,000 ~ 926,000원)</option>
+                                <option value="3">LK (라지킹)(568,000 ~ 1,059,000원)</option>
+                                <option value="4">EK (이스턴킹)(639,000 ~ 1,151,000원)</option>
+                            </select>
+                            <br>
+                            <select class="product-sidebar-option2">
+                                <option selected="" value="" disabled="">파운데이션 높이</option>
+                            </select>
+                            <br>
+                            <select class="product-sidebar-option3">
+                                <option>추가상품 (선택)</option>
+                                <option value="0">헤드 - 높은 헤드형으로 변경 (100,000원)</option>
+                                <option value="1">자재등급 E0 변경 (63,000원)</option>
+                                <option value="2">특수 사이즈 커스터마이징 (79,000원)</option>
+                                <option value="3">(인기)Fabio 10-화이트아이보리 (271,000원)</option>
+                                <option value="4">(인기)린넨 01-아이보리 오트밀 (271,000원)</option>
+                                <option value="5">(인기)Galaxy 06-크림 (211,000원)</option>
+                                <option value="6">Fabio 04-네이비블루 (271,000원)</option>
+                                <option value="7">Gorka 05-그레이화이트 Mix (271,000원)</option>
+                                <option value="8">Fabio 18-그린 (271,000원)</option>
+                                <option value="9">Bubble 01-블랙 (271,000원)</option>
+                                <option value="10">Bubble 07-화이트 (271,000원)</option>
+                                <option value="11">Bubble 16-핑크 (271,000원)</option>
+                                <option value="12">Ross 01-네이비 (241,000원)</option>
+                                <option value="13">Ross 04-인디핑크 (241,000원)</option>
+                                <option value="14">Ross 06-브라운 (241,000원)</option>
+                                <option value="15">Ross 07-그레이베이지 (241,000원)</option>
+                                <option value="16">Ross 08-라이트 그레이 (241,000원)</option>
+                                <option value="17">Ross 09-그레이 (241,000원)</option>
+                                <option value="18">Ross 13-포레스트그린 (241,000원)</option>
+                                <option value="19">Nea 23-아이보리 (158,000원)</option>
+                                <option value="20">Nea 25-베이지 (158,000원)</option>
+                                <option value="21">Nea 80-민트 (158,000원)</option>
+                                <option value="22">Nea 86-네이비블루 (158,000원)</option>
+                                <option value="23">Nea 74-포레스트 그린 (158,000원)</option>
+                                <option value="24">Nea 66-머스타드 옐로 (158,000원)</option>
+                                <option value="25">Nea 03-라이트 그레이 (158,000원)</option>
+                                <option value="26">Nea 15-진그레이 (158,000원)</option>
+                                <option value="27">Nea 19-블랙 (158,000원)</option>
+                                <option value="28">Raven 06-라이트 그레이 (271,000원)</option>
+                                <option value="29">Raven 22-화이트 (271,000원)</option>
+                                <option value="30">Raven 66-머스타드옐로 (271,000원)</option>
+                                <option value="31">Raven 80-민트 (271,000원)</option>
+                                <option value="32">Raven 86-네이비블루 (271,000원)</option>
+                                <option value="33">Raven 91-퍼플 (271,000원)</option>
+                                <option value="34">린넨 02-그레이 오트밀 (271,000원)</option>
+                                <option value="35">린넨 03-민트 오트밀 (271,000원)</option>
+                                <option value="36">Galaxy 01-네이비 (211,000원)</option>
+                                <option value="37">Galaxy 04 M-그레이 (211,000원)</option>
+                                <option value="38">Galaxy 05-라이트 그레이 (211,000원)</option>
+                                <option value="39">Galaxy 08-그린 (211,000원)</option>
+                                <option value="40">Galaxy 09-머스트옐로우 (211,000원)</option>
+                                <option value="41">Galaxy 10-핑크 (211,000원)</option>
+                                <option value="42">PU 4-아이보리 (0원)</option>
+                                <option value="43">PU 5-라이트 그레이 (0원)</option>
+                                <option value="44">PU 7-네이비 (0원)</option>
+                                <option value="45">PU-3-그레이 (0원)</option>
+                                <option value="46">PU 6-브라운 (0원)</option>
+                                <option value="47">PU 8-블랙 (0원)</option>
+                                <option value="48">ADAM 02-화이트 (241,000원)</option>
+                                <option value="49">ADAM 27-그린 (241,000원)</option>
+                                <option value="50">ADAM 42-퍼플 (241,000원)</option>
+                                <option value="51">파운데이션 높이추가+ 10cm (35cm선택시) (52,500원)</option>
+                                <option value="52">파운데이션 상판 원단 풀커버 (100,000원)</option>
+                            </select> 
+                    </div>
+                    <div class="product-sidebar-buy">
+                            <p>
+                                <span class="product-sidebar-buy-order-price-text">주문금액
+                                </span>
+                                <span class="product-sidebar-buy-order-total-price">
+                                    <span>0
+                                    </span>
+                                    원
+                                </span>
+                            </p>
+                    <div class="product-sidebar-buy-ScrabAndOrder">
+                        <button class="product-sidebar-buy-Scrap" type="button">
+                            <svg class="icon--stroke" aria-label="스크랩" width="24" height="24" fill="none"
+                                    stroke="currentColor" stroke-width="0.5" viewBox="0 0 24 24"
+                                    preserveAspectRatio="xMidYMid meet">
+                                    <path
+                                        d="M11.53 18.54l-8.06 4.31A1 1 0 0 1 2 21.97V3.5A1.5 1.5 0 0 1 3.5 2h17A1.5 1.5 0 0 1 22 3.5v18.47a1 1 0 0 1-1.47.88l-8.06-4.31a1 1 0 0 0-.94 0z">
+                                    </path>
+                            </svg>
+                        </button>
+                        <button class="product-sidebar-buy-button-basket" type="button">장바구니</button>
+                        <button class="product-sidebar-buy-button-buynow" type="button">바로구매</button>
+                    </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        </div>
-        </div>
-        </div>
         </div>
     </body>
     <footer>
