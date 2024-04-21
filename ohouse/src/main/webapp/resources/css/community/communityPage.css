@@ -1,3 +1,10 @@
+#thumbnail-area {
+    height: 700px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
 .thumbnail {
     width: 100%;
     border: none;
@@ -20,7 +27,7 @@
 
 }
 
-#user-profile-img {
+.user-profile-img {
     border-radius: 50%;
     width: 40px;
     margin-right: 5px;
@@ -295,7 +302,7 @@
 
 }
 
-.count {
+#count {
     font-size: 24px;
     color: rgb(53, 197, 240);
 }
@@ -377,8 +384,13 @@
     width: 720px;
     height: 76px;
     margin: 16px 0px;
+}
+
+.comment-area>div{
     display: flex;
     align-items: flex-start;
+    flex-wrap: wrap;
+    row-gap: 20px;
 }
 
 .answer-area {
