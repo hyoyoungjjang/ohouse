@@ -32,10 +32,10 @@ public class AjaxProfileController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String membersId = request.getParameter("mid");
+		int membersNo = Integer.parseInt(request.getParameter("mNo"));
 		
 		CommunityService service = new CommunityServiceImpl();
-		Media m = service.selectProfileById(membersId);
+		Media m = service.selectProfile(membersNo);
 		
 		response.setContentType("application/json; charset=UTF-8");
 		new Gson().toJson(m, response.getWriter());
