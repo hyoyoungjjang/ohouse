@@ -9,6 +9,7 @@
   		<result column="BOARD_VIEWS" property="boardViews"/>
   		<result column="MEMBERS_NO" property="membersNo"/>
   		<result column="BOARD_WRITER" property="boardWriter"/>
+  		<result column="BOARD_WRITER_NAME" property="boardWriterName"/>
   		<result column="BOARD_THUMBNAIL" property="boardThumbnail"/>
   		<result column="BOARD_CREATE_TIME" property="boardCreateTime"/>
   		<result column="BOARD_MODIFY_TIME" property="boardModifyTime"/>
@@ -65,7 +66,7 @@
   		 <result column="BOARD_ID" property="replyBoardId" />
   		 <result column="MEMBERS_NO" property="replyMembersNo" />
   		 <result column="REPLY_STATUS" property="replyStatus" />
-  		 <result column="MEMBERS_ID" property="replyWriter"/>
+  		 <result column="MEMBERS_NAME" property="replyWriter"/>
   	</resultMap>
   	<insert id="insertBoard" parameterType="Board">
   	INSERT
@@ -153,9 +154,11 @@
 		FILTER_STYLE_PRICE,
 		FILTER_URL,
 		FILTER_COPYRIGHT,
-		MEMBERS_ID AS "BOARD_WRITER"
-	FROM BOARD
-	JOIN MEMBERS USING (MEMBERS_NO)
+		B.MEMBERS_NO,
+		MEMBERS_ID AS "BOARD_WRITER",
+		MEMBERS_NAME AS "BOARD_WRITER_NAME"
+	FROM BOARD B
+	JOIN MEMBERS M ON (B.MEMBERS_NO = M.MEMBERS_NO)
 	WHERE BOARD_ID = #{boardId}
 	AND BOARD_STATUS = 'Y'
   	</select>
@@ -186,15 +189,6 @@
 		  FILE_PATH || CHANGE_NAME AS "PROFILE"
 	  FROM MEDIA
 	  WHERE MEMBERS_NO = ${membersNo}
-	   AND MEDIA_STATUS = 'Y'
-  	</select>
-  	<select id="selectProfileById" resultMap="mediaResultSet">
-	  SELECT
-		  MEDIA_ID,
-		  FILE_PATH || CHANGE_NAME AS "PROFILE"
-	  FROM MEDIA MED
-	  JOIN MEMBERS MEM ON (MED.MEMBERS_NO = MEM.MEMBERS_NO)
-	  WHERE MEMBERS_ID = #{membersId}
 	   AND MEDIA_STATUS = 'Y'
   	</select>
   	<update id="updateBoard" parameterType="Board">
@@ -420,7 +414,7 @@
 			REPLY_CREATE_DATE,
 			BOARD_ID,
 			R.MEMBERS_NO,
-			MEMBERS_ID
+			MEMBERS_NAME
 		FROM REPLY R
 		JOIN MEMBERS M ON (R.MEMBERS_NO = M.MEMBERS_NO)
 		WHERE REPLY_STATUS = 'Y'

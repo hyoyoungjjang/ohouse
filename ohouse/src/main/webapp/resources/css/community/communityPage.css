@@ -357,6 +357,10 @@
     margin-left: 15px;
 }
 
+#comment-detail-input-area {
+    width: 100%;
+}
+
 #comment-detail-input-area::placeholder {
     color: rgb(194, 200, 204);
 }

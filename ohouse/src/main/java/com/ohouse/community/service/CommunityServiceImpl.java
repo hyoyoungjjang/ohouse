@@ -76,4 +76,34 @@ public class CommunityServiceImpl implements CommunityService{
 		return m;
 	}
 
+	@Override
+	public int deleteReply(int replyId) {
+		SqlSession sqlSession = getSqlSession();
+		int result = communityDao.deleteReply(sqlSession, replyId);
+		
+		if(result > 0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		
+		sqlSession.close();
+		return result;
+	}
+
+	@Override
+	public int insertReply(Reply r) {
+		SqlSession sqlSession = getSqlSession();
+		int result = communityDao.insertReply(sqlSession, r);
+		
+		if(result > 0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		
+		sqlSession.close();
+		return result;
+	}
+
 }

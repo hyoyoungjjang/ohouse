@@ -36,4 +36,12 @@ public class CommunityDao {
 	public Media selectProfileById(SqlSession sqlSession, String membersId) {
 		return sqlSession.selectOne("communityMapper.selectProfileById", membersId);
 	}
+
+	public int deleteReply(SqlSession sqlSession, int replyId) {
+		return sqlSession.update("communityMapper.deleteReply", replyId);
+	}
+
+	public int insertReply(SqlSession sqlSession, Reply r) {
+		return sqlSession.insert("communityMapper.insertReply", r);
+	}
 }

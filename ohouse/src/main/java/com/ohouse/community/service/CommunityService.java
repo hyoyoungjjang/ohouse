@@ -27,5 +27,11 @@ public interface CommunityService {
 
 	// 프로필 불러오기
 	Media selectProfileById(String membersId);
+
+	// 댓글 삭제
+	int deleteReply(int replyId);
+
+	// 댓글 삽입
+	int insertReply(Reply r);
 	
 }

@@ -39,12 +39,13 @@ pageEncoding="UTF-8"%>
         </div>
     </div>
     <div class="content">
+        <input type="hidden" id="hidden-no" value="${b.boardId}">
         <div class="bulletin-title" align="left">
             <p>작은 공간을 효율적으로 활용하는 최적의 가구 배치 찾기</p>
         </div>
         <div align="left">
             <img class="user-profile-img" src="${pageContext.request.contextPath}/resources/img/community/communityPage/userProfile.png" alt="">
-            <span id="user-name">${b.boardWriter}</span>
+            <span id="user-name">${b.boardWriterName}</span>
         </div>
         <div id="house-information">
             <div id="house-information-head">
@@ -275,7 +276,7 @@ pageEncoding="UTF-8"%>
         <div align="left" id="last-user-profile">
             <div>
                 <img class="user-profile-img" src="${pageContext.request.contextPath}/resources/img/community/communityPage/userProfile.png" alt="">
-                <span id="user-name">${b.boardWriter}</span>
+                <span id="user-name">${b.boardWriterName}</span>
             </div>
         </div>
 
@@ -291,10 +292,12 @@ pageEncoding="UTF-8"%>
                 <div id="comment-detail-area">
                     <div class="comment-detail">
                         <div id="comment-detail-input">
-                        <textarea id="comment-detail-input-area" name="" cols="80" rows="1.5" style="resize: none; border: none;" placeholder="칭찬과 격려의 댓글은 작성자에게 큰 힘이 됩니다:)"></textarea>
+                        <input type="text" id="comment-detail-input-area" name="" cols="80" rows="1.5" style="resize: none; border: none;" placeholder="칭찬과 격려의 댓글은 작성자에게 큰 힘이 됩니다:)">
                         </div>
                         <div class="comment-input">
-                            <button class="comment-input-button">입력</button>
+                            <button class="comment-input-button" onclick="insertReply('${loginUser.membersNo}');">
+                                입력
+                            </button>
                         </div>  
                     </div>
                 </div>
@@ -315,29 +318,32 @@ pageEncoding="UTF-8"%>
         </div>
     </div>
     <script>
+        let selectReplyList = null;
         $(function() {
-            getItems("listMedia.co", {bid: "${b.boardId}"}, function(result) {
+            selectReplyList = function() {
+                getItems("listReply.co", { bid: "${b.boardId}" }, function (result) {
+                    getReply(result, "${contextPath}", "${loginUser.membersNo}");
+                    for (let item of result) {
+                        getItems("profile.co", { mNo: item.replyMembersNo }, function (result) {
+                            getProfile(result, "${contextPath}", "#comment-" + item.replyId);
+                        })
+                    }
+                });
+            };
+
+            selectReplyList();
+
+            getItems("listMedia.co", { bid: "${b.boardId}" }, function (result) {
                 getPhoto(result, "${contextPath}", "${loginUser.membersNo}");
             });
 
-            getItems("listReply.co", {bid: "${b.boardId}"}, function(result) {
-                getReply(result, "${contextPath}", "${loginUser.membersNo}");
-                for(let item of result) {
-                    getItems("profile.co", { mid: item.replyWriter }, function (result) {
-                        getProfile(result, "${contextPath}", "#comment-" + item.replyId);
-                    })
-                }
-            });
-
-            getItems("profile.co", {mid: "${b.boardWriter}"}, function(result) {
+            getItems("profile.co", {mNo: "${b.membersNo}"}, function(result) {
                 getProfile(result, "${contextPath}", ".user-profile-img");
             })
 
-            getItems("profile.co", { mid: "${loginUser.membersId}" }, function (result) {
+            getItems("profile.co", {mNo: "${loginUser.membersNo}"}, function(result) {
                 getProfile(result, "${contextPath}", "#comment-writer-profile > img");
             })
-
-            
         })
 
         function getItems(url, data, callback) {
@@ -383,9 +389,10 @@ pageEncoding="UTF-8"%>
             $("#count").html(result.length);
             $(".side-bar-comment-count").html(result.length);
             const commentArea = document.querySelector(".comment-area");
+            commentArea.innerHTML = "";
             for(let item of result) {
                 commentArea.innerHTML += `
-                    <div id="` + item.replyId + `">
+                    <div id="commentid` + item.replyId + `">
                         <div class="comment-user" align="left">
                             <img class="comment-user-profile" id="comment-` + item.replyId + `" src="` + contextPath + `/resources/img/community/communityPage/userProfile2.png" alt="">
                         </div>
@@ -405,15 +412,41 @@ pageEncoding="UTF-8"%>
             }
         }
 
+        function insertReply(membersNo) {
+            const replyContent = document.querySelector("#comment-detail-input-area").value;
+            const boardId = document.querySelector("#hidden-no").value;
+            console.log(boardId + " " + membersNo);
+            $.ajax({
+                url: "insertReply.co",
+                type: "POST",
+                data: {
+                    replyContent: replyContent,
+                    boardId: boardId,
+                    membersNo: membersNo
+                },
+                success: function (result) {
+                    selectReplyList();
+                },
+                fail: function () {
+                    console.log("실패")
+                }
+            })
+        }
+
         function deleteReply(id) {
             $.ajax({
                 url: "deleteReply.co",
-                data: {mNo: id},
+                data: {replyId: id},
                 success: function(result) {
-                    $(".comment-area").remove("#" + id);
+                    if(result === 'Y') {
+                        $(".comment-area").remove("#commentid" + id);
+                    } else {
+                        console.log("삭제 실패");
+                    }
+                    selectReplyList();
                 },
                 fail: function() {
-
+                    console.log("실패")
                 }
             })
         }
