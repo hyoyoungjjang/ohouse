@@ -188,6 +188,15 @@
 	  WHERE MEMBERS_NO = ${membersNo}
 	   AND MEDIA_STATUS = 'Y'
   	</select>
+  	<select id="selectProfileById" resultMap="mediaResultSet">
+	  SELECT
+		  MEDIA_ID,
+		  FILE_PATH || CHANGE_NAME AS "PROFILE"
+	  FROM MEDIA MED
+	  JOIN MEMBERS MEM ON (MED.MEMBERS_NO = MEM.MEMBERS_NO)
+	  WHERE MEMBERS_ID = #{membersId}
+	   AND MEDIA_STATUS = 'Y'
+  	</select>
   	<update id="updateBoard" parameterType="Board">
   	UPDATE BOARD
 	SET 
@@ -294,7 +303,7 @@
 		#{filePath}
 	)
   	</insert>
-  	<select id="selectCommunityMedia" resultMap="mediaResultSet">
+  	<select id="selectCommunityMedia" resultMap="mediaResultSet" parameterType="_int">
   	SELECT
 		MEDIA_ID,
 		MEDIA_TYPE,
@@ -302,7 +311,7 @@
 		CHANGE_NAME,
 		FILE_PATH
 	FROM MEDIA
-	WHERE BOARD_ID = #{mediaBoardId}
+	WHERE BOARD_ID = ${boardId}
 	  AND MEDIA_STATUS = 'Y'
 	</select>
 	<update id="updateCommunityMedia">
@@ -311,7 +320,7 @@
 		CHANGE_NAME = #{changeName},
 		FILE_PATH = #{filePath}
 	WHERE MEDIA_ID = #{mediaId}
-	  AND BOARD_ID = #{mediaBoardId}
+	  AND BOARD_ID = #{boardId}
   	</update>
   	<!-- SCRAP -->
   	<select id="selectBoardScrap" resultMap="scrapResultSet">
