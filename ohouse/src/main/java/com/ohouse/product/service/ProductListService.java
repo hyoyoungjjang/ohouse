@@ -28,8 +28,9 @@ public interface ProductListService {
 	//productScrapInsert
 	public int productScrapInsert(Scrap scrap);
 	
-	//jproductScrpaUpdate
+	//productScrpaUpdate
 	public int productScrapUpdate(Scrap scrap);
 	
-	
+	//productCategroyList
+	public ArrayList<Product> selectProductCategoryList(PageInfo pi, int cNo);
 }

@@ -42,6 +42,7 @@
     <script>
         
         window.onload = function(){ 
+        
             $.ajax({
                 url : "msList.pr",
                 data : {

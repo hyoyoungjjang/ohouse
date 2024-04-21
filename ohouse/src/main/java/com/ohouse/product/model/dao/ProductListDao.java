@@ -68,5 +68,14 @@ public class ProductListDao {
 	public ArrayList<Product> selectListProduct(SqlSession sqlSession){
 		return (ArrayList)sqlSession.selectList("productMapper.selectProductList");
 	}
+	
+	public ArrayList selectProductCategoryList(SqlSession sqlSession, PageInfo pi, int cNo) {
+		int offset = (pi.getCurrentPage()-1)* pi.getBoardLimit();
+		int limit = pi.getBoardLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		
+		return (ArrayList)sqlSession.selectList("productMapper.selectProductCategoryList", cNo, rowBounds);
+	}
 
 }
