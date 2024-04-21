@@ -1,7 +1,5 @@
 package com.ohouse.community.model.vo;
 
-import java.sql.Date;
-
 public class Board {
 	private String boardId;
 	private String boardTitle;

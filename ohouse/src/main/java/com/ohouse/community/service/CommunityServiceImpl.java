@@ -34,6 +34,12 @@ public class CommunityServiceImpl implements CommunityService{
 	public int increaseViews(int boardId) {
 		SqlSession sqlSession = getSqlSession();
 		int result = communityDao.increaseViews(sqlSession, boardId);
+		if(result > 0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		sqlSession.close();
 		return result;
 	}
 

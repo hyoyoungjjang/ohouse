@@ -21,8 +21,7 @@ pageEncoding="UTF-8"%>
     <div id="side-bar-area">
         <div class="side-bar">
             <div class="side-bar-scrap">
-                <button class="side-bar-scrap-button" onclick="bookmarkToggle(this, 0);">
-                    <input type="hidden" value="1">
+                <button class="side-bar-scrap-button" onclick="bookmarkToggle(this, 0, 3, ${loginUser.membersNo});">
                     <img class="side-bar-scrap-img" src="${contextPath}/resources/img/community/bookmark.png" alt="" >
                     <img class="side-bar-scrap-img hidden" src="${contextPath}/resources/img/community/bookmark-checked.png" alt="" >
                 </button>        
@@ -191,8 +190,7 @@ pageEncoding="UTF-8"%>
             <!--집들이 게시글 내용에 들어갈 사진-->                  
              <div class="community-img-area">
                 <img class="community-house-content-img" src="${pageContext.request.contextPath}/resources/img/community/communityPage/contentImg1.png" alt="">
-                <button class="cummunity-scrap-button" onclick="bookmarkToggle(this, 1)">
-                    <input type="hidden" value="3">
+                <button class="cummunity-scrap-button" onclick="bookmarkToggle(this, 1, mediaId, ${loginUser.membersNo})">
                     <img class="cummunity-scrap-img" src="${contextPath}/resources/img/community/communitybookmark.png" alt="">
                     <img class="cummunity-scrap-img hidden" src="${contextPath}/resources/img/community/communityPage/pm-bookmark-checked.png" alt="">
                 </button>
@@ -267,16 +265,15 @@ pageEncoding="UTF-8"%>
 
         <div class="post-information">
             <span>9시간&nbsp;</span>
-            <span> &#183; 좋아요 3 &nbsp;</span>
             <span> &#183; 스크랩 18 &nbsp;</span>
-            <span> &#183; 조회 968 </span>
+            <span> &#183; 조회 ${b.boardViews} </span>
         </div>
 
 
         <div align="left" id="last-user-profile">
             <div>
                 <img id="user-profile-img" src="${pageContext.request.contextPath}/resources/img/community/communityPage/userProfile.png" alt="">
-                <span id="user-name">마지mazi_zip</span>
+                <span id="user-name">${b.boardWriter}</span>
             </div>
         </div>
 
@@ -331,21 +328,41 @@ pageEncoding="UTF-8"%>
     </div>
     <script>
         $(function() {
-
+            getItems("listMedia.co", {bid: ${b.boardId}}, function(result) {
+                getPhoto(result);
+            });
         })
 
-        function bookmarkToggle(_this, type) {
+        function getItems(url, data, callback) {
+            $.ajax({
+                url: url,
+                data: data,
+                success: function(result) {
+                    callback(result);
+                },
+                error: function() {
+                    console.log(실패);
+                }
+            });
+        }
+
+        function getPhoto(result) {
+            
+        } 
+
+        function bookmarkToggle(_this, type, id, mNo) {
+            if(mNo === "" || mNo === null) return;
+
             const bookmark = _this.children;
-            const id = bookmark[0].value;
+            bookmark[0].classList.toggle("hidden");
             bookmark[1].classList.toggle("hidden");
-            bookmark[2].classList.toggle("hidden");
 
             if(type === 0) {
                 $.ajax({
                     type: "POST",
-                    url: "${contextPath}/scrap.co",
+                    url: "scrap.co",
                     data: {
-                        membersNo: "${loginUser.membersNo}",
+                        membersNo: mNo,
                         boardId: id,
                     },
                     success: function(result) {
@@ -358,9 +375,9 @@ pageEncoding="UTF-8"%>
             } else {
                 $.ajax({
                     type: "POST",
-                    url: "${contextPath}/scrap.co",
+                    url: "scrap.co",
                     data: {
-                        membersNo: "${loginUser.membersNo}",
+                        membersNo: mNo,
                         mediaId: id,
                     },
                     success: function(result) {
