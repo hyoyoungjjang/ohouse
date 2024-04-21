@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.ohouse.common.model.vo.Media;
 import com.ohouse.community.model.dao.CommunityDao;
 import com.ohouse.community.model.vo.Board;
+import com.ohouse.community.model.vo.Reply;
 
 public class CommunityServiceImpl implements CommunityService{
 	
@@ -49,6 +50,30 @@ public class CommunityServiceImpl implements CommunityService{
 		Board b = communityDao.selectBoard(sqlSession, boardId);
 		sqlSession.close();
 		return b;
+	}
+
+	@Override
+	public ArrayList<Media> selectMediaList(int boardId) {
+		SqlSession sqlSession = getSqlSession();
+		ArrayList<Media> list = communityDao.selectMediaList(sqlSession, boardId);
+		sqlSession.close();
+		return list;
+	}
+
+	@Override
+	public ArrayList<Reply> selectReplyList(int boardId) {
+		SqlSession sqlSession = getSqlSession();
+		ArrayList<Reply> list = communityDao.selectReplyList(sqlSession, boardId);
+		sqlSession.close();
+		return list;
+	}
+
+	@Override
+	public Media selectProfileById(String membersId) {
+		SqlSession sqlSession = getSqlSession();
+		Media m = communityDao.selectProfileById(sqlSession, membersId);
+		sqlSession.close();
+		return m;
 	}
 
 }
