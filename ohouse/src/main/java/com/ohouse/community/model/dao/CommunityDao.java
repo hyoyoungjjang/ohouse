@@ -44,4 +44,16 @@ public class CommunityDao {
 	public int insertReply(SqlSession sqlSession, Reply r) {
 		return sqlSession.insert("communityMapper.insertReply", r);
 	}
+
+	public int insertBoard(SqlSession sqlSession, Board b) {
+		return sqlSession.insert("communityMapper.insertBoard", b);
+	}
+
+	public int insertMedia(SqlSession sqlSession, ArrayList<Media> list) {
+		int result = 1;
+		for(Media m : list) {
+			result *= sqlSession.insert("communityMapper.insertCommunityMedia", m);
+		}
+		return result;
+	}
 }

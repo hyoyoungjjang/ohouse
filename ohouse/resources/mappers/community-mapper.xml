@@ -74,7 +74,6 @@
 	(
 		BOARD_ID,
 		BOARD_TITLE,
-		BOARD_VIEWS,
 		BOARD_INTRODUCTION,
 		BOARD_DESCRIPTION,
 		FILTER_TYPE,
@@ -92,16 +91,14 @@
 		FILTER_PERIOD,
 		FILTER_PERIOD_TYPE,
 		FILTER_CONSTRUCTION_PRICE,
-		FILTER_STYLE_PRICE,
 		FILTER_URL,
 		FILTER_COPYRIGHT,
 		MEMBERS_NO
 	)
 	VALUES
 	(
-		SEQ_PDID.NEXTVAL,
+		SEQ_BODID.NEXTVAL,
 		#{boardTitle},
-		#{boardViews},
 		#{introduction},
 		#{description},
 		#{filType},
@@ -119,11 +116,9 @@
 		#{filPeriod},
 		#{filPeriodType},
 		#{filConPrice},
-		#{filStPrice},
 		#{filUrl},
 		#{filCopy},
-		#{boardWriter},
-		#{boardStatus}
+		#{membersNo}
 	)
   	</insert>
   	
@@ -260,19 +255,21 @@
 	INTO MEDIA
 	(
 		MEDIA_ID,
-		BOARD_ID
+		BOARD_ID,
 		MEDIA_TYPE,
 		ORIGIN_NAME,
 		CHANGE_NAME,
+		FILE_LEVEL,
 		FILE_PATH
 	)
 	VALUES
 	(
 		SEQ_MEDID.NEXTVAL,
-		SEQ_BODID.CURRVAL
-		#{mediaType},
+		SEQ_BODID.CURRVAL,
+		1,
 		#{originName},
 		#{changeName},
+		#{fileLevel},
 		#{filePath}
 	)
   	</insert>

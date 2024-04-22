@@ -106,4 +106,20 @@ public class CommunityServiceImpl implements CommunityService{
 		return result;
 	}
 
+	@Override
+	public int insertBoard(Board b, ArrayList<Media> list) {
+		SqlSession sqlSession = getSqlSession();
+		int result1 = communityDao.insertBoard(sqlSession, b);
+		int result2 = communityDao.insertMedia(sqlSession, list);
+		
+		if(result1 > 0 && result2 > 0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		
+		sqlSession.close();
+		return result1 * result2;
+	}
+
 }

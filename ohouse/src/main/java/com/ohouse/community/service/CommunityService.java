@@ -35,4 +35,7 @@ public interface CommunityService {
 	// 댓글 삽입
 	int insertReply(Reply r);
 
+	// 게시글 삽입
+	int insertBoard(Board b, ArrayList<Media> list);
+
 }
