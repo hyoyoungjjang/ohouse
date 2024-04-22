@@ -17,13 +17,13 @@ import com.ohouse.community.service.CommunityScrapServiceImpl;
  * Servlet implementation class CommunityScrapController
  */
 @WebServlet("/scrap.co")
-public class CommunityScrapController extends HttpServlet {
+public class AjaxScrapController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CommunityScrapController() {
+    public AjaxScrapController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -70,7 +70,11 @@ public class CommunityScrapController extends HttpServlet {
 			}
 		}
 		
-		System.out.println(result);
+		if(result > 0) {
+			response.getWriter().print("Y");
+		} else {
+			response.getWriter().print("N");
+		}
 	}
 
 	/**
