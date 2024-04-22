@@ -63,7 +63,7 @@
             <div style="border: 1px solid #f7f9fa; min-width: 1136px;"></div>
         </div>   
     </header>
-    <form action="${contextPath}/incert.co" method="POST">
+    <form action="${contextPath}/insert.co" method="POST" enctype="multipart/form-data">
         <div align="center">
             <div class="cummunity-insert-area">
                 <div class="required-information-area-content">
@@ -86,11 +86,11 @@
                             <span class="type-text-star">*</span>
                         </div>
                         <div class="housing-type-coice">
-                            <select name="" id="housing-type-coice-select">
-                                <option value="choice" disabled selected>선택해주세요.</option>
-                                <option value="myRoom">본인 방</option>
-                                <option value="oneRoom">원룸</option>
-                                <option value="efficiencyApartment">오피스텔</option>
+                            <select name="type" id="housing-type-coice-select">
+                                <option value="null" readonly selected>선택해주세요.</option>
+                                <option value="본인 방">본인 방</option>
+                                <option value="원룸">원룸</option>
+                                <option value="오피스텔">오피스텔</option>
                             </select>
                         </div>
                     </div>
@@ -99,40 +99,21 @@
                             <div class="type-text-title">평수</div>
                             <span class="type-text-star">*</span>
                         </div>
-                        <div class="house-size-choice-area">
-                                <input type="radio" id="one-story" name="area" >
-                                <label for="one-story">단층</label>
-                                <input type="radio" id="two-story" name="area">
-                                <label for="two-story">2층 단독/협소주택</label>                         
-                                <input type="radio" id="three-story" name="area">
-                                <label for="three-story">3층 이상 단독/주택</label>
-                        </div>
-                        <!-- <div class="one-story-input-area hidden">
-                            <input type="text">
+                        <div class="family-member-input-area">
+                            <input type="number" name="area">
                             <span>평</span>
                         </div>
-
-                        <script>
-                            function checked(){
-                                const on = document.getElementsByClassName("one-story-input-area");
-                                console.log(on[0]);
-                                on[0].classList.remove("hidden");
-
-                            }
-
-                            
-                        </script> -->
                     </div>
                     <div class="room-number-area">
                         <div class="room-number-text text-width">
                             <div class="room-number-title">방 개수</div>
                         </div>
                         <div class="room-number-coice">
-                            <select name="" id="room-number-coice-select">
-                                <option value="choice" disabled selected>선택해주세요.</option>
-                                <option value="1thing">1개</option>
-                                <option value="1.5thing">1.5개</option>
-                                <option value="2thing">2개</option>
+                            <select name="num" id="room-number-coice-select">
+                                <option value="null" readonly selected>선택해주세요.</option>
+                                <option value="1">1개</option>
+                                <option value="1.5">1.5개</option>
+                                <option value="2">2개</option>
                             </select>
                         </div>
                     </div>
@@ -141,11 +122,11 @@
                             <div class="direction-title">방향</div>
                         </div>
                         <div class="direction-coice">
-                            <select name="" id="direction-coice-select">
-                                <option value="choice" disabled selected>선택해주세요.</option>
-                                <option value="southward">남향</option>
-                                <option value="westward">서향</option>
-                                <option value="eastward">동향</option>
+                            <select name="direction" id="direction-coice-select">
+                                <option value="null" readonly selected>선택해주세요.</option>
+                                <option value="남향">남향</option>
+                                <option value="서향">서향</option>
+                                <option value="동향">동향</option>
                             </select>
                         </div>
                     </div>
@@ -154,11 +135,11 @@
                             <div class="completion-title">준공연차</div>
                         </div>
                         <div class="completion-coice">
-                            <select name="" id="completion-coice-select">
-                                <option value="choice" disabled selected>선택해주세요.</option>
-                                <option value="plan-move-in">입주예정</option>
-                                <option value="two-year-litte">~2년 미만</option>
-                                <option value="between-two-four">2~4년</option>
+                            <select name="past" id="completion-coice-select">
+                                <option value="null" readonly selected>선택해주세요.</option>
+                                <option value="입주예정">입주예정</option>
+                                <option value="~2년 미만">~2년 미만</option>
+                                <option value="2~4년">2~4년</option>
                             </select>
                         </div>
                     </div>
@@ -167,11 +148,11 @@
                             <div class="location-title">지역</div>
                         </div>
                         <div class="location-coice">
-                            <select name="" id="location-coice-select">
-                                <option value="choice" disabled selected>선택해주세요.</option>
-                                <option value="seoul">서울특별시</option>
-                                <option value="busan">부산광역시</option>
-                                <option value="incheon">인천광역시</option>
+                            <select name="local" id="location-coice-select">
+                                <option value="null" readonly selected>선택해주세요.</option>
+                                <option value="서울특별시">서울특별시</option>
+                                <option value="부산광역시">부산광역시</option>
+                                <option value="기타">인천광역시</option>
                             </select>
                         </div>
                     </div>
@@ -181,11 +162,11 @@
                             <span class="type-text-star">*</span>
                         </div>
                         <div class="family-form-coice">
-                            <select name="" id="family-form-coice-select">
-                                <option value="choice" disabled selected>선택해주세요.</option>
-                                <option value="single">싱글라이프</option>
-                                <option value="couple">신혼/부부가 사는집</option>
-                                <option value="descendant">자녀가 있는 집</option>
+                            <select name="family" id="family-form-coice-select">
+                                <option value="null" readonly selected>선택해주세요.</option>
+                                <option value="싱글라이프">싱글라이프</option>
+                                <option value="신혼/부부가 사는 집">신혼/부부가 사는집</option>
+                                <option value="자녀가 있는 집">자녀가 있는 집</option>
                             </select>
                         </div>
                     </div>
@@ -194,12 +175,12 @@
                             <div class="animal-title">반려동물 유무</div>
                         </div>
                         <div class="animal-coice">
-                            <select name="" id="animal-coice-select">
-                                <option value="choice" disabled selected>선택해주세요.</option>
-                                <option value="not">없어요.</option>
-                                <option value="dog">강아지</option>
-                                <option value="cat">고양이</option>
-                                <option value="fish">어류</option>
+                            <select name="pet" id="animal-coice-select">
+                                <option value="null" readonly selected>선택해주세요.</option>
+                                <option value="없어요.">없어요.</option>
+                                <option value="강아지">강아지</option>
+                                <option value="고양이">고양이</option>
+                                <option value="어류">어류</option>
                             </select>
                         </div>
                     </div>
@@ -208,7 +189,7 @@
                             <div class="family-member-title">가족 구성원수</div>
                         </div>
                         <div class="family-member-input-area">
-                            <input type="number">
+                            <input type="number" name="familyMemCnt">
                             <span>명</span>
                         </div>
                     </div>
@@ -218,11 +199,11 @@
                             <span class="type-text-star">*</span>
                         </div>
                         <div class="work-field-coice">
-                            <select name="" id="work-field-coice-select">
-                                <option value="choice" disabled selected>선택해주세요.</option>
-                                <option value="home-styling">홈스타일링</option>
-                                <option value="remodeling">리모델링</option>
-                                <option value="partial-construction">부분시공</option>
+                            <select name="field" id="work-field-coice-select">
+                                <option value="null" readonly selected>선택해주세요.</option>
+                                <option value="홈스타일링">홈스타일링</option>
+                                <option value="리모델링">리모델링</option>
+                                <option value="부분시공">부분시공</option>
                             </select>
                         </div>
                     </div>
@@ -232,12 +213,12 @@
                             <span class="worker-star">*</span>
                         </div>
                         <div class="worker-choice-area">
-                                <input type="radio" id="self" name="area" >
-                                <label for="self">셀프&#183;DIY</label>
-                                <input type="radio" id="half-self" name="area">
-                                <label for="half-self">반셀프</label>                         
-                                <input type="radio" id="expert" name="area">
-                                <label for="expert">전문가</label>
+                            <input type="radio" id="self" name="worker" value="셀프/DIY">
+                            <label for="self">셀프&#183;DIY</label>
+                            <input type="radio" id="half-self" name="worker" value="반셀프">
+                            <label for="half-self">반셀프</label>                         
+                            <input type="radio" id="expert" name="worker" value="전문가">
+                            <label for="expert">전문가</label>
                         </div>
                     </div>
                     <div class="detailed-construction-area">
@@ -245,11 +226,11 @@
                             <div class="detailed-construction-title">세부 시공 범위</div>
                         </div>
                         <div class="detailed-construction-coice">
-                            <select name="" id="detailed-construction-coice-select">
-                                <option value="choice" disabled selected>선택해주세요.</option>
-                                <option value="door">폴딩도어</option>
-                                <option value="kitchen">주방 리모델링</option>
-                                <option value="bathroom">욕실 리모델링</option>
+                            <select name="range" id="detailed-construction-coice-select">
+                                <option value="null" readonly selected>선택해주세요.</option>
+                                <option value="폴딩도어">폴딩도어</option>
+                                <option value="주방 리모델링">주방 리모델링</option>
+                                <option value="욕실 리모델링">욕실 리모델링</option>
                             </select>
                         </div>
                     </div>
@@ -257,11 +238,9 @@
                         <div class="period-text text-width">
                             <div class="period-title">기간</div>
                         </div>
-                        <div class="period-choice-area">
-                                <input type="radio" id="week" name="area" >
-                                <label for="week">주</label>
-                                <input type="radio" id="month" name="area">
-                                <label for="month">개월</label>                         
+                        <div class="family-member-input-area">
+                            <input type="number" name="period">
+                            <span>주</span>
                         </div>
                     </div>
                     <div class="budget-area">
@@ -269,7 +248,7 @@
                             <div class="budget-title">예산</div>
                         </div>
                         <div class="budget-input-area">
-                            <input type="number">
+                            <input type="number" name="constructionPrice">
                             <span>만원</span>
                         </div>
                     </div>
@@ -278,7 +257,7 @@
                             <div class="link-title">링크</div>
                         </div>
                         <div class="link-input-area">
-                            <input type="text" placeholder="URL 주소를 입력해주세요.">
+                            <input type="text" placeholder="URL 주소를 입력해주세요." name="url">
                         </div>
                     </div>
                     <div class="copyright-area">
@@ -286,12 +265,12 @@
                             <div class="copyright-title">저작권 표기(c)</div>
                         </div>
                         <div class="copyright-input-area">
-                            <input type="text" placeholder="사진 저작자를 입력해주세요.">
+                            <input type="text" placeholder="사진 저작자를 입력해주세요." name="copyright">
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="img-area" id="cover-img" onclick="imgChange('cover-img-hidden');">
+            <div class="img-area" id="file1" onclick="imgChange('cover-img-hidden');">
                 <!--사진이 없는 초기 화면-->
                 <h5>커버사진 추가하기 버튼으로</h5>
                 <h5>커버사진을 업로드해주세요.</h5>
@@ -299,14 +278,14 @@
                     커버사진 추가하기
                 </button>
             </div>
-            <input type="file" value="커버사진 추가하기" onchange="coverImg(this);" id="cover-img-hidden" class="hidden">
+            <input type="file" value="커버사진 추가하기" onchange="showImg(this, '#file1', '커버사진');" id="cover-img-hidden" name="file1" class="hidden">
             
             <div id="content-title">
-                <input id="content-title-input" type="text" placeholder="제목을 입력하세요.">
+                <input id="content-title-input" type="text" name="title" placeholder="제목을 입력하세요.">
             </div>
             <div id="content-area">
                 <!--대표 사진-->
-                <div class="img-area" id="first-img" onclick="imgChange('first-img-hidden');">
+                <div class="img-area" id="file2" onclick="imgChange('first-img-hidden');">
                     <!--사진이 없는 초기 화면-->
                     <h5>대표사진 추가하기 버튼으로</h5>
                     <h5>대표사진을 업로드해주세요.</h5>
@@ -314,9 +293,9 @@
                         대표사진 추가하기
                     </button>
                 </div>
-                <input type="file" value="대표사진 추가하기" onchange="firstImg(this);" id="first-img-hidden" class="hidden">
+                <input type="file" value="대표사진 추가하기" onchange="showImg(this, '#file2', '대표사진');" id="first-img-hidden" name="file2" class="hidden">
                 <!--대표 글-->
-                <textarea name="intro" id="textarea" align="left" placeholder="내용을 입력하세요."></textarea>
+                <textarea name="introduction" id="textarea" align="left" placeholder="내용을 입력하세요."></textarea>
                 <!--3초 컷! 집들이 미리보기-->
                 <p id="community-house-content-3cut">
                     ⚡ 3초 컷! 집들이 미리보기
@@ -324,81 +303,89 @@
                     <button type="button" class="btn btn-danger btn-lg" onclick="deleteImgArea();">사진삭제</button>
                 </p>
                 <div id="img-wrapper">
-                    <div class="img-area" onclick="tagArea(this);" style="position: relative;">
+                    <div class="img-area" onclick="imgChange('id3');" id="file3">
                         <!--사진이 없는 초기 화면-->
                         <h5>사진 추가하기 버튼으로</h5>
                         <h5>사진을 업로드해주세요.</h5>
                         <button type="button" class="btn btn-secondary btn-lg">
                             사진 추가하기
                         </button>
-                        <input type="file" value="대표사진 추가하기" onchange="tagImg(this);" class="hidden">
                     </div>
-                    <div class="tag-flex">
-                        <input type="hidden" value="1">
-                        <div class="tag-product" onclick="productSearch(this);"></div>
-                        <div class="tag-search hidden">
-                            <input type="text" onchange="chooseProduct(this);">
-                            <c:forEach var="p" items="${pList}">
-                        
-                            </c:forEach>
+                    <input type="file" value="대표사진 추가하기" name="file3" class="hidden" id="id3" onchange="showImg(this, '#file3', '사진');">
+                    <!-- 태그 -->
+                    <div class="tag-flex" align="left">
+                        <!-- Trigger the modal with a button -->
+                        <button type="button" class="btn btn-default tag-product" data-toggle="modal" data-target="#id3-modeal1" id="id3-tag1" name="tag3"></button>
+                        <!-- Modal -->
+                        <div id="id3-modeal1" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title"></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="text">
+                                        <button type="button" class="btn btn-default btn-sm" onclick="productSearch('id3-tag1', this.value);">검색</button>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="tag-product" onclick="productSearch(this);"></div>
-                        <div class="tag-product" onclick="productSearch(this);"></div>
-                        <div class="tag-product" onclick="productSearch(this);"></div>
-                        <div class="tag-product" onclick="productSearch(this);"></div>
-                        <div class="tag-product" onclick="productSearch(this);"></div>
+                        <div class="tag-product" id="id3-tag2" name="tag3"></div>
+                        <div class="tag-product" id="id3-tag3" name="tag3"></div>
+                        <div class="tag-product" id="id3-tag4" name="tag3"></div>
+                        <div class="tag-product" id="id3-tag5" name="tag3"></div>
+                        <div class="tag-product" id="id3-tag6" name="tag3"></div>
                     </div>
                 </div>
                 <!--본문 내용-->
-                <textarea name="intro" id="textarea" align="left" placeholder="내용을 입력하세요."></textarea>
+                <textarea name="description" id="textarea" align="left" placeholder="내용을 입력하세요."></textarea>
             </div>
         </div>
-        <button type="submit" class="hidden" id="submit-btn">제출</button>
+        <button type="submit" id="submit-btn">제출</button>
     </form>
     <script>
+        let idx = 4;
+
+        $(function() {
+            
+        });
+
+        function getItems(url, data, callback) {
+            $.ajax({
+                url: url,
+                data: data,
+                success: function (result) {
+                    callback(result);
+                },
+                error: function () {
+                    console.log("실패");
+                }
+            });
+        }
+
         function imgChange(id) {
             const imgInput = document.getElementById(id);
             imgInput.click();
         }
 
-        function tagArea(_this) {
-            if(_this.className.includes("isFull")) {
-                addTag(event);
-            } else {
-                _this.lastElementChild.click();
-            }
-        }
-
-        function coverImg(inputFile) {
+        function showImg(inputFile, id, msg) {
             if (inputFile.files.length == 1) {
                 const reader = new FileReader();
                 reader.readAsDataURL(inputFile.files[0]);
                 reader.onload = function (ev) {
-                    $("#cover-img").html(`<img src=` + ev.target.result + `>`);
-                    $("#cover-img>img").css("height", "100%")
+                    $(id).html(`<img src=` + ev.target.result + `>`);
+                    $(id + ">img").css("height", "90%");
                 }
             } else {
-                $("#cover-img").html(
-                    '<h5>커버사진 추가하기 버튼으로</h5>' +
-                    '<h5>커버사진을 업로드해주세요.</h5>' +
-                    '<button type="button" class="btn btn-secondary btn-lg">커버사진 추가하기</button>'
-                );
-            }
-        }
-
-        function firstImg(inputFile) {
-            if (inputFile.files.length == 1) {
-                const reader = new FileReader();
-                reader.readAsDataURL(inputFile.files[0]);
-                reader.onload = function (ev) {
-                    $("#first-img").html(`<img src=` + ev.target.result + `>`);
-                    $("#fisrt-img>img").css("height", "100%")
-                }
-            } else {
-                $("#first-img").html(
-                    '<h5>대표사진 추가하기 버튼으로</h5>' +
-                    '<h5>대표사진을 업로드해주세요.</h5>' +
-                    '<button type="button" class="btn btn-secondary btn-lg">대표사진 추가하기</button>'
+                $(id).html(
+                    '<h5>' + msg + ' 추가하기 버튼으로</h5>' +
+                    '<h5>' + msg + '을 업로드해주세요.</h5>' +
+                    '<button type="button" class="btn btn-secondary btn-lg">' + msg + ' 추가하기</button>'
                 );
             }
         }
@@ -416,19 +403,18 @@
             }
         }
 
-        function addTag(ev) {
-            const x = ev.clientX;
-            const y = ev.clientY;
-            if(x * y <= 0) return;
-            
-            console.log(x, y);
-            ev.target.parentElement.innerHTML += "<span class='tag'"
-                                                + " style='position: absolute; top: calc(" + y + "px - 190px);"
-                                                + " left: calc(" + x + "px - 190px);'>+</span>";
-        }
+        function productSearch(id, key) {
+            const tag = document.getElementById(id);
+            $.ajax({
+                url: "searchTag.co",
+                data: {key: key},
+                success: function(result) {
+                    $("#test").html(key);
+                },
+                error: function() {
 
-        function productSearch(_this) {
-            $(_this).next().toggleClass("hidden");
+                }
+            });
         }
         
         const DEFAULT_HEIGHT = 30; // textarea 기본 height
@@ -441,30 +427,60 @@
             $target.style.height = DEFAULT_HEIGHT + $target.scrollHeight + 'px';
         };
 
+
         function addImgArea() {
-            const wrapper = document.getElementById("img-wrapper");
-            if(wrapper.children.length < 4) {
-                wrapper.innerHTML += `
-                    <div class="img-area" onclick="tagArea(this);" style="position: relative;">
-                        <!--사진이 없는 초기 화면-->
-                        <h5>사진 추가하기 버튼으로</h5>
-                        <h5>사진을 업로드해주세요.</h5>
-                        <button type="button" class="btn btn-secondary btn-lg">
-                            사진 추가하기
-                        </button>
-                        <input type="file" value="대표사진 추가하기" onchange="tagImg(this);" class="hidden">
-                    </div>
-                `;
+            const imgWapper = document.querySelector("#img-wrapper")
+            const wrapper = document.createElement('div');
+            const input = document.createElement('input');
+            const tag = document.createElement('div');
+
+            if(idx === 7) {
+                alert("대표사진을 제외하고 4장까지만 첨부 가능합니다.");
+                return;
             }
+            
+            wrapper.setAttribute("id", "file" + idx);
+            wrapper.setAttribute("class", "img-area");
+
+            input.setAttribute("type", "file");
+            input.setAttribute("id", "id" + idx);
+            input.setAttribute("class", "hidden");
+            input.setAttribute("name", "file" + idx);
+
+            wrapper.innerHTML += `
+                <h5>사진 추가하기 버튼으로</h5>
+                <h5>사진을 업로드해주세요.</h5>
+                <button type="button" class="btn btn-secondary btn-lg">
+                사진 추가하기
+                </button>
+            `;
+
+            imgWapper.append(wrapper);
+            imgWapper.append(input);
+
+            wrapper.addEventListener("click", (ev) => {
+                console.log("id" + ev.target.id[4]);
+                imgChange("id" + ev.target.id[4]);
+            });
+            input.addEventListener("change", (ev) => {
+                showImg(input, "#file" + ev.target.id[2], "사진")
+            });
+
+            idx++;
         }
 
         function deleteImgArea() {
-            const wrapper = document.getElementById("img-wrapper");
-                if (wrapper.children.length > 0) {
-                    wrapper.removeChild(wrapper.lastElementChild);
-                    wrapper.removeChild(wrapper.lastElementChild);
-                }
+            if(idx === 3) {
+                alert("삭제할 사진이 없습니다.");
+                return;
             }
+
+            idx--;
+            const wrapper = document.getElementById("file" + idx);
+            const input = document.getElementById("id" + idx);
+            wrapper.remove();
+            input.remove();
+        }
         </script>
     <footer>
         <%@ include file="../common/footer.jsp" %> 
