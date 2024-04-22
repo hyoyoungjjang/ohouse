@@ -867,6 +867,7 @@ textarea:focus {
     width: 200px;
     min-height: 200px;
     border: #cccccc;
+    background: black;
 }
 
 .tag-active {

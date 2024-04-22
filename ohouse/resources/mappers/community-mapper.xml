@@ -9,6 +9,7 @@
   		<result column="BOARD_VIEWS" property="boardViews"/>
   		<result column="MEMBERS_NO" property="membersNo"/>
   		<result column="BOARD_WRITER" property="boardWriter"/>
+  		<result column="BOARD_WRITER_NAME" property="boardWriterName"/>
   		<result column="BOARD_THUMBNAIL" property="boardThumbnail"/>
   		<result column="BOARD_CREATE_TIME" property="boardCreateTime"/>
   		<result column="BOARD_MODIFY_TIME" property="boardModifyTime"/>
@@ -65,7 +66,7 @@
   		 <result column="BOARD_ID" property="replyBoardId" />
   		 <result column="MEMBERS_NO" property="replyMembersNo" />
   		 <result column="REPLY_STATUS" property="replyStatus" />
-  		 <result column="MEMBERS_ID" property="replyWriter"/>
+  		 <result column="MEMBERS_NAME" property="replyWriter"/>
   	</resultMap>
   	<insert id="insertBoard" parameterType="Board">
   	INSERT
@@ -73,7 +74,6 @@
 	(
 		BOARD_ID,
 		BOARD_TITLE,
-		BOARD_VIEWS,
 		BOARD_INTRODUCTION,
 		BOARD_DESCRIPTION,
 		FILTER_TYPE,
@@ -91,16 +91,14 @@
 		FILTER_PERIOD,
 		FILTER_PERIOD_TYPE,
 		FILTER_CONSTRUCTION_PRICE,
-		FILTER_STYLE_PRICE,
 		FILTER_URL,
 		FILTER_COPYRIGHT,
 		MEMBERS_NO
 	)
 	VALUES
 	(
-		SEQ_PDID.NEXTVAL,
+		SEQ_BODID.NEXTVAL,
 		#{boardTitle},
-		#{boardViews},
 		#{introduction},
 		#{description},
 		#{filType},
@@ -118,11 +116,9 @@
 		#{filPeriod},
 		#{filPeriodType},
 		#{filConPrice},
-		#{filStPrice},
 		#{filUrl},
 		#{filCopy},
-		#{boardWriter},
-		#{boardStatus}
+		#{membersNo}
 	)
   	</insert>
   	
@@ -153,9 +149,11 @@
 		FILTER_STYLE_PRICE,
 		FILTER_URL,
 		FILTER_COPYRIGHT,
-		MEMBERS_ID AS "BOARD_WRITER"
-	FROM BOARD
-	JOIN MEMBERS USING (MEMBERS_NO)
+		B.MEMBERS_NO,
+		MEMBERS_ID AS "BOARD_WRITER",
+		MEMBERS_NAME AS "BOARD_WRITER_NAME"
+	FROM BOARD B
+	JOIN MEMBERS M ON (B.MEMBERS_NO = M.MEMBERS_NO)
 	WHERE BOARD_ID = #{boardId}
 	AND BOARD_STATUS = 'Y'
   	</select>
@@ -257,19 +255,21 @@
 	INTO MEDIA
 	(
 		MEDIA_ID,
-		BOARD_ID
+		BOARD_ID,
 		MEDIA_TYPE,
 		ORIGIN_NAME,
 		CHANGE_NAME,
+		FILE_LEVEL,
 		FILE_PATH
 	)
 	VALUES
 	(
 		SEQ_MEDID.NEXTVAL,
-		SEQ_BODID.CURRVAL
-		#{mediaType},
+		SEQ_BODID.CURRVAL,
+		1,
 		#{originName},
 		#{changeName},
+		#{fileLevel},
 		#{filePath}
 	)
   	</insert>
@@ -294,7 +294,7 @@
 		#{filePath}
 	)
   	</insert>
-  	<select id="selectCommunityMedia" resultMap="mediaResultSet">
+  	<select id="selectCommunityMedia" resultMap="mediaResultSet" parameterType="_int">
   	SELECT
 		MEDIA_ID,
 		MEDIA_TYPE,
@@ -302,7 +302,7 @@
 		CHANGE_NAME,
 		FILE_PATH
 	FROM MEDIA
-	WHERE BOARD_ID = #{mediaBoardId}
+	WHERE BOARD_ID = ${boardId}
 	  AND MEDIA_STATUS = 'Y'
 	</select>
 	<update id="updateCommunityMedia">
@@ -311,22 +311,43 @@
 		CHANGE_NAME = #{changeName},
 		FILE_PATH = #{filePath}
 	WHERE MEDIA_ID = #{mediaId}
-	  AND BOARD_ID = #{mediaBoardId}
+	  AND BOARD_ID = #{boardId}
   	</update>
   	<!-- SCRAP -->
+  	<select id="selectBoardScrapOne" resultMap="scrapResultSet">
+  	SELECT SCRAP_ID,
+  			BOARD_ID,
+  			MEMBERS_NO,
+  			SCRAP_STATUS
+  	FROM SCRAP
+  	WHERE BOARD_ID = ${scrapBoardId}
+  	</select>
   	<select id="selectBoardScrap" resultMap="scrapResultSet">
   	SELECT SCRAP_ID,
+  			BOARD_ID,
+  			MEMBERS_NO,
   			SCRAP_STATUS
   	FROM SCRAP
-  	WHERE MEMBERS_NO = ${scrapMembersNo}
-  	AND BOARD_ID = ${scrapBoardId}
+  	WHERE BOARD_ID = ${scrapBoardId}
+  	AND SCRAP_STATUS = 'Y'
+  	</select>
+  	<select id="selectMediaScrapOne" resultMap="scrapResultSet">
+  	SELECT SCRAP_ID,
+  			MEDIA_ID,
+  			MEMBERS_NO,
+  			SCRAP_STATUS
+  	FROM SCRAP
+  	WHERE MEDIA_ID = ${scrapMediaId}
   	</select>
   	<select id="selectMediaScrap" resultMap="scrapResultSet">
-  	SELECT SCRAP_ID,
+  	SELECT S.SCRAP_ID,
+  			M.MEDIA_ID,
+  			S.MEMBERS_NO,
   			SCRAP_STATUS
-  	FROM SCRAP
-  	WHERE MEMBERS_NO = ${scrapMembersNo}
-  	AND MEDIA_ID = ${scrapMediaId}
+  	FROM SCRAP S
+  	JOIN MEDIA M ON (S.MEDIA_ID = M.MEDIA_ID)
+  	WHERE M.BOARD_ID = ${scrapBoardId}
+  	AND SCRAP_STATUS = 'Y'
   	</select>
   	<insert id="insertBoardScrap">
   	INSERT
@@ -335,14 +356,14 @@
 		SCRAP_ID,
 		SCRAP_TYPE,
 		MEMBERS_NO,
-		BOARD_ID,
+		BOARD_ID
 	)
 	VALUES
 	(
 		SEQ_SCRID.NEXTVAL,
 		3,
-		#{scrapMembersNo},
-		#{scrapBoardId}
+		${scrapMembersNo},
+		${scrapBoardId}
 	)
   	</insert>
   	<insert id="insertMediaScrap">
@@ -352,14 +373,14 @@
 		SCRAP_ID,
 		SCRAP_TYPE,
 		MEMBERS_NO,
-		MEDIA_ID,
+		MEDIA_ID
 	)
 	VALUES
 	(
 		SEQ_SCRID.NEXTVAL,
 		2,
-		#{scrapMembersNo},
-		#{scrapMediaId}
+		${scrapMembersNo},
+		${scrapMediaId}
 	)
   	</insert>
 	<update id="updateBoardScrap">
@@ -411,7 +432,7 @@
 			REPLY_CREATE_DATE,
 			BOARD_ID,
 			R.MEMBERS_NO,
-			MEMBERS_ID
+			MEMBERS_NAME
 		FROM REPLY R
 		JOIN MEMBERS M ON (R.MEMBERS_NO = M.MEMBERS_NO)
 		WHERE REPLY_STATUS = 'Y'

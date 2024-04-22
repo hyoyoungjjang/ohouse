@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.ohouse.common.model.vo.Media;
 import com.ohouse.community.model.dao.CommunityDao;
 import com.ohouse.community.model.vo.Board;
+import com.ohouse.community.model.vo.Reply;
 
 public class CommunityServiceImpl implements CommunityService{
 	
@@ -34,6 +35,12 @@ public class CommunityServiceImpl implements CommunityService{
 	public int increaseViews(int boardId) {
 		SqlSession sqlSession = getSqlSession();
 		int result = communityDao.increaseViews(sqlSession, boardId);
+		if(result > 0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		sqlSession.close();
 		return result;
 	}
 
@@ -43,6 +50,76 @@ public class CommunityServiceImpl implements CommunityService{
 		Board b = communityDao.selectBoard(sqlSession, boardId);
 		sqlSession.close();
 		return b;
+	}
+
+	@Override
+	public ArrayList<Media> selectMediaList(int boardId) {
+		SqlSession sqlSession = getSqlSession();
+		ArrayList<Media> list = communityDao.selectMediaList(sqlSession, boardId);
+		sqlSession.close();
+		return list;
+	}
+
+	@Override
+	public ArrayList<Reply> selectReplyList(int boardId) {
+		SqlSession sqlSession = getSqlSession();
+		ArrayList<Reply> list = communityDao.selectReplyList(sqlSession, boardId);
+		sqlSession.close();
+		return list;
+	}
+
+	@Override
+	public Media selectProfileById(String membersId) {
+		SqlSession sqlSession = getSqlSession();
+		Media m = communityDao.selectProfileById(sqlSession, membersId);
+		sqlSession.close();
+		return m;
+	}
+
+	@Override
+	public int deleteReply(int replyId) {
+		SqlSession sqlSession = getSqlSession();
+		int result = communityDao.deleteReply(sqlSession, replyId);
+		
+		if(result > 0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		
+		sqlSession.close();
+		return result;
+	}
+
+	@Override
+	public int insertReply(Reply r) {
+		SqlSession sqlSession = getSqlSession();
+		int result = communityDao.insertReply(sqlSession, r);
+		
+		if(result > 0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		
+		sqlSession.close();
+		return result;
+	}
+
+	@Override
+	public int insertBoard(Board b, ArrayList<Media> list) {
+		SqlSession sqlSession = getSqlSession();
+		int result1 = communityDao.insertBoard(sqlSession, b);
+		int result2 = communityDao.insertMedia(sqlSession, list);
+		
+		if(result1 > 0 && result2 > 0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		
+		sqlSession.close();
+		return result1 * result2;
 	}
 
 }

@@ -16,17 +16,18 @@ pageEncoding="UTF-8"%>
 <header> 
     <%@ include file="../common/headerCommunity.jsp" %>    
 </header>
-<img src="${contextPath}/${thumbnail.filePath}" alt="" class="thumbnail">
+<div id="thumbnail-area">
+    <img src="${contextPath}/${thumbnail.filePath}" alt="" class="thumbnail">
+</div>
 <div class="content-area" align="center">
     <div id="side-bar-area">
         <div class="side-bar">
             <div class="side-bar-scrap">
-                <button class="side-bar-scrap-button" onclick="bookmarkToggle(this, 0);">
-                    <input type="hidden" value="1">
+                <button class="side-bar-scrap-button scrap" onclick="bookmarkToggle(this, 0, '${b.boardId}', '${loginUser.membersNo}');">
                     <img class="side-bar-scrap-img" src="${contextPath}/resources/img/community/bookmark.png" alt="" >
                     <img class="side-bar-scrap-img hidden" src="${contextPath}/resources/img/community/bookmark-checked.png" alt="" >
                 </button>        
-                <span class="side-bar-scrap-count">21</span>     
+                <span class="side-bar-scrap-count scrap-count">21</span>     
             </div>
             <hr class="hr3">
             <div class="side-bar-comment" onclick="$('#comment-detail-input-area').focus();">
@@ -38,12 +39,13 @@ pageEncoding="UTF-8"%>
         </div>
     </div>
     <div class="content">
+        <input type="hidden" id="hidden-no" value="${b.boardId}">
         <div class="bulletin-title" align="left">
             <p>작은 공간을 효율적으로 활용하는 최적의 가구 배치 찾기</p>
         </div>
         <div align="left">
-            <img id="user-profile-img" src="${pageContext.request.contextPath}/resources/img/community/communityPage/userProfile.png" alt="">
-            <span id="user-name">마지mazi_zip</span>
+            <img class="user-profile-img" src="${pageContext.request.contextPath}/resources/img/community/communityPage/userProfile.png" alt="">
+            <span id="user-name">${b.boardWriterName}</span>
         </div>
         <div id="house-information">
             <div id="house-information-head">
@@ -187,16 +189,15 @@ pageEncoding="UTF-8"%>
                 </c:if>
             </div>
         </div>
-        <div class="community-house-content">
+        <div class="community-house-content" id="first-img">
             <!--집들이 게시글 내용에 들어갈 사진-->                  
-             <div class="community-img-area">
+            <!-- <div class="community-img-area">
                 <img class="community-house-content-img" src="${pageContext.request.contextPath}/resources/img/community/communityPage/contentImg1.png" alt="">
-                <button class="cummunity-scrap-button" onclick="bookmarkToggle(this, 1)">
-                    <input type="hidden" value="3">
+                <button class="cummunity-scrap-button" onclick="bookmarkToggle(this, 1, mediaId, ${loginUser.membersNo})">
                     <img class="cummunity-scrap-img" src="${contextPath}/resources/img/community/communitybookmark.png" alt="">
                     <img class="cummunity-scrap-img hidden" src="${contextPath}/resources/img/community/communityPage/pm-bookmark-checked.png" alt="">
                 </button>
-            </div>
+            </div> -->
         </div>
         <div class="community-house-content">
             <p class="community-house-content-write" align="left">
@@ -206,8 +207,8 @@ pageEncoding="UTF-8"%>
         <div align="left">
             <p id="community-house-content-3cut">⚡ 3초 컷! 집들이 미리보기</p>
         </div>
-        <div class="community-house-content">
-            <div class="community-img-area">
+        <div class="community-house-content" id="img-list">
+            <!-- <div class="community-img-area">
                 <img class="community-house-content-img" src="${pageContext.request.contextPath}/resources/img/community/communityPage/contentImg1.png" alt="">
                 <button class="cummunity-scrap-button">
                     <img class="cummunity-scrap-img" src="${pageContext.request.contextPath}/resources/img/community/communitybookmark.png" alt="">
@@ -217,9 +218,9 @@ pageEncoding="UTF-8"%>
                         <span class="community-house-content-tag-plus">+</span>
                     </button>
                 </div>
-            </div>
+            </div> -->
 
-            <div class="list-wrap" >
+            <!-- <div class="list-wrap" >
                 <div id="back-button" class="wrap-button-container">
                     <img class="wrap-button" src="${pageContext.request.contextPath}/resources/img/community/backbutton.png" >
                 </div>
@@ -250,7 +251,7 @@ pageEncoding="UTF-8"%>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="community-house-content">
             <p class="community-house-content-write" align="left">
@@ -266,24 +267,24 @@ pageEncoding="UTF-8"%>
 
 
         <div class="post-information">
-            <span>9시간&nbsp;</span>
-            <span> &#183; 좋아요 3 &nbsp;</span>
-            <span> &#183; 스크랩 18 &nbsp;</span>
-            <span> &#183; 조회 968 </span>
+            <span>${b.boardCreateTime}&nbsp;</span>
+            <span>&#183; 스크랩&nbsp;</span>
+            <span class="scrap-count">18</span>
+            <span>&nbsp;&#183; 조회 ${b.boardViews} </span>
         </div>
 
 
         <div align="left" id="last-user-profile">
             <div>
-                <img id="user-profile-img" src="${pageContext.request.contextPath}/resources/img/community/communityPage/userProfile.png" alt="">
-                <span id="user-name">마지mazi_zip</span>
+                <img class="user-profile-img" src="${pageContext.request.contextPath}/resources/img/community/communityPage/userProfile.png" alt="">
+                <span id="user-name">${b.boardWriterName}</span>
             </div>
         </div>
 
         <div id="comment-area" align="left">
             <div class="comment-count">
                 <span id="comment">댓글&nbsp;</span>
-                <span class="count">558</span>
+                <span id="count">558</span>
             </div>
             <div class="comment-write" align="left">
                 <div id="comment-writer-profile">
@@ -292,30 +293,18 @@ pageEncoding="UTF-8"%>
                 <div id="comment-detail-area">
                     <div class="comment-detail">
                         <div id="comment-detail-input">
-                        <textarea id="comment-detail-input-area" name="" cols="80" rows="1.5" style="resize: none; border: none;" placeholder="칭찬과 격려의 댓글은 작성자에게 큰 힘이 됩니다:)"></textarea>
+                        <input type="text" id="comment-detail-input-area" name="" cols="80" rows="1.5" style="resize: none; border: none;" placeholder="칭찬과 격려의 댓글은 작성자에게 큰 힘이 됩니다:)">
                         </div>
                         <div class="comment-input">
-                            <button class="comment-input-button">입력</button>
+                            <button class="comment-input-button" onclick="insertReply('${loginUser.membersNo}');">
+                                입력
+                            </button>
                         </div>  
                     </div>
                 </div>
             </div>
             <div class="comment-and-answer">
-                <div class="comment-area">
-                    <div class="comment-user" align="left">
-                        <img class="comment-user-profile"  src="${pageContext.request.contextPath}/resources/img/community/communityPage/userProfile2.png" alt="">
-                    </div>
-                    <div class="comment-content">
-                        <div class="comment-user-name">흑마늘닭강정</div>
-                        <div class="Comments">정말 감각적으로 잘꾸미셧어요!! 전 집꾸미는게 너무 어렵던데 ... 대단하십니다!!!</div>
-                        <div class="comment-date">
-                             <span>20시간&nbsp;</span> 
-                             <span>&#183;답글달기</span>  
-                        </div>
-                    </div>
-                </div>
-                
-                </div>
+                <div class="comment-area"></div>
             </div>
             <div class="comment-page">
                 <button id="back-page-button">
@@ -330,26 +319,195 @@ pageEncoding="UTF-8"%>
         </div>
     </div>
     <script>
+        let selectReplyList = null;
         $(function() {
+            selectReplyList = function() {
+                getItems("listReply.co", { bid: "${b.boardId}" }, function (result) {
+                    getReply(result, "${contextPath}", "${loginUser.membersNo}");
+                    for (let item of result) {
+                        getItems("profile.co", { mNo: item.replyMembersNo }, function (result) {
+                            getProfile(result, "${contextPath}", "#comment-" + item.replyId);
+                        })
+                    }
+                });
+            };
 
+            selectReplyList();
+
+            getItems("listMedia.co", {bid: "${b.boardId}"}, function(result) {
+                getPhoto(result, "${contextPath}", "${loginUser.membersNo}");
+            });
+
+            getItems("profile.co", {mNo: "${b.membersNo}"}, function(result) {
+                getProfile(result, "${contextPath}", ".user-profile-img");
+            })
+
+            getItems("profile.co", {mNo: "${loginUser.membersNo}"}, function(result) {
+                getProfile(result, "${contextPath}", "#comment-writer-profile > img");
+            })
+
+            getItems("boardScrap.co", {bid: "${b.boardId}"}, function(result) {
+                getBoardScrap(result, "${loginUser.membersNo}");
+            })
+
+            getItems("mediaScrap.co", { bid: "${b.boardId}" }, function (result) {
+                getMediaScrap(result, "${loginUser.membersNo}");
+            })
         })
 
-        function bookmarkToggle(_this, type) {
+        function getItems(url, data, callback) {
+            $.ajax({
+                url: url,
+                data: data,
+                success: function(result) {
+                    callback(result);
+                },
+                error: function() {
+                    console.log("실패");
+                }
+            });
+        }
+
+        function getPhoto(result, contextPath, memNo) {
+            const thumbnail = document.querySelector(".thumbnail");
+            const first = document.querySelector("#first-img");
+            const photos = document.querySelector("#img-list");
+            let i = 0;
+            for(let item of result) {
+                let str = `
+                    <div class="community-img-area">
+                        <input type="hidden" value="` + item.mediaId + `">
+                        <img class="community-house-content-img" src="` + contextPath + "/" + item.filePath + item.changeName + `" alt="">
+                        <button class="cummunity-scrap-button scrap" onclick = "bookmarkToggle(this, 1, ` + item.mediaId + `, ` + memNo + `);">
+                            <img class="cummunity-scrap-img" src="` + contextPath + `/resources/img/community/communitybookmark.png" alt="" >
+                            <img class="cummunity-scrap-img hidden" src="` + contextPath + `/resources/img/community/communitybookmark-checked.png" alt="">
+                        </button>
+                    </div>
+                    `;
+                if(i === 0) {
+                    $(thumbnail).attr({src: contextPath + "/" + item.filePath + item.changeName});
+                } else if(i === 1) {
+                    first.innerHTML += str;
+                } else {
+                    photos.innerHTML += str;
+                }
+                i++;
+            }
+        }
+
+        function getReply(result, contextPath, mNo){
+            $("#count").html(result.length);
+            $(".side-bar-comment-count").html(result.length);
+            const commentArea = document.querySelector(".comment-area");
+            commentArea.innerHTML = "";
+            for(let item of result) {
+                commentArea.innerHTML += `
+                    <div id="commentid` + item.replyId + `">
+                        <div class="comment-user" align="left">
+                            <img class="comment-user-profile" id="comment-` + item.replyId + `" src="` + contextPath + `/resources/img/community/communityPage/userProfile2.png" alt="">
+                        </div>
+                        <div class="comment-content">
+                            <div class="comment-user-name">` + item.replyWriter + `</div>
+                            <div class="Comments">` + item.replyContent + `</div>
+                            <div class="comment-date" id="commentFunc-` + item.replyId + `">
+                                    <span>` + item.replyCreateDate + `&nbsp;</span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                `;
+                if(mNo !== null && mNo === item.replyMembersNo) {
+                    $("#commentFunc-" + item.replyId).append("<span onclick='deleteReply(" + item.replyId + ");'>삭제</span>")
+                }
+            }
+        }
+
+        function insertReply(membersNo) {
+            const replyContent = document.querySelector("#comment-detail-input-area").value;
+            const boardId = document.querySelector("#hidden-no").value;
+            console.log(boardId + " " + membersNo);
+            $.ajax({
+                url: "insertReply.co",
+                type: "POST",
+                data: {
+                    replyContent: replyContent,
+                    boardId: boardId,
+                    membersNo: membersNo
+                },
+                success: function (result) {
+                    selectReplyList();
+                },
+                fail: function () {
+                    console.log("실패")
+                }
+            })
+        }
+
+        function deleteReply(id) {
+            $.ajax({
+                url: "deleteReply.co",
+                data: {replyId: id},
+                success: function(result) {
+                    if(result === 'Y') {
+                        $(".comment-area").remove("#commentid" + id);
+                    } else {
+                        console.log("삭제 실패");
+                    }
+                    selectReplyList();
+                },
+                fail: function() {
+                    console.log("실패")
+                }
+            })
+        }
+
+        function getProfile(result, contextPath, path) {
+            $(path).attr({ src: contextPath + "/" + result.filePath});
+        }
+
+        function getBoardScrap(result, memNo) {
+            const scrap = document.querySelector(".side-bar-scrap-button");
+            $(".scrap-count").html(result.length);
+            $()
+            for(let item of result) {
+                if(item.scrapMembersNo == memNo) {
+                    scrap.children[0].classList.toggle("hidden");
+                    scrap.children[1].classList.toggle("hidden");
+                    break;
+                }
+            }
+        }
+
+        function getMediaScrap(result, memNo) {
+            const scrap = document.getElementsByClassName("community-img-area");
+            for(let item of result) {
+                for(let pic of scrap) {
+                    if($(pic).children().eq(0).val() == item.scrapMediaId && item.scrapMembersNo == memNo) {
+                        $(pic).children().eq(2).children().eq(0).toggleClass("hidden");
+                        $(pic).children().eq(2).children().eq(1).toggleClass("hidden");
+                        break;
+                    }
+                }
+            }
+        }
+
+        function bookmarkToggle(_this, type, id, mNo) {
+            if(mNo === "" || mNo === null) return;
+
             const bookmark = _this.children;
-            const id = bookmark[0].value;
+            bookmark[0].classList.toggle("hidden");
             bookmark[1].classList.toggle("hidden");
-            bookmark[2].classList.toggle("hidden");
 
             if(type === 0) {
                 $.ajax({
                     type: "POST",
-                    url: "${contextPath}/scrap.co",
+                    url: "scrap.co",
                     data: {
-                        membersNo: "${loginUser.membersNo}",
+                        membersNo: mNo,
                         boardId: id,
                     },
                     success: function(result) {
-                        console.log(id);
+                        // console.log(id);
                     },
                     error: function() {
                         console.log("실패");
@@ -358,13 +516,13 @@ pageEncoding="UTF-8"%>
             } else {
                 $.ajax({
                     type: "POST",
-                    url: "${contextPath}/scrap.co",
+                    url: "scrap.co",
                     data: {
-                        membersNo: "${loginUser.membersNo}",
+                        membersNo: mNo,
                         mediaId: id,
                     },
                     success: function(result) {
-                        console.log(id);
+                        // console.log(id);
                     },
                     error: function() {
                         console.log("실패");
