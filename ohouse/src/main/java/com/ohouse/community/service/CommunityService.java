@@ -3,6 +3,7 @@ package com.ohouse.community.service;
 import java.util.ArrayList;
 
 import com.ohouse.common.model.vo.Media;
+import com.ohouse.common.model.vo.Scrap;
 import com.ohouse.community.model.vo.Board;
 import com.ohouse.community.model.vo.Reply;
 
@@ -33,5 +34,5 @@ public interface CommunityService {
 
 	// 댓글 삽입
 	int insertReply(Reply r);
-	
+
 }

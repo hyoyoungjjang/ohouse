@@ -23,11 +23,11 @@ pageEncoding="UTF-8"%>
     <div id="side-bar-area">
         <div class="side-bar">
             <div class="side-bar-scrap">
-                <button class="side-bar-scrap-button" onclick="bookmarkToggle(this, 0, 3, '${loginUser.membersNo}');">
+                <button class="side-bar-scrap-button scrap" onclick="bookmarkToggle(this, 0, '${b.boardId}', '${loginUser.membersNo}');">
                     <img class="side-bar-scrap-img" src="${contextPath}/resources/img/community/bookmark.png" alt="" >
                     <img class="side-bar-scrap-img hidden" src="${contextPath}/resources/img/community/bookmark-checked.png" alt="" >
                 </button>        
-                <span class="side-bar-scrap-count">21</span>     
+                <span class="side-bar-scrap-count scrap-count">21</span>     
             </div>
             <hr class="hr3">
             <div class="side-bar-comment" onclick="$('#comment-detail-input-area').focus();">
@@ -268,8 +268,9 @@ pageEncoding="UTF-8"%>
 
         <div class="post-information">
             <span>${b.boardCreateTime}&nbsp;</span>
-            <span> &#183; 스크랩 18 &nbsp;</span>
-            <span> &#183; 조회 ${b.boardViews} </span>
+            <span>&#183; 스크랩&nbsp;</span>
+            <span class="scrap-count">18</span>
+            <span>&nbsp;&#183; 조회 ${b.boardViews} </span>
         </div>
 
 
@@ -333,7 +334,7 @@ pageEncoding="UTF-8"%>
 
             selectReplyList();
 
-            getItems("listMedia.co", { bid: "${b.boardId}" }, function (result) {
+            getItems("listMedia.co", {bid: "${b.boardId}"}, function(result) {
                 getPhoto(result, "${contextPath}", "${loginUser.membersNo}");
             });
 
@@ -343,6 +344,14 @@ pageEncoding="UTF-8"%>
 
             getItems("profile.co", {mNo: "${loginUser.membersNo}"}, function(result) {
                 getProfile(result, "${contextPath}", "#comment-writer-profile > img");
+            })
+
+            getItems("boardScrap.co", {bid: "${b.boardId}"}, function(result) {
+                getBoardScrap(result, "${loginUser.membersNo}");
+            })
+
+            getItems("mediaScrap.co", { bid: "${b.boardId}" }, function (result) {
+                getMediaScrap(result, "${loginUser.membersNo}");
             })
         })
 
@@ -369,8 +378,9 @@ pageEncoding="UTF-8"%>
                     <div class="community-img-area">
                         <input type="hidden" value="` + item.mediaId + `">
                         <img class="community-house-content-img" src="` + contextPath + "/" + item.filePath + item.changeName + `" alt="">
-                        <button class="cummunity-scrap-button">
-                            <img class="cummunity-scrap-img" src="` + contextPath + `/resources/img/community/communitybookmark.png" alt="" onclick = "bookmarkToggle(this, 0, 3, ` + memNo + `);">
+                        <button class="cummunity-scrap-button scrap" onclick = "bookmarkToggle(this, 1, ` + item.mediaId + `, ` + memNo + `);">
+                            <img class="cummunity-scrap-img" src="` + contextPath + `/resources/img/community/communitybookmark.png" alt="" >
+                            <img class="cummunity-scrap-img hidden" src="` + contextPath + `/resources/img/community/communitybookmark-checked.png" alt="">
                         </button>
                     </div>
                     `;
@@ -455,6 +465,32 @@ pageEncoding="UTF-8"%>
             $(path).attr({ src: contextPath + "/" + result.filePath});
         }
 
+        function getBoardScrap(result, memNo) {
+            const scrap = document.querySelector(".side-bar-scrap-button");
+            $(".scrap-count").html(result.length);
+            $()
+            for(let item of result) {
+                if(item.scrapMembersNo == memNo) {
+                    scrap.children[0].classList.toggle("hidden");
+                    scrap.children[1].classList.toggle("hidden");
+                    break;
+                }
+            }
+        }
+
+        function getMediaScrap(result, memNo) {
+            const scrap = document.getElementsByClassName("community-img-area");
+            for(let item of result) {
+                for(let pic of scrap) {
+                    if($(pic).children().eq(0).val() == item.scrapMediaId && item.scrapMembersNo == memNo) {
+                        $(pic).children().eq(2).children().eq(0).toggleClass("hidden");
+                        $(pic).children().eq(2).children().eq(1).toggleClass("hidden");
+                        break;
+                    }
+                }
+            }
+        }
+
         function bookmarkToggle(_this, type, id, mNo) {
             if(mNo === "" || mNo === null) return;
 
@@ -471,7 +507,7 @@ pageEncoding="UTF-8"%>
                         boardId: id,
                     },
                     success: function(result) {
-                        console.log(id);
+                        // console.log(id);
                     },
                     error: function() {
                         console.log("실패");
@@ -486,7 +522,7 @@ pageEncoding="UTF-8"%>
                         mediaId: id,
                     },
                     success: function(result) {
-                        console.log(id);
+                        // console.log(id);
                     },
                     error: function() {
                         console.log("실패");

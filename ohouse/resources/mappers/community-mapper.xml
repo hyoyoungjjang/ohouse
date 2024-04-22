@@ -317,19 +317,40 @@
 	  AND BOARD_ID = #{boardId}
   	</update>
   	<!-- SCRAP -->
+  	<select id="selectBoardScrapOne" resultMap="scrapResultSet">
+  	SELECT SCRAP_ID,
+  			BOARD_ID,
+  			MEMBERS_NO,
+  			SCRAP_STATUS
+  	FROM SCRAP
+  	WHERE BOARD_ID = ${scrapBoardId}
+  	</select>
   	<select id="selectBoardScrap" resultMap="scrapResultSet">
   	SELECT SCRAP_ID,
+  			BOARD_ID,
+  			MEMBERS_NO,
   			SCRAP_STATUS
   	FROM SCRAP
-  	WHERE MEMBERS_NO = ${scrapMembersNo}
-  	AND BOARD_ID = ${scrapBoardId}
+  	WHERE BOARD_ID = ${scrapBoardId}
+  	AND SCRAP_STATUS = 'Y'
+  	</select>
+  	<select id="selectMediaScrapOne" resultMap="scrapResultSet">
+  	SELECT SCRAP_ID,
+  			MEDIA_ID,
+  			MEMBERS_NO,
+  			SCRAP_STATUS
+  	FROM SCRAP
+  	WHERE MEDIA_ID = ${scrapMediaId}
   	</select>
   	<select id="selectMediaScrap" resultMap="scrapResultSet">
-  	SELECT SCRAP_ID,
+  	SELECT S.SCRAP_ID,
+  			M.MEDIA_ID,
+  			S.MEMBERS_NO,
   			SCRAP_STATUS
-  	FROM SCRAP
-  	WHERE MEMBERS_NO = ${scrapMembersNo}
-  	AND MEDIA_ID = ${scrapMediaId}
+  	FROM SCRAP S
+  	JOIN MEDIA M ON (S.MEDIA_ID = M.MEDIA_ID)
+  	WHERE M.BOARD_ID = ${scrapBoardId}
+  	AND SCRAP_STATUS = 'Y'
   	</select>
   	<insert id="insertBoardScrap">
   	INSERT
@@ -338,14 +359,14 @@
 		SCRAP_ID,
 		SCRAP_TYPE,
 		MEMBERS_NO,
-		BOARD_ID,
+		BOARD_ID
 	)
 	VALUES
 	(
 		SEQ_SCRID.NEXTVAL,
 		3,
-		#{scrapMembersNo},
-		#{scrapBoardId}
+		${scrapMembersNo},
+		${scrapBoardId}
 	)
   	</insert>
   	<insert id="insertMediaScrap">
@@ -355,14 +376,14 @@
 		SCRAP_ID,
 		SCRAP_TYPE,
 		MEMBERS_NO,
-		MEDIA_ID,
+		MEDIA_ID
 	)
 	VALUES
 	(
 		SEQ_SCRID.NEXTVAL,
 		2,
-		#{scrapMembersNo},
-		#{scrapMediaId}
+		${scrapMembersNo},
+		${scrapMediaId}
 	)
   	</insert>
 	<update id="updateBoardScrap">
