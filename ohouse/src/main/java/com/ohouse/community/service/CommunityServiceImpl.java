@@ -29,4 +29,20 @@ public class CommunityServiceImpl implements CommunityService{
 		sqlSession.close();
 		return m;
 	}
+	
+	@Override
+	public int increaseViews(int boardId) {
+		SqlSession sqlSession = getSqlSession();
+		int result = communityDao.increaseViews(sqlSession, boardId);
+		return result;
+	}
+
+	@Override
+	public Board selectBoard(int boardId) {
+		SqlSession sqlSession = getSqlSession();
+		Board b = communityDao.selectBoard(sqlSession, boardId);
+		sqlSession.close();
+		return b;
+	}
+
 }

@@ -38,9 +38,11 @@
   	<resultMap id="mediaResultSet" type="Media">
   		<result column="MEDIA_ID" property="mediaId"/>
   		<result column="BOARD_ID" property="mediaBoardId"/>
+  		<result column="MEMBERS_NO" property="mediaMembersId"/>
   		<result column="MEDIA_TYPE" property="mediaType"/>
   		<result column="ORIGIN_NAME" property="originName"/>
   		<result column="CHANGE_NAME" property="changeName"/>
+  		<result column="PROFILE" property="filePath"/>
   		<result column="FILE_PATH" property="filePath"/>
   		<result column="FILE_LEVEL" property="fileLevel"/>
   		<result column="UPLOAD_DATE" property="uploadDate"/>
@@ -50,6 +52,7 @@
   		<result column="SCRAP_ID" property="scrapId"/>
   		<result column="SCRAP_TYPE" property="scrapType"/>
   		<result column="BOARD_ID" property="scrapBoardId"/>
+  		<result column="MEDIA_ID" property="scrapMediaId"/>
   		<result column="MEMBERS_NO" property="scrapMembersNo"/>
   		<result column="SCRAP_CREATE_TIME" property="scrapCreateTime"/>
   		<result column="SCRAP_STATUS" property="scrapStatus"/>
@@ -177,6 +180,14 @@
 	  AND FILE_LEVEL = 1
     ORDER BY BOARD_CREATE_TIME DESC
   	</select>
+  	<select id="selectProfile" resultMap="mediaResultSet" parameterType="_int">
+	  SELECT
+		  MEDIA_ID,
+		  FILE_PATH || CHANGE_NAME AS "PROFILE"
+	  FROM MEDIA
+	  WHERE MEMBERS_NO = ${membersNo}
+	   AND MEDIA_STATUS = 'Y'
+  	</select>
   	<update id="updateBoard" parameterType="Board">
   	UPDATE BOARD
 	SET 
@@ -303,6 +314,20 @@
 	  AND BOARD_ID = #{mediaBoardId}
   	</update>
   	<!-- SCRAP -->
+  	<select id="selectBoardScrap" resultMap="scrapResultSet">
+  	SELECT SCRAP_ID,
+  			SCRAP_STATUS
+  	FROM SCRAP
+  	WHERE MEMBERS_NO = ${scrapMembersNo}
+  	AND BOARD_ID = ${scrapBoardId}
+  	</select>
+  	<select id="selectMediaScrap" resultMap="scrapResultSet">
+  	SELECT SCRAP_ID,
+  			SCRAP_STATUS
+  	FROM SCRAP
+  	WHERE MEMBERS_NO = ${scrapMembersNo}
+  	AND MEDIA_ID = ${scrapMediaId}
+  	</select>
   	<insert id="insertBoardScrap">
   	INSERT
 	INTO SCRAP
@@ -337,16 +362,28 @@
 		#{scrapMediaId}
 	)
   	</insert>
+	<update id="updateBoardScrap">
+	UPDATE SCRAP
+	SET
+	SCRAP_STATUS='${scrapStatus}'
+	WHERE SCRAP_ID=${scrapId}
+	</update>
+	<update id="updateMediaScrap">
+	UPDATE SCRAP
+	SET
+	SCRAP_STATUS='${scrapStatus}'
+	WHERE SCRAP_ID=${scrapId}
+	</update>
   	<select id="selectBoardScrapCount" resultType="_int">
   	SELECT COUNT(*)
 	FROM SCRAP
-	WHERE BOARD_ID = #{boardId}
+	WHERE BOARD_ID = ${scrapBoardId}
 	AND SCRAP_STATUS = 'Y'
   	</select>
   	<select id="selectMediaScrapCount" resultType="_int">
   	SELECT COUNT(*)
 	FROM SCRAP
-	WHERE MEDIA_ID = #{mediaId}
+	WHERE MEDIA_ID = ${scrapMediaId}
 	AND SCRAP_STATUS = 'Y'
   	</select>
   	<!-- REPLY -->
@@ -394,6 +431,7 @@
   			REPLY_STATUS = 'N'
   		WHERE REPLY_ID = #{replyId}
   	</update>
+
  </mapper>
   
   

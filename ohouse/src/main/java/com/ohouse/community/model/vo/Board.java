@@ -9,8 +9,8 @@ public class Board {
 	private String membersNo;
 	private String boardWriter;
 	private String boardThumbnail;
-	private Date boardCreateTime;
-	private Date boardModifyTime;
+	private String boardCreateTime;
+	private String boardModifyTime;
 	private String introduction;
 	private String description;
 	private String filType;
@@ -37,11 +37,11 @@ public class Board {
 	public Board() {}
 
 	public Board(String boardId, String boardTitle, String boardViews, String membersNo, String boardWriter,
-			String boardThumbnail, Date boardCreateTime, Date boardModifyTime, String introduction, String description,
-			String filType, String filArea, String filNum, String filDirection, String filPast, String filLocal,
-			String filFamily, String filPet, String filFamMemCnt, String filField, String filWorker, String filRange,
-			String filPeriod, String filPeriodType, String filConPrice, String filStPrice, String filUrl,
-			String filCopy, String boardStatus, String scrapCount) {
+			String boardThumbnail, String boardCreateTime, String boardModifyTime, String introduction,
+			String description, String filType, String filArea, String filNum, String filDirection, String filPast,
+			String filLocal, String filFamily, String filPet, String filFamMemCnt, String filField, String filWorker,
+			String filRange, String filPeriod, String filPeriodType, String filConPrice, String filStPrice,
+			String filUrl, String filCopy, String boardStatus, String scrapCount) {
 		super();
 		this.boardId = boardId;
 		this.boardTitle = boardTitle;
@@ -99,6 +99,14 @@ public class Board {
 		this.boardViews = boardViews;
 	}
 
+	public String getMembersNo() {
+		return membersNo;
+	}
+
+	public void setMembersNo(String membersNo) {
+		this.membersNo = membersNo;
+	}
+
 	public String getBoardWriter() {
 		return boardWriter;
 	}
@@ -107,19 +115,27 @@ public class Board {
 		this.boardWriter = boardWriter;
 	}
 
-	public Date getBoardCreateTime() {
+	public String getBoardThumbnail() {
+		return boardThumbnail;
+	}
+
+	public void setBoardThumbnail(String boardThumbnail) {
+		this.boardThumbnail = boardThumbnail;
+	}
+
+	public String getBoardCreateTime() {
 		return boardCreateTime;
 	}
 
-	public void setBoardCreateTime(Date boardCreateTime) {
+	public void setBoardCreateTime(String boardCreateTime) {
 		this.boardCreateTime = boardCreateTime;
 	}
 
-	public Date getBoardModifyTime() {
+	public String getBoardModifyTime() {
 		return boardModifyTime;
 	}
 
-	public void setBoardModifyTime(Date boardModifyTime) {
+	public void setBoardModifyTime(String boardModifyTime) {
 		this.boardModifyTime = boardModifyTime;
 	}
 
@@ -299,27 +315,10 @@ public class Board {
 		this.scrapCount = scrapCount;
 	}
 
-	
-	public String getBoardThumbnail() {
-		return boardThumbnail;
-	}
-
-	public void setBoardThumbnail(String boardThumbnail) {
-		this.boardThumbnail = boardThumbnail;
-	}
-
-	public String getMembersNo() {
-		return membersNo;
-	}
-
-	public void setMemberNo(String membersNo) {
-		this.membersNo = membersNo;
-	}
-
 	@Override
 	public String toString() {
-		return "Board [boardId=" + boardId + ", boardTitle=" + boardTitle + ", boardViews=" + boardViews + ", membersNo="
-				+ membersNo + ", boardWriter=" + boardWriter + ", boardThumbnail=" + boardThumbnail
+		return "Board [boardId=" + boardId + ", boardTitle=" + boardTitle + ", boardViews=" + boardViews
+				+ ", membersNo=" + membersNo + ", boardWriter=" + boardWriter + ", boardThumbnail=" + boardThumbnail
 				+ ", boardCreateTime=" + boardCreateTime + ", boardModifyTime=" + boardModifyTime + ", introduction="
 				+ introduction + ", description=" + description + ", filType=" + filType + ", filArea=" + filArea
 				+ ", filNum=" + filNum + ", filDirection=" + filDirection + ", filPast=" + filPast + ", filLocal="
@@ -329,4 +328,6 @@ public class Board {
 				+ filStPrice + ", filUrl=" + filUrl + ", filCopy=" + filCopy + ", boardStatus=" + boardStatus
 				+ ", scrapCount=" + scrapCount + "]";
 	}
+
+	
 }
