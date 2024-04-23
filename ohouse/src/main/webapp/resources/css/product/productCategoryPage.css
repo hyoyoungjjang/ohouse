@@ -11,7 +11,24 @@
     width: 1136px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 23px;
+}
+
+.pc-header{
+    width: 1136px;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
+}
+
+.clickEvent{
+    color: #35c5f0;
+}
+
+#pc-sort-area{
+	margin-right: 30px;
 }
 
 .pc-sale-img {
