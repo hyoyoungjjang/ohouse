@@ -1,4 +1,4 @@
-!<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -366,6 +366,15 @@ pageEncoding="UTF-8"%>
                     console.log("실패");
                 }
             });
+        }
+
+        const header = document.querySelectorAll("");
+        window.onload = function() {
+            for(ele of header) {
+                $(ele).click(function(event) {
+                    event.target.classList.toggle("dddd");
+                });
+            }
         }
 
         function getPhoto(result, contextPath, memNo) {
