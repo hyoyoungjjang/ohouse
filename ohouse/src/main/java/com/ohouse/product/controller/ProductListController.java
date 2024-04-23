@@ -38,7 +38,8 @@ public class ProductListController extends HttpServlet {
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 12);
 		ArrayList<Product> pList =  new ProductListServiceImpl().selectListProduct(pi);
 		
-		
+		request.setAttribute("listCount", listCount);
+		request.setAttribute("pi", pi);
 		request.setAttribute("pList", pList);
 		request.getRequestDispatcher("views/product/productBestPage.jsp").forward(request, response);
 	}

@@ -17,7 +17,7 @@
                 <span class="pc-category" align="center">베스트</span>
             </div>
             <div class="pc-sale pc-header" id="pc-deal-header">
-                <h4 class="pc-gray">전체 <span class="pc-gray">${pList.size()}</span>개</h4>
+                <h4 class="pc-gray">전체 <span class="pc-gray">${listCount}</span>개</h4>
             </div>
             <div class="pc-sale" id="pc-deal-contents">
                 <c:forEach var="p" items="${pList}">
@@ -84,7 +84,86 @@
                                 }       
                             })
                     }
+                    
+					let pageNum = 2;
+					
+                    function addproductList(maxPage){
+                    	if(pageNum > maxPage) {
+                    		$("#nextbutton").remove();
+                    		return;
+                    	}
+						
+                        $.ajax({
+                            url : "ajaxBestList.pr",
+                            data : {
+                                cpage : pageNum
+                            },
+                            success : function(list){
+                            	console.log("성공")
+                                drawBestProductList(list)
+                                pageNum += 1;
+                            },
+                            error : function(){
+                                console.log("실패")
+                            }
+                        })
+                    }
+
+                    function drawBestProductList(list){
+                        
+                        const saleArea = document.getElementById("pc-deal-contents");
+
+                        for (let i = 0; i < list.length; i++) {
+                            const saleproduct = list[i];
+                            saleText = "";
+                            if (saleproduct.sale > 0) {
+                                saleText = '<span class="pc-color">' + saleproduct.sale + '%</span>';
+                            }
+                            
+                            var price = saleproduct.productPrice;
+                            price = AddComma(price);
+                            
+                            if (saleproduct) {
+                                saleArea.innerHTML += `<div class="pc-sale-content">
+                                    <div class="pc-sale-img">
+                                        <img src="${pageContext.request.contextPath}/` +  saleproduct.productThumbnail + `" width="260px">
+                                        <button type="button" onclick="changeBookmark(this, `+saleproduct.productId+`)">
+                                            <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
+                                        </button>
+                                    </div>
+                                    <div class="pc-sale-text">
+                                        <div class="pc-company">
+                                            `+saleproduct.companyName +`
+                                        </div>
+                                        <div class="pc-title">
+                                            `+ saleproduct.productName +`
+                                        </div>
+                                        <div class="pc-price">
+	                                        `+ saleText +`
+	                                        <span>`+ price+`</span>
+                                        </div>
+                                        <div class="pc-review">
+                                            <img src="${pageContext.request.contextPath}/resources/img/product/star.png" width="15px">
+                                            <span class="pc-score">`+ saleproduct.ratingAvg +`</span>
+                                            <span class="pc-gray">리뷰</span>
+                                            <span class="pc-gray">`+ saleproduct.reviewCount +`</span>
+                                        </div>
+                                    </div>
+                                </div>`
+                            }
+                        }
+                    }
+                    
+                    function AddComma(price){
+                        var comma = /\B(?=(\d{3})+(?!\d))/g;                
+                        return price.toString().replace(comma, ',');
+                    }
                 </script>
+            </div> 
+            <div id="paging-area">
+            	<a id="paging-tag" onclick="addproductList('${pi.maxPage}')">
+                    <img id="nextbutton" src="${pageContext.request.contextPath}/resources/img/product/angle-small-down.png" alt="">
+                </a>
             </div>  
         </div>
     </div>
