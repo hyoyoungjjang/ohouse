@@ -827,22 +827,22 @@ VALUES (SEQ_MEDID.NEXTVAL, 10, 1, 'thumbnail-main-10.png', 'thumbnail-main-10.pn
 
 -- 게시글 사진
 INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
-VALUES (SEQ_MEDID.NEXTVAL, 3, 2, 'boardContent03.png', 'boardContent03.png', 'resources/img/community/communityPage/', 2);
+VALUES (SEQ_MEDID.NEXTVAL, 3, 1, 'boardContent03.png', 'boardContent03.png', 'resources/img/community/communityPage/', 2);
 
 INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
-VALUES (SEQ_MEDID.NEXTVAL, 4, 2, 'boardContent04.png', 'boardContent04.png', 'resources/img/community/communityPage/', 2);
+VALUES (SEQ_MEDID.NEXTVAL, 4, 1, 'boardContent04.png', 'boardContent04.png', 'resources/img/community/communityPage/', 2);
 
 INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
-VALUES (SEQ_MEDID.NEXTVAL, 5, 2, 'boardContent05.png', 'boardContent05.png', 'resources/img/community/communityPage/', 2);
+VALUES (SEQ_MEDID.NEXTVAL, 5, 1, 'boardContent05.png', 'boardContent05.png', 'resources/img/community/communityPage/', 2);
 
 INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
-VALUES (SEQ_MEDID.NEXTVAL, 6, 2, 'boardContent06.png', 'boardContent06.png', 'resources/img/community/communityPage/', 2);
+VALUES (SEQ_MEDID.NEXTVAL, 6, 1, 'boardContent06.png', 'boardContent06.png', 'resources/img/community/communityPage/', 2);
 
 INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
-VALUES (SEQ_MEDID.NEXTVAL, 7, 2, 'boardContent07-1.png', 'boardContent07-1.png', 'resources/img/community/communityPage/', 2);
+VALUES (SEQ_MEDID.NEXTVAL, 7, 1, 'boardContent07-1.png', 'boardContent07-1.png', 'resources/img/community/communityPage/', 2);
 
 INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
-VALUES (SEQ_MEDID.NEXTVAL, 7, 2, 'boardContent07-2.png', 'boardContent07-2.png', 'resources/img/community/communityPage/', 2);
+VALUES (SEQ_MEDID.NEXTVAL, 7, 1, 'boardContent07-2.png', 'boardContent07-2.png', 'resources/img/community/communityPage/', 2);
 
 
 -- 상품 썸네일
