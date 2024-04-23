@@ -806,17 +806,24 @@ VALUES (SEQ_QNAID.NEXTVAL, '원', 'A', 'N', 2, 1);
 INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
 VALUES (SEQ_MEDID.NEXTVAL, 1, 1, 'thumbnail-main-01.png', 'thumbnail-main-01.png', 'resources/img/community/communityMain/', 1);
 INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
-VALUES (SEQ_MEDID.NEXTVAL, 2, 2, 'thumbnail-main-02.png', 'thumbnail-main-02.png', 'resources/img/community/communityMain/', 1);
+VALUES (SEQ_MEDID.NEXTVAL, 2, 1, 'thumbnail-main-02.png', 'thumbnail-main-02.png', 'resources/img/community/communityMain/', 1);
 INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
-VALUES (SEQ_MEDID.NEXTVAL, 3, 2, 'thumbnail-main-03.png', 'thumbnail-main-03.png', 'resources/img/community/communityMain/', 1);
+VALUES (SEQ_MEDID.NEXTVAL, 3, 1, 'thumbnail-main-03.png', 'thumbnail-main-03.png', 'resources/img/community/communityMain/', 1);
 INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
-VALUES (SEQ_MEDID.NEXTVAL, 4, 2, 'thumbnail-main-04.png', 'thumbnail-main-04.png', 'resources/img/community/communityMain/', 1);
+VALUES (SEQ_MEDID.NEXTVAL, 4, 1, 'thumbnail-main-04.png', 'thumbnail-main-04.png', 'resources/img/community/communityMain/', 1);
 INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
-VALUES (SEQ_MEDID.NEXTVAL, 5, 2, 'thumbnail-main-05.png', 'thumbnail-main-05.png', 'resources/img/community/communityMain/', 1);
+VALUES (SEQ_MEDID.NEXTVAL, 5, 1, 'thumbnail-main-05.png', 'thumbnail-main-05.png', 'resources/img/community/communityMain/', 1);
 INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
-VALUES (SEQ_MEDID.NEXTVAL, 6, 2, 'thumbnail-main-06.png', 'thumbnail-main-06.png', 'resources/img/community/communityMain/', 1);
+VALUES (SEQ_MEDID.NEXTVAL, 6, 1, 'thumbnail-main-06.png', 'thumbnail-main-06.png', 'resources/img/community/communityMain/', 1);
 INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
-VALUES (SEQ_MEDID.NEXTVAL, 7, 2, 'thumbnail-main-07.png', 'thumbnail-main-07.png', 'resources/img/community/communityMain/', 1);
+VALUES (SEQ_MEDID.NEXTVAL, 7, 1, 'thumbnail-main-07.png', 'thumbnail-main-07.png', 'resources/img/community/communityMain/', 1);
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 8, 1, 'thumbnail-main-08.png', 'thumbnail-main-08.png', 'resources/img/community/communityMain/', 1);
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 9, 1, 'thumbnail-main-09.png', 'thumbnail-main-09.png', 'resources/img/community/communityMain/', 1);
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 10, 1, 'thumbnail-main-10.png', 'thumbnail-main-10.png', 'resources/img/community/communityMain/', 1);
+
 
 -- 게시글 사진
 INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
