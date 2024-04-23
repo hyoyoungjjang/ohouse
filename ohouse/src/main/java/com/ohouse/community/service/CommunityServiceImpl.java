@@ -10,6 +10,7 @@ import com.ohouse.common.model.vo.Media;
 import com.ohouse.community.model.dao.CommunityDao;
 import com.ohouse.community.model.vo.Board;
 import com.ohouse.community.model.vo.Reply;
+import com.ohouse.product.model.vo.Product;
 
 public class CommunityServiceImpl implements CommunityService{
 	
@@ -120,6 +121,14 @@ public class CommunityServiceImpl implements CommunityService{
 		
 		sqlSession.close();
 		return result1 * result2;
+	}
+
+	@Override
+	public ArrayList<Product> selectProductList(String key) {
+		SqlSession sqlSession = getSqlSession();
+		ArrayList<Product> list = communityDao.selectProductList(sqlSession, key);
+		sqlSession.close();
+		return list;
 	}
 
 }

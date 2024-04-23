@@ -847,6 +847,10 @@ textarea:focus {
     gap: 20px;
 }
 
+.tag-flex > button {
+    padding: 0%;
+}
+
 .tag-product {
     width: 100px;
     height: 100px;

@@ -9,7 +9,7 @@
     <title>Document</title>
     <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/community/communityInsert.css">
@@ -314,32 +314,30 @@
                     <input type="file" value="대표사진 추가하기" name="file3" class="hidden" id="id3" onchange="showImg(this, '#file3', '사진');">
                     <!-- 태그 -->
                     <div class="tag-flex" align="left">
-                        <!-- Trigger the modal with a button -->
-                        <button type="button" class="btn btn-default tag-product" data-toggle="modal" data-target="#id3-modeal1" id="id3-tag1" name="tag3"></button>
-                        <!-- Modal -->
-                        <div id="id3-modeal1" class="modal fade" role="dialog">
-                            <div class="modal-dialog">
-                                <!-- Modal content-->
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title"></h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <input type="text">
-                                        <button type="button" class="btn btn-default btn-sm" onclick="productSearch('id3-tag1', this.value);">검색</button>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <c:forEach var="i" begin="1" end="6">
+                            <!-- Trigger the modal with a button -->
+                            <button type="button" class="btn btn-default tag-product" data-toggle="modal" data-target="#id3-modal${i}" id="id3-tag${i}" name="tag3"></button>
+                            <!-- Modal -->
+                            <div id="id3-modal${i}" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title"></h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <input type="text" onkeyup="productSearch(this.value, 3, '${i}', '${contextPath}');">
+                                            <button type="button" class="btn btn-default btn-sm">검색</button>
+                                            <div id="id3${i}"></div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="tag-product" id="id3-tag2" name="tag3"></div>
-                        <div class="tag-product" id="id3-tag3" name="tag3"></div>
-                        <div class="tag-product" id="id3-tag4" name="tag3"></div>
-                        <div class="tag-product" id="id3-tag5" name="tag3"></div>
-                        <div class="tag-product" id="id3-tag6" name="tag3"></div>
+                        </c:forEach>
                     </div>
                 </div>
                 <!--본문 내용-->
@@ -350,23 +348,6 @@
     </form>
     <script>
         let idx = 4;
-
-        $(function() {
-            
-        });
-
-        function getItems(url, data, callback) {
-            $.ajax({
-                url: url,
-                data: data,
-                success: function (result) {
-                    callback(result);
-                },
-                error: function () {
-                    console.log("실패");
-                }
-            });
-        }
 
         function imgChange(id) {
             const imgInput = document.getElementById(id);
@@ -390,31 +371,56 @@
             }
         }
         
-        function tagImg(inputFile) {
-            if (inputFile.files.length == 1) {
-                const reader = new FileReader();
-                reader.readAsDataURL(inputFile.files[0]);
-                reader.onload = function (ev) {
-                    const parent = $(inputFile).parent();
-                    parent.html(`<img src=` + ev.target.result 
-                    + ` style="height: 100%;">`);
-                    parent.addClass("isFull"); 
-                }
-            }
-        }
+        // function tagImg(inputFile) {
+        //     if (inputFile.files.length == 1) {
+        //         const reader = new FileReader();
+        //         reader.readAsDataURL(inputFile.files[0]);
+        //         reader.onload = function (ev) {
+        //             const parent = $(inputFile).parent();
+        //             parent.html(`<img src=` + ev.target.result 
+        //             + ` style="height: 100%;">`);
+        //             parent.addClass("isFull"); 
+        //         }
+        //     }
+        // }
 
-        function productSearch(id, key) {
-            const tag = document.getElementById(id);
+        function productSearch(key, idNum, order, contextPath) {
             $.ajax({
-                url: "searchTag.co",
+                url: "selectProduct.co",
                 data: {key: key},
                 success: function(result) {
-                    $("#test").html(key);
+                    selectList(result, idNum, order, contextPath);
                 },
                 error: function() {
-
+                    console.log("검색 실패");
                 }
             });
+        }
+
+        function selectList(result, idNum, order, contextPath) {
+            const tag = document.getElementById(('id' + idNum) + order);
+            const btn = document.getElementById('id' + idNum + '-tag' + order);
+
+            if(result.length === 0) {
+                tag.innerHTML = "<div>검색 결과가 없습니다.</div>";
+            } else {
+                tag.innerHTML = "";
+
+                for(let ele of result) {
+                    const div = document.createElement('div');
+                    div.innerHTML += ele.productName;
+                    div.innerHTML += `<input type="hidden" value="` + ele.productThumbnail + `">`;
+                    div.innerHTML += `<input type="hidden" value="` + ele.productId + `">`;
+
+                    div.addEventListener("click", function(ev) {
+                        const now = ev.target.children;
+                        btn.innerHTML = `<img src="` + contextPath + `/` + now[0].value + `">`;
+                        btn.innerHTML += `<input type="hidden" value="` + now[1].value + `">`
+                    });
+
+                    tag.appendChild(div);
+                }
+            }
         }
         
         const DEFAULT_HEIGHT = 30; // textarea 기본 height

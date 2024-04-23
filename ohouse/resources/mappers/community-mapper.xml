@@ -68,6 +68,12 @@
   		 <result column="REPLY_STATUS" property="replyStatus" />
   		 <result column="MEMBERS_NAME" property="replyWriter"/>
   	</resultMap>
+  	<resultMap id="productResultSet" type="Product">
+  		<result column="PRODUCT_ID" property="productId" />
+  		<result column="PRODUCT_NAME" property="productName" />
+  		<result column="PRODUCT_PRICE" property="productPrice" />
+  		<result column="PRODUCT_THUMBNAIL" property="productThumbnail" />
+  	</resultMap>
   	<insert id="insertBoard" parameterType="Board">
   	INSERT
 	INTO BOARD
@@ -443,7 +449,7 @@
   		UPDATE REPLY
   		SET
   			REPLY_CONTENT = #{replyContent},
-  			REPLY_MODIFY_DATE = SYSDATE,
+  			REPLY_MODIFY_DATE = SYSDATE
   		WHERE REPLY_ID = #{replyId}
   	</update>
   	<update id="deleteReply">
@@ -452,7 +458,19 @@
   			REPLY_STATUS = 'N'
   		WHERE REPLY_ID = #{replyId}
   	</update>
-
+	<select id="selectProductList" resultMap="productResultSet">
+		SELECT 
+		    P.PRODUCT_ID,
+		    PRODUCT_NAME,
+		    PRODUCT_PRICE,
+		    FILE_PATH || CHANGE_NAME AS "PRODUCT_THUMBNAIL"
+		FROM PRODUCT P
+		JOIN MEDIA MED ON (P.PRODUCT_ID = MED.PRODUCT_ID)
+		WHERE PRODUCT_NAME LIKE '%${key}%'
+		AND PRODUCT_STATUS = 'Y'
+		AND (ROWNUM &lt;= 5)
+		ORDER BY PRODUCT_SALES DESC
+	</select>
  </mapper>
   
   

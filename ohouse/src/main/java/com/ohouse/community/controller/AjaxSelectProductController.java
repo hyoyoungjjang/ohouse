@@ -1,23 +1,30 @@
 package com.ohouse.community.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+import com.ohouse.community.service.CommunityService;
+import com.ohouse.community.service.CommunityServiceImpl;
+import com.ohouse.product.model.vo.Product;
+
 /**
- * Servlet implementation class AjaxSearchTagController
+ * Servlet implementation class AjaxSelectProductController
  */
-@WebServlet("/searchTag.co")
-public class AjaxSearchTagController extends HttpServlet {
+@WebServlet("/selectProduct.co")
+public class AjaxSelectProductController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxSearchTagController() {
+    public AjaxSelectProductController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,8 +33,13 @@ public class AjaxSearchTagController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String keyword = request.getParameter("key");
-		System.out.println(keyword);
+		String key = request.getParameter("key");
+		
+		CommunityService service = new CommunityServiceImpl();
+		ArrayList<Product> list = service.selectProductList(key);
+		
+		response.setContentType("application/json; charset=UTF-8");
+		new Gson().toJson(list, response.getWriter());
 	}
 
 	/**
