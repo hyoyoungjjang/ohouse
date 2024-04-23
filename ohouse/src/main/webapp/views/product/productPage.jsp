@@ -1026,6 +1026,12 @@
                         <br>
                         <select class="product-sidebar-option2">
                             <option selected="" value="" disabled="">파운데이션 높이</option>
+                                <option value="0">헤드만 (낮은 헤드보드만) (357,000원)</option>
+                                <option value="1">15cm (680,000원)</option>
+                                <option value="2">20cm (696,000원)</option>
+                                <option value="3">25cm (717,000원)</option>
+                                <option value="4">30cm (728,000원)</option>
+                                <option value="5">35cm (749,000원)</option>
                         </select>
                         <br>
                         <select class="product-sidebar-option3">
@@ -1107,6 +1113,7 @@
                             </button>
                             <button class="product-sidebar-buy-button-basket" type="button">장바구니</button>
                             <button class="product-sidebar-buy-button-buynow" type="button">바로구매</button>
+                            
                         </div>
                     </div>
                 </div>
