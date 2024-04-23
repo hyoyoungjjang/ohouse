@@ -9,22 +9,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.ohouse.common.template.PageInfo;
 import com.ohouse.common.template.Pagination;
 import com.ohouse.product.model.vo.Product;
 import com.ohouse.product.service.ProductListServiceImpl;
 
 /**
- * Servlet implementation class ProductSaleListController
+ * Servlet implementation class ProductBestPageAjax
  */
-@WebServlet("/saleList.pr")
-public class ProductSaleListController extends HttpServlet {
+@WebServlet("/ajaxBestList.pr")
+public class ProductBestPageAjax extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
     /**
-     * Default constructor. 
+     * @see HttpServlet#HttpServlet()
      */
-    public ProductSaleListController() {
+    public ProductBestPageAjax() {
+        super();
         // TODO Auto-generated constructor stub
     }
 
@@ -32,18 +34,14 @@ public class ProductSaleListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String condition = request.getParameter("condition");		
 		int currentPage = Integer.parseInt((request.getParameter("cpage"))) ;
-		int saleListCount = new ProductListServiceImpl().selectProductListCount(condition);
+		int saleListCount = new ProductListServiceImpl().selectListCount();
 		
 		PageInfo pi = Pagination.getPageInfo(saleListCount, currentPage, 10, 12);
-		ArrayList<Product> psList = new ProductListServiceImpl().selectProductSaleList(pi, condition);
+		ArrayList<Product> list = new ProductListServiceImpl().selectListProduct(pi);
 		
-		
-		request.setAttribute("listCount", saleListCount);
-		request.setAttribute("psList", psList);
-		request.setAttribute("pi", pi);
-		request.getRequestDispatcher("views/product/productSalePage.jsp").forward(request, response);
+		response.setContentType("application/json; charset=utf-8");
+		new Gson().toJson(list, response.getWriter());
 	}
 
 	/**

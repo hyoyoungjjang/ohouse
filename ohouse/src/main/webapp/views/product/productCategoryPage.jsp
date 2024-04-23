@@ -29,6 +29,10 @@
                 <img src="${contextPath}/resources/img/product/productCategoryBar03.png" alt="">
                 <span align="center">가전&#183;디지털</span>
             </div>
+            <div class="pc-categorybar-content" onclick="location.href='categoryList.pr?cpage=1&cNo=5'; click('가전&#183;디지털');">
+                <img src="${contextPath}/resources/img/product/productCategoryBar05.png" alt="">
+                <span align="center">기타</span>
+            </div>
         </div>
     </div>
     
@@ -48,6 +52,9 @@
                     </c:when>
                     <c:when test="${cList.get(0).productCategory == 4}">
                         가전&#183;디지털
+                    </c:when>
+                    <c:when test="${cList.get(0).productCategory == 5}">
+                        기타
                     </c:when>
                 </c:choose>   
             </h1>
@@ -112,9 +119,89 @@
                             _this.src = bookmarkImage;
                         }
                     }
+                    
+                    
+					let pageNum = 2;
+                    
+                    function addproductList(maxPage, cNo){
+                    	if(pageNum > maxPage) {
+                    		$("#nextbutton").remove();
+                    		return;
+                    	}
+						
+                        $.ajax({
+                            url : "ajaxCategoryList.pr",
+                            data : {
+                                cpage : pageNum,
+                                cNo : cNo
+                            },
+                            success : function(list){
+                            	console.log("성공")
+                                drawCategoryProductList(list)
+                                pageNum += 1;
+                            },
+                            error : function(){
+                                console.log("실패")
+                            }
+                        })
+                    }
 
+                    function drawCategoryProductList(list){
+                        
+                        const saleArea = document.getElementById("pc-deal-contents");
+
+                        for (let i = 0; i < list.length; i++) {
+                            const cProduct = list[i];
+                            saleText = "";
+                            if (cProduct.sale > 0) {
+                                saleText = '<span class="pc-color">' + cProduct.sale + '%</span>';
+                            }
+                            
+                            var price = cProduct.productPrice;
+                            price = AddComma(price);
+                            
+                            if (cProduct) {
+                                saleArea.innerHTML += `<div class="pc-sale-content">
+                                    <div class="pc-sale-img">
+                                        <img src="${pageContext.request.contextPath}/` +  cProduct.productThumbnail + `" width="260px">
+                                        <button type="button" onclick="changeBookmark(this, `+cProduct.productId+`)">
+                                            <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
+                                        </button>
+                                    </div>
+                                    <div class="pc-sale-text">
+                                        <div class="pc-company">
+                                            `+cProduct.companyName +`
+                                        </div>
+                                        <div class="pc-title">
+                                            `+ cProduct.productName +`
+                                        </div>
+                                        <div class="pc-price">
+	                                        `+ saleText +`
+	                                        <span>`+ price+`</span>
+                                        </div>
+                                        <div class="pc-review">
+                                            <img src="${pageContext.request.contextPath}/resources/img/product/star.png" width="15px">
+                                            <span class="pc-score">`+ cProduct.ratingAvg +`</span>
+                                            <span class="pc-gray">리뷰</span>
+                                            <span class="pc-gray">`+ cProduct.reviewCount +`</span>
+                                        </div>
+                                    </div>
+                                </div>`
+                            }
+                        }
+                    }
+                    
+                    function AddComma(price){
+                        var comma = /\B(?=(\d{3})+(?!\d))/g;                
+                        return price.toString().replace(comma, ',');
+                    }
     
                 </script>
+            </div>
+            <div id="paging-area">
+            	<a onclick="addproductList('${pi.maxPage}', '${cList.get(0).productCategory}')">
+            		<img id="nextbutton" src="${pageContext.request.contextPath}/resources/img/product/angle-small-down.png" alt="">
+            	</a>
             </div>
         </div>
     </div>
