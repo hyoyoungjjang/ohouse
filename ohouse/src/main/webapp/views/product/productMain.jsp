@@ -23,223 +23,176 @@
                 <span class="pm-add" onclick="location.href='${contextPath}/saleList.pr?cpage=1&condition=saleDesc'">더보기</span>
             </div>
             <div class="pm-sale pm-content" id="pm-deal-contents">
-                <div class="pm-sale-content">
-                    <div class="pm-sale-img">
-                        <img src="${pageContext.request.contextPath}/resources/img/product/productMain01.png" width="260px">
-                        <button type="button">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
-                        </button>
-                    </div>
-                    <div class="pm-sale-text">
-                        <div class="pm-company">
-                            LG전자
-                        </div>
-                        <div class="pm-title">
-                            [최종가 146만/한정 100대] LG 디오스 노크온 오브제컬렉션 T873MEE312
-                        </div>
-                        <div class="pm-price">
-                            <span class="pm-color">36%</span>
-                            <span>1,769,000</span>
-                        </div>
-                        <div class="pm-review">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/star.png" width="15px">
-                            <span class="pm-score">4.9</span>
-                            <span class="pm-gray">리뷰</span>
-                            <span class="pm-gray">1,091</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="pm-sale-content">
-                    <div class="pm-sale-img">
-                        <img src="${pageContext.request.contextPath}/resources/img/product/productMain02.png" width="260px">
-                        <button type="button">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
-                        </button>
-                    </div>
-                    <div class="pm-sale-text">
-                        <div class="pm-company">
-                            동원
-                        </div>
-                        <div class="pm-title">
-                            [최대 14,902원] 4.03원데이! 동원참치 85g*12캔 외 BEST상품 모음전
-                        </div>
-                        <div class="pm-price">
-                            <span class="pm-color">25%</span>
-                            <span>17,980</span>
-                        </div>
-                        <div class="pm-review">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/star.png" width="15px">
-                            <span class="pm-score">4.8</span>
-                            <span class="pm-gray">리뷰</span>
-                            <span class="pm-gray">11,853</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="pm-sale-content">
-                    <div class="pm-sale-img">
-                        <img src="${pageContext.request.contextPath}/resources/img/product/productMain03.png" width="260px">
-                        <button type="button">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
-                        </button>
-                    </div>
-                    <div class="pm-sale-text">
-                        <div class="pm-company">
-                            진심감성 (리빙)
-                        </div>
-                        <div class="pm-title">
-                            논슬립 어깨뿔방지 옷걸이 30개 5colors 외 옷걸이/바지걸이 모음
-                        </div>
-                        <div class="pm-price">
-                            <span class="pm-color">12%</span>
-                            <span>29,000</span>
-                        </div>
-                        <div class="pm-review">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/star.png" width="15px">
-                            <span class="pm-score">4.7</span>
-                            <span class="pm-gray">리뷰</span>
-                            <span class="pm-gray">1,241</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="pm-sale-content">
-                    <div class="pm-sale-img">
-                        <img src="${pageContext.request.contextPath}/resources/img/product/productMain04.png" width="260px">
-                        <button type="button">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
-                        </button>
-                    </div>
-                    <div class="pm-sale-text">
-                        <div class="pm-company">
-                            진심감성 (리빙)
-                        </div>
-                        <div class="pm-title">
-                            논슬립 어깨뿔방지 옷걸이 30개 5colors 외 옷걸이/바지걸이 모음
-                        </div>
-                        <div class="pm-price">
-                            <span class="pm-color">62%</span>
-                            <span>18,900</span>
-                        </div>
-                        <div class="pm-review">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/star.png" width="15px">
-                            <span class="pm-score">4.8</span>
-                            <span class="pm-gray">리뷰</span>
-                            <span class="pm-gray">25,515</span>
-                        </div>
-                    </div>
-                </div>
+                <!-- 제품들을 그려주는 공간 -->
+
+
+
+
             </div>
             <div class="pm-sale pm-header" id="pm-best-header">
                 <span class="pm-category">인기 상품</span>
                 <span class="pm-add" onclick="location.href='${contextPath}/list.pr?cpage=1'">더보기</span>
             </div>
-            <div class="pm-sale pm-content" id="pm-deal-contents">
-                <div class="pm-sale-content">
-                    <div class="pm-sale-img">
-                        <img src="${pageContext.request.contextPath}/resources/img/product/productMain01.png" width="260px">
-                        <button type="button">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
-                        </button>
-                    </div>
-                    <div class="pm-sale-text">
-                        <div class="pm-company">
-                            LG전자
-                        </div>
-                        <div class="pm-title">
-                            [최종가 146만/한정 100대] LG 디오스 노크온 오브제컬렉션 T873MEE312
-                        </div>
-                        <div class="pm-price">
-                            <span class="pm-color">36%</span>
-                            <span>1,769,000</span>
-                        </div>
-                        <div class="pm-review">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/star.png" width="15px">
-                            <span class="pm-score">4.9</span>
-                            <span class="pm-gray">리뷰</span>
-                            <span class="pm-gray">1,091</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="pm-sale-content">
-                    <div class="pm-sale-img">
-                        <img src="${pageContext.request.contextPath}/resources/img/product/productMain02.png" width="260px">
-                        <button type="button">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
-                        </button>
-                    </div>
-                    <div class="pm-sale-text">
-                        <div class="pm-company">
-                            동원
-                        </div>
-                        <div class="pm-title">
-                            [최대 14,902원] 4.03원데이! 동원참치 85g*12캔 외 BEST상품 모음전
-                        </div>
-                        <div class="pm-price">
-                            <span class="pm-color">25%</span>
-                            <span>17,980</span>
-                        </div>
-                        <div class="pm-review">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/star.png" width="15px">
-                            <span class="pm-score">4.8</span>
-                            <span class="pm-gray">리뷰</span>
-                            <span class="pm-gray">11,853</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="pm-sale-content">
-                    <div class="pm-sale-img">
-                        <img src="${pageContext.request.contextPath}/resources/img/product/productMain03.png" width="260px">
-                        <button type="button">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
-                        </button>
-                    </div>
-                    <div class="pm-sale-text">
-                        <div class="pm-company">
-                            진심감성 (리빙)
-                        </div>
-                        <div class="pm-title">
-                            논슬립 어깨뿔방지 옷걸이 30개 5colors 외 옷걸이/바지걸이 모음
-                        </div>
-                        <div class="pm-price">
-                            <span class="pm-color">12%</span>
-                            <span>29,000</span>
-                        </div>
-                        <div class="pm-review">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/star.png" width="15px">
-                            <span class="pm-score">4.7</span>
-                            <span class="pm-gray">리뷰</span>
-                            <span class="pm-gray">1,241</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="pm-sale-content">
-                    <div class="pm-sale-img">
-                        <img src="${pageContext.request.contextPath}/resources/img/product/productMain04.png" width="260px">
-                        <button type="button">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
-                        </button>
-                    </div>
-                    <div class="pm-sale-text">
-                        <div class="pm-company">
-                            진심감성 (리빙)
-                        </div>
-                        <div class="pm-title">
-                            논슬립 어깨뿔방지 옷걸이 30개 5colors 외 옷걸이/바지걸이 모음
-                        </div>
-                        <div class="pm-price">
-                            <span class="pm-color">62%</span>
-                            <span>18,900</span>
-                        </div>
-                        <div class="pm-review">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/star.png" width="15px">
-                            <span class="pm-score">4.8</span>
-                            <span class="pm-gray">리뷰</span>
-                            <span class="pm-gray">25,515</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="pm-sale pm-content" id="pm-best-contents">
+                
+                <!--제품을 그려주는 공간-->
             </div>
         </div>
     </div>
+    <script>
+        
+        window.onload = function(){ 
+        
+            $.ajax({
+                url : "msList.pr",
+                data : {
+                    condition : 'saleDesc'
+                },
+                success : function(list){
+                    drawSaleProductList(list)
+                    
+                }
+            })
+
+            $.ajax({
+                url : "mList.pr",
+                data : {
+                    condition : 'saleDesc'
+                },
+                success : function(list){
+                    drawProductList(list)
+                   
+                    
+                }
+            })
+            
+            
+            function drawProductList(list){
+            	
+
+                const saleArea = document.getElementById("pm-best-contents");
+
+                for (let i = 0; i < 4; i++) {
+                    const product = list[i];
+                    	saleText = "";
+                    if (product.sale > 0) {
+                
+                        saleText = '<span class="pm-color">' + product.sale + '%</span>';
+                    }
+                    
+                    var price = product.productPrice;
+                    price = AddComma(price);
+                    
+                    if (product) {
+                        saleArea.innerHTML += `<div class="pm-sale-content">
+                            <div class="pm-sale-img">
+                                <img src="${pageContext.request.contextPath}/` +  product.productThumbnail + `" width="260px">
+                                <button type="button" onclick="changeBookmark(this, `+product.productId+`)">
+                                    <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
+                                </button>
+                            </div>
+                            <div class="pm-sale-text">
+                                <div class="pm-company">
+                                    `+product.companyName +`
+                                </div>
+                                <div class="pm-title">
+                                    `+ product.productName +`
+                                </div>
+                                <div class="pm-price">                                    
+	                                `+ saleText +`
+                                    <span>`+ price+`</span>
+                                </div>
+                                <div class="pm-review">
+                                    <img src="${pageContext.request.contextPath}/resources/img/product/star.png" width="15px">
+                                    <span class="pm-score">`+ product.ratingAvg +`</span>
+                                    <span class="pm-gray">리뷰</span>
+                                    <span class="pm-gray">`+ product.reviewCount +`</span>
+                                </div>
+                            </div>
+                        </div>`
+                    }
+                }
+            }
+
+
+
+            function drawSaleProductList(list){
+
+                const saleArea = document.getElementById("pm-deal-contents");
+
+                for (let i = 0; i < 4; i++) {
+                    const saleproduct = list[i];
+                    
+                    var price = saleproduct.productPrice;
+                    price = AddComma(price);
+                    
+                    if (saleproduct) {
+                        saleArea.innerHTML += `<div class="pm-sale-content">
+                            <div class="pm-sale-img">
+                                <img src="${pageContext.request.contextPath}/` +  saleproduct.productThumbnail + `" width="260px">
+                                <button type="button" onclick="changeBookmark(this, `+saleproduct.productId+`)">
+                                    <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
+                                </button>
+                            </div>
+                            <div class="pm-sale-text">
+                                <div class="pm-company">
+                                    `+saleproduct.companyName +`
+                                </div>
+                                <div class="pm-title">
+                                    `+ saleproduct.productName +`
+                                </div>
+                                <div class="pm-price">
+                                    <span class="pm-color">`+ saleproduct.sale+`%</span>
+                                    <span>`+ price+`</span>
+                                </div>
+                                <div class="pm-review">
+                                    <img src="${pageContext.request.contextPath}/resources/img/product/star.png" width="15px">
+                                    <span class="pm-score">`+ saleproduct.ratingAvg +`</span>
+                                    <span class="pm-gray">리뷰</span>
+                                    <span class="pm-gray">`+ saleproduct.reviewCount +`</span>
+                                </div>
+                            </div>
+                        </div>`
+                    }
+                }
+            }
+        }
+
+        function AddComma(price){
+            var comma = /\B(?=(\d{3})+(?!\d))/g;                
+            return price.toString().replace(comma, ',');
+        }
+
+	    function changeBookmark(button, pNo){    
+	        const contextPath = "${pageContext.request.contextPath}";
+	        const img = button.querySelector('img');
+	        let src = img.src;
+	        const bookmarkImage = contextPath + "/resources/img/product/pm-bookmark.png";
+	        const checkedBookmarkImage = contextPath + "/resources/img/product/pm-bookmark-checked.png";
+	     
+	        const membersNo = "${loginUser.membersNo}"
+	        if (src.includes("pm-bookmark.png")) {
+	            img.src = checkedBookmarkImage;
+	        } else {
+	            img.src = bookmarkImage;
+	        }
+	
+	        $.ajax({ 
+	            url : "scrap.pr",
+	            data : {
+	                mNo : membersNo,
+	                pNo : pNo,
+	                status : src.includes("pm-bookmark.png") ? "Y" : "N"
+	            },
+	            success : function(result){
+	                console.log("스크랩 성공.")
+	            },
+	            error : function(){
+	                console.log("스크랩 실패")
+	            }       
+	        })
+	    }
+    </script>
     <footer>
         <%@ include file="../common/footer.jsp" %>
     </footer>

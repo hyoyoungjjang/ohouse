@@ -65,19 +65,12 @@
         <div class="sticky-container" style="height: 51px;">
             <!-- 쇼핑 -->
             <div class="header-category">
-                <a href="">쇼핑홈</a>
-                <a href="">카테고리</a>
-                <a href="">베스트</a>
-                <a href="">오늘의딜</a>
+                <a class="" href="${contextPath}">쇼핑홈</a>
+                <a class="" href="${contextPath}/categoryList.pr?cpage=1&cNo=1">카테고리</a>
+                <a class="" href="${contextPath}/list.pr?cpage=1">베스트</a>
+                <a class="" href="${contextPath}/saleList.pr?cpage=1&condition=saleDesc">오늘의딜</a>
             </div>
-            <!-- 마이페이지 -->
-            <div class="header-mypage header-hidden">
-                <a href="">프로필</a>
-                <a href="">나의 쇼핑</a>
-                <a href="">나의문의내역</a>
-                <a href="">나의 리뷰</a>
-                <a href="">설정</a>
-            </div>
+           
         </div>
         <div style="border: 1px solid #f7f9fa; min-width: 1136px;"></div>
     </div>

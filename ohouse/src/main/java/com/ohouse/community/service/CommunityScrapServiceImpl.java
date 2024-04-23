@@ -2,6 +2,7 @@ package com.ohouse.community.service;
 
 import static com.ohouse.common.template.Template.getSqlSession;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;
@@ -87,6 +88,22 @@ public class CommunityScrapServiceImpl implements CommunityScrapService{
 		
 		sqlSession.close();
 		return result;
+	}
+
+	@Override
+	public ArrayList<Scrap> selectBoardScrap(int boardId) {
+		SqlSession sqlSession = getSqlSession();
+		ArrayList<Scrap> list = communityScrapDao.selectBoardScrap(sqlSession, boardId);
+		sqlSession.close();
+		return list;
+	}
+
+	@Override
+	public ArrayList<Scrap> selectMediaScrap(int boardId) {
+		SqlSession sqlSession = getSqlSession();
+		ArrayList<Scrap> list = communityScrapDao.selectMediaScrap(sqlSession, boardId);
+		sqlSession.close();
+		return list;
 	}
 
 }

@@ -17,326 +17,70 @@
                 <span class="pc-category" align="center">오늘의딜</span>
             </div>
             <div class="pc-sale pc-header" id="pc-deal-header">
-                <h4 class="pc-gray">전체 <span class="pc-gray">100</span>개</h4>
+                <h4 class="pc-gray">전체 <span class="pc-gray">${psList.size()}</span>개</h4>
             </div>
-            <div class="pc-sale pc-content" id="pc-deal-contents">
-                <div class="pc-sale-content">
-                    <div class="pc-sale-img">
-                        <img src="${contextPath}/resources/img/product/productMain01.png">
-                        <button type="button">
-                            <img src="${contextPath}/resources/img/product/pm-bookmark.png" width="40px">
-                        </button>
-                    </div>
-                    <div class="pc-sale-text">
-                        <div class="pc-company">
-                            LG전자
+            <div class="pc-sale" id="pc-deal-contents">
+                <c:forEach var="ps" items="${psList}">
+                    <div class="pc-sale-content">
+                        <div class="pc-sale-img">
+                            <img src="${contextPath}/${ps.productThumbnail}">
+                            <button type="button">
+                                <img src="${contextPath}/resources/img/product/pm-bookmark.png" width="40px" onclick="changeBookmark(this, '${ps.productId}')">
+                            </button>
                         </div>
-                        <div class="pc-title">
-                            [최종가 146만/한정 100대] LG 디오스 노크온 오브제컬렉션 T873MEE312
-                        </div>
-                        <div class="pc-price">
-                            <span class="pc-color">36%</span>
-                            <span>1,769,000</span>
-                        </div>
-                        <div class="pc-review">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/star.png" width="15px">
-                            <span class="pc-score">4.9</span>
-                            <span class="pc-gray">리뷰</span>
-                            <span class="pc-gray">1,091</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="pc-sale-content">
-                    <div class="pc-sale-img">
-                        <img src="${pageContext.request.contextPath}/resources/img/product/productMain02.png">
-                        <button type="button">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
-                        </button>
-                    </div>
-                    <div class="pc-sale-text">
-                        <div class="pc-company">
-                            동원
-                        </div>
-                        <div class="pc-title">
-                            [최대 14,902원] 4.03원데이! 동원참치 85g*12캔 외 BEST상품 모음전
-                        </div>
-                        <div class="pc-price">
-                            <span class="pc-color">25%</span>
-                            <span>17,980</span>
-                        </div>
-                        <div class="pc-review">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/star.png" width="15px">
-                            <span class="pc-score">4.8</span>
-                            <span class="pc-gray">리뷰</span>
-                            <span class="pc-gray">11,853</span>
+
+                        <div class="pc-sale-text">
+                            <div class="pc-company">
+                                ${ps.companyName}
+                            </div>
+                            <div class="pc-title">
+                                ${ps.productName}
+                            </div>
+                            <div class="pc-price">
+                                <span class="pc-color">${ps.sale}%</span>
+                                <span><fmt:formatNumber value="${ps.productPrice}" /></span>
+                            </div>
+                            <div class="pc-review">
+                                <img src="${pageContext.request.contextPath}/resources/img/product/star.png" width="15px">
+                                <span class="pc-score">${ps.ratingAvg}</span>
+                                <span class="pc-gray">리뷰</span>
+                                <span class="pc-gray">${ps.reviewCount}</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="pc-sale-content">
-                    <div class="pc-sale-img">
-                        <img src="${pageContext.request.contextPath}/resources/img/product/productMain03.png">
-                        <button type="button">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
-                        </button>
-                    </div>
-                    <div class="pc-sale-text">
-                        <div class="pc-company">
-                            진심감성 (리빙)
-                        </div>
-                        <div class="pc-title">
-                            논슬립 어깨뿔방지 옷걸이 30개 5colors 외 옷걸이/바지걸이 모음
-                        </div>
-                        <div class="pc-price">
-                            <span class="pc-color">12%</span>
-                            <span>29,000</span>
-                        </div>
-                        <div class="pc-review">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/star.png" width="15px">
-                            <span class="pc-score">4.7</span>
-                            <span class="pc-gray">리뷰</span>
-                            <span class="pc-gray">1,241</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="pc-sale-content">
-                    <div class="pc-sale-img">
-                        <img src="${pageContext.request.contextPath}/resources/img/product/productMain04.png">
-                        <button type="button">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
-                        </button>
-                    </div>
-                    <div class="pc-sale-text">
-                        <div class="pc-company">
-                            진심감성 (리빙)
-                        </div>
-                        <div class="pc-title">
-                            논슬립 어깨뿔방지 옷걸이 30개 5colors 외 옷걸이/바지걸이 모음
-                        </div>
-                        <div class="pc-price">
-                            <span class="pc-color">62%</span>
-                            <span>18,900</span>
-                        </div>
-                        <div class="pc-review">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/star.png" width="15px">
-                            <span class="pc-score">4.8</span>
-                            <span class="pc-gray">리뷰</span>
-                            <span class="pc-gray">25,515</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="pc-sale pc-content" id="pc-deal-contents">
-                <div class="pc-sale-content">
-                    <div class="pc-sale-img">
-                        <img src="${pageContext.request.contextPath}/resources/img/product/productMain01.png">
-                        <button type="button">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
-                        </button>
-                    </div>
-                    <div class="pc-sale-text">
-                        <div class="pc-company">
-                            LG전자
-                        </div>
-                        <div class="pc-title">
-                            [최종가 146만/한정 100대] LG 디오스 노크온 오브제컬렉션 T873MEE312
-                        </div>
-                        <div class="pc-price">
-                            <span class="pc-color">36%</span>
-                            <span>1,769,000</span>
-                        </div>
-                        <div class="pc-review">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/star.png" width="15px">
-                            <span class="pc-score">4.9</span>
-                            <span class="pc-gray">리뷰</span>
-                            <span class="pc-gray">1,091</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="pc-sale-content">
-                    <div class="pc-sale-img">
-                        <img src="${pageContext.request.contextPath}/resources/img/product/productMain02.png">
-                        <button type="button">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
-                        </button>
-                    </div>
-                    <div class="pc-sale-text">
-                        <div class="pc-company">
-                            동원
-                        </div>
-                        <div class="pc-title">
-                            [최대 14,902원] 4.03원데이! 동원참치 85g*12캔 외 BEST상품 모음전
-                        </div>
-                        <div class="pc-price">
-                            <span class="pc-color">25%</span>
-                            <span>17,980</span>
-                        </div>
-                        <div class="pc-review">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/star.png" width="15px">
-                            <span class="pc-score">4.8</span>
-                            <span class="pc-gray">리뷰</span>
-                            <span class="pc-gray">11,853</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="pc-sale-content">
-                    <div class="pc-sale-img">
-                        <img src="${pageContext.request.contextPath}/resources/img/product/productMain03.png">
-                        <button type="button">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
-                        </button>
-                    </div>
-                    <div class="pc-sale-text">
-                        <div class="pc-company">
-                            진심감성 (리빙)
-                        </div>
-                        <div class="pc-title">
-                            논슬립 어깨뿔방지 옷걸이 30개 5colors 외 옷걸이/바지걸이 모음
-                        </div>
-                        <div class="pc-price">
-                            <span class="pc-color">12%</span>
-                            <span>29,000</span>
-                        </div>
-                        <div class="pc-review">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/star.png" width="15px">
-                            <span class="pc-score">4.7</span>
-                            <span class="pc-gray">리뷰</span>
-                            <span class="pc-gray">1,241</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="pc-sale-content">
-                    <div class="pc-sale-img">
-                        <img src="${pageContext.request.contextPath}/resources/img/product/productMain04.png">
-                        <button type="button">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
-                        </button>
-                    </div>
-                    <div class="pc-sale-text">
-                        <div class="pc-company">
-                            진심감성 (리빙)
-                        </div>
-                        <div class="pc-title">
-                            논슬립 어깨뿔방지 옷걸이 30개 5colors 외 옷걸이/바지걸이 모음
-                        </div>
-                        <div class="pc-price">
-                            <span class="pc-color">62%</span>
-                            <span>18,900</span>
-                        </div>
-                        <div class="pc-review">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/star.png" width="15px">
-                            <span class="pc-score">4.8</span>
-                            <span class="pc-gray">리뷰</span>
-                            <span class="pc-gray">25,515</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="pc-sale pc-content" id="pc-deal-contents">
-                <div class="pc-sale-content">
-                    <div class="pc-sale-img">
-                        <img src="${pageContext.request.contextPath}/resources/img/product/productMain01.png">
-                        <button type="button">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
-                        </button>
-                    </div>
-                    <div class="pc-sale-text">
-                        <div class="pc-company">
-                            LG전자
-                        </div>
-                        <div class="pc-title">
-                            [최종가 146만/한정 100대] LG 디오스 노크온 오브제컬렉션 T873MEE312
-                        </div>
-                        <div class="pc-price">
-                            <span class="pc-color">36%</span>
-                            <span>1,769,000</span>
-                        </div>
-                        <div class="pc-review">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/star.png" width="15px">
-                            <span class="pc-score">4.9</span>
-                            <span class="pc-gray">리뷰</span>
-                            <span class="pc-gray">1,091</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="pc-sale-content">
-                    <div class="pc-sale-img">
-                        <img src="${pageContext.request.contextPath}/resources/img/product/productMain02.png">
-                        <button type="button">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
-                        </button>
-                    </div>
-                    <div class="pc-sale-text">
-                        <div class="pc-company">
-                            동원
-                        </div>
-                        <div class="pc-title">
-                            [최대 14,902원] 4.03원데이! 동원참치 85g*12캔 외 BEST상품 모음전
-                        </div>
-                        <div class="pc-price">
-                            <span class="pc-color">25%</span>
-                            <span>17,980</span>
-                        </div>
-                        <div class="pc-review">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/star.png" width="15px">
-                            <span class="pc-score">4.8</span>
-                            <span class="pc-gray">리뷰</span>
-                            <span class="pc-gray">11,853</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="pc-sale-content">
-                    <div class="pc-sale-img">
-                        <img src="${pageContext.request.contextPath}/resources/img/product/productMain03.png">
-                        <button type="button">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
-                        </button>
-                    </div>
-                    <div class="pc-sale-text">
-                        <div class="pc-company">
-                            진심감성 (리빙)
-                        </div>
-                        <div class="pc-title">
-                            논슬립 어깨뿔방지 옷걸이 30개 5colors 외 옷걸이/바지걸이 모음
-                        </div>
-                        <div class="pc-price">
-                            <span class="pc-color">12%</span>
-                            <span>29,000</span>
-                        </div>
-                        <div class="pc-review">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/star.png" width="15px">
-                            <span class="pc-score">4.7</span>
-                            <span class="pc-gray">리뷰</span>
-                            <span class="pc-gray">1,241</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="pc-sale-content">
-                    <div class="pc-sale-img">
-                        <img src="${pageContext.request.contextPath}/resources/img/product/productMain04.png">
-                        <button type="button">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
-                        </button>
-                    </div>
-                    <div class="pc-sale-text">
-                        <div class="pc-company">
-                            진심감성 (리빙)
-                        </div>
-                        <div class="pc-title">
-                            논슬립 어깨뿔방지 옷걸이 30개 5colors 외 옷걸이/바지걸이 모음
-                        </div>
-                        <div class="pc-price">
-                            <span class="pc-color">62%</span>
-                            <span>18,900</span>
-                        </div>
-                        <div class="pc-review">
-                            <img src="${pageContext.request.contextPath}/resources/img/product/star.png" width="15px">
-                            <span class="pc-score">4.8</span>
-                            <span class="pc-gray">리뷰</span>
-                            <span class="pc-gray">25,515</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                </c:forEach>
+
+                <script>
+                    function changeBookmark(_this, pNo){
+                        const contextPath = "${pageContext.request.contextPath}";
+                        const src = _this.src;
+                        const bookmarkImage = contextPath + "/resources/img/product/pm-bookmark.png";
+                        const checkedBookmarkImage = contextPath + "/resources/img/product/pm-bookmark-checked.png";
+                      
+                        const membersNo = "${loginUser.membersNo}"
+                        if (src.includes("pm-bookmark.png")) {
+                            _this.src = checkedBookmarkImage;
+                        } else {
+                            _this.src = bookmarkImage;
+                        }
+
+                        $.ajax({
+                                url : "scrap.pr",
+                                data : {
+                                    mNo : membersNo,
+                                    pNo : pNo,
+                                    status : src.includes("pm-bookmark.png") ? "Y" : "N"
+                                },
+                                success : function(result){
+                                    console.log("스크랩 성공.")
+                                },
+                                error : function(){
+                                    console.log("스크랩 실패")
+                                }       
+                            })
+                    }
+                </script>
+            </div>  
         </div>
     </div>
     <footer>

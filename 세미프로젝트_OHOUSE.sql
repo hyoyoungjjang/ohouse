@@ -1,5 +1,7 @@
 ----------삭제-------------
 --접속유저의 모든 테이블 및 제약조건 삭제
+SET DEFINE OFF;
+
 BEGIN
     FOR C IN (SELECT TABLE_NAME FROM USER_TABLES) LOOP
     EXECUTE IMMEDIATE ('DROP TABLE '||C.TABLE_NAME||' CASCADE CONSTRAINTS');
@@ -85,7 +87,7 @@ COMMENT ON COLUMN BOARD.BOARD_STATUS IS '게시글 상태(현존 여부)';
 -- PRODUCT --
 CREATE TABLE "PRODUCT" (
 	"PRODUCT_ID" NUMBER,
-	"PRODUCT_NAME"	VARCHAR2(100) CONSTRAINT NT_PD_NAME NOT NULL,
+	"PRODUCT_NAME"	VARCHAR2(255) CONSTRAINT NT_PD_NAME NOT NULL,
 	"PRODUCT_PRICE"	NUMBER CONSTRAINT NT_PD_PRICE NOT NULL,
 	"PRODUCT_SALES"	NUMBER DEFAULT 0,
 	"STOCK"	NUMBER CONSTRAINT NT_PD_STOCK NOT NULL,
@@ -110,7 +112,7 @@ COMMENT ON COLUMN "PRODUCT"."SALE" IS '할인율';
 COMMENT ON COLUMN "PRODUCT"."PRODUCT_CONTENT" IS '상품내용';
 COMMENT ON COLUMN "PRODUCT"."PRODUCT_CREATE_TIME" IS '생성일';
 COMMENT ON COLUMN "PRODUCT"."PRODUCT_MODIFY_TIME" IS '수정일';
-COMMENT ON COLUMN "PRODUCT"."PRODUCT_CATEGORY" IS '카테고리(가구(1) / 패브릭(2) / 주방용품(3) / 가전 및 디지털(4) / 기타(5))';
+COMMENT ON COLUMN "PRODUCT"."PRODUCT_CATEGORY" IS '카테고리(가구(1) / 패브릭(2) / 생활용품(3) / 가전 및 디지털(4) / 기타(5))';
 COMMENT ON COLUMN "PRODUCT"."MEMBERS_NO" IS '회원번호';
 COMMENT ON COLUMN "PRODUCT"."PRODUCT_DELIVERY_PRICE" IS '배송비';
 --------------------------------------------------------------------
@@ -540,16 +542,74 @@ VALUES (SEQ_MEMID.NEXTVAL, '시디즈', '1234', '시디즈');
 INSERT INTO MEMBERS (MEMBERS_NO, MEMBERS_ID, MEMBERS_PWD, COMPANY_NAME)
 VALUES (SEQ_MEMID.NEXTVAL, '쿠첸', '1234', '쿠첸');
 
-
-
-
-
 ----------------------------------------- BOARD ------------------------------------------
 INSERT INTO BOARD (BOARD_ID, BOARD_TITLE, BOARD_VIEWS, BOARD_CREATE_TIME, BOARD_INTRODUCTION ,BOARD_DESCRIPTION, FILTER_TYPE, FILTER_AREA,FILTER_FAMILY, FILTER_FIELD, FILTER_WORKER, MEMBERS_NO)
 VALUES (SEQ_BODID.NEXTVAL, '오늘의집 클론 코딩', 100, SYSDATE, '우리집을 소개합니다', '블라블라', '아파트', 30, '싱글라이프', '리모델링' , '전문가', 2);
 
 INSERT INTO BOARD (BOARD_ID, BOARD_TITLE, BOARD_VIEWS, BOARD_CREATE_TIME, BOARD_INTRODUCTION ,BOARD_DESCRIPTION, FILTER_TYPE, FILTER_AREA,FILTER_FAMILY, FILTER_FIELD, FILTER_WORKER, MEMBERS_NO)
 VALUES (SEQ_BODID.NEXTVAL, '할 수 있다', 200, SYSDATE, '우당탕탕 프로젝트', '블라블라', '원룸', 7, '싱글라이프', '홈스타일링', '셀프/DIY', 1);
+
+INSERT INTO BOARD (BOARD_ID, BOARD_TITLE, BOARD_VIEWS, BOARD_INTRODUCTION, BOARD_DESCRIPTION, FILTER_TYPE, FILTER_AREA, FILTER_FAMILY, FILTER_FIELD,  FILTER_WORKER, MEMBERS_NO)
+VALUES (SEQ_BODID.NEXTVAL, '깔끔한 집의 비결은? 짱짱한 수납과 팬트리에서!', 3102, 
+'안녕하세요. 초등학교 4학년 남자아이, 24개월 여자 아이와 "산솔집(@sanif_home)"에 살고 있는 맞벌이 부부입니다. 
+저희 집은 산솔집이라 불리고 있습니다. 물, 식물, 곤충, 동물 등 세상 모든 것들의 시작이고 동식물 모두를 포용하는 산의 모습을 닮길 바라며 첫째 이름을 산이라고 지었어요. 둘째는 항상 푸르고 밝게 자라길 바라는 마음으로 솔이라고 지었고요. 그래서 두 아이의 이름을 따 산솔집이라 이름 지었습니다.',
+'산솔집은 20년이 훌쩍 넘은 구축 아파트를 리모델링 했습니다. 구축으로 이사 올 때 주위에 많은 분들이 반대를 했지만 저희는 맞벌이 부부이기에 아이의 등하교와 학원 등 인프라가 잘 갖춰진 곳 위주로 찾아보았고, 최종적으로 중, 고등학교 시절 제가 살던 아파트로 결정을 하였습니다.
+이 집으로 결정을 하게 된 가장 큰 이유는 집에서 학교까지 걸어서 1분! 뛰어가면 30초! 라는 엄청난 메리트가 있으며, 아파트 단지 내에 학교 입구가 있어서 차도를 건너지 않아도 된다는 점, 아파트 앞에는 상가가 밀집되어 있고 그 상가들에는 초 · 중 · 고 학원들이 즐비하여 아이를 키우기에 최고의 입지 환경이라는 결론을 지었습니다.
+인터넷에 있는 도면 상태인데 가벽과 일부 확장을 진행하여 현재와는 조금 다른 모습입니다. ',
+'아파트', 48, '취학 자녀와 함께', '리모델링' , '전문가', 1);
+
+INSERT INTO BOARD (BOARD_ID, MEMBERS_NO,  BOARD_TITLE, BOARD_VIEWS, FILTER_TYPE, FILTER_AREA, FILTER_FIELD, FILTER_FAMILY,  FILTER_WORKER, FILTER_LOCAL, FILTER_PERIOD, FILTER_PERIOD_TYPE, FILTER_CONSTRUCTION_PRICE,  BOARD_INTRODUCTION, BOARD_DESCRIPTION)
+VALUES(
+SEQ_BODID.NEXTVAL, 1, '히든도어, 고민하지 마세요! 깔끔한 33평 화이트&우드', 3159, '아파트', 33, '리모델링', '싱글라이프', '전문가', '경기도 수원시' , 5, '주', 6500,
+'안녕하세요, 오뉴디자인입니다. 오늘 소개해 드릴 현장은 수원시 권선구 금곡동 호반베르디움더센트럴 33평 A타입이에요.',
+'기존 구조를 살펴보면 ㄷ자 형태의 주방의 좌우로 팬트리가 있는 평범한 레이아웃이었답니다. 고객님께선 화이트 톤에 우드를 포인트로 넣기를 바라셨고 11자 형태 대면형 주방에 대한 니즈가 있었어요. 전반적으로 정돈되고 깔끔한 공간을 원했습니다. 이러한 니즈를 충족시켜 드리고자 주방에는 MDF와 필름, 깔끔한 히든도어를 활용하여 11자 형태의 대면형 주방으로 레이아웃을 짜드렸어요. 여러 디테일이 숨겨진 따뜻한 공간 지금부터 함께 구경해 보실까요? 집의 테마인 화이트 & 우드와 맞게 전체적으로 밝은 톤으로 꾸며준 현관이에요. 문 앞에 걸려있는 감각적인 그림 덕분에 클라이언트의 취향이 현관에서부터 느껴집니다. '
+);
+
+INSERT INTO BOARD (BOARD_ID, MEMBERS_NO,  BOARD_TITLE, BOARD_VIEWS, FILTER_TYPE, FILTER_AREA, FILTER_FIELD, FILTER_FAMILY,  FILTER_WORKER, FILTER_LOCAL, BOARD_INTRODUCTION, BOARD_DESCRIPTION)
+VALUES(
+SEQ_BODID.NEXTVAL, 1, '장시간 지내는 거실 홈오피스, 싱그러움 한 방울 더했어요!', 4959, '아파트', 22, '홈스타일링', '신혼부부', '셀프/DIY', '서울특별시',
+'안녕하세요?! 오늘의집 집들이에 두 번째 인사를 드리는 룰루랄라홈입니다.
+처음 집들이는 갓 이사 왔을 때 장신 없이 올린지라 지금 보면 너무 어설프고 정신도 없고 했던 거 같아요. 처음 집들이 소개 후 5년이라는 시간이 흘렀는데요. 그 사이 이사를 가고 싶었지만 현실은 아직 같은 공간입니다.
+하지만 5년 전과는 모든 물건이 하나 같은 게 없어요. 집 뼈대는 그대로인데 집안의 모든 물건이 바뀌었다고 해도 과언이 아닌 거 같습니다.
+처음 인스타를 시작했을 땐 셀프 인테리어에 목적을 두었는데요. 하지만 셀프 인테리어의 한계를 느끼면 점점 셀프가 줄어들고 있어요. 하지만 작년에 작은 변화를 준 주방은 아직도 셀프 인테리어의 취지가 살아 있습니다. 자 그럼 룰루랄라홈이 처음과 어떻게 바뀌었는지 살펴 보실까요?',
+'작은 거실이지만 큰 테이블과 함께 포기하지 못한 소파입니다. 거실 구조를 고려해서 모듈형의 소파를 구입했습니다. 그리고 소파 옆엔 작은 티 테이블을 두었습니다.'
+);
+
+INSERT INTO BOARD (BOARD_ID, MEMBERS_NO,  BOARD_TITLE, BOARD_VIEWS, FILTER_TYPE, FILTER_AREA, FILTER_FIELD, FILTER_FAMILY,  FILTER_WORKER, FILTER_LOCAL, FILTER_PERIOD, FILTER_PERIOD_TYPE, BOARD_INTRODUCTION, BOARD_DESCRIPTION)
+VALUES(
+SEQ_BODID.NEXTVAL, 1, '집에 원형 기둥이? 독특한 유럽식 구조로 깊이감이 있는 집', 4707, '아파트', 54, '리모델링', '아기가 있는 집', '반셀프', '경기도 용인시', 3, '주',
+'안녕하세요, 저는 장난꾸러기 두 아들의 엄마이고 영상 만드는 일을 하고 있는 @hejhey_home입니다. 
+처음 보는 독특한 구조에 반해 이사 온 지 3개월 정도 되었어요. 유행을 따르기보다 저희의 취향대로 따뜻하고 아늑한 분위기의 집을 만들고자 했습니다. 3번째임에도 가장 힘든 반셀프 인테리어였어요.
+큰 작업들이 끝나고 잠시 쉬고 싶은 마음에 아직 미완성인 부분이 많지만, 완성은 살면서 천천히 하도록 하고 온라인 집들이부터 시작해 보겠습니다 :)',
+
+'거실 쪽에서 바라본 현관 중문 모습입니다. 현관 중문은 유리가 없는 디자인으로 제작했습니다. 유리가 있었다면 집이 더 확장돼 보였겠지만, 집 안에서 현관문과 신발이 보이는 게 싫어 막았습니다.
+이 집 구조의 이름이 ''유럽형''이라 거기에 맞춘다고 프렌치 도어를 제작했는데 저희 집의 간결한 가구들과 인테리어 컨셉에 비해 다소 화려한 느낌이 들긴 합니다. 
+그래도 새로 유행하는 디자인보다는 오래도록 쓰인 디자인을 좋아하는지라 만족하고 있어요. 손잡이도 제가 직접 구매한 건데 나중에 심플한 걸로 교체할까 싶어요.'
+);
+
+INSERT INTO BOARD (BOARD_ID, MEMBERS_NO,  BOARD_TITLE, BOARD_VIEWS, FILTER_TYPE, FILTER_AREA, FILTER_FIELD, FILTER_FAMILY,  FILTER_WORKER, FILTER_LOCAL, BOARD_INTRODUCTION, BOARD_DESCRIPTION)
+VALUES(
+SEQ_BODID.NEXTVAL, 1, '무채색과 우드, 쇠테리어 포인트가 매력적인 3평 공간!', 2859, '기타', 3, '홈스타일링', '부모님과 함께 사는 집', '셀프/DIY', '경상남도 양산시',
+'안녕하세요! 자전거 라이딩과 인테리어, 그리고 음악을 좋아하는 조경학과 대학생입니다. 이전에 <무채색 배경에 취향으로 색칠한 나의 작은 3평 방>이라는 온라인 집들이로 찾아뵌 적이 있는데요. 
+이후에 또 바뀌었던 방 분위기를 소개해드리려고 이렇게 다시 집들이로 찾아뵙게 되었습니다.
+계속 많이 업로드했던 방 사진이지만, 이렇게 한번에 모아서 정리해보고자 했어요. 그러면 지금부터 저의 집들이 시작하도록 하겠습니다~!',
+
+'이전의 인테리어와는 조금 더 달라진 제 방이에요. 전체적으로 무채색에 식물과 우드로 포인트를 주려고 했습니다.
+미니멀리즘으로 꾸미고 싶은데, 항상 욕심이 많다 보니 점점 갈수록 오브제나 물건들이 많아지는 느낌입니다..!'
+);
+
+INSERT INTO BOARD (BOARD_ID, MEMBERS_NO,  BOARD_TITLE, BOARD_VIEWS, FILTER_TYPE, FILTER_AREA, FILTER_FIELD, FILTER_FAMILY,  FILTER_WORKER, FILTER_LOCAL, BOARD_INTRODUCTION, BOARD_DESCRIPTION)
+VALUES(
+SEQ_BODID.NEXTVAL, 1, '32평 올리모델링! 공간은 심플하게, 포인트는 다채롭게!', 3253, '기타', 3, '홈스타일링', '부모님과 함께 사는 집', '셀프/DIY', '경상남도 양산시',
+'안녕하세요! 자전거 라이딩과 인테리어, 그리고 음악을 좋아하는 조경학과 대학생입니다. 이전에 <무채색 배경에 취향으로 색칠한 나의 작은 3평 방>이라는 온라인 집들이로 찾아뵌 적이 있는데요. 
+이후에 또 바뀌었던 방 분위기를 소개해드리려고 이렇게 다시 집들이로 찾아뵙게 되었습니다.
+계속 많이 업로드했던 방 사진이지만, 이렇게 한번에 모아서 정리해보고자 했어요. 그러면 지금부터 저의 집들이 시작하도록 하겠습니다~!',
+
+'이전의 인테리어와는 조금 더 달라진 제 방이에요. 전체적으로 무채색에 식물과 우드로 포인트를 주려고 했습니다.
+미니멀리즘으로 꾸미고 싶은데, 항상 욕심이 많다 보니 점점 갈수록 오브제나 물건들이 많아지는 느낌입니다..!'
+);
+
+
 ----------------------------------------- PRODUCT ------------------------------------------
 INSERT INTO PRODUCT (PRODUCT_ID, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_SALES, STOCK, DELIVERY_DATE, SALE, PRODUCT_CONTENT, PRODUCT_CREATE_TIME, MEMBERS_NO, PRODUCT_CATEGORY)
 VALUES (SEQ_PDID.NEXTVAL, 'LG 냉장고', 3000000, 100, 500, 3, 5, 'LG전자에서 만든 냉장고입니다', SYSDATE, 1, 4);
@@ -558,49 +618,61 @@ INSERT INTO PRODUCT (PRODUCT_ID, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_SALES, STO
 VALUES (SEQ_PDID.NEXTVAL, '동원 참치', 10000, 1000, 500, 3, 15, '맛있는 동원 참치', SYSDATE, 1, 5);
 
 INSERT INTO PRODUCT (PRODUCT_ID, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_SALES, STOCK, DELIVERY_DATE, SALE, PRODUCT_CONTENT, PRODUCT_CREATE_TIME, MEMBERS_NO, PRODUCT_CATEGORY)
-VALUES (SEQ_PDID.NEXTVAL, '송월타올', 20000, 300, 500, 3, 8, '호텔 수건급 월드클래스 타올', SYSDATE, 1, 6);
+VALUES (SEQ_PDID.NEXTVAL, '송월타올', 20000, 300, 500, 3, 8, '호텔 수건급 월드클래스 타올', SYSDATE, 1, 2);
 
 INSERT INTO PRODUCT (PRODUCT_ID, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_SALES, STOCK, DELIVERY_DATE, PRODUCT_CONTENT, PRODUCT_CREATE_TIME, MEMBERS_NO, PRODUCT_CATEGORY)
-VALUES (SEQ_PDID.NEXTVAL, '옷걸이', 8000, 250, 500, 3, '옷걸이가 8천원!', SYSDATE, 1, 6);
+VALUES (SEQ_PDID.NEXTVAL, '옷걸이', 8000, 250, 500, 3, '옷걸이가 8천원!', SYSDATE, 1, 3);
 
 INSERT INTO PRODUCT (PRODUCT_ID, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_SALES, STOCK, DELIVERY_DATE, SALE, PRODUCT_CONTENT, PRODUCT_CREATE_TIME, MEMBERS_NO, PRODUCT_CATEGORY)
 VALUES (SEQ_PDID.NEXTVAL, 'CLOUD 아쿠아텍스 패브릭 호텔식 침대프레임 SS/Q/K/LK/CK',199000, 100, 100, 1, 66, '튼튼한 프레임 짱' , SYSDATE, 4, 1);
 
 INSERT INTO PRODUCT (PRODUCT_ID, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_SALES, STOCK, DELIVERY_DATE, SALE, PRODUCT_CONTENT, PRODUCT_CREATE_TIME, MEMBERS_NO, PRODUCT_CATEGORY)
-VALUES (SEQ_PDID.NEXTVAL, '방울토마토 오늘의가든 사은품용 비매품',100000, 200, 200, 1, 0, '맛있는 도마도 짱맛있다' , SYSDATE, 5, 1);
+VALUES (SEQ_PDID.NEXTVAL, '방울토마토 오늘의가든 사은품용 비매품',100000, 200, 200, 1, 0, '맛있는 도마도 짱맛있다' , SYSDATE, 5, 5);
 
 INSERT INTO PRODUCT (PRODUCT_ID, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_SALES, STOCK, DELIVERY_DATE, SALE, PRODUCT_CONTENT, PRODUCT_CREATE_TIME, MEMBERS_NO, PRODUCT_CATEGORY)
-VALUES (SEQ_PDID.NEXTVAL, '계절꽃 오늘의가든 사은품용 비매품',100000, 200, 200, 1, 0, '계절꽃 예쁘다' , SYSDATE, 5, 1);
+VALUES (SEQ_PDID.NEXTVAL, '계절꽃 오늘의가든 사은품용 비매품',100000, 200, 200, 1, 0, '계절꽃 예쁘다' , SYSDATE, 5, 5);
 
 INSERT INTO PRODUCT (PRODUCT_ID, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_SALES, STOCK, DELIVERY_DATE, SALE, PRODUCT_CONTENT, PRODUCT_CREATE_TIME, MEMBERS_NO, PRODUCT_CATEGORY)
 VALUES (SEQ_PDID.NEXTVAL, '[단독] NEW컬러 맞춤제작 블라인드 시스템 드레스룸',8100, 560, 100, 1, 41, '커다란 드레스룸' , SYSDATE, 6, 1);
 
 INSERT INTO PRODUCT (PRODUCT_ID, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_SALES, STOCK, DELIVERY_DATE, SALE, PRODUCT_CONTENT, PRODUCT_CREATE_TIME, MEMBERS_NO, PRODUCT_CATEGORY)
-VALUES (SEQ_PDID.NEXTVAL, '혜택가 189만원대 BESPOKE 무풍에어컨 AF17B7538GZRS 멀티형',2179000, 300, 100, 1, 26, '곧 여름이 옵니다' , SYSDATE, 7, 1);
+VALUES (SEQ_PDID.NEXTVAL, '혜택가 189만원대 BESPOKE 무풍에어컨 AF17B7538GZRS 멀티형',2179000, 300, 100, 1, 26, '곧 여름이 옵니다' , SYSDATE, 7, 4);
 
 INSERT INTO PRODUCT (PRODUCT_ID, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_SALES, STOCK, DELIVERY_DATE, SALE, PRODUCT_CONTENT, PRODUCT_CREATE_TIME, MEMBERS_NO, PRODUCT_CATEGORY)
-VALUES (SEQ_PDID.NEXTVAL, '3겹 순수소프트 롤화장지 메가롤 (37Mx24롤)x2팩',47300, 560, 100, 1, 22, '산뜻한 휴지' , SYSDATE, 8, 1);
+VALUES (SEQ_PDID.NEXTVAL, '3겹 순수소프트 롤화장지 메가롤 (37Mx24롤)x2팩',47300, 560, 100, 1, 22, '산뜻한 휴지' , SYSDATE, 8, 3);
 
 INSERT INTO PRODUCT (PRODUCT_ID, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_SALES, STOCK, DELIVERY_DATE, SALE, PRODUCT_CONTENT, PRODUCT_CREATE_TIME, MEMBERS_NO, PRODUCT_CATEGORY)
-VALUES (SEQ_PDID.NEXTVAL, '혜택가 174만 인증점 삼성 Q9000 멀티형 에어컨 AF17B6474TZRS 기본설치포함',1829000, 82, 100, 1, 25, '가전은 삼성' , SYSDATE, 7, 1);
+VALUES (SEQ_PDID.NEXTVAL, '혜택가 174만 인증점 삼성 Q9000 멀티형 에어컨 AF17B6474TZRS 기본설치포함',1829000, 82, 100, 1, 25, '가전은 삼성' , SYSDATE, 7, 4);
 
 INSERT INTO PRODUCT (PRODUCT_ID, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_SALES, STOCK, DELIVERY_DATE, SALE, PRODUCT_CONTENT, PRODUCT_CREATE_TIME, MEMBERS_NO, PRODUCT_CATEGORY)
 VALUES (SEQ_PDID.NEXTVAL, '[무료배송] (국내생산) 데이지 LED조명 3단 벙커 수납 서랍 침대 SS/Q',239000, 200, 100, 1, 40, '서랍이 있어야 수납이 잘된다' , SYSDATE, 9, 1);
 
 INSERT INTO PRODUCT (PRODUCT_ID, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_SALES, STOCK, DELIVERY_DATE, SALE, PRODUCT_CONTENT, PRODUCT_CREATE_TIME, MEMBERS_NO, PRODUCT_CATEGORY)
-VALUES (SEQ_PDID.NEXTVAL, '비스포크 키친핏 냉장고 RF60C9012AP 615리터 에센셜 4도어 색상선택 공식인증점',2354000, 87, 100, 1, 27, '비스포크 삼성 가전 최고' , SYSDATE, 7, 1);
+VALUES (SEQ_PDID.NEXTVAL, '비스포크 키친핏 냉장고 RF60C9012AP 615리터 에센셜 4도어 색상선택 공식인증점',2354000, 87, 100, 1, 27, '비스포크 삼성 가전 최고' , SYSDATE, 7, 4);
 
 INSERT INTO PRODUCT (PRODUCT_ID, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_SALES, STOCK, DELIVERY_DATE, SALE, PRODUCT_CONTENT, PRODUCT_CREATE_TIME, MEMBERS_NO, PRODUCT_CATEGORY)
-VALUES (SEQ_PDID.NEXTVAL, '아이스티 믹스 복숭아 1.5kg  8개',102000, 560, 100, 1, 32, '립톤 아이스티에 에스프레소 샷 추가하면 MZ' , SYSDATE, 10, 1);
+VALUES (SEQ_PDID.NEXTVAL, '아이스티 믹스 복숭아 1.5kg  8개',102000, 560, 100, 1, 32, '립톤 아이스티에 에스프레소 샷 추가하면 MZ' , SYSDATE, 10, 5);
 
 INSERT INTO PRODUCT (PRODUCT_ID, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_SALES, STOCK, DELIVERY_DATE, SALE, PRODUCT_CONTENT, PRODUCT_CREATE_TIME, MEMBERS_NO, PRODUCT_CATEGORY)
 VALUES (SEQ_PDID.NEXTVAL, 'T50 컴퓨터 책상 의자 화이트 (HLDA)',349000, 120, 100, 1, 5, '서울대 의자로 공부하면 알죠?' , SYSDATE, 11, 1);
 
 INSERT INTO PRODUCT (PRODUCT_ID, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_SALES, STOCK, DELIVERY_DATE, SALE, PRODUCT_CONTENT, PRODUCT_CREATE_TIME, MEMBERS_NO, PRODUCT_CATEGORY)
-VALUES (SEQ_PDID.NEXTVAL, '쿠폰가26.8만! 121+ 6인용 올스텐 IH전기압력밥솥 화이트 CRT-RPS0691W',289000, 210, 100, 1, 38, '밥솥은 쿠쿠아니고 쿠첸' , SYSDATE, 12, 1);
+VALUES (SEQ_PDID.NEXTVAL, '쿠폰가26.8만! 121+ 6인용 올스텐 IH전기압력밥솥 화이트 CRT-RPS0691W',289000, 210, 100, 1, 38, '밥솥은 쿠쿠아니고 쿠첸' , SYSDATE, 12, 4);
 
 INSERT INTO PRODUCT (PRODUCT_ID, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_SALES, STOCK, DELIVERY_DATE, SALE, PRODUCT_CONTENT, PRODUCT_CREATE_TIME, MEMBERS_NO, PRODUCT_CATEGORY)
-VALUES (SEQ_PDID.NEXTVAL, '24년 신제품 세탁 건조가 하나로,비스포크 AI콤보 WD25DB8995BZ 25+15kg',3999000, 18, 100, 1, 0, '세탁기와 건조기의 혼연일체' , SYSDATE, 7, 1);
+VALUES (SEQ_PDID.NEXTVAL, '24년 신제품 세탁 건조가 하나로,비스포크 AI콤보 WD25DB8995BZ 25+15kg',3999000, 18, 100, 1, 0, '세탁기와 건조기의 혼연일체' , SYSDATE, 7, 4);
+
+INSERT INTO PRODUCT (PRODUCT_ID, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_SALES, STOCK, DELIVERY_DATE, SALE, PRODUCT_CONTENT, PRODUCT_CREATE_TIME, MEMBERS_NO, PRODUCT_CATEGORY)
+VALUES (SEQ_PDID.NEXTVAL, '[맞춤]브라우니 린넨 암막커튼 핀형/아일렛형/형상기억 33색상',19800, 240, 100, 1, 39, '태양을 피하고 싶었어요' , SYSDATE, 9, 2);
+
+INSERT INTO PRODUCT (PRODUCT_ID, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_SALES, STOCK, DELIVERY_DATE, SALE, PRODUCT_CONTENT, PRODUCT_CREATE_TIME, MEMBERS_NO, PRODUCT_CATEGORY)
+VALUES (SEQ_PDID.NEXTVAL, '클레어 LED 2단 수납침대+매트선택 (SS/Q) 4colors',219000, 120, 100, 1, 30, '수납 공간을 효율적으로 사용하고 싶은 분을 위한 침대' , SYSDATE, 9, 1);
+
+INSERT INTO PRODUCT (PRODUCT_ID, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_SALES, STOCK, DELIVERY_DATE, SALE, PRODUCT_CONTENT, PRODUCT_CREATE_TIME, MEMBERS_NO, PRODUCT_CATEGORY)
+VALUES (SEQ_PDID.NEXTVAL, '[주말특가] 삼성 81cm M5 S32CM501 삼탠바이미 패키지 OTT',439000, 120, 100, 1, 20, '세탁기와 건조기의 혼연일체' , SYSDATE, 7, 4);
+
+
+
 ----------------------------------------- PRODUCT_OPTIONS ------------------------------------------
 INSERT INTO PRODUCT_OPTIONS (PRODUCT_OPTIONS_ID, PRODUCT_OPTIONS_CONTENT, PRODUCT_OPTIONS_PRICE, PRODUCT_OPTIONS_STOCK, PRODUCT_ID)
 VALUES (SEQ_PDOPTID.NEXTVAL, '옵션 내용 1', 5000, 100, 1);
@@ -632,11 +704,49 @@ VALUES (SEQ_QNAID.NEXTVAL, '동', 'Q', 'N', 2, 2);
 INSERT INTO QNA (QNA_ID, QNA_CONTENT, QNA_TYPE, QNA_CONFIDENTIAL, PRODUCT_ID, MEMBERS_NO)
 VALUES (SEQ_QNAID.NEXTVAL, '원', 'A', 'N', 2, 1);
 ----------------------------------------- MEDIA ------------------------------------------
--- 집들이 게시글 썸네일
+--------------------- 집들이
+-- 썸네일
 INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
 VALUES (SEQ_MEDID.NEXTVAL, 1, 1, 'thumbnail-main-01.png', 'thumbnail-main-01.png', 'resources/img/community/communityMain/', 1);
 INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
 VALUES (SEQ_MEDID.NEXTVAL, 2, 2, 'thumbnail-main-02.png', 'thumbnail-main-02.png', 'resources/img/community/communityMain/', 1);
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 2, 2, 'thumbnail-main-03.png', 'thumbnail-main-03.png', 'resources/img/community/communityMain/', 1);
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 2, 2, 'thumbnail-main-04.png', 'thumbnail-main-04.png', 'resources/img/community/communityMain/', 1);
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 2, 2, 'thumbnail-main-05.png', 'thumbnail-main-05.png', 'resources/img/community/communityMain/', 1);
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 2, 2, 'thumbnail-main-06.png', 'thumbnail-main-06.png', 'resources/img/community/communityMain/', 1);
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 2, 2, 'thumbnail-main-07.png', 'thumbnail-main-07.png', 'resources/img/community/communityMain/', 1);
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 2, 2, 'thumbnail-main-08.png', 'thumbnail-main-08.png', 'resources/img/community/communityMain/', 1);
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 2, 2, 'thumbnail-main-09.png', 'thumbnail-main-09.png', 'resources/img/community/communityMain/', 1);
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 2, 2, 'thumbnail-main-10.png', 'thumbnail-main-10.png', 'resources/img/community/communityMain/', 1);
+
+-- 게시글 사진
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 3, 2, 'boardContent03.png', 'boardContent03.png', 'resources/img/community/communityPage/', 2);
+
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 4, 2, 'boardContent04.png', 'boardContent04.png', 'resources/img/community/communityPage/', 2);
+
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 5, 2, 'boardContent05.png', 'boardContent05.png', 'resources/img/community/communityPage/', 2);
+
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 6, 2, 'boardContent06.png', 'boardContent06.png', 'resources/img/community/communityPage/', 2);
+
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 7, 2, 'boardContent07-1.png', 'boardContent07-1.png', 'resources/img/community/communityPage/', 2);
+
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 7, 2, 'boardContent07-2.png', 'boardContent07-2.png', 'resources/img/community/communityPage/', 2);
+
+
 -- 상품 썸네일
 INSERT INTO MEDIA (MEDIA_ID, PRODUCT_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
 VALUES (SEQ_MEDID.NEXTVAL, 1, 1, 'productMain01.png', 'productMain01.png', 'resources/img/product/', 1);
@@ -646,6 +756,40 @@ INSERT INTO MEDIA (MEDIA_ID, PRODUCT_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, F
 VALUES (SEQ_MEDID.NEXTVAL, 3, 1, 'productMain03.png', 'productMain03.png', 'resources/img/product/', 1);
 INSERT INTO MEDIA (MEDIA_ID, PRODUCT_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
 VALUES (SEQ_MEDID.NEXTVAL, 4, 1, 'productMain04.png', 'productMain04.png', 'resources/img/product/', 1);
+INSERT INTO MEDIA (MEDIA_ID, PRODUCT_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 5, 1, 'productMain05.jpg', 'productMain05.jpg', 'resources/img/product/', 1);
+INSERT INTO MEDIA (MEDIA_ID, PRODUCT_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 6, 1, 'productMain06.jpg', 'productMain06.jpg', 'resources/img/product/', 1);
+INSERT INTO MEDIA (MEDIA_ID, PRODUCT_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 7, 1, 'productMain07.jpg', 'productMain07.jpg', 'resources/img/product/', 1);
+INSERT INTO MEDIA (MEDIA_ID, PRODUCT_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 8, 1, 'productMain08.jpg', 'productMain08.jpg', 'resources/img/product/', 1);
+INSERT INTO MEDIA (MEDIA_ID, PRODUCT_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 9, 1, 'productMain09.jpg', 'productMain09.jpg', 'resources/img/product/', 1);
+INSERT INTO MEDIA (MEDIA_ID, PRODUCT_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 10, 1, 'productMain10.jpg', 'productMain10.jpg', 'resources/img/product/', 1);
+INSERT INTO MEDIA (MEDIA_ID, PRODUCT_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 11, 1, 'productMain11.jpg', 'productMain11.jpg', 'resources/img/product/', 1);
+INSERT INTO MEDIA (MEDIA_ID, PRODUCT_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 12, 1, 'productMain12.jpg', 'productMain12.jpg', 'resources/img/product/', 1);
+INSERT INTO MEDIA (MEDIA_ID, PRODUCT_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 13, 1, 'productMain13.jpg', 'productMain13.jpg', 'resources/img/product/', 1);
+INSERT INTO MEDIA (MEDIA_ID, PRODUCT_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 14, 1, 'productMain14.jpg', 'productMain14.jpg', 'resources/img/product/', 1);
+INSERT INTO MEDIA (MEDIA_ID, PRODUCT_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 15, 1, 'productMain15.jpg', 'productMain15.jpg', 'resources/img/product/', 1);
+INSERT INTO MEDIA (MEDIA_ID, PRODUCT_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 16, 1, 'productMain16.jpg', 'productMain16.jpg', 'resources/img/product/', 1);
+INSERT INTO MEDIA (MEDIA_ID, PRODUCT_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 17, 1, 'productMain17.jpg', 'productMain17.jpg', 'resources/img/product/', 1);
+INSERT INTO MEDIA (MEDIA_ID, PRODUCT_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 18, 1, 'productMain18.jpg', 'productMain18.jpg', 'resources/img/product/', 1);
+INSERT INTO MEDIA (MEDIA_ID, PRODUCT_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 19, 1, 'productMain19.jpg', 'productMain19.jpg', 'resources/img/product/', 1);
+INSERT INTO MEDIA (MEDIA_ID, PRODUCT_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 20, 1, 'productMain20.jpg', 'productMain20.jpg', 'resources/img/product/', 1);
+
+
 -- 프로필 사진
 INSERT INTO MEDIA (MEDIA_ID, MEMBERS_NO, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
 VALUES (SEQ_MEDID.NEXTVAL, 1, 1, 'user.png', 'user.png', 'resources/img/common/', 3);

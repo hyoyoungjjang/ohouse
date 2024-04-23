@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
+    pageEncoding="UTF-8"%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,28 +25,9 @@
                         <div class="pc-sale-img">
                             <img src="${contextPath}/${p.productThumbnail}">
                             <button type="button">
-                                <img id="product-bookmark-img" src="${contextPath}/resources/img/product/pm-bookmark.png" width="40px" onclick="changeBookmark(this)">
+                                <img id="product-bookmark-img" src="${contextPath}/resources/img/product/pm-bookmark.png" width="40px" onclick="changeBookmark(this, '${p.productId}')">
                             </button>
                         </div>
-
-                        <script>
-	                     // product-bookmark-img 클릭 시 이미지 변경
-	                     // pm-bookmark.png -> pm-bookmark-checked.png 또는
-	                     // pm-bookmark-checked.png -> pm-bookmark.png
-	                     function changeBookmark(_this){
-	                         const contextPath = "${pageContext.request.contextPath}";
-	                         const src = _this.src;
-	                         const bookmarkImage = contextPath + "/resources/img/product/pm-bookmark.png";
-	                         const checkedBookmarkImage = contextPath + "/resources/img/product/pm-bookmark-checked.png";
-	
-	                         if (src.includes("pm-bookmark.png")) {
-	                             _this.src = checkedBookmarkImage;
-	                         } else {
-	                             _this.src = bookmarkImage;
-	                         }
-	                     }
-                        </script>
-
                         <div class="pc-sale-text">
                             <div class="pc-company">
                                 ${p.companyName}
@@ -76,6 +55,36 @@
                         </div>
                     </div>
                 </c:forEach>
+                <script>
+                    function changeBookmark(_this, pNo){
+                        const contextPath = "${pageContext.request.contextPath}";
+                        const src = _this.src;
+                        const bookmarkImage = contextPath + "/resources/img/product/pm-bookmark.png";
+                        const checkedBookmarkImage = contextPath + "/resources/img/product/pm-bookmark-checked.png";
+                      
+                        const membersNo = "${loginUser.membersNo}"
+                        if (src.includes("pm-bookmark.png")) {
+                            _this.src = checkedBookmarkImage;
+                        } else {
+                            _this.src = bookmarkImage;
+                        }
+
+                        $.ajax({
+                                url : "scrap.pr",
+                                data : {
+                                    mNo : membersNo,
+                                    pNo : pNo,
+                                    status : src.includes("pm-bookmark.png") ? "Y" : "N"
+                                },
+                                success : function(result){
+                                    console.log("스크랩 성공.")
+                                },
+                                error : function(){
+                                    console.log("스크랩 실패")
+                                }       
+                            })
+                    }
+                </script>
             </div>  
         </div>
     </div>
