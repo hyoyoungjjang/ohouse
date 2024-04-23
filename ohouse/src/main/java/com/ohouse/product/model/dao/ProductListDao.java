@@ -24,7 +24,7 @@ public class ProductListDao {
 		
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		
-		return (ArrayList)sqlSession.selectList("productMapper.selectProductList", null, rowBounds);
+		return (ArrayList)sqlSession.selectList("productMapper.selectProductList",null, rowBounds);
 	}
 	
 	public int selectProductListCount(SqlSession sqlSession, String condition) {
@@ -35,8 +35,9 @@ public class ProductListDao {
 	
 	public ArrayList<Product> selectProductSaleList(SqlSession sqlSession, PageInfo pi, String condition){
 		
-		int offset = (pi.getCurrentPage()-1)* pi.getBoardLimit();
+		int offset = (pi.getCurrentPage()-1) * pi.getBoardLimit();
 		int limit = pi.getBoardLimit();
+		
 		
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		
