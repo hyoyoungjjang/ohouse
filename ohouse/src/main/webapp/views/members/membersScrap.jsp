@@ -37,60 +37,16 @@
             </script>
             <hr>
             <div class="scrap-item">
-                <div class="scrap-item-img">
-                    <img src=" ${pageContext.request.contextPath}/resources/img/member/scrap_item.png" class="scrap_item" width="100%">
-                    <button type="button">
-                        <img src="${pageContext.request.contextPath}/resources/img/member/pm-bookmark-checked.png" width="40px">
-                    </button>
-                </div>
-                <div class="scrap-item-img">
-                    <img src=" ${pageContext.request.contextPath}/resources/img/member/scrap_item.png" class="scrap_item" width="100%">
-                    <button type="button">
-                        <img src="${pageContext.request.contextPath}/resources/img/member/pm-bookmark-checked.png" width="40px">
-                    </button>
-                </div>
-                <div class="scrap-item-img">
-                    <img src=" ${pageContext.request.contextPath}/resources/img/member/scrap_item.png" class="scrap_item" width="100%">
-                    <button type="button">
-                        <img src="${pageContext.request.contextPath}/resources/img/member/pm-bookmark-checked.png" width="40px">
-                    </button>
-                </div>
-                <div class="scrap-item-img">
-                    <img src=" ${pageContext.request.contextPath}/resources/img/member/scrap_item.png" class="scrap_item" width="100%">
-                    <button type="button">
-                        <img src="${pageContext.request.contextPath}/resources/img/member/pm-bookmark-checked.png" width="40px">
-                    </button>
-                </div>
-                <div class="scrap-item-img">
-                    <img src=" ${pageContext.request.contextPath}/resources/img/member/scrap_item.png" class="scrap_item" width="100%">
-                    <button type="button">
-                        <img src="${pageContext.request.contextPath}/resources/img/member/pm-bookmark-checked.png" width="40px">
-                    </button>
-                </div>
-                <div class="scrap-item-img">
-                    <img src=" ${pageContext.request.contextPath}/resources/img/member/scrap_item.png" class="scrap_item" width="100%">
-                    <button type="button">
-                        <img src="${pageContext.request.contextPath}/resources/img/member/pm-bookmark-checked.png" width="40px">
-                    </button>
-                </div>
-                <div class="scrap-item-img">
-                    <img src=" ${pageContext.request.contextPath}/resources/img/member/scrap_item.png" class="scrap_item" width="100%">
-                    <button type="button">
-                        <img src="${pageContext.request.contextPath}/resources/img/member/pm-bookmark-checked.png" width="40px">
-                    </button>
-                </div>
-                <div class="scrap-item-img">
-                    <img src=" ${pageContext.request.contextPath}/resources/img/member/scrap_item.png" class="scrap_item" width="100%">
-                    <button type="button">
-                        <img src="${pageContext.request.contextPath}/resources/img/member/pm-bookmark-checked.png" width="40px">
-                    </button>
-                </div>
-                <div class="scrap-item-img">
-                    <img src=" ${pageContext.request.contextPath}/resources/img/member/scrap_item.png" class="scrap_item" width="100%">
-                    <button type="button">
-                        <img src="${pageContext.request.contextPath}/resources/img/member/pm-bookmark-checked.png" width="40px">
-                    </button>
-                </div>
+            	<c:forEach var="s" items="${scrap }"/>
+            		
+            		<!--  
+	                <div class="scrap-item-img">
+	                    <img src=" ${pageContext.request.contextPath}/resources/img/member/scrap_item.png" class="scrap_item" width="100%">
+	                    <button type="button">
+	                        <img src="${pageContext.request.contextPath}/resources/img/member/pm-bookmark-checked.png" width="40px">
+	                    </button>
+	                </div>
+	        	    -->   
             </div>
         </div>
     </div>
