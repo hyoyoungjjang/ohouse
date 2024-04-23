@@ -42,7 +42,7 @@
                             <div class="header-others">
                                 <a href="${pageContext.request.contextPath}/loginForm.me">로그인</a>|
                                 <a href="${pageContext.request.contextPath}/enrollForm.me">회원가입</a>
-                                <a href="${contextPath}/loginForm.me" style="background-color: #35C5F0; color: white; border-radius: 5px;">작성하기</a>
+                                <a href="${contextPath}/loginForm.me" style="background-color: #35C5F0; color: white; border-radius: 5px;">글쓰기</a>
                             </div>
                         </c:when>
                         <c:otherwise>
@@ -54,7 +54,7 @@
                                     onclick="location.href='${contextPath}/logout.me';">
                                 <img src="${pageContext.request.contextPath}/resources/img/common/user.png" alt="" 
                                     onclick="location.href='${contextPath}/profile.me';">
-                                <a onclick="document.getElementById('submit-btn').click();" style="background-color: #35C5F0; color: white; border-radius: 5px;">작성하기</a>
+                                <a onclick="document.getElementById('submit-btn').click();" style="background-color: #35C5F0; color: white; border-radius: 5px;">글쓰기</a>
                             </div>
                         </c:otherwise>
                     </c:choose>
@@ -344,7 +344,7 @@
                 <textarea name="description" id="textarea" align="left" placeholder="내용을 입력하세요."></textarea>
             </div>
         </div>
-        <button type="submit" id="submit-btn" class="hidden">제출</button>
+        <button type="submit" id="submit-btn">제출</button>
     </form>
     <script>
         let idx = 4;
