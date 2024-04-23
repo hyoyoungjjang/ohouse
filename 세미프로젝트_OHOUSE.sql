@@ -1,5 +1,7 @@
 ----------삭제-------------
 --접속유저의 모든 테이블 및 제약조건 삭제
+SET DEFINE OFF;
+
 BEGIN
     FOR C IN (SELECT TABLE_NAME FROM USER_TABLES) LOOP
     EXECUTE IMMEDIATE ('DROP TABLE '||C.TABLE_NAME||' CASCADE CONSTRAINTS');
@@ -547,13 +549,66 @@ VALUES (SEQ_BODID.NEXTVAL, '오늘의집 클론 코딩', 100, SYSDATE, '우리�
 INSERT INTO BOARD (BOARD_ID, BOARD_TITLE, BOARD_VIEWS, BOARD_CREATE_TIME, BOARD_INTRODUCTION ,BOARD_DESCRIPTION, FILTER_TYPE, FILTER_AREA,FILTER_FAMILY, FILTER_FIELD, FILTER_WORKER, MEMBERS_NO)
 VALUES (SEQ_BODID.NEXTVAL, '할 수 있다', 200, SYSDATE, '우당탕탕 프로젝트', '블라블라', '원룸', 7, '싱글라이프', '홈스타일링', '셀프/DIY', 1);
 
-VALUES (SEQ_BODID.NEXTVAL, '20평대 수납, 낮은 층고 고민 해결! 갤러리 같은 집', 1127, SYSDATE, '안녕하세요. 리빙 MD 여자, 프로그래머 남자, 초딩 남아가 사는 작은 집 갤러리. Kkamel haus입니다.
+INSERT INTO BOARD (BOARD_ID, BOARD_TITLE, BOARD_VIEWS, BOARD_INTRODUCTION, BOARD_DESCRIPTION, FILTER_TYPE, FILTER_AREA, FILTER_FAMILY, FILTER_FIELD,  FILTER_WORKER, MEMBERS_NO)
+VALUES (SEQ_BODID.NEXTVAL, '깔끔한 집의 비결은? 짱짱한 수납과 팬트리에서!', 3102, 
+'안녕하세요. 초등학교 4학년 남자아이, 24개월 여자 아이와 "산솔집(@sanif_home)"에 살고 있는 맞벌이 부부입니다. 
+저희 집은 산솔집이라 불리고 있습니다. 물, 식물, 곤충, 동물 등 세상 모든 것들의 시작이고 동식물 모두를 포용하는 산의 모습을 닮길 바라며 첫째 이름을 산이라고 지었어요. 둘째는 항상 푸르고 밝게 자라길 바라는 마음으로 솔이라고 지었고요. 그래서 두 아이의 이름을 따 산솔집이라 이름 지었습니다.',
+'산솔집은 20년이 훌쩍 넘은 구축 아파트를 리모델링 했습니다. 구축으로 이사 올 때 주위에 많은 분들이 반대를 했지만 저희는 맞벌이 부부이기에 아이의 등하교와 학원 등 인프라가 잘 갖춰진 곳 위주로 찾아보았고, 최종적으로 중, 고등학교 시절 제가 살던 아파트로 결정을 하였습니다.
+이 집으로 결정을 하게 된 가장 큰 이유는 집에서 학교까지 걸어서 1분! 뛰어가면 30초! 라는 엄청난 메리트가 있으며, 아파트 단지 내에 학교 입구가 있어서 차도를 건너지 않아도 된다는 점, 아파트 앞에는 상가가 밀집되어 있고 그 상가들에는 초 · 중 · 고 학원들이 즐비하여 아이를 키우기에 최고의 입지 환경이라는 결론을 지었습니다.
+인터넷에 있는 도면 상태인데 가벽과 일부 확장을 진행하여 현재와는 조금 다른 모습입니다. ',
+'아파트', 48, '취학 자녀와 함께', '리모델링' , '전문가', 1);
 
- 
+INSERT INTO BOARD (BOARD_ID, MEMBERS_NO,  BOARD_TITLE, BOARD_VIEWS, FILTER_TYPE, FILTER_AREA, FILTER_FIELD, FILTER_FAMILY,  FILTER_WORKER, FILTER_LOCAL, FILTER_PERIOD, FILTER_PERIOD_TYPE, FILTER_CONSTRUCTION_PRICE,  BOARD_INTRODUCTION, BOARD_DESCRIPTION)
+VALUES(
+SEQ_BODID.NEXTVAL, 1, '히든도어, 고민하지 마세요! 깔끔한 33평 화이트&우드', 3159, '아파트', 33, '리모델링', '싱글라이프', '전문가', '경기도 수원시' , 5, '주', 6500,
+'안녕하세요, 오뉴디자인입니다. 오늘 소개해 드릴 현장은 수원시 권선구 금곡동 호반베르디움더센트럴 33평 A타입이에요.',
+'기존 구조를 살펴보면 ㄷ자 형태의 주방의 좌우로 팬트리가 있는 평범한 레이아웃이었답니다. 고객님께선 화이트 톤에 우드를 포인트로 넣기를 바라셨고 11자 형태 대면형 주방에 대한 니즈가 있었어요. 전반적으로 정돈되고 깔끔한 공간을 원했습니다. 이러한 니즈를 충족시켜 드리고자 주방에는 MDF와 필름, 깔끔한 히든도어를 활용하여 11자 형태의 대면형 주방으로 레이아웃을 짜드렸어요. 여러 디테일이 숨겨진 따뜻한 공간 지금부터 함께 구경해 보실까요? 집의 테마인 화이트 & 우드와 맞게 전체적으로 밝은 톤으로 꾸며준 현관이에요. 문 앞에 걸려있는 감각적인 그림 덕분에 클라이언트의 취향이 현관에서부터 느껴집니다. '
+);
 
-운 좋게도 이쁜 공간 이쁜 오브제를 많이 보는 일을 하고 있어 내 공간을 갖게 되면 하고 싶은 많은 것들이 있었는데, 그것들을 실현하기 위해 용감하게(혹은 무식하게) 반셀프 인테리어의 험난한 길을 선택하였고, 그렇게 완성된 집에서 정붙이고 살아온 지 햇수로 7년째 되었네요. 
+INSERT INTO BOARD (BOARD_ID, MEMBERS_NO,  BOARD_TITLE, BOARD_VIEWS, FILTER_TYPE, FILTER_AREA, FILTER_FIELD, FILTER_FAMILY,  FILTER_WORKER, FILTER_LOCAL, BOARD_INTRODUCTION, BOARD_DESCRIPTION)
+VALUES(
+SEQ_BODID.NEXTVAL, 1, '장시간 지내는 거실 홈오피스, 싱그러움 한 방울 더했어요!', 4959, '아파트', 22, '홈스타일링', '신혼부부', '셀프/DIY', '서울특별시',
+'안녕하세요?! 오늘의집 집들이에 두 번째 인사를 드리는 룰루랄라홈입니다.
+처음 집들이는 갓 이사 왔을 때 장신 없이 올린지라 지금 보면 너무 어설프고 정신도 없고 했던 거 같아요. 처음 집들이 소개 후 5년이라는 시간이 흘렀는데요. 그 사이 이사를 가고 싶었지만 현실은 아직 같은 공간입니다.
+하지만 5년 전과는 모든 물건이 하나 같은 게 없어요. 집 뼈대는 그대로인데 집안의 모든 물건이 바뀌었다고 해도 과언이 아닌 거 같습니다.
+처음 인스타를 시작했을 땐 셀프 인테리어에 목적을 두었는데요. 하지만 셀프 인테리어의 한계를 느끼면 점점 셀프가 줄어들고 있어요. 하지만 작년에 작은 변화를 준 주방은 아직도 셀프 인테리어의 취지가 살아 있습니다. 자 그럼 룰루랄라홈이 처음과 어떻게 바뀌었는지 살펴 보실까요?',
+'작은 거실이지만 큰 테이블과 함께 포기하지 못한 소파입니다. 거실 구조를 고려해서 모듈형의 소파를 구입했습니다. 그리고 소파 옆엔 작은 티 테이블을 두었습니다.'
+);
 
-인테리어 전문가가 아닌지라 했던 실수투성이가 고스란히 담겨, 애증을 넘어 그것마저 애정이 된 kkamel haus! 구경해 보시겠어요? ' , '저희 집은 18살이 넘어가는 발코니 확장이 되어 있는 26평형 아파트였어요. 5층 위치여서 층고가 유독 낮았어요. 2200mm인데, 보통은 6층부터 층고가 높아진다고 해요. 당시엔 유행이었을지 모를 꽃무늬 포인트 벽지가 강렬하게 반겨주는 딱 18년 만큼 낡음이 있었던 곳이었는데요. 이미 너무 오래되어 공사 이야기를 할 건 아니지만 핵심만 집어 보면, 이 집을 보면서 꼭 해야겠단 생각이 든 건, 페인트 도장 벽&포세린 타일 바닥, 노출 천장, 중문&수납 보강이었어요.  '
+INSERT INTO BOARD (BOARD_ID, MEMBERS_NO,  BOARD_TITLE, BOARD_VIEWS, FILTER_TYPE, FILTER_AREA, FILTER_FIELD, FILTER_FAMILY,  FILTER_WORKER, FILTER_LOCAL, FILTER_PERIOD, FILTER_PERIOD_TYPE, BOARD_INTRODUCTION, BOARD_DESCRIPTION)
+VALUES(
+SEQ_BODID.NEXTVAL, 1, '집에 원형 기둥이? 독특한 유럽식 구조로 깊이감이 있는 집', 4707, '아파트', 54, '리모델링', '아기가 있는 집', '반셀프', '경기도 용인시', 3, '주',
+'안녕하세요, 저는 장난꾸러기 두 아들의 엄마이고 영상 만드는 일을 하고 있는 @hejhey_home입니다. 
+처음 보는 독특한 구조에 반해 이사 온 지 3개월 정도 되었어요. 유행을 따르기보다 저희의 취향대로 따뜻하고 아늑한 분위기의 집을 만들고자 했습니다. 3번째임에도 가장 힘든 반셀프 인테리어였어요.
+큰 작업들이 끝나고 잠시 쉬고 싶은 마음에 아직 미완성인 부분이 많지만, 완성은 살면서 천천히 하도록 하고 온라인 집들이부터 시작해 보겠습니다 :)',
+
+'거실 쪽에서 바라본 현관 중문 모습입니다. 현관 중문은 유리가 없는 디자인으로 제작했습니다. 유리가 있었다면 집이 더 확장돼 보였겠지만, 집 안에서 현관문과 신발이 보이는 게 싫어 막았습니다.
+이 집 구조의 이름이 ''유럽형''이라 거기에 맞춘다고 프렌치 도어를 제작했는데 저희 집의 간결한 가구들과 인테리어 컨셉에 비해 다소 화려한 느낌이 들긴 합니다. 
+그래도 새로 유행하는 디자인보다는 오래도록 쓰인 디자인을 좋아하는지라 만족하고 있어요. 손잡이도 제가 직접 구매한 건데 나중에 심플한 걸로 교체할까 싶어요.'
+);
+
+INSERT INTO BOARD (BOARD_ID, MEMBERS_NO,  BOARD_TITLE, BOARD_VIEWS, FILTER_TYPE, FILTER_AREA, FILTER_FIELD, FILTER_FAMILY,  FILTER_WORKER, FILTER_LOCAL, BOARD_INTRODUCTION, BOARD_DESCRIPTION)
+VALUES(
+SEQ_BODID.NEXTVAL, 1, '무채색과 우드, 쇠테리어 포인트가 매력적인 3평 공간!', 2859, '기타', 3, '홈스타일링', '부모님과 함께 사는 집', '셀프/DIY', '경상남도 양산시',
+'안녕하세요! 자전거 라이딩과 인테리어, 그리고 음악을 좋아하는 조경학과 대학생입니다. 이전에 <무채색 배경에 취향으로 색칠한 나의 작은 3평 방>이라는 온라인 집들이로 찾아뵌 적이 있는데요. 
+이후에 또 바뀌었던 방 분위기를 소개해드리려고 이렇게 다시 집들이로 찾아뵙게 되었습니다.
+계속 많이 업로드했던 방 사진이지만, 이렇게 한번에 모아서 정리해보고자 했어요. 그러면 지금부터 저의 집들이 시작하도록 하겠습니다~!',
+
+'이전의 인테리어와는 조금 더 달라진 제 방이에요. 전체적으로 무채색에 식물과 우드로 포인트를 주려고 했습니다.
+미니멀리즘으로 꾸미고 싶은데, 항상 욕심이 많다 보니 점점 갈수록 오브제나 물건들이 많아지는 느낌입니다..!'
+);
+
+INSERT INTO BOARD (BOARD_ID, MEMBERS_NO,  BOARD_TITLE, BOARD_VIEWS, FILTER_TYPE, FILTER_AREA, FILTER_FIELD, FILTER_FAMILY,  FILTER_WORKER, FILTER_LOCAL, BOARD_INTRODUCTION, BOARD_DESCRIPTION)
+VALUES(
+SEQ_BODID.NEXTVAL, 1, '32평 올리모델링! 공간은 심플하게, 포인트는 다채롭게!', 3253, '기타', 3, '홈스타일링', '부모님과 함께 사는 집', '셀프/DIY', '경상남도 양산시',
+'안녕하세요! 자전거 라이딩과 인테리어, 그리고 음악을 좋아하는 조경학과 대학생입니다. 이전에 <무채색 배경에 취향으로 색칠한 나의 작은 3평 방>이라는 온라인 집들이로 찾아뵌 적이 있는데요. 
+이후에 또 바뀌었던 방 분위기를 소개해드리려고 이렇게 다시 집들이로 찾아뵙게 되었습니다.
+계속 많이 업로드했던 방 사진이지만, 이렇게 한번에 모아서 정리해보고자 했어요. 그러면 지금부터 저의 집들이 시작하도록 하겠습니다~!',
+
+'이전의 인테리어와는 조금 더 달라진 제 방이에요. 전체적으로 무채색에 식물과 우드로 포인트를 주려고 했습니다.
+미니멀리즘으로 꾸미고 싶은데, 항상 욕심이 많다 보니 점점 갈수록 오브제나 물건들이 많아지는 느낌입니다..!'
+);
+
 
 ----------------------------------------- PRODUCT ------------------------------------------
 INSERT INTO PRODUCT (PRODUCT_ID, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_SALES, STOCK, DELIVERY_DATE, SALE, PRODUCT_CONTENT, PRODUCT_CREATE_TIME, MEMBERS_NO, PRODUCT_CATEGORY)
@@ -649,11 +704,49 @@ VALUES (SEQ_QNAID.NEXTVAL, '동', 'Q', 'N', 2, 2);
 INSERT INTO QNA (QNA_ID, QNA_CONTENT, QNA_TYPE, QNA_CONFIDENTIAL, PRODUCT_ID, MEMBERS_NO)
 VALUES (SEQ_QNAID.NEXTVAL, '원', 'A', 'N', 2, 1);
 ----------------------------------------- MEDIA ------------------------------------------
--- 집들이 게시글 썸네일
+--------------------- 집들이
+-- 썸네일
 INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
 VALUES (SEQ_MEDID.NEXTVAL, 1, 1, 'thumbnail-main-01.png', 'thumbnail-main-01.png', 'resources/img/community/communityMain/', 1);
 INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
 VALUES (SEQ_MEDID.NEXTVAL, 2, 2, 'thumbnail-main-02.png', 'thumbnail-main-02.png', 'resources/img/community/communityMain/', 1);
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 2, 2, 'thumbnail-main-03.png', 'thumbnail-main-03.png', 'resources/img/community/communityMain/', 1);
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 2, 2, 'thumbnail-main-04.png', 'thumbnail-main-04.png', 'resources/img/community/communityMain/', 1);
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 2, 2, 'thumbnail-main-05.png', 'thumbnail-main-05.png', 'resources/img/community/communityMain/', 1);
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 2, 2, 'thumbnail-main-06.png', 'thumbnail-main-06.png', 'resources/img/community/communityMain/', 1);
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 2, 2, 'thumbnail-main-07.png', 'thumbnail-main-07.png', 'resources/img/community/communityMain/', 1);
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 2, 2, 'thumbnail-main-08.png', 'thumbnail-main-08.png', 'resources/img/community/communityMain/', 1);
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 2, 2, 'thumbnail-main-09.png', 'thumbnail-main-09.png', 'resources/img/community/communityMain/', 1);
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 2, 2, 'thumbnail-main-10.png', 'thumbnail-main-10.png', 'resources/img/community/communityMain/', 1);
+
+-- 게시글 사진
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 3, 2, 'boardContent03.png', 'boardContent03.png', 'resources/img/community/communityPage/', 2);
+
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 4, 2, 'boardContent04.png', 'boardContent04.png', 'resources/img/community/communityPage/', 2);
+
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 5, 2, 'boardContent05.png', 'boardContent05.png', 'resources/img/community/communityPage/', 2);
+
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 6, 2, 'boardContent06.png', 'boardContent06.png', 'resources/img/community/communityPage/', 2);
+
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 7, 2, 'boardContent07-1.png', 'boardContent07-1.png', 'resources/img/community/communityPage/', 2);
+
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 7, 2, 'boardContent07-2.png', 'boardContent07-2.png', 'resources/img/community/communityPage/', 2);
+
+
 -- 상품 썸네일
 INSERT INTO MEDIA (MEDIA_ID, PRODUCT_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
 VALUES (SEQ_MEDID.NEXTVAL, 1, 1, 'productMain01.png', 'productMain01.png', 'resources/img/product/', 1);
