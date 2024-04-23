@@ -1,6 +1,8 @@
 package com.ohouse.product.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ohouse.common.template.PageInfo;
 import com.ohouse.common.template.Pagination;
+import com.ohouse.product.model.vo.Product;
 import com.ohouse.product.service.ProductListServiceImpl;
 
 /**
@@ -29,12 +32,15 @@ public class ProductSaleListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String condition = request.getParameter("condition");		
 		int currentPage = Integer.parseInt((request.getParameter("cpage"))) ;
-		System.out.println("안녕");
-		int listCount = new ProductListServiceImpl().selectListCount();
+		int saleListCount = new ProductListServiceImpl().selectProductListCount(condition);
 		
-		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 12);
+		PageInfo pi = Pagination.getPageInfo(saleListCount, currentPage, 10, 12);
+		ArrayList<Product> psList = new ProductListServiceImpl().selectProductSaleList(pi, condition);
 		
+		request.setAttribute("psList", psList);
+		request.getRequestDispatcher("views/product/productSalePage.jsp").forward(request, response);
 	}
 
 	/**
