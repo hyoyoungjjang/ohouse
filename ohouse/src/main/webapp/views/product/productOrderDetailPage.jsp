@@ -55,25 +55,114 @@
               <div class="header-text">
                 <span>주문상품</span>
               </div>
-              <div class="wrapper">
-                <div class="recipient-info">
-                  <div class="padding20">
-                    <div class="margin-bottom20">
-                      <div id="product-order-header">
-                        <p>
-                          <b style="font-weight: 700;">${order.deliveryStatus}</b>
-                          <span style="font-size: 15px; line-height: 24px;">&middot;${order.arrivalDate} 도착완료</span>
-                        </p>
+              <div>
+                <div class="wrapper" style="padding: 0;">
+                  <div class="recipient-info">
+                    <div class="padding20">
+                      <div class="margin-bottom20">
+                        <div id="product-order-header">
+                          <p>
+                            <b style="font-weight: 700;">${order.deliveryStatus}</b>
+                            <span style="font-size: 15px; line-height: 24px;">&middot;${order.arrivalDate} 도착완료</span>
+                          </p>
+                        </div>
+                      </div>
+                      <div id="product-order-info-container">
+                        <div id="product-thumbnail-container">
+                          <img src="${p.productThumbnail}" alt="">
+                        </div>
+                        <div id="product-order-info">
+                          <p id="product-order-name">${p.productName}</p>
+                          <p id="product-order-optionName">${o.optionsName}</p>
+                          <p class="product-order-info-text">
+                            <span>
+                              <fmt:formatNumber value="${p.productPrice}" />원
+                            </span>
+                            <span>&middot;${amount}개</span>
+                          </p>
+                          <p class="product-order-info-text">
+                            <span>${order.deliveryStatus}</span>
+                          </p>
+                        </div>
                       </div>
                     </div>
-                    <div id="product-order-info">
-                      <div id="product-thumbnail-container">
-                        <img src="${p.productThumbnail}" alt="">
+                    <div class="margin-bottom20">
+                      <div id="delivery-info">
+                        <div style="padding: 16px 12px;">
+                          <ul style="list-style: none;">
+                            <li class="delivery-info-list" style="margin-bottom: 6px;">
+                              <span>배송비</span>
+                              <div class="delivery-info-list-price">
+                                <p>
+                                  <fmt:formatNumber value="${p.productDeliveryPrice}" />원
+                                </p>
+                              </div>
+                            </li>
+                            <li class="delivery-info-list">
+                              <span>판매자</span>
+                              <div class="delivery-info-list-price">${p.companyName}</div>
+                            </li>
+                          </ul>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="wrapper">
+          <div id="price-orderer-info">
+            <div class="price-orderder-info-container">
+              <div class="header-text"><span>결제정보</span></div>
+              <div class="recipient-info">
+                <ul>
+                  <li class="price-orderer-info-content" style="margin-bottom: 8px;">
+                    <p>총 상품금액</p>
+                    <p class="text-align-end"><fmt:formatNumber value="${(p.productPrice + o.price) * amount + p.productDeliveryPrice}"/>원</p>
+                  </li>
+                  <li class="price-orderer-info-content">
+                    <p>배송비</p>
+                    <p class="text-align-end"><fmt:formatNumber value="${p.productDeliveryPrice}"/>원</p>
+                  </li>
+                </ul>
+                <hr>
+                <div>
+                  <div class="price-orderer-info-content">
+                    <p id="total-price">주문금액</p>
+                    <p class="text-align-end" style="font-size: 18px; line-height: 24px; font-weight: 700;"><fmt:formatNumber value="${(p.productPrice + o.price) * amount + p.productDeliveryPrice}"/>원</p>
+                  </div>
+                  <ul>
+                    <li id="payment">
+                      <p>네이버페이</p>
+                      <p><fmt:formatNumber value="${(p.productPrice + o.price) * amount + p.productDeliveryPrice}"/>원</p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="price-orderder-info-container">
+              <div class="header-text"><span>주문자정보</span></div>
+              <ul class="recipient-info">
+                <li>
+                  <span>주문자</span>
+                  <p>${loginUser.membersName}</p>
+                </li>
+                <li>
+                  <span>연락처</span>
+                  <p>${loginUser.membersPhone}</p>
+                </li>
+                <li>
+                  <span>이메일</span>
+                  <p>${loginUser.membersEmail}</p>
+                </li>
+              </ul>
+              <p id="customer-service-center-phone">
+                오늘의집 고객센터&nbsp;
+                <span style="color: rgb(47, 52, 56);">1111-2222</span>
+              </p>
             </div>
           </div>
         </div>

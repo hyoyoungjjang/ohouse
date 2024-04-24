@@ -104,13 +104,19 @@
                         <div id="default-shipping-destination">
 
                         </div>
+                        <c:set var="totalProductPrice" scope="request">
+                        	${(p.productPrice + o.price) * amount}
+                        </c:set>
+                        <c:set var="totalPrice" scope="request">
+                        	${totalProductPrice + p.productDeliveryPrice}
+                        </c:set>
                         <div id="request-for-delivery">
-                            <select name="" id="request-for-delivery-choice">
-                                <option value="choice1" selected>배송시 요청사항을 선택해주세요</option>
-                                <option value="choice2">부재시 문앞에 놓아주세요</option>
-                                <option value="choice3">배송전에 미리 연락주세요</option>
-                                <option value="choice4">부재시 경비실에 맡겨 주세요</option>
-                                <option value="choice5">부재시 전화주시거나 문자 남겨 주세요</option>
+                            <select name="requirement" id="request-for-delivery-choice">
+                                <option value="배송시 요청사항을 선택해주세요" selected>배송시 요청사항을 선택해주세요</option>
+                                <option value="부재시 문앞에 놓아주세요">부재시 문앞에 놓아주세요</option>
+                                <option value="배송전에 미리 연락주세요">배송전에 미리 연락주세요</option>
+                                <option value="부재시 경비실에 맡겨 주세요">부재시 경비실에 맡겨 주세요</option>
+                                <option value="부재시 전화주시거나 문자 남겨 주세요">부재시 전화주시거나 문자 남겨 주세요</option>
                             </select>
                         </div>
                         <div class="order-and-payment-information-text-area">
@@ -136,7 +142,7 @@
                                     <p id="text1">${p.productName}</p>
                                     <p id="text2">${o.optionsName}</p>
                                     <p id="text3">
-                                        <fmt:formatNumber value="${(p.productPrice + o.price) * amount}"/>원
+                                        <fmt:formatNumber value="${p.productPrice}"/>원
                                         <span class="order-product-count2">${amount}개</span>
                                     </p>
                                 </div>
@@ -147,6 +153,7 @@
                         </div>
                         <div id="payment-method-area">
                             <div id="payment-method-choice-area">
+                                <input type="hidden" name="paymentMethod" id="payment-method" value="">
                                 <div class="choice-area" id="payment-method-choice1" onclick="choice(this)">
                                     <span>카드</span>
                                     <img class="choice-img" src="${pageContext.request.contextPath}/resources/img/product/productOrderCard.png" alt="">
@@ -176,18 +183,26 @@
                                     <img class="choice-img" src="${pageContext.request.contextPath}/resources/img/product/productOrderPhone.png" alt="">
                                 </div>
                             </div>
+
                             <script>
                                 function choice(_this){
-
+                                    const hiddenInput = document.getElementById("payment-method");
                                     const choiceArr = document.getElementsByClassName("choice-area");
-
+                            
                                     for(let i = 0; i < choiceArr.length; i++){
                                         choiceArr[i].style.background="none";
                                         choiceArr[i].style.border="1px solid #eaedef";
                                     }
-
+                            
                                     _this.style.background="#effbff";
                                     _this.style.border="1px solid #35c5f0";
+                            
+                                    if(hiddenInput.value.trim() === ""){
+                                        hiddenInput.value = _this.querySelector("span").innerHTML;
+                                    } else {
+                                        hiddenInput.value = "";
+                                        hiddenInput.value = _this.querySelector("span").innerHTML;
+                                    }
                                 }
                             </script>
                         </div>
@@ -201,7 +216,7 @@
                         </div>
                         <div class="payment-amount-info-text">
                             <span>총 상품 금액</span>
-                            <span><fmt:formatNumber value="${(p.productPrice + o.price) * amount}"/>원</span>
+                            <span><fmt:formatNumber value="${totalProductPrice}"/>원</span>
                         </div>
                         <div class="payment-amount-info-text margin-bottom-20px">
                             <span>배송비</span>
@@ -210,14 +225,17 @@
                         <hr>
                         <div class="payment-amount-info-text total-payment-amount">
                             <span>최종 결제 금액</span>
-                            <span><fmt:formatNumber value="${(p.productPrice + o.price) * amount + p.productDeliveryPrice}"/>원</span>
-                            <input type="hidden" name="totalPrice" value="${(p.productPrice + o.price) * amount + p.productDeliveryPrice}">
+                            <span><fmt:formatNumber value="${totalPrice}"/>원</span>
+                            <input type="hidden" name="totalPrice" value="${totalPrice}">
                         </div>
                     </div>
                 </div>
                 <div id="paying">
-                    <span onclick="submitForm()"><fmt:formatNumber value="${(p.productPrice + o.price) * amount + p.productDeliveryPrice}"/>원 결제하기</span>
+                    <span onclick="submitForm()"><fmt:formatNumber value="${totalPrice}"/>원 결제하기</span>
                 </div>
+                <input type="hidden" name="productId" value="${p.productId}">
+                <input type="hidden" name="optNameNo" value="${o.optionsNameNo}">
+                <input type="hidden" name="amount" value="${amount}">
             </div>
         </div>
         </form>
