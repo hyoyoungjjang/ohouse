@@ -22,7 +22,7 @@ public class MembersDao {
 	}
 	
 	public int idCheck(SqlSession sqlSession, String checkId) {
-		return sqlSession.delete("membersMapper.idCheck");
+		return sqlSession.selectOne("membersMapper.idCheck");
 	}
 	
 	public int updatePwdMembers(SqlSession sqlSession, HashMap<String, String> map) {

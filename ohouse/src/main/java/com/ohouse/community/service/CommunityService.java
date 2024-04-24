@@ -3,9 +3,9 @@ package com.ohouse.community.service;
 import java.util.ArrayList;
 
 import com.ohouse.common.model.vo.Media;
-import com.ohouse.common.model.vo.Scrap;
 import com.ohouse.community.model.vo.Board;
 import com.ohouse.community.model.vo.Reply;
+import com.ohouse.product.model.vo.Product;
 
 public interface CommunityService {
 	// 커뮤니티 메인 게시글 조회, 필터 없음
@@ -38,4 +38,12 @@ public interface CommunityService {
 	// 게시글 삽입
 	int insertBoard(Board b, ArrayList<Media> list);
 
+	// 상품 검색
+	ArrayList<Product> selectProductList(String key);
+
+	// 게시글 수정
+	int updateBoard(Board b, ArrayList<Media> list);
+
+	// 게시글 삭제
+	int deleteBoard(int boardId);
 }
