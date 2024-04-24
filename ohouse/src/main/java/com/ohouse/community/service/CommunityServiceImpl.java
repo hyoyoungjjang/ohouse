@@ -146,5 +146,20 @@ public class CommunityServiceImpl implements CommunityService{
 		sqlSession.close();
 		return result1 + result2;
 	}
+	
+	@Override
+	public int deleteBoard(int boardId) {
+		SqlSession sqlSession = getSqlSession();
+		int result = communityDao.deleteBoard(sqlSession, boardId);
+		
+		if(result > 0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		
+		sqlSession.close();
+		return result;
+	}
 
 }

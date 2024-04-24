@@ -73,4 +73,8 @@ public class CommunityDao {
 		}
 		return result;
 	}
+	
+	public int deleteBoard(SqlSession sqlSession, int boardId) {
+		return sqlSession.update("communityMapper.deleteBoard", boardId);
+	}
 }

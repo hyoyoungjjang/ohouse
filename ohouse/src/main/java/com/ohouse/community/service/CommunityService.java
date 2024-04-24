@@ -44,4 +44,6 @@ public interface CommunityService {
 	// 게시글 수정
 	int updateBoard(Board b, ArrayList<Media> list);
 
+	// 게시글 삭제
+	int deleteBoard(int boardId);
 }
