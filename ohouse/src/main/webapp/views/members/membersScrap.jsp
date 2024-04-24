@@ -36,17 +36,40 @@
                 }
             </script>
             <hr>
+            
             <div class="scrap-item">
-            	<c:forEach var="s" items="${scrap }"/>
-            		
-            		<!--  
-	                <div class="scrap-item-img">
-	                    <img src=" ${pageContext.request.contextPath}/resources/img/member/scrap_item.png" class="scrap_item" width="100%">
-	                    <button type="button">
-	                        <img src="${pageContext.request.contextPath}/resources/img/member/pm-bookmark-checked.png" width="40px">
-	                    </button>
-	                </div>
-	        	    -->   
+            	<c:forEach var="s" items=""/>
+	        	  
+	        	<br>
+	        	<script type="text/javascript">
+	        	function ScrapMembers(){
+       			 $.ajax({
+	           				 url : "scrap.me"
+	           				 date : {
+	           				
+	           				 },
+	           				 success : function (res){
+	           					 let str += ("<tr>" +
+	           							     "<td>" + scrap.scrapMembersNo + "</td>" +
+	           							     "<td>" + scrap.scrapBoardId + "</td>" +
+	           							     "<td>" + scrap.scrapMediaId + "</td>" +
+	           							     "</tr>"
+	           							 )
+	           				 }
+	           				 document.querySelector("#scrap-area").innerHTML = str;
+	           			 },
+	           			 error : function(){
+	           				 console.log("스크랩 요청 실패")
+	           			 }
+       			 })
+       		}
+	        	</script> 
+<!-- 
+
+	            <div align="center">
+	                <button type="submit">등록하기</button>
+	            </div>    
+ -->
             </div>
         </div>
     </div>
