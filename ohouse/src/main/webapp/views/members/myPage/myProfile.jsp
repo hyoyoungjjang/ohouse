@@ -17,44 +17,91 @@
                 <div id="profile-info">
                     <div id="profile-img-area">
                         <img src="${pageContext.request.contextPath}/resources/img/member/myPage/user.png" alt=""><br>
-                        <h2>우주속다람쥐</h1>
+                        <h2>${loginUser.membersName}</h1>
                     </div>
-                    <button type="button">설정</button>
+                    <button type="button" onclick="location.href='${contextPath}/updateForm.me'">설정</button>
                 </div>
                 <hr>
                 <div id="profile-bookmark">
                     <img src="${pageContext.request.contextPath}/resources/img/member/myPage/profile-bookmark.png" alt="">
                     <div>스크랩북</div>
-                    <div>1</div>
+                    <div id="scrap-count"></div>
                 </div>
             </div>
+            <script>
+                let mNo = ${loginUser.membersNo};
+                
+                window.onload = function(){
+
+                    $.ajax({
+                        url : "scrapCount.me",
+                        data : {
+                            mNo : mNo 
+                        },
+                        success : function(result){
+                            drawScrapCount(result)
+                        }, error : function(){
+                            console.log("스크랩카운트 실패")
+                        }
+                    })
+
+                    function drawScrapCount(result){
+                        const scrapCountArea = document.getElementById("scrap-count");
+
+                        scrapCountArea.innerHTML = result
+                    }
+
+                    $.ajax({
+                        url : "communityCount.me",
+                        data : {
+                            mNo : mNo
+                        },
+                        success : function(res){                      
+                            drawCommunityCount(res)
+                        }, error : function(){
+                            console.log("게시글카운트 실패")
+                        }
+                    })
+
+                    function drawCommunityCount(res){
+                        const communityCountArea = document.getElementById("profile-content-cnt");
+
+                        communityCountArea.innerHTML = res
+                    }
+                    
+                    $.ajax({
+                        url : "communityList.me",
+                        data : {
+                            mNo : mNo
+                        },
+                        success : function(list){                      
+                            drawCommunityList(list)
+                        }, error : function(){
+                            console.log("게시글 리스트 실패")
+                        }
+                    })
+
+                    function drawCommunityList(list){
+                        const communityListTest = document.getElementById("profile-content-area");
+                        console.log(list)
+                       
+                        for(let i = 0; i < list.length; i++){
+                            const communityList = list[i];
+                            if(communityList){
+                                communityListTest.innerHTML += `<div class="profile-content-img" onclick="location.href='${contextPath}/detail.co?bid=`+communityList.mediaBoardId+`'">
+                                    <img id="profile-community-img" src="${pageContext.request.contextPath}/` + communityList.filePath + communityList.originName +  `">
+                                    </div>` 
+                            }
+                        }
+                    }
+                    
+                }
+            </script>
             <div id="profile-content">
-                <h3>게시글 <span id="profile-content-cnt">0</span></h3>
+                <h3>게시글 <span id="profile-content-cnt"></span></h3>
                 <div id="profile-content-area">
-                    <div class="profile-content-img">
-                        <img src="${pageContext.request.contextPath}/resources/img/member/myPage/example.png" alt="">
-                    </div>
-                    <div class="profile-content-img">
-                        <img src="${pageContext.request.contextPath}/resources/img/member/myPage/example.png" alt="">
-                    </div>
-                    <div class="profile-content-img">
-                        <img src="${pageContext.request.contextPath}/resources/img/member/myPage/example.png" alt="">
-                    </div>
-                    <div class="profile-content-img">
-                        <img src="${pageContext.request.contextPath}/resources/img/member/myPage/example.png" alt="">
-                    </div>
-                    <div class="profile-content-img">
-                        <img src="${pageContext.request.contextPath}/resources/img/member/myPage/example.png" alt="">
-                    </div>
-                    <div class="profile-content-img">
-                        <img src="${pageContext.request.contextPath}/resources/img/member/myPage/example.png" alt="">
-                    </div>
-                    <div class="profile-content-img">
-                        <img src="${pageContext.request.contextPath}/resources/img/member/myPage/example.png" alt="">
-                    </div>
-                    <div class="profile-content-img">
-                        <img src="${pageContext.request.contextPath}/resources/img/member/myPage/example.png" alt="">
-                    </div>
+                    
+                    
                 </div>
             </div>
         </div>
