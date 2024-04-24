@@ -78,19 +78,18 @@
 #content-page {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 10px;
+    justify-content: space-between;
 }
 
 .page {
     /* border: 1px solid black; */
     width: 370px;
-    height: 350px;
+    height: 369px;
 
 }
 
 .content-img {
-    width: 350px;
+    width: 378px;
     height: 243px;
     border-radius: 7px;
 

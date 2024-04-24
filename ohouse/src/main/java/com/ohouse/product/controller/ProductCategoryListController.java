@@ -38,7 +38,8 @@ public class ProductCategoryListController extends HttpServlet {
 		
 		PageInfo pi = Pagination.getPageInfo(listCount, currentPage, 10, 12);
 		ArrayList<Product> cList =  new ProductListServiceImpl().selectProductCategoryList(pi, cNo);
-		System.out.println(cList);
+		
+		request.setAttribute("pi", pi);
 		request.setAttribute("cList", cList);
 		request.getRequestDispatcher("views/product/productCategoryPage.jsp").forward(request, response);
 	}
