@@ -8,7 +8,10 @@
         <link rel="stylesheet" href="resources\header.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/product/productPage.css">
         <link rel="stylesheet" href="resources\footer.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     </head>
+
+
     <body>
         <header>
             <%@ include file="../common/header.jsp" %>
@@ -166,6 +169,13 @@
                             <br>
                             <select class="product-option2">
                                 <option selected="" value="" disabled="">파운데이션 높이</option>
+                                <option value="0">헤드만 (낮은 헤드보드만) (357,000원)</option>
+                                <option value="1">15cm (680,000원)</option>
+                                <option value="2">20cm (696,000원)</option>
+                                <option value="3">25cm (717,000원)</option>
+                                <option value="4">30cm (728,000원)</option>
+                                <option value="5">35cm (749,000원)</option>
+
                             </select>
                             <br>
                             <select class="product-option3">
@@ -240,6 +250,61 @@
                         <div class="product-ScrabAndOrder">
                             <button class="button-basket" type="button">장바구니</button>
                             <button class="button-buynow" type="button">바로구매</button>
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function () {
+                                    var basketButton = document.querySelector(".button-basket");
+                                    var buyNowButton = document.querySelector(".button-buynow");
+
+                                    // 장바구니 버튼 클릭 시 동작
+                                    basketButton.addEventListener("click", function () {
+                                        if (!areOptionsSelected()) {
+                                            alert("옵션 선택 후에 버튼을 클릭해 주세요.");
+                                        } else {
+                                            alert("장바구니에 담았습니다.");
+                                            window.location.href = "http://localhost:8881/views/members/membersCart.jsp"; // 장바구니 페이지로 이동
+                                        }
+                                    });
+
+                                    // 바로구매 버튼 클릭 시 동작
+                                    buyNowButton.addEventListener("click", function () {
+                                        // 옵션이 선택되었는지 확인
+                                        if (!areOptionsSelected()) {
+                                            alert("옵션 선택 후에 버튼을 클릭해 주세요.");
+                                            return; // 옵션이 선택되지 않았으면 더 이상 진행하지 않음
+                                        }
+
+                                        // 로그인 여부 확인
+                                        if (!isLoggedIn()) {
+                                            // 로그인되어 있지 않으면 로그인 페이지로 이동
+                                            window.location.href = "http://localhost:8881/loginForm.me";
+                                        } else {
+                                            // 로그인되어 있으면 상품 주문 페이지로 이동
+                                            window.location.href = "productOrderpage.jsp";
+                                        }
+                                    });
+
+                                    // 옵션이 선택되었는지 확인하는 함수
+                                    function areOptionsSelected() {
+                                        var productOption1 = document.querySelector(".product-option1");
+                                        var productOption2 = document.querySelector(".product-option2");
+
+                                        // 각 옵션의 값을 확인하여 선택되었는지 여부를 반환
+                                        if (productOption1.value === "" || productOption2.value === "") {
+                                            return false;
+                                        } else {
+                                            return true;
+                                        }
+                                    }
+
+                                    // 로그인 여부를 확인하는 함수 (임의의 예시)
+                                    function isLoggedIn() {
+                                        // 여기에 로그인 여부를 확인하는 코드를 작성
+                                        // 예를 들어 세션 체크 등을 사용하여 로그인 여부를 판별하고 true 또는 false를 반환
+                                    }
+
+                                });
+
+                            </script>
                         </div>
                     </div>
                 </div>
@@ -326,7 +391,33 @@
                                 <span>리뷰</span> <span style="color: #35C5F0;">392</span>
                             </div>
                             <div class="product-review-write-btn">
-                                <button type="button" class="review-write-button">리뷰쓰기</button>
+                                <button type="button" class="review-write-button" onclick="">리뷰쓰기</button>
+                                <div id="myModal" class="modal">
+                                    <!-- 모달 내용 -->
+                                    <div class="modal-content">
+                                        
+                                        <div id="modal-content-placeholder"></div>
+                                    </div>
+                                </div>
+                                <script>
+                                    // 리뷰쓰기 버튼 클릭 시 모달 열기
+                                    $(".review-write-button").click(function() {
+                                        $("#myModal").css("display", "block");
+                                        // productPage.jsp 파일을 모달 내용으로 로드
+                                        $("#modal-content-placeholder").load("productReview.jsp");
+                                    });
+                                    
+                                    // 모달 외부 클릭 시 모달 닫기
+                                    $(".modal").click(function() {
+                                        $("#myModal").css("display", "none");
+                                    });
+                                    
+                                    // 모달 내부를 클릭해도 모달이 닫히지 않도록 이벤트 전파 방지
+                                    $(".modal-content").click(function(event) {
+                                        event.stopPropagation();
+                                    });
+                                    </script>
+                                    
                             </div>
                             <div class="review-star">
                                 <div class="product-review-star-rating">
@@ -924,99 +1015,106 @@
                 </div>
                 <div class="product-sidebar">
                     <div class="product-sidebar-option">
-                            <select class="product-sidebar-option1">
-                                <option>침대사이즈</option>
-                                <option value="0">S/SS (싱글 / 슈퍼싱글)(357,000 ~ 749,000원)</option>
-                                <option value="1">D/Q (더블 / 퀸)(476,000 ~ 904,000원)</option>
-                                <option value="2">K (킹)(487,000 ~ 926,000원)</option>
-                                <option value="3">LK (라지킹)(568,000 ~ 1,059,000원)</option>
-                                <option value="4">EK (이스턴킹)(639,000 ~ 1,151,000원)</option>
-                            </select>
-                            <br>
-                            <select class="product-sidebar-option2">
-                                <option selected="" value="" disabled="">파운데이션 높이</option>
-                            </select>
-                            <br>
-                            <select class="product-sidebar-option3">
-                                <option>추가상품 (선택)</option>
-                                <option value="0">헤드 - 높은 헤드형으로 변경 (100,000원)</option>
-                                <option value="1">자재등급 E0 변경 (63,000원)</option>
-                                <option value="2">특수 사이즈 커스터마이징 (79,000원)</option>
-                                <option value="3">(인기)Fabio 10-화이트아이보리 (271,000원)</option>
-                                <option value="4">(인기)린넨 01-아이보리 오트밀 (271,000원)</option>
-                                <option value="5">(인기)Galaxy 06-크림 (211,000원)</option>
-                                <option value="6">Fabio 04-네이비블루 (271,000원)</option>
-                                <option value="7">Gorka 05-그레이화이트 Mix (271,000원)</option>
-                                <option value="8">Fabio 18-그린 (271,000원)</option>
-                                <option value="9">Bubble 01-블랙 (271,000원)</option>
-                                <option value="10">Bubble 07-화이트 (271,000원)</option>
-                                <option value="11">Bubble 16-핑크 (271,000원)</option>
-                                <option value="12">Ross 01-네이비 (241,000원)</option>
-                                <option value="13">Ross 04-인디핑크 (241,000원)</option>
-                                <option value="14">Ross 06-브라운 (241,000원)</option>
-                                <option value="15">Ross 07-그레이베이지 (241,000원)</option>
-                                <option value="16">Ross 08-라이트 그레이 (241,000원)</option>
-                                <option value="17">Ross 09-그레이 (241,000원)</option>
-                                <option value="18">Ross 13-포레스트그린 (241,000원)</option>
-                                <option value="19">Nea 23-아이보리 (158,000원)</option>
-                                <option value="20">Nea 25-베이지 (158,000원)</option>
-                                <option value="21">Nea 80-민트 (158,000원)</option>
-                                <option value="22">Nea 86-네이비블루 (158,000원)</option>
-                                <option value="23">Nea 74-포레스트 그린 (158,000원)</option>
-                                <option value="24">Nea 66-머스타드 옐로 (158,000원)</option>
-                                <option value="25">Nea 03-라이트 그레이 (158,000원)</option>
-                                <option value="26">Nea 15-진그레이 (158,000원)</option>
-                                <option value="27">Nea 19-블랙 (158,000원)</option>
-                                <option value="28">Raven 06-라이트 그레이 (271,000원)</option>
-                                <option value="29">Raven 22-화이트 (271,000원)</option>
-                                <option value="30">Raven 66-머스타드옐로 (271,000원)</option>
-                                <option value="31">Raven 80-민트 (271,000원)</option>
-                                <option value="32">Raven 86-네이비블루 (271,000원)</option>
-                                <option value="33">Raven 91-퍼플 (271,000원)</option>
-                                <option value="34">린넨 02-그레이 오트밀 (271,000원)</option>
-                                <option value="35">린넨 03-민트 오트밀 (271,000원)</option>
-                                <option value="36">Galaxy 01-네이비 (211,000원)</option>
-                                <option value="37">Galaxy 04 M-그레이 (211,000원)</option>
-                                <option value="38">Galaxy 05-라이트 그레이 (211,000원)</option>
-                                <option value="39">Galaxy 08-그린 (211,000원)</option>
-                                <option value="40">Galaxy 09-머스트옐로우 (211,000원)</option>
-                                <option value="41">Galaxy 10-핑크 (211,000원)</option>
-                                <option value="42">PU 4-아이보리 (0원)</option>
-                                <option value="43">PU 5-라이트 그레이 (0원)</option>
-                                <option value="44">PU 7-네이비 (0원)</option>
-                                <option value="45">PU-3-그레이 (0원)</option>
-                                <option value="46">PU 6-브라운 (0원)</option>
-                                <option value="47">PU 8-블랙 (0원)</option>
-                                <option value="48">ADAM 02-화이트 (241,000원)</option>
-                                <option value="49">ADAM 27-그린 (241,000원)</option>
-                                <option value="50">ADAM 42-퍼플 (241,000원)</option>
-                                <option value="51">파운데이션 높이추가+ 10cm (35cm선택시) (52,500원)</option>
-                                <option value="52">파운데이션 상판 원단 풀커버 (100,000원)</option>
-                            </select> 
+                        <select class="product-sidebar-option1">
+                            <option>침대사이즈</option>
+                            <option value="0">S/SS (싱글 / 슈퍼싱글)(357,000 ~ 749,000원)</option>
+                            <option value="1">D/Q (더블 / 퀸)(476,000 ~ 904,000원)</option>
+                            <option value="2">K (킹)(487,000 ~ 926,000원)</option>
+                            <option value="3">LK (라지킹)(568,000 ~ 1,059,000원)</option>
+                            <option value="4">EK (이스턴킹)(639,000 ~ 1,151,000원)</option>
+                        </select>
+                        <br>
+                        <select class="product-sidebar-option2">
+                            <option selected="" value="" disabled="">파운데이션 높이</option>
+                                <option value="0">헤드만 (낮은 헤드보드만) (357,000원)</option>
+                                <option value="1">15cm (680,000원)</option>
+                                <option value="2">20cm (696,000원)</option>
+                                <option value="3">25cm (717,000원)</option>
+                                <option value="4">30cm (728,000원)</option>
+                                <option value="5">35cm (749,000원)</option>
+                        </select>
+                        <br>
+                        <select class="product-sidebar-option3">
+                            <option>추가상품 (선택)</option>
+                            <option value="0">헤드 - 높은 헤드형으로 변경 (100,000원)</option>
+                            <option value="1">자재등급 E0 변경 (63,000원)</option>
+                            <option value="2">특수 사이즈 커스터마이징 (79,000원)</option>
+                            <option value="3">(인기)Fabio 10-화이트아이보리 (271,000원)</option>
+                            <option value="4">(인기)린넨 01-아이보리 오트밀 (271,000원)</option>
+                            <option value="5">(인기)Galaxy 06-크림 (211,000원)</option>
+                            <option value="6">Fabio 04-네이비블루 (271,000원)</option>
+                            <option value="7">Gorka 05-그레이화이트 Mix (271,000원)</option>
+                            <option value="8">Fabio 18-그린 (271,000원)</option>
+                            <option value="9">Bubble 01-블랙 (271,000원)</option>
+                            <option value="10">Bubble 07-화이트 (271,000원)</option>
+                            <option value="11">Bubble 16-핑크 (271,000원)</option>
+                            <option value="12">Ross 01-네이비 (241,000원)</option>
+                            <option value="13">Ross 04-인디핑크 (241,000원)</option>
+                            <option value="14">Ross 06-브라운 (241,000원)</option>
+                            <option value="15">Ross 07-그레이베이지 (241,000원)</option>
+                            <option value="16">Ross 08-라이트 그레이 (241,000원)</option>
+                            <option value="17">Ross 09-그레이 (241,000원)</option>
+                            <option value="18">Ross 13-포레스트그린 (241,000원)</option>
+                            <option value="19">Nea 23-아이보리 (158,000원)</option>
+                            <option value="20">Nea 25-베이지 (158,000원)</option>
+                            <option value="21">Nea 80-민트 (158,000원)</option>
+                            <option value="22">Nea 86-네이비블루 (158,000원)</option>
+                            <option value="23">Nea 74-포레스트 그린 (158,000원)</option>
+                            <option value="24">Nea 66-머스타드 옐로 (158,000원)</option>
+                            <option value="25">Nea 03-라이트 그레이 (158,000원)</option>
+                            <option value="26">Nea 15-진그레이 (158,000원)</option>
+                            <option value="27">Nea 19-블랙 (158,000원)</option>
+                            <option value="28">Raven 06-라이트 그레이 (271,000원)</option>
+                            <option value="29">Raven 22-화이트 (271,000원)</option>
+                            <option value="30">Raven 66-머스타드옐로 (271,000원)</option>
+                            <option value="31">Raven 80-민트 (271,000원)</option>
+                            <option value="32">Raven 86-네이비블루 (271,000원)</option>
+                            <option value="33">Raven 91-퍼플 (271,000원)</option>
+                            <option value="34">린넨 02-그레이 오트밀 (271,000원)</option>
+                            <option value="35">린넨 03-민트 오트밀 (271,000원)</option>
+                            <option value="36">Galaxy 01-네이비 (211,000원)</option>
+                            <option value="37">Galaxy 04 M-그레이 (211,000원)</option>
+                            <option value="38">Galaxy 05-라이트 그레이 (211,000원)</option>
+                            <option value="39">Galaxy 08-그린 (211,000원)</option>
+                            <option value="40">Galaxy 09-머스트옐로우 (211,000원)</option>
+                            <option value="41">Galaxy 10-핑크 (211,000원)</option>
+                            <option value="42">PU 4-아이보리 (0원)</option>
+                            <option value="43">PU 5-라이트 그레이 (0원)</option>
+                            <option value="44">PU 7-네이비 (0원)</option>
+                            <option value="45">PU-3-그레이 (0원)</option>
+                            <option value="46">PU 6-브라운 (0원)</option>
+                            <option value="47">PU 8-블랙 (0원)</option>
+                            <option value="48">ADAM 02-화이트 (241,000원)</option>
+                            <option value="49">ADAM 27-그린 (241,000원)</option>
+                            <option value="50">ADAM 42-퍼플 (241,000원)</option>
+                            <option value="51">파운데이션 높이추가+ 10cm (35cm선택시) (52,500원)</option>
+                            <option value="52">파운데이션 상판 원단 풀커버 (100,000원)</option>
+                        </select>
                     </div>
                     <div class="product-sidebar-buy">
-                            <p>
-                                <span class="product-sidebar-buy-order-price-text">주문금액
+                        <p>
+                            <span class="product-sidebar-buy-order-price-text">주문금액
+                            </span>
+                            <span class="product-sidebar-buy-order-total-price">
+                                <span>0
                                 </span>
-                                <span class="product-sidebar-buy-order-total-price">
-                                    <span>0
-                                    </span>
-                                    원
-                                </span>
-                            </p>
-                    <div class="product-sidebar-buy-ScrabAndOrder">
-                        <button class="product-sidebar-buy-Scrap" type="button">
-                            <svg class="icon--stroke" aria-label="스크랩" width="24" height="24" fill="none"
+                                원
+                            </span>
+                        </p>
+                        <div class="product-sidebar-buy-ScrabAndOrder">
+                            <button class="product-sidebar-buy-Scrap" type="button">
+                                <svg class="icon--stroke" aria-label="스크랩" width="24" height="24" fill="none"
                                     stroke="currentColor" stroke-width="0.5" viewBox="0 0 24 24"
                                     preserveAspectRatio="xMidYMid meet">
                                     <path
                                         d="M11.53 18.54l-8.06 4.31A1 1 0 0 1 2 21.97V3.5A1.5 1.5 0 0 1 3.5 2h17A1.5 1.5 0 0 1 22 3.5v18.47a1 1 0 0 1-1.47.88l-8.06-4.31a1 1 0 0 0-.94 0z">
                                     </path>
-                            </svg>
-                        </button>
-                        <button class="product-sidebar-buy-button-basket" type="button">장바구니</button>
-                        <button class="product-sidebar-buy-button-buynow" type="button">바로구매</button>
-                    </div>
+                                </svg>
+                            </button>
+                            <button class="product-sidebar-buy-button-basket" type="button">장바구니</button>
+                            <button class="product-sidebar-buy-button-buynow" type="button">바로구매</button>
+                            
+                        </div>
                     </div>
                 </div>
             </div>
