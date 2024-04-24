@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.ohouse.common.model.vo.Media;
 import com.ohouse.community.model.vo.Board;
 import com.ohouse.community.model.vo.Reply;
+import com.ohouse.product.model.vo.Product;
 
 public class CommunityDao {
 	public ArrayList<Board> selectBoardList(SqlSession sqlSession) {
@@ -55,5 +56,25 @@ public class CommunityDao {
 			result *= sqlSession.insert("communityMapper.insertCommunityMedia", m);
 		}
 		return result;
+	}
+
+	public ArrayList<Product> selectProductList(SqlSession sqlSession, String key) {
+		return (ArrayList)sqlSession.selectList("communityMapper.selectProductList", key);
+	}
+
+	public int updateBoard(SqlSession sqlSession, Board b) {
+		return sqlSession.update("communityMapper.updateBoard", b);
+	}
+
+	public int updateMedia(SqlSession sqlSession, ArrayList<Media> list) {
+		int result = 0;
+		for(Media m : list) {
+			result += sqlSession.update("communityMapper.updateMedia", m);
+		}
+		return result;
+	}
+	
+	public int deleteBoard(SqlSession sqlSession, int boardId) {
+		return sqlSession.update("communityMapper.deleteBoard", boardId);
 	}
 }

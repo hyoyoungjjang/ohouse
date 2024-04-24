@@ -1,3 +1,13 @@
+#content-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#content-head>div:nth-child(2) {
+    cursor: pointer;
+}
+
 #thumbnail-area {
     height: 700px;
     overflow: hidden;

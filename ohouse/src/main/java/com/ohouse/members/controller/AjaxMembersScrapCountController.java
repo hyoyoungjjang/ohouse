@@ -1,7 +1,6 @@
-package com.ohouse.community.controller;
+package com.ohouse.members.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,22 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ohouse.common.model.vo.Media;
-import com.ohouse.community.model.vo.Board;
-import com.ohouse.community.service.CommunityService;
-import com.ohouse.community.service.CommunityServiceImpl;
+import com.google.gson.Gson;
+import com.ohouse.members.service.MembersServiceImpl;
 
 /**
- * Servlet implementation class CommunityUpdateFormController
+ * Servlet implementation class AjaxMembersScrapCountController
  */
-@WebServlet("/updateForm.co")
-public class CommunityUpdateFormController extends HttpServlet {
+@WebServlet("/scrapCount.me")
+public class AjaxMembersScrapCountController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CommunityUpdateFormController() {
+    public AjaxMembersScrapCountController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,14 +30,12 @@ public class CommunityUpdateFormController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CommunityService service = new CommunityServiceImpl();
-		int boardId = Integer.parseInt(request.getParameter("bid"));
-		ArrayList<Media> media = service.selectMediaList(boardId);
-		Board board = service.selectBoard(boardId);
+		int mNo = Integer.parseInt(request.getParameter("mNo"));
 		
-		request.setAttribute("media", media);
-		request.setAttribute("board", board);
-		request.getRequestDispatcher("views/community/communityUpdate.jsp").forward(request, response);
+		int result = new MembersServiceImpl().MembersScrapCount(mNo);
+		
+		response.setContentType("application/json; charset=utf-8");
+		new Gson().toJson(result, response.getWriter());
 	}
 
 	/**

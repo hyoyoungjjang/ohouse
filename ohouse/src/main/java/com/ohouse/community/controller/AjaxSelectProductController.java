@@ -9,22 +9,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ohouse.common.model.vo.Media;
-import com.ohouse.community.model.vo.Board;
+import com.google.gson.Gson;
 import com.ohouse.community.service.CommunityService;
 import com.ohouse.community.service.CommunityServiceImpl;
+import com.ohouse.product.model.vo.Product;
 
 /**
- * Servlet implementation class CommunityUpdateFormController
+ * Servlet implementation class AjaxSelectProductController
  */
-@WebServlet("/updateForm.co")
-public class CommunityUpdateFormController extends HttpServlet {
+@WebServlet("/selectProduct.co")
+public class AjaxSelectProductController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CommunityUpdateFormController() {
+    public AjaxSelectProductController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,14 +33,13 @@ public class CommunityUpdateFormController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CommunityService service = new CommunityServiceImpl();
-		int boardId = Integer.parseInt(request.getParameter("bid"));
-		ArrayList<Media> media = service.selectMediaList(boardId);
-		Board board = service.selectBoard(boardId);
+		String key = request.getParameter("key");
 		
-		request.setAttribute("media", media);
-		request.setAttribute("board", board);
-		request.getRequestDispatcher("views/community/communityUpdate.jsp").forward(request, response);
+		CommunityService service = new CommunityServiceImpl();
+		ArrayList<Product> list = service.selectProductList(key);
+		
+		response.setContentType("application/json; charset=UTF-8");
+		new Gson().toJson(list, response.getWriter());
 	}
 
 	/**

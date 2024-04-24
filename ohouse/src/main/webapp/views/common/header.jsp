@@ -49,8 +49,10 @@
                 	<c:otherwise>
                 		<!-- 로그인O -->
 		                <div class="header-others">
-		                    <img src="${contextPath}/resources/img/common/pm-bookmark.png" alt="" onclick="">
-		                    <img src="${contextPath}/resources/img/common/shopping-cart.png" alt="" onclick="">
+		                    <img src="${contextPath}/resources/img/common/pm-bookmark.png" alt="" 
+                                onclick="location.href='${contextPath}/scrap.me'">
+		                    <img src="${contextPath}/resources/img/common/shopping-cart.png" alt="" 
+                                onclick="location.href='${contextPath}/cart.me'">
                             <img src="${contextPath}/resources/img/common/logout.png" alt="" 
                                 onclick="location.href='${contextPath}/logout.me';">
 		                    <img src="${contextPath}/resources/img/common/user.png" alt="" 
