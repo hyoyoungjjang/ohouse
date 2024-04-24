@@ -22,5 +22,7 @@ public interface MembersService {
 	public int MemberCommunityCount(int mNo);
 	
 	public ArrayList<Media> MemberCommunityList(int mNo);
-	
+
+	public Members updateMembers(Media media, Members m);
+
 }

@@ -90,3 +90,9 @@
     border: none;
     cursor: pointer;
 }
+
+label {
+    margin-top: 5px;
+    color: #828C94;
+    cursor: pointer;
+}
