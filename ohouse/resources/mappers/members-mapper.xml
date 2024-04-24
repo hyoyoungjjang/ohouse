@@ -27,6 +27,7 @@
   	</resultMap>
   	<resultMap id="mediaResultSet" type="Media">
   		<result column="MEDIA_ID" property="mediaId"/>
+  		<result column="BOARD_ID" property="mediaBoardId"/>
   		<result column="MEMBERS_NO" property="mediaMembersNo"/>
   		<result column="MEDIA_TYPE" property="mediaType"/>
   		<result column="ORIGIN_NAME" property="originName"/>
@@ -133,7 +134,7 @@
   	SET MEMBERS_PWD = #{updatePwd},
 		MEMBERS_MODIFY_TIME = SYSDATE
 	WHERE MEMBERS_ID = #{userId}
-	 AND MEMBERS_PWD = #{updatePwd}
+	 AND MEMBERS_PWD = #{userPwd}
   </update>
   <update id="deleteMembers" parameterType="Media">
   	UPDATE MEMBERS

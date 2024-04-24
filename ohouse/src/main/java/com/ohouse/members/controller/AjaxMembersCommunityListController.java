@@ -35,7 +35,7 @@ public class AjaxMembersCommunityListController extends HttpServlet {
 		int mNo = Integer.parseInt(request.getParameter("mNo"));
 		
 		ArrayList<Media> list = new MembersServiceImpl().MemberCommunityList(mNo);
-		
+		   
 		response.setContentType("application/json; charset=utf-8");
 		new Gson().toJson(list, response.getWriter());
 	}

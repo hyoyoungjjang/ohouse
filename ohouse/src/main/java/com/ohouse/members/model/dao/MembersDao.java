@@ -26,8 +26,7 @@ public class MembersDao {
 	}
 	
 	public int updatePwdMembers(SqlSession sqlSession, HashMap<String, String> map) {
-		return sqlSession.selectOne("membersMapper.updatePwdMembers", map);
-		
+		return sqlSession.update("membersMapper.updatePwdMembers", map);
 	}
 	
 	public Members selectMembers(SqlSession sqlSession, String membersId) {

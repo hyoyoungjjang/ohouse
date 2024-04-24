@@ -84,10 +84,11 @@
                     function drawCommunityList(list){
                         const communityListTest = document.getElementById("profile-content-area");
                         console.log(list)
+                       
                         for(let i = 0; i < list.length; i++){
                             const communityList = list[i];
                             if(communityList){
-                                communityListTest.innerHTML += `<div class="profile-content-img">
+                                communityListTest.innerHTML += `<div class="profile-content-img" onclick="location.href='${contextPath}/detail.co?bid=`+communityList.mediaBoardId+`'">
                                     <img id="profile-community-img" src="${pageContext.request.contextPath}/` + communityList.filePath + communityList.originName +  `">
                                     </div>` 
                             }

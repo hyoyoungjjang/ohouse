@@ -65,8 +65,9 @@ public class MembersServiceImpl implements MembersService {
 	@Override
 	public Members updatePwdMembers(HashMap<String, String> map) {
 		SqlSession sqlSession = getSqlSession();
+		
 		int result = membersDao.updatePwdMembers(sqlSession, map);
-	
+		
 		Members m = null;
 		if (result > 0) {
 			String membersId  = map.get("userId");
