@@ -64,7 +64,7 @@
         </div>   
     </header>
     <form action="${contextPath}/update.co" method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="boardId" value="${board.boardId}">
+        <input type="hidden" name="bid" value="${board.boardId}">
         <div align="center">
             <div class="cummunity-insert-area">
                 <div class="required-information-area-content">

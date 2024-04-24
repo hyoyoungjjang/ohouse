@@ -46,6 +46,7 @@ public class CommunityUpdateController extends HttpServlet {
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
 			
 			Board b = new Board();
+			b.setBoardId(multiRequest.getParameter("bid"));
 			b.setFilType(multiRequest.getParameter("type"));
 			b.setFilArea(multiRequest.getParameter("area"));
 			b.setFilNum(multiRequest.getParameter("num"));
@@ -92,11 +93,11 @@ public class CommunityUpdateController extends HttpServlet {
 			
 			if(result > 0) {
 				request.getSession().setAttribute("alertMsg", "성공적으로 게시글을 수정하였습니다.");
-				response.sendRedirect(request.getContextPath() + "/list.co");
 			} else {
 				request.getSession().setAttribute("alertMsg", "게시글 수정 실패");
-				response.sendRedirect(request.getContextPath() + "/update.co");
 			}
+			
+			response.sendRedirect(request.getContextPath() + "/list.co");
 		}
 	}
 
