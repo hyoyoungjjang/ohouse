@@ -1,12 +1,11 @@
 package com.ohouse.members.model.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.ohouse.common.model.vo.Media;
 import com.ohouse.members.model.vo.Members;
 
 public class MembersDao {
@@ -27,12 +26,22 @@ public class MembersDao {
 	}
 	
 	public int updatePwdMembers(SqlSession sqlSession, HashMap<String, String> map) {
-		return sqlSession.selectOne("membersMapper.updatePwdMembers", map);
-		
+		return sqlSession.update("membersMapper.updatePwdMembers", map);
 	}
 	
 	public Members selectMembers(SqlSession sqlSession, String membersId) {
 		return sqlSession.selectOne("membersMapper.selectMembers", membersId);
 	}
 	
+	public int MembersScrapCount(SqlSession sqlSession, int membersNo) {
+		return sqlSession.selectOne("membersMapper.membersScrapCount", membersNo);
+	}
+	
+	public int MembersCommunityCount(SqlSession sqlSession, int membersNo) {
+		return sqlSession.selectOne("membersMapper.membersCommunityCount", membersNo);
+	}
+	
+	public ArrayList<Media> MemberCommunityList(SqlSession sqlSession, int membersNo) {
+		return (ArrayList)sqlSession.selectList("membersMapper.memberCommunityList", membersNo);
+	}
 }

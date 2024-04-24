@@ -27,6 +27,7 @@
   	</resultMap>
   	<resultMap id="mediaResultSet" type="Media">
   		<result column="MEDIA_ID" property="mediaId"/>
+  		<result column="BOARD_ID" property="mediaBoardId"/>
   		<result column="MEMBERS_NO" property="mediaMembersNo"/>
   		<result column="MEDIA_TYPE" property="mediaType"/>
   		<result column="ORIGIN_NAME" property="originName"/>
@@ -133,7 +134,7 @@
   	SET MEMBERS_PWD = #{updatePwd},
 		MEMBERS_MODIFY_TIME = SYSDATE
 	WHERE MEMBERS_ID = #{userId}
-	 AND MEMBERS_PWD = #{updatePwd}
+	 AND MEMBERS_PWD = #{userPwd}
   </update>
   <update id="deleteMembers" parameterType="Media">
   	UPDATE MEMBERS
@@ -187,23 +188,44 @@
 	WHERE MEDIA_ID = #{mediaId}
   </update>
   <!-- 스크랩 관련 매퍼 -->
-  <select id="selectScrapCount" resultType="_int" parameterType="_int">
+  <select id="selectScrapCount" resultType="_int">
   SELECT COUNT(*)
 	FROM SCRAP
 	WHERE MEMBERS_NO = #{membersNo}
-	AND
 	<choose>
 		<when test="condition == 'product'">
-		SCRAP_TYPE = 1
+		 AND SCRAP_TYPE = 1
 		</when>
 		<when test="condition == 'media'">
-		SCRAP_TYPE = 2
+		AND SCRAP_TYPE = 2
 		</when>
 		<when test="condition == 'board'">
-		SCRAP_TYPE = 3
+		AND SCRAP_TYPE = 3
 		</when>
-	</choose>
+	</choose>   
 	AND SCRAP_STATUS = 'Y'
+  </select>
+  <select id="membersScrapCount" resultType="_int">
+  	 SELECT COUNT(*)
+	FROM SCRAP
+	WHERE MEMBERS_NO = #{membersNo}
+	AND SCRAP_STATUS = 'Y'
+  </select>
+  <select id="membersCommunityCount" resultType="_int">
+  SELECT COUNT(*)
+	FROM BOARD
+	WHERE MEMBERS_NO = #{membersNo}
+    AND BOARD_STATUS = 'Y'
+  </select>
+  <select id="memberCommunityList" resultMap="mediaResultSet">
+  	SELECT *
+	FROM MEDIA
+	WHERE BOARD_ID = (SELECT BOARD_ID
+	                    FROM BOARD
+	                    WHERE MEMBERS_NO = #{membersNo})
+	AND MEDIA_TYPE = 1
+	AND FILE_LEVEL = 1
+	AND MEDIA_STATUS = 'Y'
   </select>
   <update id="deleteScrap" parameterType="_int">
   UPDATE SCRAP

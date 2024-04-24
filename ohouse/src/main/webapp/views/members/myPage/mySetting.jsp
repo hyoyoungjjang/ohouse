@@ -49,7 +49,7 @@
                     </div>
                     <div>
                         <h3>생년월일</h3>
-                        <input type="date" name="birth" class="mySetting-input">
+                        <input type="text" name="birth" class="mySetting-input" placeholder="생년월일(6글자)">
                         <div class="mySetting-msg"></div>
                     </div>
                     <div>
@@ -101,7 +101,7 @@
                 <!-- Modal body -->
                 <div class="modal-body" align="center">
                     <form action="${pageContext.request.contextPath}/updatePwd.me" method="POST">
-                        <input type="hidden" name="userId" value="">
+                        <input type="hidden" name="userId" value="${loginUser.membersId}">
                         <table>
                             <tr>
                                 <td>현재 비밀번호</td>

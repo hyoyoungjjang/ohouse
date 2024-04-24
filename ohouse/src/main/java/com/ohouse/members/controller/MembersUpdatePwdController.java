@@ -38,7 +38,7 @@ public class MembersUpdatePwdController extends HttpServlet {
 		String userId = request.getParameter("userId");
 		String userPwd = request.getParameter("userPwd");
 		String updatePwd = request.getParameter("updatePwd");
-	
+		
 //		Members updateMem = new MembersServiceImpl().updatePwdMembers(userId, userPwd, updatePwd);
 //	
 //		if (updateMem == null) { 
@@ -61,18 +61,14 @@ public class MembersUpdatePwdController extends HttpServlet {
 		
 		Members updateMem = new MembersServiceImpl().updatePwdMembers(map); 
 		
-		if (updateMem == null) { 
 		HttpSession session = request.getSession();
-		session.setAttribute("alertMsg", "비밀번호 수정에 실패하였습니다.");
-					
-		response.sendRedirect(request.getContextPath() + "/updateForm.me");
+		if (updateMem == null) { 
+			session.setAttribute("alertMsg", "비밀번호 수정에 실패하였습니다.");	
 		} else { 
-			HttpSession session = request.getSession();
 			session.setAttribute("alertMsg", "성공적으로 수정하였습니다.");
 			session.setAttribute("loginUser", updateMem);
-			
-			response.sendRedirect(request.getContextPath() + "/updateForm.me");
 		}
+		response.sendRedirect(request.getContextPath() + "/updateForm.me");
 	}
 
 	/**
