@@ -63,7 +63,8 @@
             <div style="border: 1px solid #f7f9fa; min-width: 1136px;"></div>
         </div>   
     </header>
-    <form action="${contextPath}/insert.co" method="POST" enctype="multipart/form-data">
+    <form action="${contextPath}/update.co" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="boardId" value="${board.boardId}">
         <div align="center">
             <div class="cummunity-insert-area">
                 <div class="required-information-area-content">
@@ -86,7 +87,7 @@
                             <span class="type-text-star">*</span>
                         </div>
                         <div class="housing-type-coice">
-                            <select name="type" id="housing-type-coice-select">
+                            <select name="type" id="housing-type-coice-select" value="${board.filType}">
                                 <option value="null" readonly selected>선택해주세요.</option>
                                 <option value="본인 방">본인 방</option>
                                 <option value="원룸">원룸</option>
@@ -101,7 +102,7 @@
                             <span class="type-text-star">*</span>
                         </div>
                         <div class="family-member-input-area">
-                            <input type="number" name="area">
+                            <input type="number" name="area" value="${board.filArea}">
                             <span>평</span>
                         </div>
                     </div>
@@ -110,7 +111,7 @@
                             <div class="room-number-title">방 개수</div>
                         </div>
                         <div class="room-number-coice">
-                            <select name="num" id="room-number-coice-select">
+                            <select name="num" id="room-number-coice-select" value="${board.filNum}">
                                 <option value="null" readonly selected>선택해주세요.</option>
                                 <option value="1">1개</option>
                                 <option value="1.5">1.5개</option>
@@ -123,7 +124,7 @@
                             <div class="direction-title">방향</div>
                         </div>
                         <div class="direction-coice">
-                            <select name="direction" id="direction-coice-select">
+                            <select name="direction" id="direction-coice-select" value="${board.filDirection}">
                                 <option value="null" readonly selected>선택해주세요.</option>
                                 <option value="남향">남향</option>
                                 <option value="서향">서향</option>
@@ -136,7 +137,7 @@
                             <div class="completion-title">준공연차</div>
                         </div>
                         <div class="completion-coice">
-                            <select name="past" id="completion-coice-select">
+                            <select name="past" id="completion-coice-select" value="${board.filPast}">
                                 <option value="null" readonly selected>선택해주세요.</option>
                                 <option value="입주예정">입주예정</option>
                                 <option value="~2년 미만">~2년 미만</option>
@@ -149,7 +150,7 @@
                             <div class="location-title">지역</div>
                         </div>
                         <div class="location-coice">
-                            <select name="local" id="location-coice-select">
+                            <select name="local" id="location-coice-select" value="${board.filLocal}">
                                 <option value="null" readonly selected>선택해주세요.</option>
                                 <option value="서울특별시">서울특별시</option>
                                 <option value="부산광역시">부산광역시</option>
@@ -163,7 +164,7 @@
                             <span class="type-text-star">*</span>
                         </div>
                         <div class="family-form-coice">
-                            <select name="family" id="family-form-coice-select">
+                            <select name="family" id="family-form-coice-select" value="${board.filFamily}">
                                 <option value="null" readonly selected>선택해주세요.</option>
                                 <option value="싱글라이프">싱글라이프</option>
                                 <option value="신혼/부부가 사는 집">신혼/부부가 사는집</option>
@@ -176,7 +177,7 @@
                             <div class="animal-title">반려동물 유무</div>
                         </div>
                         <div class="animal-coice">
-                            <select name="pet" id="animal-coice-select">
+                            <select name="pet" id="animal-coice-select" value="${board.filPet}">
                                 <option value="null" readonly selected>선택해주세요.</option>
                                 <option value="없어요.">없어요.</option>
                                 <option value="강아지">강아지</option>
@@ -190,7 +191,7 @@
                             <div class="family-member-title">가족 구성원수</div>
                         </div>
                         <div class="family-member-input-area">
-                            <input type="number" name="familyMemCnt">
+                            <input type="number" name="familyMemCnt" value="${board.filFamMemCnt}">
                             <span>명</span>
                         </div>
                     </div>
@@ -200,7 +201,7 @@
                             <span class="type-text-star">*</span>
                         </div>
                         <div class="work-field-coice">
-                            <select name="field" id="work-field-coice-select">
+                            <select name="field" id="work-field-coice-select" value="${board.filField}">
                                 <option value="null" readonly selected>선택해주세요.</option>
                                 <option value="홈스타일링">홈스타일링</option>
                                 <option value="리모델링">리모델링</option>
@@ -214,11 +215,11 @@
                             <span class="worker-star">*</span>
                         </div>
                         <div class="worker-choice-area">
-                            <input type="radio" id="self" name="worker" value="셀프/DIY">
+                            <input type="radio" id="self" name="worker" value="셀프/DIY" >
                             <label for="self">셀프&#183;DIY</label>
-                            <input type="radio" id="half-self" name="worker" value="반셀프">
+                            <input type="radio" id="half-self" name="worker" value="반셀프" >
                             <label for="half-self">반셀프</label>                         
-                            <input type="radio" id="expert" name="worker" value="전문가">
+                            <input type="radio" id="expert" name="worker" value="전문가" >
                             <label for="expert">전문가</label>
                         </div>
                     </div>
@@ -227,7 +228,7 @@
                             <div class="detailed-construction-title">세부 시공 범위</div>
                         </div>
                         <div class="detailed-construction-coice">
-                            <select name="range" id="detailed-construction-coice-select">
+                            <select name="range" id="detailed-construction-coice-select" value="${board.filRange}">
                                 <option value="null" readonly selected>선택해주세요.</option>
                                 <option value="폴딩도어">폴딩도어</option>
                                 <option value="주방 리모델링">주방 리모델링</option>
@@ -240,7 +241,7 @@
                             <div class="period-title">기간</div>
                         </div>
                         <div class="family-member-input-area">
-                            <input type="number" name="period">
+                            <input type="number" name="period" value="${board.filPeriod}">
                             <span>주</span>
                         </div>
                     </div>
@@ -249,7 +250,7 @@
                             <div class="budget-title">예산</div>
                         </div>
                         <div class="budget-input-area">
-                            <input type="number" name="constructionPrice">
+                            <input type="number" name="constructionPrice" value="${board.filConPrice}">
                             <span>만원</span>
                         </div>
                     </div>
@@ -258,7 +259,7 @@
                             <div class="link-title">링크</div>
                         </div>
                         <div class="link-input-area">
-                            <input type="text" placeholder="URL 주소를 입력해주세요." name="url">
+                            <input type="text" placeholder="URL 주소를 입력해주세요." name="url" value="${board.filUrl}">
                         </div>
                     </div>
                     <div class="copyright-area">
@@ -266,89 +267,72 @@
                             <div class="copyright-title">저작권 표기(c)</div>
                         </div>
                         <div class="copyright-input-area">
-                            <input type="text" placeholder="사진 저작자를 입력해주세요." name="copyright">
+                            <input type="text" placeholder="사진 저작자를 입력해주세요." name="copyright" value="${board.filCopy}">
                         </div>
                     </div>
                 </div>
             </div>
             <div class="img-area" id="file1" onclick="imgChange('cover-img-hidden');">
-                <!--사진이 없는 초기 화면-->
-                <h5>커버사진 추가하기 버튼으로</h5>
-                <h5>커버사진을 업로드해주세요.</h5>
-                <button type="button" class="btn btn-secondary btn-lg">
-                    커버사진 추가하기
-                </button>
+                <img src="${contextPath}/${media.get(0).filePath}${media.get(0).changeName}" style="height: 90%;">
+                <input type="file" value="${contextPath}/${media.get(0).filePath}${media.get(0).changeName}" onchange="showImg(this, '#file2', '대표사진');" id="first-img-hidden" name="file2" class="hidden">
             </div>
+            <input type="hidden" name="mid" value="${media.get(0).mediaId}">
             <input type="file" value="커버사진 추가하기" onchange="showImg(this, '#file1', '커버사진');" id="cover-img-hidden" name="file1" class="hidden">
             
             <div id="content-title">
-                <input id="content-title-input" type="text" name="title" placeholder="제목을 입력하세요.">
+                <input id="content-title-input" type="text" name="title" placeholder="제목을 입력하세요." value="${board.boardTitle}">
             </div>
             <div id="content-area">
                 <!--대표 사진-->
                 <div class="img-area" id="file2" onclick="imgChange('first-img-hidden');">
-                    <!--사진이 없는 초기 화면-->
-                    <h5>대표사진 추가하기 버튼으로</h5>
-                    <h5>대표사진을 업로드해주세요.</h5>
-                    <button type="button" class="btn btn-secondary btn-lg">
-                        대표사진 추가하기
-                    </button>
+                    <img src="${contextPath}/${media.get(1).filePath}${media.get(1).changeName}" alt="" style="height: 90%;">
                 </div>
+                <input type="hidden" name="mid" value="${media.get(1).mediaId}">
                 <input type="file" value="대표사진 추가하기" onchange="showImg(this, '#file2', '대표사진');" id="first-img-hidden" name="file2" class="hidden">
                 <!--대표 글-->
-                <textarea name="introduction" id="textarea" align="left" placeholder="내용을 입력하세요."></textarea>
+                <textarea name="introduction" id="textarea" align="left" placeholder="내용을 입력하세요.">${board.introduction}</textarea>
                 <!--3초 컷! 집들이 미리보기-->
                 <p id="community-house-content-3cut">
                     ⚡ 3초 컷! 집들이 미리보기
-                    <button type="button" class="btn btn-light btn-lg" onclick="addImgArea();">사진추가</button>
+                    <button type="button" class="btn btn-light btn-lg" onclick="addImgArea('${contextPath}');">사진추가</button>
                     <button type="button" class="btn btn-danger btn-lg" onclick="deleteImgArea();">사진삭제</button>
                 </p>
-                <div id="img-wrapper">
-                    <div class="img-area" onclick="imgChange('id3');" id="file3">
-                        <!--사진이 없는 초기 화면-->
-                        <h5>사진 추가하기 버튼으로</h5>
-                        <h5>사진을 업로드해주세요.</h5>
-                        <button type="button" class="btn btn-secondary btn-lg">
-                            사진 추가하기
-                        </button>
-                    </div>
-                    <input type="file" value="대표사진 추가하기" name="file3" class="hidden" id="id3" onchange="showImg(this, '#file3', '사진');">
-                    <!-- 태그 -->
-                    <div class="tag-flex" align="left">
-                        <c:forEach var="i" begin="1" end="6">
-                            <!-- Trigger the modal with a button -->
-                            <button type="button" class="btn btn-default tag-product" data-toggle="modal" data-target="#id3-modal${i}" id="id3-tag${i}" name="tag3"></button>
-                            <!-- Modal -->
-                            <div id="id3-modal${i}" class="modal fade" role="dialog">
-                                <div class="modal-dialog">
-                                    <!-- Modal content-->
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h4 class="modal-title"></h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <input type="text" onkeyup="productSearch(this.value, 3, '${i}', '${contextPath}');">
-                                            <button type="button" class="btn btn-default btn-sm">검색</button>
-                                            <div id="id3${i}"></div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </c:forEach>
-                    </div>
+                <div id="img-wrapper" onload="init()">
+                    <c:forEach var="i" begin="2" end="${media.size() - 1}" varStatus="st">
+                        <div class="img-area" id="file${i + 1}" onclick="imgChange('id${i + 1}');">
+                            <img src="${contextPath}/`${media.get(st.index).filePath}${media.get(st.index).changeName}" style="height: 90%;">
+                        </div>
+                        <input type="hidden" name="mid" value="${media.get(st.index).mediaId}">
+                        <input type="file" value="${contextPath}/`${media.get(st.index).filePath}${media.get(st.index).changeName}" onchange="showImg(this, '#file${i + 1}', '사진');" id="cover-img-hidden" name="file${i + 1}" class="hidden">
+                    </c:forEach>
                 </div>
                 <!--본문 내용-->
-                <textarea name="description" id="textarea" align="left" placeholder="내용을 입력하세요."></textarea>
+                <textarea name="description" id="textarea" align="left" placeholder="내용을 입력하세요.">${board.description}</textarea>
             </div>
         </div>
         <button type="submit" id="submit-btn" class="hidden">제출</button>
     </form>
     <script>
         let idx = 4;
+
+        $(function(){
+            $('#housing-type-coice-select').val('${board.filType}').prop("selected", true);
+            $('#room-number-coice-select').val('${board.filNum}').prop("selected", true);
+            $('#direction-coice-select').val('${board.filDirection}').prop("selected", true);
+            $('#completion-coice-select').val('${board.filPast}').prop("selected", true);
+            $('#location-coice-select').val('${board.filLocal}').prop("selected", true);
+            $('#family-form-coice-select').val('${board.filFamily}').prop("selected", true);
+            $('#animal-coice-select').val('${board.filPet}').prop("selected", true);
+            $('#work-field-coice-select').val('${board.filField}').prop("selected", true);
+            $('#detailed-construction-coice-select').val('${board.filRange}').prop("selected", true);
+            
+            const worker = document.querySelectorAll("input[name='worker']");
+            for(let ele of worker) {
+                if(ele.value === '${board.filWorker}') {
+                    ele.checked = true;
+                }
+            }
+        })
 
         function imgChange(id) {
             const imgInput = document.getElementById(id);
@@ -372,40 +356,40 @@
             }
         }
         
-        // function inputTag(idNum, contextPath) {
-        //     const tagFlex = document.createElement('div');
-        //     const imgWapper = document.getElementById('img-wrapper');
+        function inputTag(idNum, contextPath) {
+            const tagFlex = document.createElement('div');
+            const imgWapper = document.getElementById('img-wrapper');
 
-        //     tagFlex.setAttribute("class", "tag-flex");
-        //     tagFlex.setAttribute("align", "left");
+            tagFlex.setAttribute("class", "tag-flex");
+            tagFlex.setAttribute("align", "left");
 
-        //     for(let i = 1; i <= 6; i++) {
-        //         let btn = `<button type="button" class="btn btn-default tag-product" data-toggle="modal" 
-        //                             data-target="#id` + idNum + `-modal` + i + `" id="id` + idNum + `-tag` + i + `" name="tag`+ idNum +`"></button>`;
-        //         let modal = `<div id="id` + idNum + `-modal` + i + `" class="modal fade" role="dialog">
-        //                         <div class="modal-dialog">
-        //                             <div class="modal-content">
-        //                                 <div class="modal-header">
-        //                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-        //                                     <h4 class="modal-title"></h4>
-        //                                 </div>
-        //                                 <div class="modal-body">
-        //                                     <input type="text" onkeyup="productSearch(this.value, ` + idNum + `, ` + i + `, '` + contextPath + `');">
-        //                                     <button type="button" class="btn btn-default btn-sm">검색</button>
-        //                                     <div id="id` + idNum + `` + i + `"></div>
-        //                                 </div>
-        //                                 <div class="modal-footer">
-        //                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        //                                 </div>
-        //                             </div>
-        //                         </div>
-        //                     </div>`;
-        //         tagFlex.innerHTML += btn;
-        //         tagFlex.innerHTML += modal;
-        //     }
+            for(let i = 1; i <= 6; i++) {
+                let btn = `<button type="button" class="btn btn-default tag-product" data-toggle="modal" 
+                                    data-target="#id` + idNum + `-modal` + i + `" id="id` + idNum + `-tag` + i + `" name="tag`+ idNum +`"></button>`;
+                let modal = `<div id="id` + idNum + `-modal` + i + `" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title"></h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <input type="text" onkeyup="productSearch(this.value, ` + idNum + `, ` + i + `, '` + contextPath + `');">
+                                            <button type="button" class="btn btn-default btn-sm">검색</button>
+                                            <div id="id` + idNum + `` + i + `"></div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`;
+                tagFlex.innerHTML += btn;
+                tagFlex.innerHTML += modal;
+            }
 
-        //     imgWapper.appendChild(tagFlex);
-        // }
+            imgWapper.appendChild(tagFlex);
+        }
 
         function productSearch(key, idNum, order, contextPath) {
             $.ajax({
@@ -457,7 +441,7 @@
         };
 
 
-        function addImgArea() {
+        function addImgArea(contextPath) {
             const imgWapper = document.querySelector("#img-wrapper")
             const wrapper = document.createElement('div');
             const input = document.createElement('input');
@@ -495,7 +479,7 @@
                 showImg(input, "#file" + ev.target.id[2], "사진")
             });
 
-            // inputTag(idx, contextPath)
+            inputTag(idx, contextPath)
 
             idx++;
         }
@@ -509,11 +493,11 @@
             idx--;
             const wrapper = document.getElementById("file" + idx);
             const input = document.getElementById("id" + idx);
-            // const tag = document.querySelector(".tag-flex:nth-last-child(1)");
+            const tag = document.querySelector(".tag-flex:nth-last-child(1)");
 
             wrapper.remove();
             input.remove();
-            // tag.remove();
+            tag.remove();
         }
         </script>
     <footer>

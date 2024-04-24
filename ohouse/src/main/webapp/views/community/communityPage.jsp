@@ -39,13 +39,19 @@ pageEncoding="UTF-8"%>
         </div>
     </div>
     <div class="content">
-        <input type="hidden" id="hidden-no" value="${b.boardId}">
+        <input type="hidden" id="hidden-no" value="${b.boardId}" name="bid">
         <div class="bulletin-title" align="left">
             <p>작은 공간을 효율적으로 활용하는 최적의 가구 배치 찾기</p>
         </div>
-        <div align="left">
-            <img class="user-profile-img" src="${pageContext.request.contextPath}/resources/img/community/communityPage/userProfile.png" alt="">
-            <span id="user-name">${b.boardWriterName}</span>
+        <div align="left" id="content-head">
+            <div>
+                <img class="user-profile-img" src="${pageContext.request.contextPath}/resources/img/community/communityPage/userProfile.png" alt="">
+                <span id="user-name">${b.boardWriterName}</span>
+            </div>
+            <div>
+                <span onclick="location.href='${contextPath}/updateForm.co?bid=${b.boardId}'">수정&nbsp;&#183;</span>
+                <span onclick="location.href='${contextPath}/delete.co?bid=${b.boardId}'">삭제</span>
+            </div>
         </div>
         <div id="house-information">
             <div id="house-information-head">

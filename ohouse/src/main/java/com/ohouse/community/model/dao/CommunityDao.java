@@ -61,4 +61,16 @@ public class CommunityDao {
 	public ArrayList<Product> selectProductList(SqlSession sqlSession, String key) {
 		return (ArrayList)sqlSession.selectList("communityMapper.selectProductList", key);
 	}
+
+	public int updateBoard(SqlSession sqlSession, Board b) {
+		return sqlSession.update("communityMapper.updateBoard", b);
+	}
+
+	public int updateMedia(SqlSession sqlSession, ArrayList<Media> list) {
+		int result = 0;
+		for(Media m : list) {
+			result += sqlSession.update("communityMapper.updateMedia", m);
+		}
+		return result;
+	}
 }

@@ -1,3 +1,11 @@
+#insert-header {
+    position: fixed;
+    top: 0%;
+    background: white;
+    width: 100%;
+    z-index: 1000;
+}
+
 .cummunity-insert-area {
     width: 720px;
     margin: 16px 0px;
@@ -876,4 +884,21 @@ textarea:focus {
 
 .tag-active {
     border: 2px solid #35C5F0;
+}
+
+.modal-body>input {
+    width: 400px;
+    outline-color: #35c5f0;
+    border: 1px solid;
+    border-radius: 3px;
+}
+
+.modal-body>div {
+    line-height: 30px;
+    cursor: pointer;
+}
+
+textarea {
+    overflow: visible;
+    min-height: 500px;
 }

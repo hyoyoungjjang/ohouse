@@ -131,4 +131,20 @@ public class CommunityServiceImpl implements CommunityService{
 		return list;
 	}
 
+	@Override
+	public int updateBoard(Board b, ArrayList<Media> list) {
+		SqlSession sqlSession = getSqlSession();
+		int result1 = communityDao.updateBoard(sqlSession, b);
+		int result2 = communityDao.updateMedia(sqlSession, list);
+		
+		if(result1 > 0 || result2 > 0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		
+		sqlSession.close();
+		return result1 + result2;
+	}
+
 }

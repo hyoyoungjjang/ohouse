@@ -68,7 +68,7 @@ public class CommunityInsertController extends HttpServlet {
 			b.setBoardTitle(multiRequest.getParameter("title"));
 			b.setIntroduction(multiRequest.getParameter("introduction"));
 			b.setDescription(multiRequest.getParameter("description"));
-			
+			System.out.println(b);
 			ArrayList<Media> list = new ArrayList<>();
 			
 			int idx = 1;

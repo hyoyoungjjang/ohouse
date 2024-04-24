@@ -41,4 +41,7 @@ public interface CommunityService {
 	// 상품 검색
 	ArrayList<Product> selectProductList(String key);
 
+	// 게시글 수정
+	int updateBoard(Board b, ArrayList<Media> list);
+
 }
