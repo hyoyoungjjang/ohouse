@@ -51,6 +51,9 @@
                 success : function(list){
                     drawSaleProductList(list)
                     
+                },
+                error : function(){
+                    console.log("실패")
                 }
             })
 
@@ -63,6 +66,9 @@
                     drawProductList(list)
                    
                     
+                },
+                error : function(){
+                    console.log("실패")
                 }
             })
             

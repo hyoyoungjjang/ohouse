@@ -17,7 +17,7 @@
                 <span class="pc-category" align="center">오늘의딜</span>
             </div>
             <div class="pc-sale pc-header" id="pc-deal-header">
-                <h4 class="pc-gray">전체 <span class="pc-gray">${psList.size()}</span>개</h4>
+                <h4 class="pc-gray">전체 <span class="pc-gray">${listCount}</span>개</h4>
             </div>
             <div class="pc-sale" id="pc-deal-contents">
                 <c:forEach var="ps" items="${psList}">
@@ -79,8 +79,77 @@
                                 }       
                             })
                     }
+                    
+					let pageNum = 2;
+					
+                    function addproductList(maxPage, saleDesc){
+                    	if(pageNum > maxPage) {
+                    		$("#nextbutton").remove();
+                    		return;
+                    	}
+						
+                        $.ajax({
+                            url : "ajaxSaleList.pr",
+                            data : {
+                                cpage : pageNum,
+                                condition : saleDesc
+                            },
+                            success : function(list){
+                            	console.log("성공")
+                                drawSaleProductList(list)
+                                pageNum += 1;
+                            },
+                            error : function(){
+                                console.log("실패")
+                            }
+                        })
+                    }
+
+                    function drawSaleProductList(list){
+                        
+                        const saleArea = document.getElementById("pc-deal-contents");
+
+                        for (let i = 0; i < list.length; i++) {
+                            const saleproduct = list[i];
+            
+                            if (saleproduct) {
+                                saleArea.innerHTML += `<div class="pc-sale-content">
+                                    <div class="pc-sale-img">
+                                        <img src="${pageContext.request.contextPath}/` +  saleproduct.productThumbnail + `" width="260px">
+                                        <button type="button" onclick="changeBookmark(this, `+saleproduct.productId+`)">
+                                            <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
+                                        </button>
+                                    </div>
+                                    <div class="pc-sale-text">
+                                        <div class="pc-company">
+                                            `+saleproduct.companyName +`
+                                        </div>
+                                        <div class="pc-title">
+                                            `+ saleproduct.productName +`
+                                        </div>
+                                        <div class="pc-price">
+                                            <span class="pc-color">`+ saleproduct.sale+`%</span>
+                                            <span>`+ saleproduct.productPrice+`</span>
+                                        </div>
+                                        <div class="pc-review">
+                                            <img src="${pageContext.request.contextPath}/resources/img/product/star.png" width="15px">
+                                            <span class="pc-score">`+ saleproduct.ratingAvg +`</span>
+                                            <span class="pc-gray">리뷰</span>
+                                            <span class="pc-gray">`+ saleproduct.reviewCount +`</span>
+                                        </div>
+                                    </div>
+                                </div>`
+                            }
+                        }
+                    }
+
                 </script>
-            </div>  
+            </div> 
+            <div id="paging-area">
+            	<a onclick="addproductList('${pi.maxPage}', 'saleDesc')">
+            		<img id="nextbutton" src="${pageContext.request.contextPath}/resources/img/product/angle-small-down.png" alt="">
+            	</a>
+            </div> 
         </div>
     </div>
     <footer>
