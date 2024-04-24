@@ -25,6 +25,22 @@ public class MembersScrapServiceImpl implements MembersScrapService  {
 		} else {
 			return membersDao.MemberScrapCount3(sqlSession, membersNo);
 		}
+		
+		
+	}
+
+	@Override
+	public ArrayList<Media> MembersScrapList(int membersNo, int scrapType) {
+		SqlSession sqlSession = getSqlSession();
+		
+		if(scrapType == 1) {
+			return membersDao.MemberScrapList1(sqlSession, membersNo);
+		} else if (scrapType == 2) {
+			return membersDao.MemberScrapList2(sqlSession, membersNo);
+		} else {
+			return membersDao.MemberScrapList3(sqlSession, membersNo);
+		}
+		
 	}
 	
 	

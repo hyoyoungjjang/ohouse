@@ -100,7 +100,7 @@
                         url : "scrapPageList.me",
                         data : {
                             mNo : mNo,
-                            scrapType : 2
+                            scrapType : 1
                         },
                         success : function(list){
                             drawScrapList2(list)
@@ -110,6 +110,7 @@
                     })
 
                     function drawScrapList2(list){
+                        console.log(list);
                         const scrapListArea = document.getElementById("scrap-item");
 
                         for (let i = 0; i < list.length; i++){

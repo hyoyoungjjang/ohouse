@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.ohouse.common.model.vo.Media;
 import com.ohouse.members.service.MembersScrapServiceImpl;
 
@@ -35,6 +36,9 @@ public class AjaxScrapPageList extends HttpServlet {
 		int scrapType = Integer.parseInt(request.getParameter("scrapType"));
 		
 		ArrayList<Media> list = new MembersScrapServiceImpl().MembersScrapList(mNo, scrapType); 
+		
+		response.setContentType("application/json; charset=utf-8");
+		new Gson().toJson(list, response.getWriter());
 	}
 
 	/**

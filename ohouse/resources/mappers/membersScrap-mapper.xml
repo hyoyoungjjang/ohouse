@@ -239,6 +239,37 @@
 	SET SCRAP_STATUS = 'N"
 	WHERE SCRAP_ID = #{scrapId}
   </update>
+  <select id="selectScrapList1" resultMap="mediaResultSet">
+  SELECT FILE_PATH, ORIGIN_NAME
+	FROM MEDIA M
+	JOIN SCRAP S USING(MEDIA_ID)
+	WHERE M.MEMBERS_NO = #{membersNo}
+	AND FILE_LEVEL = 2
+	AND MEDIA_TYPE = 1
+	AND SCRAP_TYPE = 2
+	AND MEDIA_STATUS = 'Y'
+	AND SCRAP_STATUS = 'Y'
+  </select>
+  <select id="selectScrapList2" resultMap="mediaResultSet">
+  SELECT FILE_PATH, ORIGIN_NAME
+	FROM MEDIA M
+	JOIN SCRAP S USING(MEDIA_ID)
+	WHERE M.MEMBERS_NO = #{membersNo}
+	AND FILE_LEVEL = 1
+	AND MEDIA_TYPE = 1
+	AND SCRAP_TYPE = 3
+	AND MEDIA_STATUS = 'Y'
+	AND SCRAP_STATUS = 'Y'
+  </select>
+  <select id="selectScrapList3" parameterType="_int">
+	SELECT *
+	FROM MEDIA AS "M", (SELECT *
+	            FROM SCRAP
+	            WHERE MEMBERS_NO = #{membersNo}
+	            AND SCRAP_TYPE = 2  
+	            AND SCRAP_STATUS = 'Y') AS "S"
+	WHERE M.MEDIA_ID = S.MEDIA_ID;  
+  </select>
   <!-- 장바구니 관련 매퍼 -->
   
 </mapper>
