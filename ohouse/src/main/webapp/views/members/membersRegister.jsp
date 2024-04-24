@@ -48,7 +48,7 @@
             </div>
             <!--아이디 인증을 위한 버튼-->
             <div id="id-confirm-button" class="margin30">
-              <button type="submit" onclick="idCheck();" disabled>아이디 중복체크</button>
+              <button type="button" onclick="idCheck();" disabled>아이디 중복체크</button>
             </div>
             <!-- 이메일 id + 주소 위한 div-->
             <div id="enroll-email" class="margin30">
@@ -112,7 +112,7 @@
             </div>
             <!-- 이메일, 비밀번호, 닉네임을 보내기 위한 버튼을 담은 div-->
             <div id="enroll-submit-button">
-              <button type="submit" id="enroll-submit" disabled>회원가입하기</button>
+              <button type="submit" id="enroll-submit">회원가입하기</button>
             </div>
           </form>
           <p>이미 아이디가 있으신가요? <a href="${contextPath}/loginForm.me">로그인</a></p>
@@ -127,6 +127,7 @@
     // 이메일 유효성 검사 실패 시 보여줄 텍스트
     const warnIdEmpty = document.getElementById('id-empty');
     const warnIdFailure = document.getElementById('id-failure');
+    let isId = false;
     // 이메일 입력 필드
     const elEmail = document.getElementById('email-input');
     // 이메일 주소 선택 셀렉트 박스
@@ -139,8 +140,10 @@
     // 비밀번호 유효성 검사 실패 시 보여줄 텍스트
     const warnPwdEmpty = document.getElementById('pwd-empty');
     const warnPwdFailure = document.getElementById('pwd-failure');
+    let isPwd = false;
     // 비밀번호 확인 입력 필드
     const confirmPwd = document.getElementById('confirm-pwd');
+    let isConfirmPwd = false;
     // 비밀번호 확인 유효성 검사 실패 시 보여줄 텍스트
     const warnNameEmpty = document.getElementById('nickname-empty');
     const warnNameMin = document.getElementById('nickname-min');
@@ -150,12 +153,21 @@
     // 전화번호 유효성 검사 실패 시 보여줄 텍스트
     const warnPhoneEmpty = document.getElementById('phone-empty');
     const warnPhoneFailure = document.getElementById('phone-failure');
+    let isPhone = false;
     // 닉네임 입력 필드
     const nicknameInput = document.getElementById('input-nickname')
     // 닉네임 유효성 검사 실패 시 보여줄 텍스트
     const warnPConEmpty = document.getElementById('pwdCon-empty');
     const warnPConFailure = document.getElementById('pwdCon-failure');
+    let isName = false;
 
+    $(function(){
+      if(isId & isPwd & isConfirmPwd & isPhone & isName) {
+        $("#enroll-submit").attr("disabled", "false");
+      } else {
+        $("#enroll-submit").attr("disabled", "true");
+      }
+    })
 
     // 이메일 입력 필드 또는 주소 선택 셀렉트 박스 값 변경 시 이메일 유효성 검사 함수 호출
     inputId.onblur = function () {
@@ -183,6 +195,7 @@
     function validateId() {
       const idRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
       const idCheckBtn = document.querySelector("#id-confirm-button>button");
+      isId = false;
       if(inputId.value.trim() === ""){
         warnIdEmpty.classList.remove("hide");
         warnIdFailure.classList.add("hide");
@@ -222,6 +235,7 @@
 
     function validatePwd(){
       const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+      isPwd = false;
       if(inputPwd.value.trim() === ""){
         warnPwdEmpty.classList.remove("hide");
         warnPwdFailure.classList.add("hide");
@@ -231,10 +245,12 @@
       } else {
         warnPwdEmpty.classList.add("hide");
         warnPwdFailure.classList.add("hide");
+        isPwd = true;
       }
     }
 
     function confirmPassword() {
+      isConfirmPwd = false;
       if (confirmPwd.value.trim() === "") {
         warnPConEmpty.classList.remove("hide");
         warnPConFailure.classList.add("hide");
@@ -244,11 +260,13 @@
       } else {
         warnPConEmpty.classList.add("hide");
         warnPConFailure.classList.add("hide");
+        isConfirmPwd = true;
       }
     }
 
     function validatePhone(){
       const phone = inputPhone.value.trim();
+      isPhone = false;
       if(phone === ""){
         //전화번호 입력창 공백일 시
         warnPhoneEmpty.classList.remove("hide");
@@ -263,12 +281,14 @@
         } else{ // 유효성 검사 성공시
           warnPhoneFailure.classList.add("hide");
           warnPhoneEmpty.classList.add("hide");
+          isPhone = true;
         }
       }
     }
 
     function validateNickname(){
       const nickname = nicknameInput.value.trim();
+      isName = false;
       if(nickname === ""){
         // 닉네임이 비어있는 경우
         warnNameEmpty.classList.remove("hide");
@@ -289,6 +309,7 @@
           // 닉네임 유효시
           warnNameMin.classList.add("hide");
           warnNameMax.classList.add("hide");
+          isName = true;
         }
       }
     }
@@ -305,6 +326,7 @@
             if (confirm("사용가능한 아이디입니다. 사용하시겠습니까?")) {
               inputId.setAttribute("readonly", true);
               document.querySelector("#enroll-submit").removeAttribute("disabled");
+              isId = true;
             } else {
               inputId.focus();
             }
