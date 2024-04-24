@@ -2,11 +2,12 @@ package com.ohouse.members.service;
 
 import static com.ohouse.common.template.Template.getSqlSession;
 
-import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.ohouse.common.model.vo.Media;
 import com.ohouse.members.model.dao.MembersDao;
 import com.ohouse.members.model.vo.Members;
 
@@ -80,5 +81,23 @@ public class MembersServiceImpl implements MembersService {
 		
 		return m;
 		
+	}
+
+	@Override
+	public int MembersScrapCount(int mNo) {
+		SqlSession sqlSession = getSqlSession();
+		return membersDao.MembersScrapCount(sqlSession, mNo);
+	}
+
+	@Override
+	public int MemberCommunityCount(int mNo) {
+		SqlSession sqlSession = getSqlSession();
+		return membersDao.MembersCommunityCount(sqlSession, mNo);
+	}
+
+	@Override
+	public ArrayList<Media> MemberCommunityList(int mNo) {
+		SqlSession sqlSession = getSqlSession();
+		return membersDao.MemberCommunityList(sqlSession, mNo);
 	}
 }
