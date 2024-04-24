@@ -217,7 +217,7 @@
     AND BOARD_STATUS = 'Y'
   </select>
   <select id="memberCommunityList" resultMap="mediaResultSet">
-  	SELECT FILE_PATH , ORIGIN_NAME
+  	SELECT *
 	FROM MEDIA
 	WHERE BOARD_ID = (SELECT BOARD_ID
 	                    FROM BOARD
