@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +17,8 @@
         <%@ include file="../common/headerNone.jsp" %>
     </header>
     <div align="center">
-        <form action="">
+        <!-- 주문자 정보 전달-->
+        <form action="order.pr" method="post">
             <div id="order-and-payment-area">
                 <div id="order-area">
                     <h1 align="left" id="order-and-payment-text">주문/결제</h1>
@@ -41,8 +43,16 @@
                                 <span id="whelk">@</span>
                                 <select name="" id="email-choice">
                                     <option value="choice" disabled selected>선택해주세요</option>
-                                    <option value="naver">naver.com</option>
-                                    <option value="google">google.com</option>
+                                    <option value="">선택해주세요</option>
+                                    <option value="naver.com">naver.com</option>
+                                    <option value="hanmail.com">hanmail.com</option>
+                                    <option value="daum.net">daum.net</option>
+                                    <option value="gmail.com">gmail.com</option>
+                                    <option value="nate.com">nate.com</option>
+                                    <option value="hotmail.com">hotmail.com</option>
+                                    <option value="outlook.com">outlook.com</option>
+                                    <option value="icloud.com">icloud.com</option>
+                                    <option value="directly">직접입력</option>
                                 </select>
                             </div>
                         </div>
@@ -51,13 +61,8 @@
                                 <span id="orderer-info-text">전화번호</span>
                             </div>
                             <div class="orderer-information-input-area">
-                                <select name="" id="front-number">
-                                    <option value="010" selected>010</option>
-                                    <option value="011">011</option>
-                                    <option value="016">016</option>
-                                </select>
                                 <div class="orderer-phone-input-area">
-                                    <input type="number" class="orderer-phone-input">
+                                    <input type="number" class="orderer-information-input" placeholder="'-'를 포함한 전화번호 입력">
                                 </div>
                             </div>
                         </div>
@@ -87,13 +92,10 @@
                                 <span id="orderer-info-text">전화번호</span>
                             </div>
                             <div class="orderer-information-input-area">
-                                <select name="" id="front-number">
-                                    <option value="010" selected>010</option>
-                                    <option value="011">011</option>
-                                    <option value="016">016</option>
-                                </select>
-                                <div class="orderer-phone-input-area">
-                                    <input type="number" class="orderer-phone-input">
+                                <div class="orderer-information-input-area">
+                                    <div class="orderer-phone-input-area">
+                                        <input type="number" class="orderer-information-input" placeholder="'-'를 포함한 전화번호 입력">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -132,8 +134,8 @@
                         <div id="order-product-information-area">
                             <div id="order-product-information-header">
                                 <div id="order-product-information-text1">
-                                    <span>주식회사 호림인터내셔널</span>
-                                    <span>배송비 착불 70,000원</span>
+                                    <span>${p.companyName}</span>
+                                    <span>배송비 <fmt:formatNumber value="${p.productDeliveryPrice}"/>원</span>
                                 </div>
                                 <hr id="hr1">
                                 <div id="order-product-information-text2">
@@ -142,14 +144,14 @@
                             </div>
                             <div id="order-product-information-footer">
                                 <div id="order-product-img-area">
-                                    <img id="order-product-img" src="${pageContext.request.contextPath}/resources/img/product/productMain01.png" alt="">
+                                    <img id="order-product-img" src="${p.productThumbnail}" alt="">
                                 </div>
                                 <div id="order-product-information-text3">
-                                    <p id="text1">[쿠폰가 469,000원] LOUNGE 아쿠아텍스 4인소파(쿠션3개증정)</p>
-                                    <p id="text2">LOUNGE 4인 베이직</p>
+                                    <p id="text1">${p.productName}</p>
+                                    <p id="text2">${o.optionsName}</p>
                                     <p id="text3">
-                                        499,000원
-                                        <span class="order-product-count2">1개</span>
+                                        <fmt:formatNumber value="${(p.productPrice + o.price) * amount}"/>원
+                                        <span class="order-product-count2">${amount}개</span>
                                     </p>
                                 </div>
                             </div>
@@ -213,21 +215,21 @@
                         </div>
                         <div class="payment-amount-info-text">
                             <span>총 상품 금액</span>
-                            <span>499,900원</span>
+                            <span><fmt:formatNumber value="${(p.productPrice + o.price) * amount}"/>원</span>
                         </div>
                         <div class="payment-amount-info-text margin-bottom-20px">
                             <span>배송비</span>
-                            <span>70,000원</span>
+                            <span><fmt:formatNumber value="${p.productDeliveryPrice}"/>원</span>
                         </div>
                         <hr>
                         <div class="payment-amount-info-text total-payment-amount">
                             <span>최종 결제 금액</span>
-                            <span>569,900원</span>
+                            <span><fmt:formatNumber value="${(p.productPrice + o.price) * amount + p.productDeliveryPrice}"/>원</span>
                         </div>
                     </div>
                 </div>
                 <div id="paying">
-                    <span>569,900원 결제하기</span>
+                    <span><fmt:formatNumber value="${(p.productPrice + o.price) * amount + p.productDeliveryPrice}"/>원 결제하기</span>
                 </div>
             </div>
         </div>
