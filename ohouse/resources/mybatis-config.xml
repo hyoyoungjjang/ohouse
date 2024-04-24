@@ -47,6 +47,7 @@
  		<mapper resource="/mappers/product-mapper.xml"/>
  		<mapper resource="/mappers/community-mapper.xml"/>
  		<mapper resource="/mappers/common-mapper.xml"/>
+ 		<mapper resource="/mappers/membersScrap-mapper.xml"/>
  	</mappers>
 
  	
