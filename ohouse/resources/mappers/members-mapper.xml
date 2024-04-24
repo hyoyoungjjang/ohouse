@@ -47,6 +47,9 @@
   		<result column="SCRAP_CREATE_TIME" property="scrapCreateTime"/>
   		<result column="SCRAP_STATUS" property="scrapStatus"/>
   	</resultMap>
+  	<select id="idCheck" resultType="_int">
+  		SELECT COUNT(*) FROM MEMBERS WHERE MEMBERS_ID = #{checkId}
+  	</select>
   	 <select id="loginMembers" resultMap="membersResultSet" parameterType="Members">
   	SELECT
 		    MEMBERS_NO
