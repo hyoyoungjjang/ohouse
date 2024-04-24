@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="${contextPath}/resources/css/main.css">
 <link rel="stylesheet" href="${contextPath}/resources/css/common/header.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="${contextPath}/resources/js/headerInit.js"></script>
 </head>
 <body>
     <div align="center">
@@ -55,7 +56,7 @@
                                 onclick="location.href='${contextPath}/cart.me'">
 		                    <img src="${contextPath}/resources/img/common/logout.png" alt=""
 		                        onclick="location.href='${contextPath}/logout.me';">
-		                    <img src="${contextPath}/resources/img/common/user.png" alt="" 
+		                    <img src="" alt="" id="header-profile"
                                 onclick="location.href='${contextPath}/profile.me';">
 		                    <a href="${contextPath}/enrollForm.co" style="background-color: #35C5F0; color: white; border-radius: 5px;">글쓰기</a>
 		                </div>
@@ -65,5 +66,16 @@
         </div>
         <div style="border: 1px solid #f7f9fa; min-width: 1136px;"></div>
     </div>
+    <script>
+        $(function () {
+            init("${loginUser.membersNo}", function (result) {
+                if (result == null) {
+                    $("#header-profile").attr("src", `${contextPath}//resources/img/common/user.png`);
+                } else {
+                    $("#header-profile").attr("src", `${contextPath}/` + result.filePath);
+                }
+            })
+        })
+    </script>
 </body>
 </html>

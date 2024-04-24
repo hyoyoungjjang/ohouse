@@ -23,7 +23,7 @@
                 </div>
                 <hr>
                 <div id="profile-bookmark">
-                    <img src="${pageContext.request.contextPath}/resources/img/member/myPage/profile-bookmark.png" alt="">
+                    <img src="${contextPath}/resources/img/member/myPage/profile-bookmark.png" alt="">
                     <div>스크랩북</div>
                     <div id="scrap-count"></div>
                 </div>
@@ -36,7 +36,7 @@
                         url: "profile.co",
                         data: {mNo: mNo},
                         success: function(result) {
-                            $("#profile-img-area>img").attr({ src: ${contextPath} + "/" + result.filePath});
+                            $("#profile-img-area>img").attr("src", `${contextPath}` + `/` + result.filePath);
                         }
                     })
 
