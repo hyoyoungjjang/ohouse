@@ -48,8 +48,8 @@
                         <div class="mySetting-msg"></div>
                     </div>
                     <div>
-                        <h3>생년월일</h3>
-                        <input type="text" name="birth" class="mySetting-input" placeholder="생년월일(6글자)">
+                        <h3>생년월일(예시: 1900-01-01)</h3>
+                        <input type="text" name="birth" class="mySetting-input" placeholder="생년월일(예시: 1900-01-01)" value="${loginUser.membersBirth}">
                         <div class="mySetting-msg"></div>
                     </div>
                     <div>

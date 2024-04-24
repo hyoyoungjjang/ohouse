@@ -16,7 +16,7 @@
             <div id="profile-area">
                 <div id="profile-info">
                     <div id="profile-img-area">
-                        <img src="${pageContext.request.contextPath}/resources/img/member/myPage/user.png" alt=""><br>
+                        <img src="" alt=""><br>
                         <h2>${loginUser.membersName}</h1>
                     </div>
                     <button type="button" onclick="location.href='${contextPath}/updateForm.me'">설정</button>
@@ -32,6 +32,13 @@
                 let mNo = ${loginUser.membersNo};
                 
                 window.onload = function(){
+                    $.ajax({
+                        url: "profile.co",
+                        data: {mNo: mNo},
+                        success: function(result) {
+                            $("#profile-img-area>img").attr({ src: ${contextPath} + "/" + result.filePath});
+                        }
+                    })
 
                     $.ajax({
                         url : "scrapCount.me",
