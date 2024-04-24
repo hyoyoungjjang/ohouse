@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet Filter implementation class LoginFilter
  */
-@WebFilter(urlPatterns= {"/list.bo","/search.bo"})
+@WebFilter(urlPatterns= {"/detail.pr","/detail.co"})
 public class LoginFilter implements Filter {
 
     /**
@@ -44,6 +44,7 @@ public class LoginFilter implements Filter {
 	
 		//사용자 로그인 여부 확인
 		if (httpRequest.getSession().getAttribute("loginUser") == null) {
+			httpRequest.getSession().setAttribute("alertMsg", "로그인이 필요한 항목입니다.");
 			httpResponse.sendRedirect(httpRequest.getContextPath()); //메인으로 보내기
 		} else {
 			chain.doFilter(request, response);	
