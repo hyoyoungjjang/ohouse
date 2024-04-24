@@ -18,7 +18,7 @@
     </header>
     <div align="center">
         <!-- 주문자 정보 전달-->
-        <form action="order.pr" method="post">
+        <form id="orderForm" action="order.pr" method="post">
             <div id="order-and-payment-area">
                 <div id="order-area">
                     <h1 align="left" id="order-and-payment-text">주문/결제</h1>
@@ -31,7 +31,7 @@
                                 <span id="orderer-info-text">이름</span>
                             </div>
                             <div class="orderer-information-input-area">
-                                <input type="text" class="orderer-information-input">
+                                <input type="text" class="orderer-information-input" value="${loginUser.membersName}">
                             </div> 
                         </div>
                         <div class="orderer-information-input-text">
@@ -39,21 +39,7 @@
                                 <span id="orderer-info-text">이메일</span>
                             </div>
                             <div class="orderer-information-input-area">
-                                <input type="text" class="orderer-information-input">
-                                <span id="whelk">@</span>
-                                <select name="" id="email-choice">
-                                    <option value="choice" disabled selected>선택해주세요</option>
-                                    <option value="">선택해주세요</option>
-                                    <option value="naver.com">naver.com</option>
-                                    <option value="hanmail.com">hanmail.com</option>
-                                    <option value="daum.net">daum.net</option>
-                                    <option value="gmail.com">gmail.com</option>
-                                    <option value="nate.com">nate.com</option>
-                                    <option value="hotmail.com">hotmail.com</option>
-                                    <option value="outlook.com">outlook.com</option>
-                                    <option value="icloud.com">icloud.com</option>
-                                    <option value="directly">직접입력</option>
-                                </select>
+                                <input type="text" class="orderer-information-input" value="${loginUser.membersEmail}">
                             </div>
                         </div>
                         <div class="orderer-information-input-text">
@@ -62,7 +48,7 @@
                             </div>
                             <div class="orderer-information-input-area">
                                 <div class="orderer-phone-input-area">
-                                    <input type="number" class="orderer-information-input" placeholder="'-'를 포함한 전화번호 입력">
+                                    <input type="text" class="orderer-information-input" value="${loginUser.membersPhone}">
                                 </div>
                             </div>
                         </div>
@@ -84,7 +70,7 @@
                                 <span id="orderer-info-text">받는사람</span>
                             </div>
                             <div class="orderer-information-input-area">
-                                <input type="text" class="orderer-information-input">
+                                <input type="text" class="orderer-information-input" name="recipientName">
                             </div>
                         </div>
                         <div class="orderer-information-input-text">
@@ -94,7 +80,7 @@
                             <div class="orderer-information-input-area">
                                 <div class="orderer-information-input-area">
                                     <div class="orderer-phone-input-area">
-                                        <input type="number" class="orderer-information-input" placeholder="'-'를 포함한 전화번호 입력">
+                                        <input type="text" class="orderer-information-input" name="recipientPhone" placeholder="'-'를 포함한 전화번호 입력">
                                     </div>
                                 </div>
                             </div>
@@ -104,7 +90,7 @@
                                 <span id="orderer-info-text">주소</span>
                             </div>
                             <div class="orderer-address-input-area">
-                                <input type="text" class="orderer-address-input">
+                                <input type="text" class="orderer-address-input" name="recipientMainAddress">
                             </div>
                         </div>
                         <div class="orderer-information-input-text">
@@ -112,7 +98,7 @@
                                 <span id="orderer-info-text"></span>
                             </div>
                             <div class="orderer-address-input-area">
-                                <input type="text" class="orderer-address-input" placeholder="상세주소 입력">
+                                <input type="text" class="orderer-address-input" name="recipientSubAddress" placeholder="상세주소 입력">
                             </div>
                         </div>
                         <div id="default-shipping-destination">
@@ -225,15 +211,21 @@
                         <div class="payment-amount-info-text total-payment-amount">
                             <span>최종 결제 금액</span>
                             <span><fmt:formatNumber value="${(p.productPrice + o.price) * amount + p.productDeliveryPrice}"/>원</span>
+                            <input type="hidden" name="totalPrice" value="${(p.productPrice + o.price) * amount + p.productDeliveryPrice}">
                         </div>
                     </div>
                 </div>
                 <div id="paying">
-                    <span><fmt:formatNumber value="${(p.productPrice + o.price) * amount + p.productDeliveryPrice}"/>원 결제하기</span>
+                    <span onclick="submitForm()"><fmt:formatNumber value="${(p.productPrice + o.price) * amount + p.productDeliveryPrice}"/>원 결제하기</span>
                 </div>
             </div>
         </div>
         </form>
+        <script>
+            function submitForm() {
+                document.getElementById("orderForm").submit();
+            }
+        </script>
     </div>
     <footer>
         <%@ include file="../common/footer.jsp" %>
