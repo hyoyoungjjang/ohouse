@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  <mapper namespace="membersMapper">
+  <mapper namespace="membersScrapMapper">
   	<resultMap id="membersResultSet" type="Members">
   		<result column="MEMBERS_NO" property="membersNo" />
   		<result column="MEMBERS_ID" property="membersId" />
@@ -191,21 +191,25 @@
 	WHERE MEDIA_ID = #{mediaId}
   </update>
   <!-- 스크랩 관련 매퍼 -->
-  <select id="selectScrapCount" resultType="_int">
+   <select id="selectScrapCountProduct" resultType="_int">
   SELECT COUNT(*)
 	FROM SCRAP
 	WHERE MEMBERS_NO = #{membersNo}
-	<choose>
-		<when test="condition == 'product'">
-		 AND SCRAP_TYPE = 1
-		</when>
-		<when test="condition == 'media'">
-		AND SCRAP_TYPE = 2
-		</when>
-		<when test="condition == 'board'">
-		AND SCRAP_TYPE = 3
-		</when>
-	</choose>   
+	AND SCRAP_TYPE = 1 
+	AND SCRAP_STATUS = 'Y'
+  </select>
+  <select id="selectScrapCount2" resultType="_int">
+  SELECT COUNT(*)
+	FROM SCRAP
+	WHERE MEMBERS_NO = #{membersNo}
+	AND SCRAP_TYPE = 2  
+	AND SCRAP_STATUS = 'Y'
+  </select>
+   <select id="selectScrapCount3" resultType="_int">
+  SELECT COUNT(*)
+	FROM SCRAP
+	WHERE MEMBERS_NO = #{membersNo}
+	AND SCRAP_TYPE = 3  
 	AND SCRAP_STATUS = 'Y'
   </select>
   <select id="membersScrapCount" resultType="_int">
@@ -221,16 +225,51 @@
     AND BOARD_STATUS = 'Y'
   </select>
   <select id="memberCommunityList" resultMap="mediaResultSet">
-  	SELECT B.BOARD_ID, M.FILE_PATH, M.ORIGIN_NAME
-	FROM BOARD B
-	JOIN MEDIA M ON (B.BOARD_ID = M.BOARD_ID)
-	WHERE B.MEMBERS_NO = #{membersNo} AND M.FILE_LEVEL = 1
+  	SELECT *
+	FROM MEDIA
+	WHERE BOARD_ID = (SELECT BOARD_ID
+	                    FROM BOARD
+	                    WHERE MEMBERS_NO = #{membersNo})
+	AND MEDIA_TYPE = 1
+	AND FILE_LEVEL = 1
+	AND MEDIA_STATUS = 'Y'
   </select>
   <update id="deleteScrap" parameterType="_int">
   UPDATE SCRAP
 	SET SCRAP_STATUS = 'N"
 	WHERE SCRAP_ID = #{scrapId}
   </update>
+  <select id="selectScrapList1" resultMap="mediaResultSet" parameterType="_int">
+  SELECT M.FILE_PATH AS "FILE_PATH", M.CHANGE_NAME AS "CHANGE_NAME"
+	FROM MEDIA M
+	JOIN SCRAP S ON (M.MEDIA_ID = S.MEDIA_ID)
+	WHERE S.MEMBERS_NO = #{membersNo}
+	AND SCRAP_TYPE = 2
+	AND MEDIA_STATUS = 'Y'
+	AND SCRAP_STATUS = 'Y'
+  </select>
+  <select id="selectScrapList2" resultMap="mediaResultSet" parameterType="_int">
+  SELECT M.FILE_PATH AS "FILE_PATH", M.CHANGE_NAME AS "CHANGE_NAME"
+	FROM MEDIA M
+	JOIN SCRAP S ON (M.BOARD_ID = S.BOARD_ID)
+	WHERE S.MEMBERS_NO = #{membersNo}
+    AND S.BOARD_ID = M.BOARD_ID
+	AND SCRAP_TYPE = 3
+    AND FILE_LEVEL = 1
+	AND MEDIA_STATUS = 'Y'
+	AND SCRAP_STATUS = 'Y'
+  </select>
+  <select id="selectScrapList3" resultMap="mediaResultSet" parameterType="_int">
+  SELECT M.FILE_PATH AS "FILE_PATH", M.CHANGE_NAME AS "CHANGE_NAME"
+	FROM MEDIA M
+	JOIN SCRAP S ON (M.PRODUCT_ID = S.PRODUCT_ID)
+	WHERE S.MEMBERS_NO = #{membersNo}
+    AND S.PRODUCT_ID = M.PRODUCT_ID
+	AND SCRAP_TYPE = 1
+    AND FILE_LEVEL = 1
+	AND MEDIA_STATUS = 'Y'
+	AND SCRAP_STATUS = 'Y'
+  </select>
   <!-- 장바구니 관련 매퍼 -->
   
 </mapper>

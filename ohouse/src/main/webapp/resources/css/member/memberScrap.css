@@ -29,12 +29,27 @@
     border: 1px solid #F7F9FA;
 }
 
-.scrap-item {
+#scrap-nav {
+    margin-bottom: 30px;
+}
+
+#scrap-item {
     margin-bottom: 50px;
 
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
+}
+
+.profile-content-img{
+    width: 260px;
+    height:200px;
+    
+}
+
+.profile-community-img{
+    width: 260px;
+    height:200px;
 }
 
 .scrap-item-img>button {

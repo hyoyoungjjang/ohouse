@@ -44,4 +44,12 @@ public class MembersDao {
 	public ArrayList<Media> MemberCommunityList(SqlSession sqlSession, int membersNo) {
 		return (ArrayList)sqlSession.selectList("membersMapper.memberCommunityList", membersNo);
 	}
+
+	public int updateProfile(SqlSession sqlSession, Media media) {
+		return sqlSession.update("membersMapper.updateProfile", media);
+	}
+
+	public int updateMembers(SqlSession sqlSession, Members m) {
+		return sqlSession.update("membersMapper.updateMembers", m);
+	}
 }

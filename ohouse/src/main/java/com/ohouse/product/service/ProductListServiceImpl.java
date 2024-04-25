@@ -108,6 +108,8 @@ public class ProductListServiceImpl implements ProductListService{
 			sqlSession.rollback();
 		}		
 		
+		
+		
 		sqlSession.close();
 		return result;
 	}
@@ -126,6 +128,7 @@ public class ProductListServiceImpl implements ProductListService{
 			}
 		}
 		
+		sqlSession.close();
 		return psList;
 	}
 
@@ -143,6 +146,7 @@ public class ProductListServiceImpl implements ProductListService{
 			}
 		}
 		
+		sqlSession.close();
 		return pList;
 	}
 
@@ -160,6 +164,7 @@ public class ProductListServiceImpl implements ProductListService{
 			}
 		}
 		
+		sqlSession.close();
 		return cList;
 	}
 

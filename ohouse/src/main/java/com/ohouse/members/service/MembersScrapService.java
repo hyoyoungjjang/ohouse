@@ -7,6 +7,8 @@ import com.ohouse.members.model.vo.Members;
 
 public interface MembersScrapService {
 	
-	public ArrayList<Media> ScrapMembers(Media m);
+	public int MemberScrapCount(int membersNo, int scrapType);
+	
+	public ArrayList<Media> MembersScrapList(int mNo,int scrapType);
 
 }
