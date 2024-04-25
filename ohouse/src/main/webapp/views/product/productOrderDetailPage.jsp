@@ -18,7 +18,7 @@
         <%@ include file="../common/headerNone.jsp" %>
       </header>
       <c:set var="totalProductPrice" scope="request">
-        ${(p.productPrice + o.price) * ordpd.amount}
+        ${(p.productPrice + o.price) * ordpd.amount * (100 - p.sale) / 100}
       </c:set>
       <c:set var="totalPrice" scope="request">
         ${totalProductPrice + p.productDeliveryPrice}

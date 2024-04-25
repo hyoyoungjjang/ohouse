@@ -185,7 +185,8 @@
   <select id="selectOptionsNameList" resultMap="OptionsNameRset">
   	SELECT
   		OPTIONS_NAME_NO,
-  		OPTIONS_NAME
+  		OPTIONS_NAME,
+  		OPTIONS_PRICE
   	FROM OPTIONS_NAME
   	WHERE OPTIONS_NAME_OPT_NO = #{cgNo}
   </select>
