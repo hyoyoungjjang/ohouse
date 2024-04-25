@@ -300,10 +300,10 @@
                 <div id="img-wrapper" onload="init()">
                     <c:forEach var="i" begin="2" end="${media.size() - 1}" varStatus="st">
                         <div class="img-area" id="file${i + 1}" onclick="imgChange('id${i + 1}');">
-                            <img src="${contextPath}/`${media.get(st.index).filePath}${media.get(st.index).changeName}" style="height: 90%;">
+                            <img src="${contextPath}/${media.get(st.index).filePath}${media.get(st.index).changeName}" style="height: 90%;">
                         </div>
                         <input type="hidden" name="mid" value="${media.get(st.index).mediaId}">
-                        <input type="file" value="${contextPath}/`${media.get(st.index).filePath}${media.get(st.index).changeName}" onchange="showImg(this, '#file${i + 1}', '사진');" id="cover-img-hidden" name="file${i + 1}" class="hidden">
+                        <input type="file" value="${contextPath}/${media.get(st.index).filePath}${media.get(st.index).changeName}" onchange="showImg(this, '#file${i + 1}', '사진');" id="id${i + 1}" name="file${i + 1}" class="hidden">
                     </c:forEach>
                 </div>
                 <!--본문 내용-->
