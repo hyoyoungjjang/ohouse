@@ -27,7 +27,7 @@ pageEncoding="UTF-8"%>
                     <img class="side-bar-scrap-img" src="${contextPath}/resources/img/community/bookmark.png" alt="" >
                     <img class="side-bar-scrap-img hidden" src="${contextPath}/resources/img/community/bookmark-checked.png" alt="" >
                 </button>        
-                <span class="side-bar-scrap-count scrap-count">21</span>     
+                <span id="sc" class="side-bar-scrap-count scrap-count"></span>     
             </div>
             <hr class="hr3">
             <div class="side-bar-comment" onclick="$('#comment-detail-input-area').focus();">
@@ -497,7 +497,10 @@ pageEncoding="UTF-8"%>
             }
         }
 
+        
+        
         function bookmarkToggle(_this, type, id, mNo) {
+            console.log("안녕");
             if(mNo === "" || mNo === null) return;
 
             const bookmark = _this.children;
@@ -513,7 +516,8 @@ pageEncoding="UTF-8"%>
                         boardId: id,
                     },
                     success: function(result) {
-                        // console.log(id);
+                        console.log(result.length)
+                        document.getElementById("sc").innerHTML = result.length; 
                     },
                     error: function() {
                         console.log("실패");
@@ -528,7 +532,7 @@ pageEncoding="UTF-8"%>
                         mediaId: id,
                     },
                     success: function(result) {
-                        // console.log(id);
+                        document.getElementById("sc").innerHTML = result.length;
                     },
                     error: function() {
                         console.log("실패");
@@ -536,6 +540,7 @@ pageEncoding="UTF-8"%>
                 });
             }
         }
+        
     </script>
 </div>
 
