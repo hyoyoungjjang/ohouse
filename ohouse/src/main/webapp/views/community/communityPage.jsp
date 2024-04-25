@@ -41,7 +41,7 @@ pageEncoding="UTF-8"%>
     <div class="content">
         <input type="hidden" id="hidden-no" value="${b.boardId}" name="bid">
         <div class="bulletin-title" align="left">
-            <p>작은 공간을 효율적으로 활용하는 최적의 가구 배치 찾기</p>
+            <p>${b.boardTitle}</p>
         </div>
         <div align="left" id="content-head">
             <div>
@@ -468,7 +468,11 @@ pageEncoding="UTF-8"%>
         }
 
         function getProfile(result, contextPath, path) {
-            $(path).attr({ src: contextPath + "/" + result.filePath});
+            if(result == null) {
+                $(path).attr("src", contextPath + `/resources/img/common/user.png`);
+            } else {
+                $(path).attr({ src: contextPath + "/" + result.filePath});
+            }
         }
 
         function getBoardScrap(result, memNo) {

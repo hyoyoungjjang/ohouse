@@ -36,7 +36,11 @@
                         url: "profile.co",
                         data: {mNo: mNo},
                         success: function(result) {
-                            $("#profile-img-area>img").attr("src", `${contextPath}` + `/` + result.filePath);
+                            if(result == null) {
+                                $("#profile-img-area>img").attr("src", `${contextPath}/resources/img/common/user.png`);
+                            } else{
+                                $("#profile-img-area>img").attr("src", `${contextPath}` + `/` + result.filePath);
+                            }
                         }
                     })
 

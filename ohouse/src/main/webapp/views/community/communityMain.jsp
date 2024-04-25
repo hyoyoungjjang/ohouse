@@ -136,7 +136,15 @@
                         <div class="page-text">
                             <div class="page-text-title">${b.boardTitle}</div>
                             <div class="page-text-name">
-                                <img class="page-text-img" src="${contextPath}/${m.filePath}" alt="">
+                                <c:choose>
+                                    <c:when test="${empty m}">
+                                        <img class="page-text-img" src="${contextPath}/resources/img/common/user.png" alt="">
+                                    </c:when>
+                                    <c:otherwise>
+                                        <img class="page-text-img" src="${contextPath}/${m.filePath}" alt="">
+                                    </c:otherwise>
+                                </c:choose>
+                                
                                 <span>${b.boardWriter}</span>
                             </div>
                             <div class="page-text-scrap-count">
