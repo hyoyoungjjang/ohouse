@@ -221,14 +221,10 @@
     AND BOARD_STATUS = 'Y'
   </select>
   <select id="memberCommunityList" resultMap="mediaResultSet">
-  	SELECT *
-	FROM MEDIA
-	WHERE BOARD_ID = (SELECT BOARD_ID
-	                    FROM BOARD
-	                    WHERE MEMBERS_NO = #{membersNo})
-	AND MEDIA_TYPE = 1
-	AND FILE_LEVEL = 1
-	AND MEDIA_STATUS = 'Y'
+  	SELECT B.BOARD_ID, M.FILE_PATH, M.ORIGIN_NAME
+	FROM BOARD B
+	JOIN MEDIA M ON (B.BOARD_ID = M.BOARD_ID)
+	WHERE B.MEMBERS_NO = #{membersNo} AND M.FILE_LEVEL = 1
   </select>
   <update id="deleteScrap" parameterType="_int">
   UPDATE SCRAP

@@ -87,18 +87,42 @@ public class MembersServiceImpl implements MembersService {
 	@Override
 	public int MembersScrapCount(int mNo) {
 		SqlSession sqlSession = getSqlSession();
-		return membersDao.MembersScrapCount(sqlSession, mNo);
+		int result = membersDao.MembersScrapCount(sqlSession, mNo);
+		sqlSession.close();
+		return result;
 	}
 
 	@Override
 	public int MemberCommunityCount(int mNo) {
 		SqlSession sqlSession = getSqlSession();
-		return membersDao.MembersCommunityCount(sqlSession, mNo);
+		int result = membersDao.MembersCommunityCount(sqlSession, mNo);
+		sqlSession.close();
+		return result;
 	}
 
 	@Override
 	public ArrayList<Media> MemberCommunityList(int mNo) {
 		SqlSession sqlSession = getSqlSession();
-		return membersDao.MemberCommunityList(sqlSession, mNo);
+		ArrayList<Media> list = membersDao.MemberCommunityList(sqlSession, mNo);
+		sqlSession.close();
+		return list;
+	}
+
+	@Override
+	public Members updateMembers(Media media, Members m) {
+		SqlSession sqlSession = getSqlSession();
+		int result1 = membersDao.updateProfile(sqlSession, media);
+		int result2 = membersDao.updateMembers(sqlSession, m);
+		
+		Members loginUser = null;
+		if(result1 * result2 > 0) {
+			loginUser = membersDao.selectMembers(sqlSession, m.getMembersId());
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		
+		sqlSession.close();
+		return loginUser;
 	}
 }

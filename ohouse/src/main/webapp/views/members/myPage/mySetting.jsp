@@ -17,11 +17,12 @@
     </header>
     <div align="center">
         <div id="mySetting-content" >
-            <form action="${contextPath}/update.me" method="POST">
+            <form action="${contextPath}/update.me" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="mid">
                 <div id="mySetting-img-area">
-                    <img src="${contextPath}/resources/img/member/myPage/user.png" alt="" onclick="profileChange()" id="profile-img-setting"><br>
-                    <h3>이미지 삭제</h3>
+                    <img src="" alt="" onclick="profileChange()" id="profile-img-setting"><br>
                     <input type="file" name="profile" id="profile-hidden" onchange="loadImg(this)" class="mySetting-hidden">
+                    <label for="profile-hidden">이미지 변경</label>
                 </div>
                 <div align="left" id="mySetting-content-area">
                     <div>
@@ -48,8 +49,8 @@
                         <div class="mySetting-msg"></div>
                     </div>
                     <div>
-                        <h3>생년월일</h3>
-                        <input type="text" name="birth" class="mySetting-input" placeholder="생년월일(6글자)">
+                        <h3>생년월일(예시: 1900-01-01)</h3>
+                        <input type="text" name="birth" class="mySetting-input" placeholder="생년월일(예시: 1900-01-01)" value="${loginUser.membersBirth}">
                         <div class="mySetting-msg"></div>
                     </div>
                     <div>
@@ -166,8 +167,19 @@
             </div>
         </div>
     </div>
-
+    <script src="${contextPath}/resources/js/headerInit.js"></script>
     <script>
+        $(function () {
+            init("${loginUser.membersNo}", function (result) {
+                if (result == null) {
+                    $("#profile-img-setting").attr("src", `${contextPath}/resources/img/common/user.png`);
+                } else {
+                    $("#profile-img-setting").attr("src", `${contextPath}/` + result.filePath);
+                    $("input[name='mid']").val(result.mediaId);
+                }
+            })
+        })
+
         function profileChange() {
             const imgInput = document.getElementById("profile-hidden");
             imgInput.click();
