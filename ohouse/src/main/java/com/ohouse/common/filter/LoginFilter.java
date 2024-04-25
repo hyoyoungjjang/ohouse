@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet Filter implementation class LoginFilter
  */
-@WebFilter(urlPatterns= {"/detail.pr","/detail.co"})
+@WebFilter(urlPatterns= {"/detail.pr","/detail.co", "/orderForm.pr"})
 public class LoginFilter implements Filter {
 
     /**
