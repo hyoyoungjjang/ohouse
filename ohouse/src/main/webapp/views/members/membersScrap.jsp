@@ -22,9 +22,9 @@
                 <h2>${loginUser.membersName}</h2>
             </div>
             <nav id="scrap-nav">
-                <button class="media clicked" onclick="navclicked(this);"><b>사진</b><span id="scrap-count1"></span></button>
-                <button class="content" onclick="navclicked(this);"><b>게시글</b><span id="scrap-count2"></span></button>
-                <button class="item" onclick="navclicked(this);"><b>상품</b><span id="scrap-count3"></span></button>
+                <button class="media clicked btn" onclick="navclicked(2,0);"><b>사진</b><span id="scrap-count1"></span></button>
+                <button class="content btn" onclick="navclicked(3,1);"><b>게시글</b><span id="scrap-count2"></span></button>
+                <button class="item btn" onclick="navclicked(1,2);"><b>상품</b><span id="scrap-count3"></span></button>
             </nav>
            
             
@@ -100,12 +100,12 @@
                         url : "scrapPageList.me",
                         data : {
                             mNo : mNo,
-                            scrapType : 1
+                            scrapType : 2
                         },
                         success : function(list){
                             drawScrapList2(list)
                         }, error : function(){
-                            console.log("스크랩카운트 실패")
+                            console.log("스크랩리스트 실패")
                         }
                     })
 
@@ -117,12 +117,53 @@
                             const scrap = list[i];
                             if(scrap){
                                 scrapListArea.innerHTML += `<div class="profile-content-img">
-                                    <img id="profile-community-img" src="${pageContext.request.contextPath}/` + scrap.filePath + scrap.originName +  `">
+                                    <img class="profile-community-img" src="${pageContext.request.contextPath}/` + scrap.filePath + scrap.changeName +  `">
                                     </div>` 
                             }
                         }
                     }
                 }
+
+
+                function navclicked(st, index){
+
+
+
+                    $.ajax({
+                        url : "scrapPageList.me",
+                        data : {
+                            mNo : mNo,
+                            scrapType : st
+                        },
+                        success : function(list){
+                            drawScrapList3(list)
+                        }, error : function(){
+                            console.log("스크랩리스트 실패")
+                        }
+                    })
+
+                    function drawScrapList3(list){
+                        let btn = document.querySelectorAll(".btn")
+                        for(let i = 0; i < btn.length; i++){
+                            btn[i].classList.remove("clicked")
+                        }
+                     
+                        btn[index].classList.add("clicked")
+
+                        const scrapListArea = document.getElementById("scrap-item");
+                        scrapListArea.innerHTML = "";
+                        for (let i = 0; i < list.length; i++){
+                            const scrap = list[i];
+                            if(scrap){
+                                scrapListArea.innerHTML += `<div class="profile-content-img">
+                                    <img class="profile-community-img" src="${pageContext.request.contextPath}/` + scrap.filePath + scrap.changeName +  `">
+                                    </div>` 
+                            }
+                        }
+                    }
+                }
+
+                
     </script>
     
     <footer>

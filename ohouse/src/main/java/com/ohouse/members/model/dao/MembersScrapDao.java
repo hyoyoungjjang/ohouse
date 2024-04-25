@@ -8,7 +8,7 @@ import com.ohouse.common.model.vo.Media;
 
 public class MembersScrapDao {
 	public int MemberScrapCount1(SqlSession sqlSession, int membersNo) {
-		return sqlSession.selectOne("membersScrapMapper.selectScrapCount1", membersNo);
+		return sqlSession.selectOne("membersScrapMapper.selectScrapCountProduct", membersNo);
 	}
 	
 	public int MemberScrapCount2(SqlSession sqlSession, int membersNo) {

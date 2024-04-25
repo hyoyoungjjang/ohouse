@@ -17,30 +17,34 @@ public class MembersScrapServiceImpl implements MembersScrapService  {
 	@Override
 	public int MemberScrapCount(int membersNo, int scrapType) {
 		SqlSession sqlSession = getSqlSession();
-		
+		int result = 0;
 		if(scrapType == 1) {
-			return membersDao.MemberScrapCount1(sqlSession, membersNo);
+			result = membersDao.MemberScrapCount1(sqlSession, membersNo);
 		} else if (scrapType == 2) {
-			return membersDao.MemberScrapCount2(sqlSession, membersNo);
-		} else {
-			return membersDao.MemberScrapCount3(sqlSession, membersNo);
+			result =  membersDao.MemberScrapCount2(sqlSession, membersNo);
+		} else if (scrapType == 3) {
+			result =  membersDao.MemberScrapCount3(sqlSession, membersNo);
 		}
 		
-		
+		sqlSession.close();
+		return result;
 	}
 
 	@Override
 	public ArrayList<Media> MembersScrapList(int membersNo, int scrapType) {
 		SqlSession sqlSession = getSqlSession();
+		ArrayList<Media> list = null;
 		
-		if(scrapType == 1) {
-			return membersDao.MemberScrapList1(sqlSession, membersNo);
-		} else if (scrapType == 2) {
-			return membersDao.MemberScrapList2(sqlSession, membersNo);
-		} else {
-			return membersDao.MemberScrapList3(sqlSession, membersNo);
+		if(scrapType == 2) {
+			list =  membersDao.MemberScrapList1(sqlSession, membersNo);
+		} else if (scrapType == 3) {
+			list =  membersDao.MemberScrapList2(sqlSession, membersNo);
+		} else if (scrapType == 1){
+			list = membersDao.MemberScrapList3(sqlSession, membersNo);
 		}
 		
+		sqlSession.close();
+		return list;
 	}
 	
 	

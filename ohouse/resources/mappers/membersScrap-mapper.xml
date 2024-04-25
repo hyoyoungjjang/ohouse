@@ -191,7 +191,7 @@
 	WHERE MEDIA_ID = #{mediaId}
   </update>
   <!-- 스크랩 관련 매퍼 -->
-   <select id="selectScrapCount1" resultType="_int">
+   <select id="selectScrapCountProduct" resultType="_int">
   SELECT COUNT(*)
 	FROM SCRAP
 	WHERE MEMBERS_NO = #{membersNo}
@@ -239,36 +239,36 @@
 	SET SCRAP_STATUS = 'N"
 	WHERE SCRAP_ID = #{scrapId}
   </update>
-  <select id="selectScrapList1" resultMap="mediaResultSet">
-  SELECT FILE_PATH, ORIGIN_NAME
+  <select id="selectScrapList1" resultMap="mediaResultSet" parameterType="_int">
+  SELECT M.FILE_PATH AS "FILE_PATH", M.CHANGE_NAME AS "CHANGE_NAME"
 	FROM MEDIA M
-	JOIN SCRAP S USING(MEDIA_ID)
-	WHERE M.MEMBERS_NO = #{membersNo}
-	AND FILE_LEVEL = 2
-	AND MEDIA_TYPE = 1
+	JOIN SCRAP S ON (M.MEDIA_ID = S.MEDIA_ID)
+	WHERE S.MEMBERS_NO = #{membersNo}
 	AND SCRAP_TYPE = 2
 	AND MEDIA_STATUS = 'Y'
 	AND SCRAP_STATUS = 'Y'
   </select>
-  <select id="selectScrapList2" resultMap="mediaResultSet">
-  SELECT FILE_PATH, ORIGIN_NAME
+  <select id="selectScrapList2" resultMap="mediaResultSet" parameterType="_int">
+  SELECT M.FILE_PATH AS "FILE_PATH", M.CHANGE_NAME AS "CHANGE_NAME"
 	FROM MEDIA M
-	JOIN SCRAP S USING(MEDIA_ID)
-	WHERE M.MEMBERS_NO = #{membersNo}
-	AND FILE_LEVEL = 1
-	AND MEDIA_TYPE = 1
+	JOIN SCRAP S ON (M.BOARD_ID = S.BOARD_ID)
+	WHERE S.MEMBERS_NO = #{membersNo}
+    AND S.BOARD_ID = M.BOARD_ID
 	AND SCRAP_TYPE = 3
+    AND FILE_LEVEL = 1
 	AND MEDIA_STATUS = 'Y'
 	AND SCRAP_STATUS = 'Y'
   </select>
-  <select id="selectScrapList3" parameterType="_int">
-	SELECT *
-	FROM MEDIA AS "M", (SELECT *
-	            FROM SCRAP
-	            WHERE MEMBERS_NO = #{membersNo}
-	            AND SCRAP_TYPE = 2  
-	            AND SCRAP_STATUS = 'Y') AS "S"
-	WHERE M.MEDIA_ID = S.MEDIA_ID;  
+  <select id="selectScrapList3" resultMap="mediaResultSet" parameterType="_int">
+  SELECT M.FILE_PATH AS "FILE_PATH", M.CHANGE_NAME AS "CHANGE_NAME"
+	FROM MEDIA M
+	JOIN SCRAP S ON (M.PRODUCT_ID = S.PRODUCT_ID)
+	WHERE S.MEMBERS_NO = #{membersNo}
+    AND S.PRODUCT_ID = M.PRODUCT_ID
+	AND SCRAP_TYPE = 1
+    AND FILE_LEVEL = 1
+	AND MEDIA_STATUS = 'Y'
+	AND SCRAP_STATUS = 'Y'
   </select>
   <!-- 장바구니 관련 매퍼 -->
   

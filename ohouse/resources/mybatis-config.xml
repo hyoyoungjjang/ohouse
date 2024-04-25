@@ -17,6 +17,10 @@
  		<typeAlias type="com.ohouse.common.model.vo.Scrap" alias="Scrap"/>
  		<typeAlias type="com.ohouse.community.model.vo.Reply" alias="Reply"/>
  		<typeAlias type="com.ohouse.common.model.vo.ProductCart" alias="ProductCart"/>
+ 		<typeAlias type="com.ohouse.product.model.vo.Order" alias="Order"/>
+ 		<typeAlias type="com.ohouse.product.model.vo.OptionsCategory" alias="Category"/>
+ 		<typeAlias type="com.ohouse.product.model.vo.OptionsName" alias="OptionsName"/>
+ 		<typeAlias type="com.ohouse.product.model.vo.OrderProduct" alias="OrderProduct"/>
  	</typeAliases>
  	
  	<!-- environments : mybatis에서 연동할 DB정보들을 등록하는 영역-->
@@ -48,6 +52,7 @@
  		<mapper resource="/mappers/community-mapper.xml"/>
  		<mapper resource="/mappers/common-mapper.xml"/>
  		<mapper resource="/mappers/membersScrap-mapper.xml"/>
+ 		<mapper resource="/mappers/order-mapper.xml"/>
  	</mappers>
 
  	
