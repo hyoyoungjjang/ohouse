@@ -48,7 +48,7 @@ public class productOrderInsertController extends HttpServlet {
 		int pNo = Integer.parseInt(request.getParameter("productId"));
 		int oNo = Integer.parseInt(request.getParameter("optNameNo"));
 		int amount = Integer.parseInt(request.getParameter("amount"));
-		int totalPrice = Integer.parseInt(request.getParameter("totalPrice"));
+		int totalPrice = Integer.parseInt(request.getParameter("totalPrice").substring(0, request.getParameter("totalPrice").lastIndexOf(".")));
 		int deliveryDate = Integer.parseInt(request.getParameter("deliveryDate"));
 		
 		int membersNo = ((Members)request.getSession().getAttribute("loginUser")).getMembersNo();
