@@ -4,6 +4,7 @@
 
 #scrap-profile-area>img {
     width: 100px;
+    border-radius: 50px;
 }
 
 #scrap-nav>button {
@@ -50,6 +51,7 @@
 .profile-community-img{
     width: 260px;
     height:200px;
+    object-fit: cover;
 }
 
 .scrap-item-img>button {

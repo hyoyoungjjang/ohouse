@@ -23,7 +23,7 @@
                 </div>
                 <hr>
                 <div id="profile-bookmark">
-                    <img src="${contextPath}/resources/img/member/myPage/profile-bookmark.png" alt="">
+                    <img src="${contextPath}/resources/img/member/myPage/profile-bookmark.png" alt=""  onclick="location.href='${contextPath}/scrap.me'" >
                     <div>스크랩북</div>
                     <div id="scrap-count"></div>
                 </div>

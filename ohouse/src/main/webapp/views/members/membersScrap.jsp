@@ -17,14 +17,14 @@
                 <h2><b>스크랩북</b></h2>
             </div>
             <div id="scrap-profile-area">
-                <img src="${pageContext.request.contextPath}/resources/img/member/myPage/user.png" alt=""
+                <img src="" alt=""
                     id="profile-img-setting"><br>
                 <h2>${loginUser.membersName}</h2>
             </div>
             <nav id="scrap-nav">
-                <button class="media clicked btn" onclick="navclicked(2,0);"><b>사진</b><span id="scrap-count1"></span></button>
-                <button class="content btn" onclick="navclicked(3,1);"><b>게시글</b><span id="scrap-count2"></span></button>
-                <button class="item btn" onclick="navclicked(1,2);"><b>상품</b><span id="scrap-count3"></span></button>
+                <button class="media clicked btn" onclick="navclicked(2,0,'detail.co?bid=');"><b>사진</b><span id="scrap-count1"></span></button>
+                <button class="content btn" onclick="navclicked(3,1,'detail.co?bid=');"><b>게시글</b><span id="scrap-count2"></span></button>
+                <button class="item btn" onclick="navclicked(1,2,'detail.pr?productId=');"><b>상품</b><span id="scrap-count3"></span></button>
             </nav>
            
             
@@ -38,6 +38,16 @@
         let mNo = ${loginUser.membersNo};
                 
                 window.onload = function(){
+
+                    $.ajax({
+                        url: "profile.co",
+                        data: {mNo: mNo},
+                        success: function(result) {
+                            console.log(result)
+                            $("#profile-img-setting").attr("src", `${contextPath}` + `/` + result.filePath);
+                        }
+                    })
+
 
                     $.ajax({
                         url : "scrapPageCount.me",
@@ -110,13 +120,13 @@
                     })
 
                     function drawScrapList2(list){
-                        console.log(list);
+                        let detailUrl = 'detail.co?bid='
                         const scrapListArea = document.getElementById("scrap-item");
 
                         for (let i = 0; i < list.length; i++){
                             const scrap = list[i];
                             if(scrap){
-                                scrapListArea.innerHTML += `<div class="profile-content-img">
+                                scrapListArea.innerHTML += `<div class="profile-content-img" onclick="location.href='${contextPath}/`+ detailUrl +  scrap.mediaBoardId+`'">
                                     <img class="profile-community-img" src="${pageContext.request.contextPath}/` + scrap.filePath + scrap.changeName +  `">
                                     </div>` 
                             }
@@ -125,7 +135,7 @@
                 }
 
 
-                function navclicked(st, index){
+                function navclicked(st, index,du){
 
 
 
@@ -149,15 +159,20 @@
                         }
                      
                         btn[index].classList.add("clicked")
-
+                        let detailUrl = du;
                         const scrapListArea = document.getElementById("scrap-item");
                         scrapListArea.innerHTML = "";
                         for (let i = 0; i < list.length; i++){
                             const scrap = list[i];
-                            if(scrap){
-                                scrapListArea.innerHTML += `<div class="profile-content-img">
+                            if(scrap && detailUrl != 'detail.pr?productId='){
+                            	
+                                scrapListArea.innerHTML += `<div class="profile-content-img" onclick="location.href='${contextPath}/`+ detailUrl + scrap.mediaBoardId+`'">
                                     <img class="profile-community-img" src="${pageContext.request.contextPath}/` + scrap.filePath + scrap.changeName +  `">
                                     </div>` 
+                            } else {
+                                scrapListArea.innerHTML += `<div class="profile-content-img" onclick="location.href='${contextPath}/`+ detailUrl + scrap.mediaProductId+`'">
+                                    <img class="profile-community-img" src="${pageContext.request.contextPath}/` + scrap.filePath + scrap.changeName +  `">
+                                    </div>`
                             }
                         }
                     }
