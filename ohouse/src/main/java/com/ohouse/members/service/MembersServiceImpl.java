@@ -111,7 +111,14 @@ public class MembersServiceImpl implements MembersService {
 	@Override
 	public Members updateMembers(Media media, Members m) {
 		SqlSession sqlSession = getSqlSession();
-		int result1 = membersDao.updateProfile(sqlSession, media);
+		int result1 = 0;
+		
+		if(media.getMediaId() != 0) {
+			result1 = membersDao.updateProfile(sqlSession, media);
+		} else {
+			result1 = membersDao.insertProfile(sqlSession, media);
+		}
+		
 		int result2 = membersDao.updateMembers(sqlSession, m);
 		
 		Members loginUser = null;

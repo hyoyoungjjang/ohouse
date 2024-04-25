@@ -45,7 +45,14 @@ public class MembersUpdateController extends HttpServlet {
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
 			
 			Media media = new Media();
-			media.setMediaId(Integer.parseInt(multiRequest.getParameter("mid")));
+			
+			try {
+				media.setMediaId(Integer.parseInt(multiRequest.getParameter("mid")));
+			} catch (Exception e) {
+				media.setMediaId(0);
+				media.setMediaMembersId(loginUser.getMembersNo());
+			}
+			
 			if(multiRequest.getOriginalFileName("profile") == null) {
 				media.setOriginName("user.png");				
 				media.setChangeName("user.png");

@@ -162,10 +162,10 @@
 	VALUES
 	(
 		SEQ_MEDID.NEXTVAL,
-		SEQ_MEMID.CURRVAL,
+		#{mediaMembersId},
 		1,
-		#{origin_name},
-		#{change_name},
+		#{originName},
+		#{changeName},
 		#{filePath},
 		3
 	)
@@ -225,6 +225,7 @@
 	FROM BOARD B
 	JOIN MEDIA M ON (B.BOARD_ID = M.BOARD_ID)
 	WHERE B.MEMBERS_NO = #{membersNo} AND M.FILE_LEVEL = 1
+	AND B.BOARD_STATUS = 'Y' AND M.MEDIA_STATUS = 'Y'
   </select>
   <update id="deleteScrap" parameterType="_int">
   UPDATE SCRAP
