@@ -36,8 +36,8 @@ public class ProductOrderDao {
 		return sqlSession.selectOne("orderMapper.selectOrder", orderId);
 	}
 
-	public OrderProduct selectOrderProduct(SqlSession sqlSession, int orderProductId) {
-		return sqlSession.selectOne("orderMapper.selectOrderProduct", orderProductId);
+	public OrderProduct selectOrderProduct(SqlSession sqlSession, OrderProduct orderProduct) {
+		return sqlSession.selectOne("orderMapper.selectOrderProduct", orderProduct);
 
 	}
 
