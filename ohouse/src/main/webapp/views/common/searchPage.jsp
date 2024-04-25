@@ -41,7 +41,7 @@
                                     </header>
                                     <c:forEach var="p" items="${products}">
                                         <div class="pm-sale pm-content" id="pm-deal-contents">
-                                            <div class="pm-sale-content">
+                                            <div class="pm-sale-content" onclick='location.href="${contextPath}/detail.pr?productId=${p.productId}"'>
                                                 <div class="pm-sale-img">
                                                     <img class="img-hover" src="${p.productThumbnail}" width="260px">
                                                     <button type="button" class="button-scrap">
@@ -89,7 +89,7 @@
                                     <div class="row">
                                         <c:forEach var="b" items="${boards}">
                                             <c:set var="m" value="${mList.get(st.index)}" />
-                                            <div class="search-project-content">
+                                            <div class="search-project-content" onclick='location.href="${contextPath}/detail.co?bid=${b.boardId}"'>
                                                 <article class="search-project-item">
                                                     <div class="search-project-item-img-wrap">
                                                         <div class="search-project-item-img">

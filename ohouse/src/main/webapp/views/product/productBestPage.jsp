@@ -21,7 +21,7 @@
             </div>
             <div class="pc-sale" id="pc-deal-contents">
                 <c:forEach var="p" items="${pList}">
-                    <div class="pc-sale-content">
+                    <div class="pc-sale-content" onclick='location.href="${contextPath}/detail.pr?productId=${p.productId}"'>
                         <div class="pc-sale-img">
                             <img src="${contextPath}/${p.productThumbnail}">
                             <button type="button">
@@ -56,6 +56,7 @@
                     </div>
                 </c:forEach>
                 <script>
+
                     function changeBookmark(_this, pNo){
                         const contextPath = "${pageContext.request.contextPath}";
                         const src = _this.src;
@@ -124,7 +125,8 @@
                             price = AddComma(price);
                             
                             if (saleproduct) {
-                                saleArea.innerHTML += `<div class="pc-sale-content">
+                                saleArea.innerHTML += `
+                                <div class="pc-sale-content" onclick="location.href='${pageContext.request.contextPath}/detail.pr?productId=` + saleproduct.productId + `'">
                                     <div class="pc-sale-img">
                                         <img src="${pageContext.request.contextPath}/` +  saleproduct.productThumbnail + `" width="260px">
                                         <button type="button" onclick="changeBookmark(this, `+saleproduct.productId+`)">
@@ -149,7 +151,7 @@
                                             <span class="pc-gray">`+ saleproduct.reviewCount +`</span>
                                         </div>
                                     </div>
-                                </div>`
+                                </div>`;
                             }
                         }
                     }

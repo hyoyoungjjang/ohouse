@@ -127,7 +127,7 @@
   	)
   </insert>
   
-  <insert id="insertOrderProduct" useGeneratedKeys="true" keyColumn="ORDERS_ID" keyProperty="orderProductId">
+  <insert id="insertOrderProduct">
   	INSERT
   	INTO ORDERS_PRODUCT
   	(	

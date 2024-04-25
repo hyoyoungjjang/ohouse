@@ -24,11 +24,12 @@
     width: 600px;
     height: 600px;
     float: left;
-    margin-left: 120px;
+    margin-left: 130px;
 }
 
 .productMainImg img {
     border-radius: 10px;
+    width: 600px;
 }
 
 .productMainInfo {
