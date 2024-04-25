@@ -1,21 +1,29 @@
 package com.ohouse.product.model.vo;
 
-import java.util.HashMap;
-
 public class OrderProduct {
+	 private int orderProductId;
 	 private int orderId;
 	 private int productId;
-	 private HashMap<OptionsCategory, OptionsName> orderOptions;
+	 private int orderOptions;
 	 private int amount;
 	 
 	 public OrderProduct() {}
-	 
-	public OrderProduct(int orderId, int productId, HashMap<OptionsCategory, OptionsName> orderOptions, int amount) {
+
+	public OrderProduct(int orderProductId, int orderId, int productId, int orderOptions, int amount) {
 		super();
+		this.orderProductId = orderProductId;
 		this.orderId = orderId;
 		this.productId = productId;
 		this.orderOptions = orderOptions;
 		this.amount = amount;
+	}
+
+	public int getOrderProductId() {
+		return orderProductId;
+	}
+
+	public void setOrderProductId(int orderProductId) {
+		this.orderProductId = orderProductId;
 	}
 
 	public int getOrderId() {
@@ -34,11 +42,11 @@ public class OrderProduct {
 		this.productId = productId;
 	}
 
-	public HashMap<OptionsCategory, OptionsName> getOrderOptions() {
+	public int getOrderOptions() {
 		return orderOptions;
 	}
 
-	public void setOrderOptions(HashMap<OptionsCategory, OptionsName> orderOptions) {
+	public void setOrderOptions(int orderOptions) {
 		this.orderOptions = orderOptions;
 	}
 
@@ -52,10 +60,11 @@ public class OrderProduct {
 
 	@Override
 	public String toString() {
-		return "OrderProduct [orderId=" + orderId + ", productId=" + productId + ", orderOptions=" + orderOptions
-				+ ", amount=" + amount + "]";
+		return "OrderProduct [orderProductId=" + orderProductId + ", orderId=" + orderId + ", productId=" + productId
+				+ ", orderOptions=" + orderOptions + ", amount=" + amount + "]";
 	}
 	 
+	
 	
 	 
 }

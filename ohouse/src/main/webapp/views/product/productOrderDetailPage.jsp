@@ -17,6 +17,12 @@
       <header>
         <%@ include file="../common/headerNone.jsp" %>
       </header>
+      <c:set var="totalProductPrice" scope="request">
+        ${(p.productPrice + o.price) * ordpd.amount}
+      </c:set>
+      <c:set var="totalPrice" scope="request">
+        ${totalProductPrice + p.productDeliveryPrice}
+      </c:set>
       <div class="main">
         <div class="wrapper">
           <div id="main-header-content">
@@ -43,7 +49,7 @@
                 </li>
                 <li class="recipient-info-list">
                   <span>배송 메모</span>
-                  <p>화이팅</p>
+                  <p>${order.requirement}</p>
                 </li>
               </ul>
             </div>
@@ -63,7 +69,7 @@
                         <div id="product-order-header">
                           <p>
                             <b style="font-weight: 700;">${order.deliveryStatus}</b>
-                            <span style="font-size: 15px; line-height: 24px;">&middot;${order.arrivalDate} 도착완료</span>
+                            <span style="font-size: 15px; line-height: 24px;">&middot;${order.arrivalDate} 도착</span>
                           </p>
                         </div>
                       </div>
@@ -78,7 +84,7 @@
                             <span>
                               <fmt:formatNumber value="${p.productPrice}" />원
                             </span>
-                            <span>&middot;${amount}개</span>
+                            <span>&middot;${ordpd.amount}개</span>
                           </p>
                           <p class="product-order-info-text">
                             <span>${order.deliveryStatus}</span>
@@ -121,7 +127,7 @@
                 <ul>
                   <li class="price-orderer-info-content" style="margin-bottom: 8px;">
                     <p>총 상품금액</p>
-                    <p class="text-align-end"><fmt:formatNumber value="${(p.productPrice + o.price) * amount + p.productDeliveryPrice}"/>원</p>
+                    <p class="text-align-end"><fmt:formatNumber value="${totalProductPrice}"/>원</p>
                   </li>
                   <li class="price-orderer-info-content">
                     <p>배송비</p>
@@ -132,12 +138,12 @@
                 <div>
                   <div class="price-orderer-info-content">
                     <p id="total-price">주문금액</p>
-                    <p class="text-align-end" style="font-size: 18px; line-height: 24px; font-weight: 700;"><fmt:formatNumber value="${(p.productPrice + o.price) * amount + p.productDeliveryPrice}"/>원</p>
+                    <p class="text-align-end" style="font-size: 18px; line-height: 24px; font-weight: 700;"><fmt:formatNumber value="${totalProductPrice}"/>원</p>
                   </div>
                   <ul>
                     <li id="payment">
-                      <p>네이버페이</p>
-                      <p><fmt:formatNumber value="${(p.productPrice + o.price) * amount + p.productDeliveryPrice}"/>원</p>
+                      <p>${paymentMethod}</p>
+                      <p><fmt:formatNumber value="${totalProductPrice}"/>원</p>
                     </li>
                   </ul>
                 </div>
@@ -148,15 +154,15 @@
               <ul class="recipient-info">
                 <li>
                   <span>주문자</span>
-                  <p>${loginUser.membersName}</p>
+                  <p style="margin-left: 15px;">${loginUser.membersName}</p>
                 </li>
                 <li>
                   <span>연락처</span>
-                  <p>${loginUser.membersPhone}</p>
+                  <p style="margin-left: 15px;">${loginUser.membersPhone}</p>
                 </li>
                 <li>
                   <span>이메일</span>
-                  <p>${loginUser.membersEmail}</p>
+                  <p style="margin-left: 15px;">${loginUser.membersEmail}</p>
                 </li>
               </ul>
               <p id="customer-service-center-phone">

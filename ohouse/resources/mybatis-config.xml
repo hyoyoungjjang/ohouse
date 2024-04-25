@@ -20,6 +20,7 @@
  		<typeAlias type="com.ohouse.product.model.vo.Order" alias="Order"/>
  		<typeAlias type="com.ohouse.product.model.vo.OptionsCategory" alias="Category"/>
  		<typeAlias type="com.ohouse.product.model.vo.OptionsName" alias="OptionsName"/>
+ 		<typeAlias type="com.ohouse.product.model.vo.OrderProduct" alias="OrderProduct"/>
  	</typeAliases>
  	
  	<!-- environments : mybatis에서 연동할 DB정보들을 등록하는 영역-->

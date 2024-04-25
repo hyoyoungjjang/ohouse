@@ -8,7 +8,7 @@ public class Product{
 	private String productPrice;
 	private String productSales;
 	private String stock;
-	private String arrivalDate;
+	private String deliveryDate;
 	private int sale;
 	private String productThumbnail;
 	private String productContent;
@@ -25,7 +25,7 @@ public class Product{
 	public Product() {}
 	
 	public Product(int productId, String productName, String productPrice, String productSales, String stock,
-			String arrivalDate, int sale, String productThumbnail, String productContent, Date productCreateTime,
+			String deliveryDate, int sale, String productThumbnail, String productContent, Date productCreateTime,
 			Date productModifyTime, String companyName, int membersNo, int productDeliveryPrice, int productCategory,
 			String productStatus, int ratingAvg, int reviewCount) {
 		super();
@@ -34,7 +34,7 @@ public class Product{
 		this.productPrice = productPrice;
 		this.productSales = productSales;
 		this.stock = stock;
-		this.arrivalDate = arrivalDate;
+		this.deliveryDate = deliveryDate;
 		this.sale = sale;
 		this.productThumbnail = productThumbnail;
 		this.productContent = productContent;
@@ -91,11 +91,11 @@ public class Product{
 	}
 
 	public String getDeliveryDate() {
-		return arrivalDate;
+		return deliveryDate;
 	}
 
 	public void setDeliveryDate(String deliveryDate) {
-		this.arrivalDate = arrivalDate;
+		this.deliveryDate = deliveryDate;
 	}
 
 	public int getSale() {
@@ -199,7 +199,7 @@ public class Product{
 	@Override
 	public String toString() {
 		return "Product [productId=" + productId + ", productName=" + productName + ", productPrice=" + productPrice
-				+ ", productSales=" + productSales + ", stock=" + stock + ", arrivalDate=" + arrivalDate + ", sale="
+				+ ", productSales=" + productSales + ", stock=" + stock + ", deliveryDate=" + deliveryDate + ", sale="
 				+ sale + ", productThumbnail=" + productThumbnail + ", productContent=" + productContent
 				+ ", productCreateTime=" + productCreateTime + ", productModifyTime=" + productModifyTime
 				+ ", companyName=" + companyName + ", membersNo=" + membersNo + ", productDeliveryPrice="

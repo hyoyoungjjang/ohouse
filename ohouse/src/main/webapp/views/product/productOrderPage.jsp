@@ -18,7 +18,7 @@
     </header>
     <div align="center">
         <!-- 주문자 정보 전달-->
-        <form id="orderForm" action="order.pr" method="post">
+        <form id="orderForm" action="insert.or" method="post">
             <div id="order-and-payment-area">
                 <div id="order-area">
                     <h1 align="left" id="order-and-payment-text">주문/결제</h1>
@@ -236,6 +236,7 @@
                 <input type="hidden" name="productId" value="${p.productId}">
                 <input type="hidden" name="optNameNo" value="${o.optionsNameNo}">
                 <input type="hidden" name="amount" value="${amount}">
+                <input type="hidden" name="deliveryDate" value="${p.deliveryDate}">
             </div>
         </div>
         </form>

@@ -10,7 +10,7 @@
   		<result column="PRODUCT_PRICE" property="productPrice" />
   		<result column="PRODUCT_SALES" property="productSales" />
   		<result column="STOCK" property="stock" />
-  		<result column="DELIVERY_DATE" property="arrivalDate" />
+  		<result column="DELIVERY_DATE" property="deliveryDate" />
   		<result column="SALE" property="sale" />
   		<result column="PRODUCT_CONTENT" property="productContent" />
   		<result column="PRODUCT_CREATE_TIME" property="productCreateTime" />
@@ -36,7 +36,28 @@
   		<result column="OPTIONS_PRICE" property="price" />
   		<result column="OPTIONS_STOCK" property="stock" />
   	</resultMap>
-  	
+  	<resultMap type="Order" id="OrderRset">
+  		<result column="ORDERS_ID" property="ordersId" />
+  		<result column="MEMBERS_NO" property="membersNo" />
+  		<result column="RECIPIENT_NAME" property="recipientName" />
+  		<result column="RECIPIENT_PHONE" property="recipientPhone" />
+  		<result column="RECIPIENT_EMAIL" property="recipientEmail" />
+  		<result column="RECIPIENT_ADDRESS" property="recipientAddress" />
+  		<result column="RECIPIENT_POSTCODE" property="recipientPostcode" />
+  		<result column="ORDERS_DATE" property="ordersDate" />
+  		<result column="TOTAL_PRICE" property="totalPrice" />
+  		<result column="ARRIVAL_DATE" property="arrivalDate" />
+  		<result column="REQURIEDMENT" property="requirement" />
+  		<result column="ORDERS_DELIVERY_STATUS" property="deliveryStatus" />
+  		<result column="ORDERS_STATUS" property="ordersStatus" />
+  	</resultMap>
+  	<resultMap type="OrderProduct" id="OrderProductRset">
+  		<result column="ORDERS_PRODUCT_ID" property="orderProductId" />
+  		<result column="ORDERS_ID" property="orderId" />
+  		<result column="PRODUCT_ID" property="productId" />
+  		<result column="OPTIONS_NAME_NO" property="orderOptions" />
+  		<result column="AMOUNT" property="amount" />
+  	</resultMap>
   <select id="selectDetailProduct" resultMap="productResultSet">
    SELECT
 		P.PRODUCT_ID,
@@ -49,7 +70,7 @@
 		PRODUCT_CONTENT,
 		PRODUCT_CREATE_TIME,
 		PRODUCT_MODIFY_TIME,
-		P.MEMBERS_NO,
+		COMPANY_NAME,
 		PRODUCT_DELIVERY_PRICE,
 		PRODUCT_CATEGORY,
 		FILE_PATH || CHANGE_NAME AS "PRODUCT_THUMBNAIL"
@@ -75,6 +96,85 @@
   		OPTIONS_NAME, OPTIONS_PRICE, OPTIONS_STOCK
   	FROM OPTIONS_NAME
   	WHERE OPTIONS_NAME_NO = #{optNameNo}
+  </select>
+  
+  <insert id="insertOrder" useGeneratedKeys="true" keyColumn="ORDERS_ID" keyProperty="ordersId">
+  	INSERT
+  	INTO ORDERS
+  	(
+  		ORDERS_ID,
+  		MEMBERS_NO,
+  		RECIPIENT_NAME,
+		RECIPIENT_PHONE,
+		RECIPIENT_ADDRESS,
+		RECIPIENT_POSTCODE,
+		TOTAL_PRICE,
+		ARRIVAL_DATE,
+		REQURIEDMENT,
+		ORDERS_DELIVERY_STATUS
+  	)
+  	VALUES
+  	(
+  		SEQ_ORDID.NEXTVAL,
+  		#{membersNo},
+  		#{recipientName},
+  		#{recipientPhone},
+  		#{recipientAddress},
+  		DEFAULT,
+  		#{totalPrice},
+  		#{arrivalDate},
+  		#{requirement},
+  		DEFAULT
+  	)
+  </insert>
+  
+  <insert id="insertOrderProduct" useGeneratedKeys="true" keyColumn="ORDERS_ID" keyProperty="orderProductId">
+  	INSERT
+  	INTO ORDERS_PRODUCT
+  	(	
+  		ORDERS_PRODUCT_ID,
+  		ORDERS_ID,
+		PRODUCT_ID,
+		OPTIONS_NAME_NO,
+		AMOUNT
+  	)
+  	VALUES
+  	(
+  		SEQ_ORDPDID.NEXTVAL,
+  		SEQ_ORDID.CURRVAL,
+  		#{productId},
+  		#{orderOptions},
+  		#{amount}
+  	)
+  </insert>
+  
+  <select id="selectOrder" resultMap="OrderRset">
+  	SELECT 
+	  	ORDERS_ID,
+		MEMBERS_NO,
+		RECIPIENT_NAME,
+		RECIPIENT_PHONE,
+		RECIPIENT_EMAIL,
+		RECIPIENT_ADDRESS,
+		RECIPIENT_POSTCODE,
+		ORDERS_DATE,
+		TOTAL_PRICE,
+		ARRIVAL_DATE,
+		REQURIEDMENT,
+		ORDERS_DELIVERY_STATUS,
+		ORDERS_STATUS
+	FROM ORDERS
+	WHERE ORDERS_ID = #{orderId}
+  </select>
+  <select id="selectOrderProduct" resultMap="OrderProductRset">
+  	SELECT
+  		ORDERS_PRODUCT_ID,
+		ORDERS_ID,
+		PRODUCT_ID,
+		OPTIONS_NAME_NO,
+		AMOUNT
+  	FROM ORDERS_PRODUCT
+  	WHERE ORDERS_PRODUCT_ID = #{orderProductId}
   </select>
  </mapper>
 
