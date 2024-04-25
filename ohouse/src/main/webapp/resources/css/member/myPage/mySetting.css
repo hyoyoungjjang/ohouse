@@ -15,6 +15,7 @@
     width: 86px;
     height: 86px;
     overflow: hidden;
+    border-radius: 50px;
 }
 
 .mySetting-input {
