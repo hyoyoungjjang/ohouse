@@ -82,7 +82,7 @@
                           <p id="product-order-optionName">${o.optionsName}</p>
                           <p class="product-order-info-text">
                             <span>
-                              <fmt:formatNumber value="${p.productPrice}" />원
+                              <fmt:formatNumber value="${(p.productPrice + o.price) * (100 - p.sale) / 100}" />원
                             </span>
                             <span>&middot;${ordpd.amount}개</span>
                           </p>

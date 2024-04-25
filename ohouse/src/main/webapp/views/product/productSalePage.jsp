@@ -21,7 +21,7 @@
             </div>
             <div class="pc-sale" id="pc-deal-contents">
                 <c:forEach var="ps" items="${psList}">
-                    <div class="pc-sale-content">
+                    <div class="pc-sale-content" onclick='location.href="${contextPath}/detail.pr?productId=${ps.productId}"'>
                         <div class="pc-sale-img">
                             <img src="${contextPath}/${ps.productThumbnail}">
                             <button type="button">
@@ -113,7 +113,7 @@
                             const saleproduct = list[i];
             
                             if (saleproduct) {
-                                saleArea.innerHTML += `<div class="pc-sale-content">
+                                saleArea.innerHTML += `<div class="pc-sale-content" onclick="location.href='${pageContext.request.contextPath}/detail.pr?productId=` + saleproduct.productId + `'">
                                     <div class="pc-sale-img">
                                         <img src="${pageContext.request.contextPath}/` +  saleproduct.productThumbnail + `" width="260px">
                                         <button type="button" onclick="changeBookmark(this, `+saleproduct.productId+`)">

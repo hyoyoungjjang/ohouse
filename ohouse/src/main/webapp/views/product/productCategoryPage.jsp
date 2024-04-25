@@ -71,7 +71,7 @@
             </div>
             <div class="pc-sale pc-content" id="pc-deal-contents">
                 <c:forEach var="c" items="${cList}">
-                    <div class="pc-sale-content">
+                    <div class="pc-sale-content" onclick='location.href="${contextPath}/detail.pr?productId=${c.productId}"'>
                         <div class="pc-sale-img">
                             <img src="${contextPath}/${c.productThumbnail}">
                             <button type="button">
@@ -161,7 +161,7 @@
                             price = AddComma(price);
                             
                             if (cProduct) {
-                                saleArea.innerHTML += `<div class="pc-sale-content">
+                                saleArea.innerHTML += `<div class="pc-sale-content" onclick="location.href='${pageContext.request.contextPath}/detail.pr?productId=` + cProduct.productId + `'">
                                     <div class="pc-sale-img">
                                         <img src="${pageContext.request.contextPath}/` +  cProduct.productThumbnail + `" width="260px">
                                         <button type="button" onclick="changeBookmark(this, `+cProduct.productId+`)">

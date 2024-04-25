@@ -67,7 +67,8 @@ article{
 
 .pm-sale {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 20px
 }
 
 .pm-sale-img {
