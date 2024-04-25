@@ -36,6 +36,7 @@
   		<result column="FILE_LEVEL" property="fileLevel"/>
   		<result column="UPLOAD_DATE" property="uploadDate"/>
   		<result column="MEDIA_STATUS" property="mediaStatus"/>
+  		<result column="PRODUCT_ID" property="mediaProductId"/>
   	</resultMap>
   	<resultMap id="scrapResultSet" type="Scrap">
   		<result column="SCRAP_ID" property="scrapId"/>
@@ -240,7 +241,7 @@
 	WHERE SCRAP_ID = #{scrapId}
   </update>
   <select id="selectScrapList1" resultMap="mediaResultSet" parameterType="_int">
-  SELECT M.FILE_PATH AS "FILE_PATH", M.CHANGE_NAME AS "CHANGE_NAME"
+  SELECT M.FILE_PATH AS "FILE_PATH", M.CHANGE_NAME AS "CHANGE_NAME", M.BOARD_ID AS "BOARD_ID"
 	FROM MEDIA M
 	JOIN SCRAP S ON (M.MEDIA_ID = S.MEDIA_ID)
 	WHERE S.MEMBERS_NO = #{membersNo}
@@ -249,7 +250,7 @@
 	AND SCRAP_STATUS = 'Y'
   </select>
   <select id="selectScrapList2" resultMap="mediaResultSet" parameterType="_int">
-  SELECT M.FILE_PATH AS "FILE_PATH", M.CHANGE_NAME AS "CHANGE_NAME"
+  SELECT M.FILE_PATH AS "FILE_PATH", M.CHANGE_NAME AS "CHANGE_NAME", M.BOARD_ID AS "BOARD_ID"
 	FROM MEDIA M
 	JOIN SCRAP S ON (M.BOARD_ID = S.BOARD_ID)
 	WHERE S.MEMBERS_NO = #{membersNo}
@@ -260,7 +261,7 @@
 	AND SCRAP_STATUS = 'Y'
   </select>
   <select id="selectScrapList3" resultMap="mediaResultSet" parameterType="_int">
-  SELECT M.FILE_PATH AS "FILE_PATH", M.CHANGE_NAME AS "CHANGE_NAME"
+  SELECT M.FILE_PATH AS "FILE_PATH", M.CHANGE_NAME AS "CHANGE_NAME", M.PRODUCT_ID AS "PRODUCT_ID"
 	FROM MEDIA M
 	JOIN SCRAP S ON (M.PRODUCT_ID = S.PRODUCT_ID)
 	WHERE S.MEMBERS_NO = #{membersNo}

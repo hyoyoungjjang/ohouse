@@ -13,11 +13,17 @@ public class Media {
 	private int fileLevel;
 	private Date uploadDate;
 	private String mediaStatus;
+	private int mediaProductId;
 	
 	public Media() {}
 
+	
+
+
+
+
 	public Media(int mediaId, int mediaBoardId, int mediaMembersId, int mediaType, String originName, String changeName,
-			String filePath, int fileLevel, Date uploadDate, String mediaStatus) {
+			String filePath, int fileLevel, Date uploadDate, String mediaStatus, int mediaProductId) {
 		super();
 		this.mediaId = mediaId;
 		this.mediaBoardId = mediaBoardId;
@@ -29,6 +35,18 @@ public class Media {
 		this.fileLevel = fileLevel;
 		this.uploadDate = uploadDate;
 		this.mediaStatus = mediaStatus;
+		this.mediaProductId = mediaProductId;
+	}
+
+
+	public int getMediaProductId() {
+		return mediaProductId;
+	}
+	
+	
+	
+	public void setMediaProductId(int mediaProductId) {
+		this.mediaProductId = mediaProductId;
 	}
 
 	public int getMediaId() {
@@ -111,13 +129,16 @@ public class Media {
 		this.mediaStatus = mediaStatus;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Media [mediaId=" + mediaId + ", mediaBoardId=" + mediaBoardId + ", mediaMembersId=" + mediaMembersId
 				+ ", mediaType=" + mediaType + ", originName=" + originName + ", changeName=" + changeName
 				+ ", filePath=" + filePath + ", fileLevel=" + fileLevel + ", uploadDate=" + uploadDate
-				+ ", mediaStatus=" + mediaStatus + "]";
+				+ ", mediaStatus=" + mediaStatus + ", mediaProductId=" + mediaProductId + "]";
 	}
+
+	
 	
 	
 	

@@ -99,11 +99,13 @@ body {
 .header-others>img {
     width: 30px;
     margin: 0px 10px;
+    border-radius: 50px;
 }
 
 .header-others>img:nth-child(4) {
     width: 50px;
     margin-right: 20px;
+    border-radius: 50px;
 }
 
 .header-hidden {
@@ -126,3 +128,4 @@ body {
 .header-mypage {
     margin: auto;
 }
+
