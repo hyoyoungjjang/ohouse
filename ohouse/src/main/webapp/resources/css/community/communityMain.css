@@ -93,7 +93,7 @@
     width: 350px;
     height: 243px;
     border-radius: 7px;
-
+    object-fit: cover;
 }
 
 .page-text-title {
