@@ -22,9 +22,9 @@
                 <h2>${loginUser.membersName}</h2>
             </div>
             <nav id="scrap-nav">
-                <button class="media clicked btn" onclick="navclicked(2,0,'detail.co?bid=');"><b>사진</b><span id="scrap-count1"></span></button>
-                <button class="content btn" onclick="navclicked(3,1,'detail.co?bid=');"><b>게시글</b><span id="scrap-count2"></span></button>
-                <button class="item btn" onclick="navclicked(1,2,'detail.pr?productId=');"><b>상품</b><span id="scrap-count3"></span></button>
+                <button class="media clicked btn" onclick="navclicked(2,0,'detail.co?bid=');"><b>사진&nbsp;</b><span id="scrap-count1"></span></button>
+                <button class="contents btn" onclick="navclicked(3,1,'detail.co?bid=');"><b>게시글&nbsp;</b><span id="scrap-count2"></span></button>
+                <button class="item btn" onclick="navclicked(1,2,'detail.pr?productId=');"><b>상품&nbsp;</b><span id="scrap-count3"></span></button>
             </nav>
            
             
@@ -43,8 +43,12 @@
                         url: "profile.co",
                         data: {mNo: mNo},
                         success: function(result) {
-                            console.log(result)
-                            $("#profile-img-setting").attr("src", `${contextPath}` + `/` + result.filePath);
+                            // console.log(result)
+                            if(result == null) {
+                                $("#profile-img-setting").attr("src", `${contextPath}/resources/img/common/user.png`);
+                            } else{
+                                $("#profile-img-setting").attr("src", `${contextPath}` + `/` + result.filePath);
+                            }
                         }
                     })
 

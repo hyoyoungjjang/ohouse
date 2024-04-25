@@ -69,9 +69,9 @@
             <!-- 마이페이지 -->
             <div class="header-mypage">
                 <a href="${contextPath}/profile.me">프로필</a>
-                <a href="${contextPath}/shopping.me">나의 쇼핑</a>
+                <!-- <a href="${contextPath}/shopping.me">나의 쇼핑</a>
                 <a href="${contextPath}/inquire.me">나의문의내역</a>
-                <a href="${contextPath}/review.me">나의 리뷰</a>
+                <a href="${contextPath}/review.me">나의 리뷰</a> -->
                 <a href="${contextPath}/updateForm.me">설정</a>
             </div>
         </div>
