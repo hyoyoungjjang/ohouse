@@ -13,10 +13,12 @@ public interface ProductOrderService {
 	OptionsCategory selectCategoryDetail(int cgNo);
 	// 상품의 옵션명 객체 반환
 	OptionsName selectOptNameDetail(int optNameNo);
-	// 주문 객체 DB에 저장, 상품 옵션 db에 저장
-	int insertOrderProduct(Order o, OrderProduct ordpd);
+	// 주문 객체 DB에 저장
+	int insertOrder(Order o);
+	//상품 옵션 db에 저장
+	int insertOrderProduct(OrderProduct ordpd);
 	// 주문 객체 반환
 	Order selectOrder(int orderId);
 	// 주문 상품 옵션 반환
-	OrderProduct selectOrderProduct(int orderProductId);
+	OrderProduct selectOrderProduct(OrderProduct ordpd);
 }

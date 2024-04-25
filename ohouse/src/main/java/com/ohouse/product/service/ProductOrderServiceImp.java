@@ -51,14 +51,12 @@ public class ProductOrderServiceImp implements ProductOrderService {
 	}
 
 	@Override
-	public int insertOrderProduct(Order o, OrderProduct ordpd) {
+	public int insertOrder(Order o) {
 		SqlSession sqlSession = getSqlSession();
 		
-		int result1 = pDao.insertOrder(sqlSession, o);
+		int result = pDao.insertOrder(sqlSession, o);
 		
-		int result2 = pDao.insertOrderProduct(sqlSession, ordpd);
-
-		if(result1 > 0 && result2 > 0) {
+		if(result > 0) {
 			sqlSession.commit();
 		} else {
 			sqlSession.rollback();
@@ -66,9 +64,26 @@ public class ProductOrderServiceImp implements ProductOrderService {
 		
 		sqlSession.close();
 		
-		return result1 * result2;
+		return result;
 	}
 
+	@Override
+	public int insertOrderProduct(OrderProduct ordpd) {
+		SqlSession sqlSession = getSqlSession();
+
+		int result = pDao.insertOrderProduct(sqlSession,ordpd);
+		
+		if(result > 0) {
+			sqlSession.commit();
+		} else {
+			sqlSession.rollback();
+		}
+		
+		sqlSession.close();
+		
+		return result;
+	}
+	
 	@Override
 	public Order selectOrder(int orderId) {
 		SqlSession sqlSession = getSqlSession();
@@ -81,10 +96,10 @@ public class ProductOrderServiceImp implements ProductOrderService {
 	}
 
 	@Override
-	public OrderProduct selectOrderProduct(int orderProductId) {
+	public OrderProduct selectOrderProduct(OrderProduct orderProduct) {
 		SqlSession sqlSession = getSqlSession();
 		
-		OrderProduct ordpd = pDao.selectOrderProduct(sqlSession, orderProductId);
+		OrderProduct ordpd = pDao.selectOrderProduct(sqlSession, orderProduct);
 		
 		sqlSession.close();
 		

@@ -70,28 +70,39 @@ public class productOrderInsertController extends HttpServlet {
 		// 도착 예상일을 설정합니다.
 		order.setArrivalDate(sqlArrivalDate);
 		
-		OrderProduct ordpd = new OrderProduct();
+		int result1 = pServ.insertOrder(order);
 		
-		ordpd.setProductId(pNo);
-		ordpd.setOrderOptions(oNo);
-		ordpd.setAmount(amount);
-		
-		int result1 = pServ.insertOrderProduct(order, ordpd);
 		
 		if (result1 > 0) {
-			request.getSession().setAttribute("alertMsg", "주문 성공");
-			Product p = pServ.selectProductDetail(pNo);
-			OptionsName o = pServ.selectOptNameDetail(oNo);
-			Order orderSelect = pServ.selectOrder(order.getOrdersId());
-			OrderProduct ordpdSelect = pServ.selectOrderProduct(ordpd.getOrderProductId());
-			request.setAttribute("p", p);
-			request.setAttribute("o", o);
-			request.setAttribute("order", orderSelect);
-			request.setAttribute("ordpd", ordpdSelect);
-			request.setAttribute("paymentMethod", paymentMethod);
-			request.getRequestDispatcher("views/product/productOrderDetailPage.jsp").forward(request, response);
+			int ordid = order.getOrdersId();
+			OrderProduct ordpd = new OrderProduct();
+			
+			ordpd.setProductId(pNo);
+			ordpd.setOrderOptions(oNo);
+			ordpd.setAmount(amount);
+			ordpd.setOrderId(ordid);
+			
+			int result2 = pServ.insertOrderProduct(ordpd);
+			
+			if(result2 >0) {
+				request.getSession().setAttribute("alertMsg", "주문 성공");
+				Product p = pServ.selectProductDetail(pNo);
+				OptionsName o = pServ.selectOptNameDetail(oNo);
+				Order orderSelect = pServ.selectOrder(ordid);
+				OrderProduct ordpdSelect = pServ.selectOrderProduct(ordpd);
+				request.setAttribute("p", p);
+				request.setAttribute("o", o);
+				request.setAttribute("order", orderSelect);
+				request.setAttribute("ordpd", ordpdSelect);
+				request.setAttribute("paymentMethod", paymentMethod);
+				request.getRequestDispatcher("views/product/productOrderDetailPage.jsp").forward(request, response);
+			} else {
+				request.getSession().setAttribute("alertMsg", "주문 옵션 오류");
+				response.sendRedirect(request.getContextPath());
+			}
+		
 		} else {
-			request.getSession().setAttribute("alertMsg", "주문 실패");
+			request.getSession().setAttribute("alertMsg", "주문 상품 오류");
 			response.sendRedirect(request.getContextPath());
 		}
 		

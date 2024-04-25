@@ -52,7 +52,6 @@
   		<result column="ORDERS_STATUS" property="ordersStatus" />
   	</resultMap>
   	<resultMap type="OrderProduct" id="OrderProductRset">
-  		<result column="ORDERS_PRODUCT_ID" property="orderProductId" />
   		<result column="ORDERS_ID" property="orderId" />
   		<result column="PRODUCT_ID" property="productId" />
   		<result column="OPTIONS_NAME_NO" property="orderOptions" />
@@ -132,7 +131,6 @@
   	INSERT
   	INTO ORDERS_PRODUCT
   	(	
-  		ORDERS_PRODUCT_ID,
   		ORDERS_ID,
 		PRODUCT_ID,
 		OPTIONS_NAME_NO,
@@ -140,8 +138,7 @@
   	)
   	VALUES
   	(
-  		SEQ_ORDPDID.NEXTVAL,
-  		SEQ_ORDID.CURRVAL,
+  		#{orderId},
   		#{productId},
   		#{orderOptions},
   		#{amount}
@@ -168,13 +165,29 @@
   </select>
   <select id="selectOrderProduct" resultMap="OrderProductRset">
   	SELECT
-  		ORDERS_PRODUCT_ID,
 		ORDERS_ID,
 		PRODUCT_ID,
 		OPTIONS_NAME_NO,
 		AMOUNT
   	FROM ORDERS_PRODUCT
-  	WHERE ORDERS_PRODUCT_ID = #{orderProductId}
+  	WHERE ORDERS_ID = #{orderId}
+  	AND PRODUCT_ID = #{productId}
+  	AND OPTIONS_NAME_NO = #{orderOptions}
+  </select>
+  <select id="selectCategoryList" resultMap="CategoryRset">
+  	SELECT
+  		OPTIONS_NO,
+  		OPTIONS_CATEGORY
+  	FROM OPTIONS_CATEGORY
+  	JOIN PRODUCT_OPTIONS ON (OPTIONS_PDOPT_ID = PRODUCT_OPTIONS_ID)
+  	WHERE PDOPT_PRODUCT_ID = #{productId}
+  </select>
+  <select id="selectOptionsNameList" resultMap="OptionsNameRset">
+  	SELECT
+  		OPTIONS_NAME_NO,
+  		OPTIONS_NAME
+  	FROM OPTIONS_NAME
+  	WHERE OPTIONS_NAME_OPT_NO = #{cgNo}
   </select>
  </mapper>
 
