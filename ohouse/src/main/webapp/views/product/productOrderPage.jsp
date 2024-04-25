@@ -105,7 +105,7 @@
 
                         </div>
                         <c:set var="totalProductPrice" scope="request">
-                        	${(p.productPrice + o.price) * amount}
+                        	${(p.productPrice + o.price) * amount * (100 - p.sale) / 100}
                         </c:set>
                         <c:set var="totalPrice" scope="request">
                         	${totalProductPrice + p.productDeliveryPrice}
@@ -142,7 +142,7 @@
                                     <p id="text1">${p.productName}</p>
                                     <p id="text2">${o.optionsName}</p>
                                     <p id="text3">
-                                        <fmt:formatNumber value="${p.productPrice}"/>원
+                                        <fmt:formatNumber value="${(p.productPrice + o.price) * (100 - p.sale) / 100}"/>원
                                         <span class="order-product-count2">${amount}개</span>
                                     </p>
                                 </div>

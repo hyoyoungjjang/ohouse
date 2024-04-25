@@ -35,16 +35,13 @@ public class ProductOrderFormController extends HttpServlet {
 		
 		ProductOrderService pServ = new ProductOrderServiceImp();
 		
-//		int pNo = Integer.parseInt(request.getParameter("pNo"));
-		int pNo = 5;
+		int pNo = Integer.parseInt(request.getParameter("pNo"));
 		Product p = pServ.selectProductDetail(pNo);
 		
-//		int optNameNo = Integer.parseInt(request.getParameter("optNameNo"));
-		int optNameNo = 3;
+		int optNameNo = Integer.parseInt(request.getParameter("optNameNo"));
 		OptionsName optName = pServ.selectOptNameDetail(optNameNo);
 		
-//		int amount = Integer.parseInt(request.getParameter("amount"));
-		int amount = 3;
+		int amount = Integer.parseInt(request.getParameter("amount"));
 				
 //		 하나라도 null인 경우를 처리하는 if 문
 		if (p == null || optName == null) {

@@ -10,7 +10,7 @@
   		<result column="PRODUCT_PRICE" property="productPrice" />
   		<result column="PRODUCT_SALES" property="productSales" />
   		<result column="STOCK" property="stock" />
-  		<result column="DELIVERY_DATE" property="arrivalDate" />
+  		<result column="DELIVERY_DATE" property="deliveryDate" />
   		<result column="SALE" property="sale" />
   		<result column="PRODUCT_CONTENT" property="productContent" />
   		<result column="PRODUCT_CREATE_TIME" property="productCreateTime" />
@@ -72,7 +72,7 @@
 		#{productCategory},
 	)
   </insert>
-  <select id="selectDetailProduct" resultMap="productResultSet">
+  <select id="selectDetailProduct" resultMap="productResultSet" parameterType="_int">
   SELECT
 		PRODUCT_ID,
 		PRODUCT_NAME,
