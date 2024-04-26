@@ -19,7 +19,7 @@
     <div align="center">
       <div class="content">
         <div id="sort" align="left">
-            <div class="dropdown">
+            <!-- <div class="dropdown">
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                     정렬
                 </button>
@@ -29,7 +29,7 @@
                     <a class="dropdown-item" href="#">역대 인기순</a>
                     <a class="dropdown-item" href="#">과거순</a>
                 </div>
-            </div>
+            </div> -->
             <!-- <div class="dropdown">
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                     주거형태

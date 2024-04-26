@@ -21,9 +21,9 @@
             </div>
             <div class="pc-sale" id="pc-deal-contents">
                 <c:forEach var="ps" items="${psList}">
-                    <div class="pc-sale-content" onclick='location.href="${contextPath}/detail.pr?productId=${ps.productId}"'>
+                    <div class="pc-sale-content">
                         <div class="pc-sale-img">
-                            <img src="${contextPath}/${ps.productThumbnail}">
+                            <img src="${contextPath}/${ps.productThumbnail}" onclick='location.href="${contextPath}/detail.pr?productId=${ps.productId}"'>
                             <button type="button">
                                 <img src="${contextPath}/resources/img/product/pm-bookmark.png" width="40px" onclick="changeBookmark(this, '${ps.productId}')">
                             </button>
@@ -113,9 +113,10 @@
                             const saleproduct = list[i];
             
                             if (saleproduct) {
-                                saleArea.innerHTML += `<div class="pc-sale-content" onclick="location.href='${pageContext.request.contextPath}/detail.pr?productId=` + saleproduct.productId + `'">
+                                saleArea.innerHTML += `<div class="pc-sale-content">
                                     <div class="pc-sale-img">
-                                        <img src="${pageContext.request.contextPath}/` +  saleproduct.productThumbnail + `" width="260px">
+                                        <img src="${pageContext.request.contextPath}/` +  saleproduct.productThumbnail + `" width="260px"
+                                         onclick="location.href='${pageContext.request.contextPath}/detail.pr?productId=` + saleproduct.productId + `'">
                                         <button type="button" onclick="changeBookmark(this, `+saleproduct.productId+`)">
                                             <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
                                         </button>

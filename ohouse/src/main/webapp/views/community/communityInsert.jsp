@@ -424,9 +424,9 @@
             const btn = document.getElementById('id' + idNum + '-tag' + order);
 
             if(result.length === 0) {
-                tag.innerHTML = "<div>검색 결과가 없습니다.</div>";
+                // tag.innerHTML = "<div>검색 결과가 없습니다.</div>";
             } else {
-                tag.innerHTML = "";
+                // tag.innerHTML = "";
 
                 for(let ele of result) {
                     const div = document.createElement('div');
@@ -440,7 +440,7 @@
                         btn.innerHTML += `<input type="hidden" value="` + now[1].value + `">`
                     });
 
-                    tag.appendChild(div);
+                    // tag.appendChild(div);
                 }
             }
         }

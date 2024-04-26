@@ -21,9 +21,9 @@
             </div>
             <div class="pc-sale" id="pc-deal-contents">
                 <c:forEach var="p" items="${pList}">
-                    <div class="pc-sale-content" onclick='location.href="${contextPath}/detail.pr?productId=${p.productId}"'>
+                    <div class="pc-sale-content">
                         <div class="pc-sale-img">
-                            <img src="${contextPath}/${p.productThumbnail}">
+                            <img src="${contextPath}/${p.productThumbnail}" onclick='location.href="${contextPath}/detail.pr?productId=${c.productId}"'>
                             <button type="button">
                                 <img id="product-bookmark-img" src="${contextPath}/resources/img/product/pm-bookmark.png" width="40px" onclick="changeBookmark(this, '${p.productId}')">
                             </button>
@@ -126,9 +126,9 @@
                             
                             if (saleproduct) {
                                 saleArea.innerHTML += `
-                                <div class="pc-sale-content" onclick="location.href='${pageContext.request.contextPath}/detail.pr?productId=` + saleproduct.productId + `'">
+                                <div class="pc-sale-content">
                                     <div class="pc-sale-img">
-                                        <img src="${pageContext.request.contextPath}/` +  saleproduct.productThumbnail + `" width="260px">
+                                        <img src="${pageContext.request.contextPath}/` +  saleproduct.productThumbnail + `" width="260px" onclick="location.href='${pageContext.request.contextPath}/detail.pr?productId=` + saleproduct.productId + `'">
                                         <button type="button" onclick="changeBookmark(this, `+saleproduct.productId+`)">
                                             <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
                                         </button>

@@ -100,7 +100,7 @@
                             const communityList = list[i];
                             if(communityList){
                                 communityListTest.innerHTML += `<div class="profile-content-img" onclick="location.href='${contextPath}/detail.co?bid=`+communityList.mediaBoardId+`'">
-                                    <img id="profile-community-img" src="${pageContext.request.contextPath}/` + communityList.filePath + communityList.originName +  `">
+                                    <img id="profile-community-img" src="${pageContext.request.contextPath}/` + communityList.filePath + communityList.changeName +  `">
                                     </div>` 
                             }
                         }

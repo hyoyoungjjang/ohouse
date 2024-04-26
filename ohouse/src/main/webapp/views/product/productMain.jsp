@@ -90,9 +90,9 @@
                     price = AddComma(price);
                     
                     if (product) {
-                        saleArea.innerHTML += `<div class="pm-sale-content" onclick="location.href='${pageContext.request.contextPath}/detail.pr?productId=` + product.productId + `'">
+                        saleArea.innerHTML += `<div class="pm-sale-content">
                             <div class="pm-sale-img">
-                                <img src="${pageContext.request.contextPath}/` +  product.productThumbnail + `" width="260px">
+                                <img src="${pageContext.request.contextPath}/` +  product.productThumbnail + `" width="260px" onclick="location.href='${pageContext.request.contextPath}/detail.pr?productId=` + product.productId + `'">
                                 <button type="button" onclick="changeBookmark(this, `+product.productId+`)">
                                     <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
                                 </button>
@@ -133,9 +133,10 @@
                     price = AddComma(price);
                     
                     if (saleproduct) {
-                        saleArea.innerHTML += `<div class="pm-sale-content" onclick="location.href='${pageContext.request.contextPath}/detail.pr?productId=` + saleproduct.productId + `'">
+                        saleArea.innerHTML += `<div class="pm-sale-content">
                             <div class="pm-sale-img">
-                                <img src="${pageContext.request.contextPath}/` +  saleproduct.productThumbnail + `" width="260px">
+                                <img src="${pageContext.request.contextPath}/` +  saleproduct.productThumbnail + `" width="260px"
+                                onclick="location.href='${pageContext.request.contextPath}/detail.pr?productId=` + saleproduct.productId + `'">
                                 <button type="button" onclick="changeBookmark(this, `+saleproduct.productId+`)">
                                     <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
                                 </button>

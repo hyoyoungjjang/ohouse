@@ -312,7 +312,7 @@ pageEncoding="UTF-8"%>
             <div class="comment-and-answer">
                 <div class="comment-area"></div>
             </div>
-            <div class="comment-page">
+            <!-- <div class="comment-page">
                 <button id="back-page-button">
                     <img id="back-page-img" src="${pageContext.request.contextPath}/resources/img/community/backbutton.png" alt="">
                 </button>
@@ -321,7 +321,7 @@ pageEncoding="UTF-8"%>
                 <button id="next-page-button">
                     <img id="next-page-img" src="${pageContext.request.contextPath}/resources/img/community/nextbutton.png" alt="">
                 </button>
-            </div>
+            </div> -->
         </div>
     </div>
     <script>

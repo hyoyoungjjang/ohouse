@@ -356,40 +356,40 @@
             }
         }
         
-        function inputTag(idNum, contextPath) {
-            const tagFlex = document.createElement('div');
-            const imgWapper = document.getElementById('img-wrapper');
+        // function inputTag(idNum, contextPath) {
+        //     const tagFlex = document.createElement('div');
+        //     const imgWapper = document.getElementById('img-wrapper');
 
-            tagFlex.setAttribute("class", "tag-flex");
-            tagFlex.setAttribute("align", "left");
+        //     tagFlex.setAttribute("class", "tag-flex");
+        //     tagFlex.setAttribute("align", "left");
 
-            for(let i = 1; i <= 6; i++) {
-                let btn = `<button type="button" class="btn btn-default tag-product" data-toggle="modal" 
-                                    data-target="#id` + idNum + `-modal` + i + `" id="id` + idNum + `-tag` + i + `" name="tag`+ idNum +`"></button>`;
-                let modal = `<div id="id` + idNum + `-modal` + i + `" class="modal fade" role="dialog">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h4 class="modal-title"></h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <input type="text" onkeyup="productSearch(this.value, ` + idNum + `, ` + i + `, '` + contextPath + `');">
-                                            <button type="button" class="btn btn-default btn-sm">검색</button>
-                                            <div id="id` + idNum + `` + i + `"></div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>`;
-                tagFlex.innerHTML += btn;
-                tagFlex.innerHTML += modal;
-            }
+        //     for(let i = 1; i <= 6; i++) {
+        //         let btn = `<button type="button" class="btn btn-default tag-product" data-toggle="modal" 
+        //                             data-target="#id` + idNum + `-modal` + i + `" id="id` + idNum + `-tag` + i + `" name="tag`+ idNum +`"></button>`;
+        //         let modal = `<div id="id` + idNum + `-modal` + i + `" class="modal fade" role="dialog">
+        //                         <div class="modal-dialog">
+        //                             <div class="modal-content">
+        //                                 <div class="modal-header">
+        //                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
+        //                                     <h4 class="modal-title"></h4>
+        //                                 </div>
+        //                                 <div class="modal-body">
+        //                                     <input type="text" onkeyup="productSearch(this.value, ` + idNum + `, ` + i + `, '` + contextPath + `');">
+        //                                     <button type="button" class="btn btn-default btn-sm">검색</button>
+        //                                     <div id="id` + idNum + `` + i + `"></div>
+        //                                 </div>
+        //                                 <div class="modal-footer">
+        //                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        //                                 </div>
+        //                             </div>
+        //                         </div>
+        //                     </div>`;
+        //         tagFlex.innerHTML += btn;
+        //         tagFlex.innerHTML += modal;
+        //     }
 
-            imgWapper.appendChild(tagFlex);
-        }
+        //     imgWapper.appendChild(tagFlex);
+        // }
 
         function productSearch(key, idNum, order, contextPath) {
             $.ajax({
@@ -409,9 +409,9 @@
             const btn = document.getElementById('id' + idNum + '-tag' + order);
 
             if(result.length === 0) {
-                tag.innerHTML = "<div>검색 결과가 없습니다.</div>";
+                // tag.innerHTML = "<div>검색 결과가 없습니다.</div>";
             } else {
-                tag.innerHTML = "";
+                // tag.innerHTML = "";
 
                 for(let ele of result) {
                     const div = document.createElement('div');
@@ -425,7 +425,7 @@
                         btn.innerHTML += `<input type="hidden" value="` + now[1].value + `">`
                     });
 
-                    tag.appendChild(div);
+                    // tag.appendChild(div);
                 }
             }
         }

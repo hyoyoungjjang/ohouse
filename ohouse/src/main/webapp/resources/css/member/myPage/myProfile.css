@@ -63,12 +63,15 @@
     height: 200px;
     margin: 10px;
     overflow: hidden;
+    object-fit: cover;
 }
 
 .profile-content-img>img {
     border-radius: 5px;
     width: 100%;
+    min-height: 100%;
     transition: linear 0.1s;
+    object-fit: cover;
 }
 
 .profile-content-img>img:hover {
