@@ -36,7 +36,11 @@
                         url: "profile.co",
                         data: {mNo: mNo},
                         success: function(result) {
-                            $("#profile-img-area>img").attr("src", `${contextPath}` + `/` + result.filePath);
+                            if(result == null) {
+                                $("#profile-img-area>img").attr("src", `${contextPath}/resources/img/common/user.png`);
+                            } else{
+                                $("#profile-img-area>img").attr("src", `${contextPath}` + `/` + result.filePath);
+                            }
                         }
                     })
 
@@ -96,7 +100,7 @@
                             const communityList = list[i];
                             if(communityList){
                                 communityListTest.innerHTML += `<div class="profile-content-img" onclick="location.href='${contextPath}/detail.co?bid=`+communityList.mediaBoardId+`'">
-                                    <img id="profile-community-img" src="${pageContext.request.contextPath}/` + communityList.filePath + communityList.originName +  `">
+                                    <img id="profile-community-img" src="${pageContext.request.contextPath}/` + communityList.filePath + communityList.changeName +  `">
                                     </div>` 
                             }
                         }

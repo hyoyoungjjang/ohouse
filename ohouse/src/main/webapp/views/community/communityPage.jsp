@@ -41,7 +41,7 @@ pageEncoding="UTF-8"%>
     <div class="content">
         <input type="hidden" id="hidden-no" value="${b.boardId}" name="bid">
         <div class="bulletin-title" align="left">
-            <p>작은 공간을 효율적으로 활용하는 최적의 가구 배치 찾기</p>
+            <p>${b.boardTitle}</p>
         </div>
         <div align="left" id="content-head">
             <div>
@@ -312,7 +312,7 @@ pageEncoding="UTF-8"%>
             <div class="comment-and-answer">
                 <div class="comment-area"></div>
             </div>
-            <div class="comment-page">
+            <!-- <div class="comment-page">
                 <button id="back-page-button">
                     <img id="back-page-img" src="${pageContext.request.contextPath}/resources/img/community/backbutton.png" alt="">
                 </button>
@@ -321,7 +321,7 @@ pageEncoding="UTF-8"%>
                 <button id="next-page-button">
                     <img id="next-page-img" src="${pageContext.request.contextPath}/resources/img/community/nextbutton.png" alt="">
                 </button>
-            </div>
+            </div> -->
         </div>
     </div>
     <script>
@@ -468,7 +468,11 @@ pageEncoding="UTF-8"%>
         }
 
         function getProfile(result, contextPath, path) {
-            $(path).attr({ src: contextPath + "/" + result.filePath});
+            if(result == null) {
+                $(path).attr("src", contextPath + `/resources/img/common/user.png`);
+            } else {
+                $(path).attr({ src: contextPath + "/" + result.filePath});
+            }
         }
 
         function getBoardScrap(result, memNo) {

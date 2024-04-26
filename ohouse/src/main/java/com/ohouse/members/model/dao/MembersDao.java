@@ -52,4 +52,8 @@ public class MembersDao {
 	public int updateMembers(SqlSession sqlSession, Members m) {
 		return sqlSession.update("membersMapper.updateMembers", m);
 	}
+
+	public int insertProfile(SqlSession sqlSession, Media media) {
+		return sqlSession.insert("membersMapper.insertProfile", media);
+	}
 }

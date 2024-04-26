@@ -314,14 +314,12 @@
                     </div>
                     <input type="file" value="대표사진 추가하기" name="file3" class="hidden" id="id3" onchange="showImg(this, '#file3', '사진');">
                     <!-- 태그 -->
+                    <!--
                     <div class="tag-flex" align="left">
                         <c:forEach var="i" begin="1" end="6">
-                            <!-- Trigger the modal with a button -->
                             <button type="button" class="btn btn-default tag-product" data-toggle="modal" data-target="#id3-modal${i}" id="id3-tag${i}" name="tag3"></button>
-                            <!-- Modal -->
                             <div id="id3-modal${i}" class="modal fade" role="dialog">
                                 <div class="modal-dialog">
-                                    <!-- Modal content-->
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -340,6 +338,7 @@
                             </div>
                         </c:forEach>
                     </div>
+                    -->
                 </div>
                 <!--본문 내용-->
                 <textarea name="description" id="textarea" align="left" placeholder="내용을 입력하세요."></textarea>
@@ -425,9 +424,9 @@
             const btn = document.getElementById('id' + idNum + '-tag' + order);
 
             if(result.length === 0) {
-                tag.innerHTML = "<div>검색 결과가 없습니다.</div>";
+                // tag.innerHTML = "<div>검색 결과가 없습니다.</div>";
             } else {
-                tag.innerHTML = "";
+                // tag.innerHTML = "";
 
                 for(let ele of result) {
                     const div = document.createElement('div');
@@ -441,7 +440,7 @@
                         btn.innerHTML += `<input type="hidden" value="` + now[1].value + `">`
                     });
 
-                    tag.appendChild(div);
+                    // tag.appendChild(div);
                 }
             }
         }

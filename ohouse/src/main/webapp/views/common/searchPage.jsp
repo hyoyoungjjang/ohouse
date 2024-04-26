@@ -41,9 +41,9 @@
                                     </header>
                                     <c:forEach var="p" items="${products}">
                                         <div class="pm-sale pm-content" id="pm-deal-contents">
-                                            <div class="pm-sale-content" onclick='location.href="${contextPath}/detail.pr?productId=${p.productId}"'>
+                                            <div class="pm-sale-content">
                                                 <div class="pm-sale-img">
-                                                    <img class="img-hover" src="${p.productThumbnail}" width="260px">
+                                                    <img class="img-hover" src="${p.productThumbnail}" width="260px" onclick='location.href="${contextPath}/detail.pr?productId=${p.productId}"'>
                                                     <button type="button" class="button-scrap">
                                                         <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png"
                                                             width="40px" onclick="changeBookmark(this)">

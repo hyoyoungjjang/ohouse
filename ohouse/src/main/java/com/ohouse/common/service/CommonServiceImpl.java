@@ -41,6 +41,8 @@ public class CommonServiceImpl implements CommonService {
 		
 		int productListCount = cDao.searchProductListCount(sqlSession, keyword);
 		
+		sqlSession.close();
+		
 		return productListCount;
 	}
 
@@ -50,7 +52,9 @@ public class CommonServiceImpl implements CommonService {
 		
 		int boardListCount = cDao.searchBoardListCount(sqlSession, keyword);
 		
-		return 0;
+		sqlSession.close();
+		
+		return boardListCount;
 	}
 	
 	

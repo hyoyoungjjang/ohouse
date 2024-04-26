@@ -59,7 +59,7 @@
                 </c:choose>   
             </h1>
             <div class=" pc-header" id="pc-deal-header">
-                <h4 class="pc-gray">전체 <span class="pc-gray">${cList.size()}</span>개</h4>
+                <!-- <h4 class="pc-gray">전체 <span class="pc-gray">${cList.size()}</span>개</h4>
                 <h4 class="pc-gray pc-product order" align="right">
                 	<select name="" id="pc-sort-area">
                         <option value="">인기순</option>
@@ -67,13 +67,13 @@
                         <option value="">리뷰 많은 순</option>
                     </select>
                     
-                </h4>
+                </h4> -->
             </div>
             <div class="pc-sale pc-content" id="pc-deal-contents">
                 <c:forEach var="c" items="${cList}">
-                    <div class="pc-sale-content" onclick='location.href="${contextPath}/detail.pr?productId=${c.productId}"'>
+                    <div class="pc-sale-content">
                         <div class="pc-sale-img">
-                            <img src="${contextPath}/${c.productThumbnail}">
+                            <img src="${contextPath}/${c.productThumbnail}" onclick='location.href="${contextPath}/detail.pr?productId=${c.productId}"'>
                             <button type="button">
                                 <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px" onclick="changeBookmark(this, '${p.productId}')">
                             </button>
@@ -161,9 +161,10 @@
                             price = AddComma(price);
                             
                             if (cProduct) {
-                                saleArea.innerHTML += `<div class="pc-sale-content" onclick="location.href='${pageContext.request.contextPath}/detail.pr?productId=` + cProduct.productId + `'">
+                                saleArea.innerHTML += `<div class="pc-sale-content">
                                     <div class="pc-sale-img">
-                                        <img src="${pageContext.request.contextPath}/` +  cProduct.productThumbnail + `" width="260px">
+                                        <img src="${pageContext.request.contextPath}/` +  cProduct.productThumbnail + `" width="260px"
+                                         onclick="location.href='${pageContext.request.contextPath}/detail.pr?productId=` + cProduct.productId + `'">
                                         <button type="button" onclick="changeBookmark(this, `+cProduct.productId+`)">
                                             <img src="${pageContext.request.contextPath}/resources/img/product/pm-bookmark.png" width="40px">
                                         </button>

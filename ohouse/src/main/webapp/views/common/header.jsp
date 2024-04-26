@@ -80,7 +80,7 @@
         $(function(){
             init("${loginUser.membersNo}", function(result){
                 if(result == null) {
-                    $("#header-profile").attr("src", `${contextPath}//resources/img/common/user.png`);
+                    $("#header-profile").attr("src", `${contextPath}/resources/img/common/user.png`);
                 } else {
                     $("#header-profile").attr("src", `${contextPath}/` + result.filePath);
                 }
