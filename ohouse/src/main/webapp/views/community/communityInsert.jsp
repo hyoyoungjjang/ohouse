@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/community/communityInsert.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/main.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/common/header.css">
+    <script src="${contextPath}/resources/js/headerInit.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -49,11 +50,11 @@
                             <!-- 로그인O -->
                             <div class="header-others">
                                 <img src="${pageContext.request.contextPath}/resources/img/common/pm-bookmark.png" alt="" onclick="">
-                                <img src="${pageContext.request.contextPath}/resources/img/common/shopping-cart.png" alt="" onclick="">
+                                <!-- <img src="${pageContext.request.contextPath}/resources/img/common/shopping-cart.png" alt="" onclick=""> -->
                                 <img src="${contextPath}/resources/img/common/logout.png" alt=""
                                     onclick="location.href='${contextPath}/logout.me';">
                                 <img src="${pageContext.request.contextPath}/resources/img/common/user.png" alt="" 
-                                    onclick="location.href='${contextPath}/profile.me';">
+                                    onclick="location.href='${contextPath}/profile.me';" id="header-profile">
                                 <a onclick="document.getElementById('submit-btn').click();" style="background-color: #35C5F0; color: white; border-radius: 5px;">작성하기</a>
                             </div>
                         </c:otherwise>
@@ -348,6 +349,16 @@
     </form>
     <script>
         let idx = 4;
+
+        $(function () {
+            init("${loginUser.membersNo}", function (result) {
+                if (result == null) {
+                    $("#header-profile").attr("src", `${contextPath}/resources/img/common/user.png`);
+                } else {
+                    $("#header-profile").attr("src", `${contextPath}/` + result.filePath);
+                }
+            })
+        })
 
         function imgChange(id) {
             const imgInput = document.getElementById(id);
