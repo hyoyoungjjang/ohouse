@@ -664,6 +664,25 @@ SEQ_BODID.NEXTVAL, 1, '무채색과 우드, 쇠테리어 포인트가 매력적�
 '이전의 인테리어와는 조금 더 달라진 제 방이에요. 전체적으로 무채색에 식물과 우드로 포인트를 주려고 했습니다.
 미니멀리즘으로 꾸미고 싶은데, 항상 욕심이 많다 보니 점점 갈수록 오브제나 물건들이 많아지는 느낌입니다..!'
 );
+
+INSERT INTO BOARD (BOARD_ID, MEMBERS_NO,  BOARD_TITLE, BOARD_VIEWS, FILTER_TYPE, FILTER_AREA, FILTER_FIELD, FILTER_FAMILY,  FILTER_WORKER, BOARD_INTRODUCTION, BOARD_DESCRIPTION)
+VALUES(
+SEQ_BODID.NEXTVAL, 2, '쉼터이자 홈오피스, 3년간의 추억을 기록한 10평 오피스텔', 66462, '원룸&오피스텔', 10, '홈스타일링', '싱글라이프', '셀프/DIY',
+'안녕하세요, 빈하루입니다. 2021년에 이사 와서 벌써 2024년이 되었네요. 3년 동안 이 집은 제 삶의 터전이자, 쉼터, 창작의 공간이 되어주었습니다. 이사를 오자마자 이 집의 모습을 기록하고 싶은 마음에 열심히 사진을 찍고 글을 썼는데요. 그때의 글을 읽어보면 아직도 설레고 기대감으로 가득했던 그때의 마음이 생생하게 느껴져요.
+3년 간의 추억을 뒤로 한 채 이사를 결정하며 이 집에서의 마지막을 기록하고 싶어서 집들이를 작성하게 되었는데요. 이 글을 읽는 여러분도, 저와 집의 성장 과정을 함께 지켜봐 주시고, 재미있게 즐겨주세요!;',
+'오늘의집 클론 코딩 참 재밌습니다.'
+);
+
+INSERT INTO BOARD (BOARD_ID, MEMBERS_NO,  BOARD_TITLE, BOARD_VIEWS, FILTER_TYPE, FILTER_AREA, FILTER_FIELD, FILTER_FAMILY,  FILTER_WORKER, FILTER_LOCAL, BOARD_INTRODUCTION, BOARD_DESCRIPTION)
+VALUES(
+SEQ_BODID.NEXTVAL, 2, '프렌치 무드, 어렵지 않게 따라하고 싶다면? (ft.부분시공)', 2859, '아파트', 35, '부분공사', '아이가 있는 집', '반셀프', '충청남도 천안시',
+'안녕하세요. 올해 유치원에 들어간 5살 아이와 함께 살고 있는 리빙유입니다. 저는.. 평범한 집순이 주부예요. 정리하는 걸 좋아하고, 집과 아이 사진 찍는 것을 좋아한답니다.
+결혼한 지 7년 차인데, 아이를 낳으면서 집의 평수를 늘리고, 남편의 이직으로 또 한 번 더 이사를 하면서 벌써 3번째 집에서 살고 있어요. 두 번째 신혼집은 화이트 우드 인테리어였는데, 취향이 바뀌어 세 번째 집은 북유럽&프렌치 스타일로 리모델링을 진행하게 됐어요! 
+지금의 집은 전체가 아닌 부분 리모델링으로 진행했어요. 공사는 3주 동안 진행했고, 아이와 함께 에어비앤비에서 지내면서 매일 공사 현장에 출근 도장을 찍으며 완성한 집입니다. 예쁘게 봐주세요. ',
+
+'다들 고생많으셨고 파이널 프로젝트도 화이팅합시다'
+);
+
 ----------------------------------------- PRODUCT ------------------------------------------
 INSERT INTO PRODUCT (PRODUCT_ID, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_SALES, STOCK, DELIVERY_DATE, SALE, PRODUCT_CONTENT, PRODUCT_CREATE_TIME, MEMBERS_NO, PRODUCT_CATEGORY)
 VALUES (SEQ_PDID.NEXTVAL, 'LG 냉장고', 3000000, 100, 500, 3, 5, 'LG전자에서 만든 냉장고입니다', SYSDATE, 1, 4);
@@ -859,6 +878,10 @@ INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FIL
 VALUES (SEQ_MEDID.NEXTVAL, 6, 1, 'thumbnail-main-06.png', 'thumbnail-main-06.png', 'resources/img/community/communityMain/', 1);
 INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
 VALUES (SEQ_MEDID.NEXTVAL, 7, 1, 'thumbnail-main-07.png', 'thumbnail-main-07.png', 'resources/img/community/communityMain/', 1);
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 8, 1, 'thumbnail-main-08.png', 'thumbnail-main-08.png', 'resources/img/community/communityMain/', 1);
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 9, 1, 'thumbnail-main-09.png', 'thumbnail-main-09.png', 'resources/img/community/communityMain/', 1);
 
 -- 게시글 사진
 INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
@@ -884,6 +907,12 @@ VALUES (SEQ_MEDID.NEXTVAL, 7, 1, 'boardContent07-1.png', 'boardContent07-1.png',
 
 INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
 VALUES (SEQ_MEDID.NEXTVAL, 7, 1, 'boardContent07-2.png', 'boardContent07-2.png', 'resources/img/community/communityPage/', 2);
+
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 8, 1, 'boardContent08.png', 'boardContent08.png', 'resources/img/community/communityPage/', 2);
+
+INSERT INTO MEDIA (MEDIA_ID, BOARD_ID, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
+VALUES (SEQ_MEDID.NEXTVAL, 9, 1, 'boardContent09.png', 'boardContent09.png', 'resources/img/community/communityPage/', 2);
 
 
 -- 상품 썸네일
@@ -931,9 +960,9 @@ VALUES (SEQ_MEDID.NEXTVAL, 20, 1, 'productMain20.jpg', 'productMain20.jpg', 'res
 
 -- 프로필 사진
 INSERT INTO MEDIA (MEDIA_ID, MEMBERS_NO, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
-VALUES (SEQ_MEDID.NEXTVAL, 1, 1, 'user.png', 'user.png', 'resources/img/common/', 3);
+VALUES (SEQ_MEDID.NEXTVAL, 1, 1, 'emptyCat.png', 'emptyCat.png', 'resources/img/common/', 3);
 INSERT INTO MEDIA (MEDIA_ID, MEMBERS_NO, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
-VALUES (SEQ_MEDID.NEXTVAL, 2, 1, 'user.png', 'user.png', 'resources/img/common/', 3);
+VALUES (SEQ_MEDID.NEXTVAL, 2, 1, 'profile01.png', 'profile01.png', 'resources/img/common/', 3);
 INSERT INTO MEDIA (MEDIA_ID, MEMBERS_NO, MEDIA_TYPE, ORIGIN_NAME, CHANGE_NAME, FILE_PATH, FILE_LEVEL)
 VALUES (SEQ_MEDID.NEXTVAL, 3, 1, 'user.png', 'user.png', 'resources/img/common/', 3);
 
