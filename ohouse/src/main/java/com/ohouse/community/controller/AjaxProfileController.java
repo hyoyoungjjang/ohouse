@@ -32,7 +32,13 @@ public class AjaxProfileController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int membersNo = Integer.parseInt(request.getParameter("mNo"));
+		int membersNo = 0;
+		
+		try {
+			membersNo = Integer.parseInt(request.getParameter("mNo"));
+		} catch(Exception e) {
+			membersNo = 0;
+		}
 		
 		CommunityService service = new CommunityServiceImpl();
 		Media m = service.selectProfile(membersNo);
