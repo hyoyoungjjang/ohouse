@@ -89,10 +89,7 @@
 					let pageNum = 2;
 					
                     function addproductList(maxPage){
-                    	if(pageNum > maxPage) {
-                    		$("#nextbutton").remove();
-                    		return;
-                    	}
+                    	
 						
                         $.ajax({
                             url : "ajaxBestList.pr",
@@ -101,7 +98,7 @@
                             },
                             success : function(list){
                             	console.log("성공")
-                                drawBestProductList(list)
+                                drawBestProductList(list, maxPage)
                                 pageNum += 1;
                             },
                             error : function(){
@@ -110,7 +107,11 @@
                         })
                     }
 
-                    function drawBestProductList(list){
+                    function drawBestProductList(list, maxPage){
+
+                        if(pageNum >= maxPage) {
+                    		$("#nextbutton").remove();
+                    	}
                         
                         const saleArea = document.getElementById("pc-deal-contents");
 

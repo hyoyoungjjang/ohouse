@@ -237,7 +237,7 @@
   </select>
   <update id="deleteScrap" parameterType="_int">
   UPDATE SCRAP
-	SET SCRAP_STATUS = 'N"
+	SET SCRAP_STATUS = 'N'
 	WHERE SCRAP_ID = #{scrapId}
   </update>
   <select id="selectScrapList1" resultMap="mediaResultSet" parameterType="_int">
